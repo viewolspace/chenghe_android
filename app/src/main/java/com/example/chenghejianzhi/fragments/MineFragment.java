@@ -3,6 +3,7 @@ package com.example.chenghejianzhi.fragments;
 import android.view.View;
 
 import com.example.base.base.BaseFragment;
+import com.example.base.rx.RxEvent;
 import com.example.chenghejianzhi.R;
 
 /**
@@ -24,6 +25,11 @@ public class MineFragment extends BaseFragment {
 
     @Override
     protected void initData() {
+
+    }
+
+    @Override
+    public void handleDefaultEvent(RxEvent event) {
 
     }
 }

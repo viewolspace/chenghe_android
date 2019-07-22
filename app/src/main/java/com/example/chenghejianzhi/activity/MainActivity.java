@@ -8,6 +8,7 @@ import android.widget.RadioGroup;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.base.base.BaseActivity;
+import com.example.base.rx.RxEvent;
 import com.example.base.util.LogUtils;
 import com.example.chenghejianzhi.R;
 import com.example.chenghejianzhi.constants.RoutMap;
@@ -50,6 +51,11 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+
+    }
+
+    @Override
+    public void handleDefaultEvent(RxEvent event) {
 
     }
 
