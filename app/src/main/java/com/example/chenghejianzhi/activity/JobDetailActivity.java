@@ -5,6 +5,7 @@ import com.example.base.base.BaseRecyclerAdapter;
 import com.example.chenghejianzhi.R;
 import com.example.chenghejianzhi.contract.JobDetailContract;
 import com.example.chenghejianzhi.presenter.JobDetailPresenter;
+import com.example.chenghejianzhi.utils.StatusBarUtils;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
 
     @Override
     protected void initWidget() {
-
+        StatusBarUtils.statusbar(this);
     }
 
     @Override

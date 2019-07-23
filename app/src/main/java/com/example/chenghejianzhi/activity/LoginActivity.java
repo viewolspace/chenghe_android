@@ -4,6 +4,7 @@ import com.example.base.base.BaseMvpActivity;
 import com.example.chenghejianzhi.R;
 import com.example.chenghejianzhi.contract.LoginContract;
 import com.example.chenghejianzhi.presenter.LoginPresenter;
+import com.example.chenghejianzhi.utils.StatusBarUtils;
 
 public class LoginActivity extends BaseMvpActivity<LoginContract.Presenter> implements LoginContract.View {
 
@@ -14,6 +15,7 @@ public class LoginActivity extends BaseMvpActivity<LoginContract.Presenter> impl
 
     @Override
     protected void initWidget() {
+        StatusBarUtils.statusbar(this);
 
     }
 

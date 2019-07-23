@@ -25,17 +25,20 @@ import butterknife.BindView;
  * @time : 2019/7/23 11:36
  * @describe ：
  */
-public class RecommendAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.RecyclerItem> {
-    public final static int TOP_BANNER = 0;
-    public final static int RECOMMEND = 1;
-    public final static int TITLE = 2;
+public class AllAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.RecyclerItem> {
+    public final static int TOP = 0;
+    public final static int BANNER = 1;
+    public final static int RECOMMEND = 2;
+    public final static int TITLE = 3;
     @Override
     protected int getItemViewType(int position, RecyclerItem recyclerItem) {
         switch (recyclerItem.type){
-            case TOP_BANNER:
+            case TOP:
+                return R.layout.layout_home_top;
+            case BANNER:
                 return R.layout.item_recommend_banner;
             case RECOMMEND:
-                return R.layout.item_recommend_today;
+                return R.layout.item_recommend_all;
             case TITLE:
                 return R.layout.item_home_title;
         }
@@ -46,15 +49,34 @@ public class RecommendAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Re
     @Override
     protected ViewHolder<RecyclerItem> onCreateViewHolder(View root, ViewGroup parent, int viewType) {
         switch (viewType){
-            case  R.layout.item_recommend_banner:
+            case  R.layout.layout_home_top:
+                return new TopViewHolder(root);
+            case R.layout.item_recommend_banner:
                 return new BannerHolder(root);
+            case R.layout.item_recommend_all:
+                return new RecommendViewHolder(root);
             case R.layout.item_home_title:
                 return new TitleViewHolder(root);
-            case R.layout.item_recommend_today:
-                return new RecommendViewHolder(root);
         }
         return new RecommendViewHolder(root);
     }
+
+    /**
+     * 头部三个按钮
+     */
+    public class TopViewHolder extends ViewHolder<RecyclerItem>{
+
+
+        public TopViewHolder(View itemView) {
+            super(itemView);
+        }
+
+        @Override
+        protected void onBind(RecyclerItem recyclerItem) {
+
+        }
+    }
+
 
     /**
      * banner
@@ -75,45 +97,15 @@ public class RecommendAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Re
             //设置图片集合
             List<Integer> images = new ArrayList<>();
             for (int i = 0;i<3;i++){
-             images.add(R.drawable.banner_test);
+                images.add(R.drawable.banner_test);
             }
             banner.setImages(images);
             //banner设置方法全部调用完毕时最后调用
             banner.start();
         }
     }
-
     /**
-     * 热门活动
-     */
-    public class HotViewHolder extends ViewHolder<RecyclerItem>{
-        @BindView(R.id.recycler_hot_activity)
-        RecyclerView recyclerView;
-
-        public HotViewHolder(View itemView) {
-            super(itemView);
-        }
-
-        @Override
-        protected void onBind(RecyclerItem recyclerItem) {
-            recyclerView.setLayoutManager(new LinearLayoutManager(itemView.getContext(),LinearLayoutManager.HORIZONTAL,false));
-            recyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
-                @Override
-                public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
-                    outRect.right = DimenUtil.dipToPixels(itemView.getContext(),8);
-                }
-            });
-            HomeHotActivityAdapter homeHotActivityAdapter = new HomeHotActivityAdapter();
-            recyclerView.setAdapter(homeHotActivityAdapter);
-            List<String> hotList = new ArrayList<>();
-            for (int i = 0;i<10;i++){
-                hotList.add("");
-            }
-            homeHotActivityAdapter.replace(hotList);
-        }
-    }
-    /**
-     * 热门推荐
+     * 兼职列表
      */
     public class RecommendViewHolder extends ViewHolder<RecyclerItem>{
 

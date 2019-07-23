@@ -8,6 +8,7 @@ import com.example.base.base.BaseFragment;
 import com.example.base.base.BaseMvpFragment;
 import com.example.base.base.BaseRecyclerAdapter;
 import com.example.chenghejianzhi.R;
+import com.example.chenghejianzhi.adapter.AllAdapter;
 import com.example.chenghejianzhi.adapter.RecommendAdapter;
 import com.example.chenghejianzhi.contract.AllContract;
 import com.example.chenghejianzhi.presenter.AllPresenter;
@@ -34,13 +35,13 @@ public class AllFragment extends BaseMvpFragment<AllContract.Presenter> implemen
     @Override
     protected void initWidget(View root) {
         recycler.setLayoutManager(new LinearLayoutManager(getContext()));
-        RecommendAdapter recommendAdapter = new RecommendAdapter();
+        AllAdapter recommendAdapter = new AllAdapter();
         recycler.setAdapter(recommendAdapter);
         List<BaseRecyclerAdapter.RecyclerItem> itemList = new ArrayList<>();
-        itemList.add(new BaseRecyclerAdapter.RecyclerItem(RecommendAdapter.TOP_BANNER,null));
-        itemList.add(new BaseRecyclerAdapter.RecyclerItem(RecommendAdapter.TITLE,"今日精选"));
+        itemList.add(new BaseRecyclerAdapter.RecyclerItem(AllAdapter.TOP,null));
+        itemList.add(new BaseRecyclerAdapter.RecyclerItem(AllAdapter.BANNER,null));
         for (int i = 0;i<10;i++){
-            itemList.add(new BaseRecyclerAdapter.RecyclerItem(RecommendAdapter.RECOMMEND,null));
+            itemList.add(new BaseRecyclerAdapter.RecyclerItem(AllAdapter.RECOMMEND,null));
         }
         recommendAdapter.replace(itemList);
     }

@@ -6,14 +6,16 @@
        android:id="@+id/iv_top_bg"
        android:layout_width="match_parent"
        android:layout_height="227dp"
-       android:background="#5FC3FF"/>
+       android:background="@drawable/mine_bg"
+       />
    <ImageView
        android:id="@+id/iv_avatar"
        android:layout_width="90dp"
        android:layout_height="90dp"
        android:layout_centerHorizontal="true"
        android:layout_marginTop="79dp"
-       android:src="@mipmap/ic_launcher"/>
+       android:src="@drawable/defautl_avatar"
+       android:background="@drawable/shape_white_round_bg"/>
    <TextView
        android:layout_marginTop="10dp"
        android:layout_width="wrap_content"
@@ -32,13 +34,25 @@
        android:layout_height="56dp"
        android:paddingLeft="33dp"
        android:paddingRight="33dp"
-       android:gravity="center_vertical"
        android:layout_below="@id/iv_top_bg">
       <TextView
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:textColor="@color/color_0d0d0d"
-          android:text="我的简历"/>
+          android:text="我的简历"
+          android:textSize="16sp"
+          android:gravity="center"
+          android:drawablePadding="16sp"
+          android:layout_centerVertical="true"
+          android:drawableLeft="@drawable/my_resume_icon"/>
+
+      <ImageView
+          android:layout_width="7dp"
+          android:layout_height="12dp"
+          android:src="@drawable/right_gray_arrow"
+          android:layout_alignParentRight="true"
+          android:layout_centerVertical="true"
+          />
    </RelativeLayout>
    <RelativeLayout
        android:id="@+id/rl_my_apply"
@@ -46,13 +60,24 @@
        android:layout_height="56dp"
        android:paddingLeft="33dp"
        android:paddingRight="33dp"
-       android:gravity="center_vertical"
        android:layout_below="@id/rl_my_resume">
       <TextView
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:textColor="@color/color_0d0d0d"
-          android:text="我的报名"/>
+          android:text="我的报名"
+          android:textSize="16sp"
+          android:gravity="center"
+          android:drawablePadding="16sp"
+          android:layout_centerVertical="true"
+          android:drawableLeft="@drawable/my_apply_icon"/>
+      <ImageView
+          android:layout_width="7dp"
+          android:layout_height="12dp"
+          android:src="@drawable/right_gray_arrow"
+          android:layout_alignParentRight="true"
+          android:layout_centerVertical="true"
+          />
    </RelativeLayout>
    <RelativeLayout
        android:id="@+id/rl_change_nick_name"
@@ -60,13 +85,24 @@
        android:layout_height="56dp"
        android:paddingLeft="33dp"
        android:paddingRight="33dp"
-       android:gravity="center_vertical"
        android:layout_below="@id/rl_my_apply">
       <TextView
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:textColor="@color/color_0d0d0d"
-          android:text="修改昵称"/>
+          android:text="修改昵称"
+          android:textSize="16sp"
+          android:gravity="center"
+          android:drawablePadding="16sp"
+          android:layout_centerVertical="true"
+          android:drawableLeft="@drawable/nick_icon"/>
+      <ImageView
+          android:layout_width="7dp"
+          android:layout_height="12dp"
+          android:src="@drawable/right_gray_arrow"
+          android:layout_alignParentRight="true"
+          android:layout_centerVertical="true"
+          />
    </RelativeLayout>
    <RelativeLayout
        android:id="@+id/rl_about_us"
@@ -74,12 +110,23 @@
        android:layout_height="56dp"
        android:paddingLeft="33dp"
        android:paddingRight="33dp"
-       android:gravity="center_vertical"
        android:layout_below="@id/rl_change_nick_name">
       <TextView
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:textColor="@color/color_0d0d0d"
-          android:text="关于我们"/>
+          android:text="关于我们"
+          android:textSize="16sp"
+          android:gravity="center"
+          android:drawablePadding="16sp"
+          android:layout_centerVertical="true"
+          android:drawableLeft="@drawable/aboult_us_icon"/>
+      <ImageView
+          android:layout_width="7dp"
+          android:layout_height="12dp"
+          android:src="@drawable/right_gray_arrow"
+          android:layout_alignParentRight="true"
+          android:layout_centerVertical="true"
+          />
    </RelativeLayout>
 </RelativeLayout>

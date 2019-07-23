@@ -15,6 +15,7 @@ import com.example.chenghejianzhi.fragments.AllFragment;
 import com.example.chenghejianzhi.fragments.HomeFragment;
 import com.example.chenghejianzhi.fragments.MineFragment;
 import com.example.chenghejianzhi.fragments.RecommendFragment;
+import com.example.chenghejianzhi.utils.StatusBarUtils;
 
 import butterknife.BindView;
 
@@ -38,6 +39,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initWidget() {
+        StatusBarUtils.statusbar(this);
         rg_menu.check(R.id.menu_home);
         rg_menu.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
