@@ -36,7 +36,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * @describe ：
  */
 public class RetrofitServiceCreator {
-    public static final String API_BASE_URL = "";
+    public static final String API_BASE_URL = "http://www.baidu.com";
     private static final String TAG = "RetrofitServiceCreator";
     public static String userAgent = null;
     public final static int CONNECT_TIMEOUT = 15;

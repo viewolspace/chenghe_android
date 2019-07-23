@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.base.rx.RxEvent;
 import com.trello.rxlifecycle2.LifecycleProvider;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 
@@ -38,6 +39,11 @@ public abstract class BaseMvpFragment<Presenter extends BaseContract.Presenter>
         if (this.presenter!=null){
             presenter.setProvider(provider);
         }
+    }
+
+    @Override
+    public void handleDefaultEvent(RxEvent event) {
+
     }
 
     @Override

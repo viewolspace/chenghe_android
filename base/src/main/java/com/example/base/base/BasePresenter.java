@@ -46,6 +46,9 @@ public abstract class BasePresenter<View extends BaseContract.View> implements B
         if (mProvider!=null){
             mProvider = null;
         }
+        if (api!=null){
+            api = null;
+        }
         onDestroy();
     }
 

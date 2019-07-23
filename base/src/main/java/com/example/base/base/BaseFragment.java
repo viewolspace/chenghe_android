@@ -7,6 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.base.rx.RxBus;
+import com.example.base.rx.RxEvent;
+import com.example.base.rx.RxUtils;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import butterknife.ButterKnife;
@@ -39,6 +42,7 @@ public abstract class BaseFragment extends AFragment {
             mRootUnbinder = ButterKnife.bind(this, root);
             initWidget(root);
             mRoot = root;
+            registerDefaultEvent();
         } else {
             if (mRoot.getParent() != null) {
                 // 把当前Root从其父控件中移除，防止出错
@@ -85,5 +89,20 @@ public abstract class BaseFragment extends AFragment {
         return false;
     }
 
+    /**
+     * 注册rxbus订阅事件
+     */
+    public void registerDefaultEvent() {
+        RxBus.getInstance().toFlowable(RxEvent.class).compose(RxUtils.rxSchedulerHelper())
+                .compose(mProvider.bindToLifecycle())
+                .subscribe(event -> handleDefaultEvent(event));
+    }
 
+
+    /**
+     * 处理默认订阅事件
+     *
+     * @param event
+     */
+    public abstract void handleDefaultEvent(RxEvent event);
 }

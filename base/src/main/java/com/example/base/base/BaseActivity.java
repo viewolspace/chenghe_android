@@ -4,6 +4,9 @@ import android.Manifest;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
+import com.example.base.rx.RxBus;
+import com.example.base.rx.RxEvent;
+import com.example.base.rx.RxUtils;
 import com.example.base.util.PermissionUtil;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
@@ -28,6 +31,7 @@ public abstract class BaseActivity extends AActivity {
             ButterKnife.bind(this);
             initWidget();
             initData();
+            registerDefaultEvent();
         } else {
             finish();
         }
@@ -69,7 +73,22 @@ public abstract class BaseActivity extends AActivity {
         finish();
         return super.onSupportNavigateUp();
     }
+    /**
+     * 注册rxbus订阅事件
+     */
+    public void registerDefaultEvent() {
+        RxBus.getInstance().toFlowable(RxEvent.class).compose(RxUtils.rxSchedulerHelper())
+                .compose(mProvider.bindToLifecycle())
+                .subscribe(event -> handleDefaultEvent(event));
+    }
 
+
+    /**
+     * 处理默认订阅事件
+     *
+     * @param event
+     */
+    public abstract void handleDefaultEvent(RxEvent event);
 //    @Override
 //    public void onBackPressed() {
 //        // 得到当前Activity下的所有Fragment

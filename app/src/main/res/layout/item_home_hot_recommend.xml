@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="112dp"
+    android:paddingLeft="14dp"
+    android:paddingRight="14dp">
+
+    <TextView
+        android:id="@+id/tv_job_title"
+        android:layout_marginTop="19dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_2A2A2A"
+        android:textSize="16sp"
+        android:text="微信在线兼职，随时随地做，秒结"/>
+
+    <TextView
+        android:id="@+id/tv_job_money"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/tv_job_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_DB6D70"
+        android:textSize="23sp"
+        android:text="120"/>
+    <TextView
+        android:id="@+id/tv_job_unit"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/tv_job_money"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_alignBottom="@id/tv_job_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_DB6D70"
+        android:textSize="11sp"
+        android:text="元/天"/>
+    <TextView
+        android:id="@+id/tv_job_desc"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/tv_job_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_B8B7BA"
+        android:textSize="13sp"
+        android:text="日结 | 长期 | 男女不限"/>
+
+</RelativeLayout>

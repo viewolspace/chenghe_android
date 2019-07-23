@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 
+import com.example.base.rx.RxEvent;
 import com.trello.rxlifecycle2.LifecycleProvider;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 
@@ -20,20 +21,8 @@ public abstract class BaseMvpActivity<Presenter extends BaseContract.Presenter> 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(setLayoutRes());
         setPresenter(initPresenter(),mProvider);
-        init();
     }
-
-    /**
-     * 初始化
-     */
-    protected abstract void init();
-
-    /**
-     * @return xml文件
-     */
-    protected abstract @LayoutRes int setLayoutRes();
 
     /**
      * @return 初始化presenter
@@ -46,6 +35,11 @@ public abstract class BaseMvpActivity<Presenter extends BaseContract.Presenter> 
         if (this.presenter!=null){
             presenter.setProvider(provider);
         }
+    }
+
+    @Override
+    public void handleDefaultEvent(RxEvent event) {
+
     }
 
     @Override
