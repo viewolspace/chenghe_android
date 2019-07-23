@@ -24,8 +24,8 @@ import butterknife.BindView;
  * @describe ：
  */
 public class RecommendFragment extends BaseMvpFragment<RecommendContract.Presenter> implements RecommendContract.View {
-    @BindView(R.id.recycler_recommend)
-    RecyclerView recycler_recommend;
+    @BindView(R.id.recycler)
+    RecyclerView recycler;
     @Override
     protected int getContentLayoutId() {
         return R.layout.fragment_recommend;
@@ -33,9 +33,9 @@ public class RecommendFragment extends BaseMvpFragment<RecommendContract.Present
 
     @Override
     protected void initWidget(View root) {
-        recycler_recommend.setLayoutManager(new LinearLayoutManager(getContext()));
+        recycler.setLayoutManager(new LinearLayoutManager(getContext()));
         RecommendAdapter recommendAdapter = new RecommendAdapter();
-        recycler_recommend.setAdapter(recommendAdapter);
+        recycler.setAdapter(recommendAdapter);
         List<BaseRecyclerAdapter.RecyclerItem> itemList = new ArrayList<>();
         itemList.add(new BaseRecyclerAdapter.RecyclerItem(RecommendAdapter.TOP_BANNER,null));
         itemList.add(new BaseRecyclerAdapter.RecyclerItem(RecommendAdapter.TITLE,"今日精选"));

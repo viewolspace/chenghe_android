@@ -24,8 +24,8 @@ import butterknife.BindView;
  * @describe ：
  */
 public class HomeFragment extends BaseMvpFragment<HomeContract.Presenter> implements HomeContract.View {
-    @BindView(R.id.recycler_home)
-    RecyclerView recycler_home;
+    @BindView(R.id.recycler)
+    RecyclerView recycler;
     private HomeAdapter homeAdapter;
 
     @Override
@@ -35,9 +35,9 @@ public class HomeFragment extends BaseMvpFragment<HomeContract.Presenter> implem
 
     @Override
     protected void initWidget(View root) {
-        recycler_home.setLayoutManager(new LinearLayoutManager(getContext()));
+        recycler.setLayoutManager(new LinearLayoutManager(getContext()));
         homeAdapter = new HomeAdapter();
-        recycler_home.setAdapter(homeAdapter);
+        recycler.setAdapter(homeAdapter);
         List<BaseRecyclerAdapter.RecyclerItem> itemList = new ArrayList<>();
         itemList.add(new BaseRecyclerAdapter.RecyclerItem(HomeAdapter.HOME_TOP,null));
         itemList.add(new BaseRecyclerAdapter.RecyclerItem(HomeAdapter.HOME_TITLE,"热门活动"));

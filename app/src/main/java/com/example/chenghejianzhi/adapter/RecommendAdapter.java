@@ -75,7 +75,7 @@ public class RecommendAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Re
             //设置图片集合
             List<Integer> images = new ArrayList<>();
             for (int i = 0;i<3;i++){
-             images.add(R.drawable.item_home_hot_bg_test);
+             images.add(R.drawable.banner_test);
             }
             banner.setImages(images);
             //banner设置方法全部调用完毕时最后调用
