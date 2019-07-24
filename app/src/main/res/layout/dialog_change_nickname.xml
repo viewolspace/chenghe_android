@@ -2,39 +2,41 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginRight="38dp"
+    android:layout_marginRight="30dp"
     android:background="@drawable/bg_radius_white"
-    android:layout_marginLeft="38dp">
+    android:layout_marginLeft="30dp">
     <TextView
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="27dp"
-        android:layout_marginLeft="27dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginLeft="24dp"
         android:textSize="16sp"
-        android:text="为了更好的了解您的意见，请您留下您的联系方式。"
-        android:textColor="#1d1d1d"
-        android:layout_marginTop="28dp"
-        android:layout_marginBottom="20dp"
+        android:text="修改昵称"
+        android:gravity="center"
+        android:textColor="@color/color_0d0d0d"
+        android:layout_marginTop="31dp"
+        android:layout_marginBottom="28dp"
         />
     <EditText
         android:id="@+id/et_dialog_contact"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="40dp"
+        android:minHeight="44dp"
         android:background="@drawable/feedback_chat_et_bg"
-        android:hint="请输入您的手机号/微信/QQ"
+        android:hint="请输入您要修改的昵称"
         android:textColorHint="#939393"
-        android:layout_marginRight="27dp"
-        android:layout_marginLeft="27dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginLeft="24dp"
         android:textSize="14sp"
-        android:gravity="center"
-        android:layout_marginBottom="11dp"/>
+        android:gravity="center_vertical"
+        android:paddingLeft="16dp"
+        android:layout_marginBottom="31dp"/>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#f1f3f4"/>
+        android:background="#E9E9E9"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
@@ -43,24 +45,24 @@
             android:id="@+id/tv_dialog_skip"
             android:layout_weight="1"
             android:layout_width="0dp"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:text="跳过"
             android:gravity="center"
-            android:textColor="#0873d2"
+            android:textColor="#939393"
             android:layout_height="match_parent" />
 
         <View
-            android:background="#f1f3f4"
-            android:layout_width="0.5dp"
+            android:background="#E9E9E9"
+            android:layout_width="1dp"
             android:layout_height="match_parent" />
         <TextView
             android:id="@+id/tv_dialog_confirm"
             android:layout_weight="1"
             android:layout_width="0dp"
-            android:text="提交"
+            android:text="确定"
             android:gravity="center"
             android:textSize="18sp"
-            android:textColor="#0873d2"
+            android:textColor="#588FFE"
             android:layout_height="match_parent" />
     </LinearLayout>
 </LinearLayout>
