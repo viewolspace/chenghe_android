@@ -2,15 +2,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="wrap_content"
     android:paddingLeft="14dp"
-    android:paddingRight="14dp">
+    >
 
     <TextView
         android:id="@+id/tv_job_title"
-        android:layout_marginTop="19dp"
+        android:layout_marginTop="25dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/color_2A2A2A"
         android:textSize="17sp"
+        android:layout_marginRight="14dp"
         android:text="微信在线兼职，随时随地做，秒结微信在线兼 微信在线兼职，随时随地做。 "/>
 
 
@@ -46,4 +47,22 @@
         android:textColor="@color/color_DB6D70"
         android:textSize="11sp"
         android:text="元/天"/>
+
+    <ImageView
+        android:id="@+id/go_detail_button"
+        android:layout_below="@id/tv_job_title"
+        android:layout_width="89dp"
+        android:layout_height="45dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginTop="14dp"
+        android:src="@drawable/go_detail_button"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="6dp"/>
+
+    <View
+        android:layout_below="@id/go_detail_button"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginRight="14dp"
+        android:background="@color/divider"/>
 </RelativeLayout>

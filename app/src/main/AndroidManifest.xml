@@ -3,6 +3,7 @@
     package="com.example.chenghejianzhi">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name="com.example.base.base.App"
         android:allowBackup="true"
@@ -11,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.PersonalResumeActivity"></activity>
+        <activity android:name=".activity.JoinPartTimeActivity"></activity>
+        <activity android:name=".activity.SearchActivity" />
+        <activity android:name=".activity.PersonalResumeActivity" />
         <activity android:name=".activity.JobDetailActivity" />
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.MainActivity">
