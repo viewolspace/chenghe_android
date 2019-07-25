@@ -38,20 +38,13 @@ public class HomeFragment extends BaseMvpFragment<HomeContract.Presenter> implem
         recycler.setLayoutManager(new LinearLayoutManager(getContext()));
         homeAdapter = new HomeAdapter();
         recycler.setAdapter(homeAdapter);
-        List<BaseRecyclerAdapter.RecyclerItem> itemList = new ArrayList<>();
-        itemList.add(new BaseRecyclerAdapter.RecyclerItem(HomeAdapter.HOME_TOP,null));
-        itemList.add(new BaseRecyclerAdapter.RecyclerItem(HomeAdapter.HOME_TITLE,"热门活动"));
-        itemList.add(new BaseRecyclerAdapter.RecyclerItem(HomeAdapter.HOME_HOT,null));
-        itemList.add(new BaseRecyclerAdapter.RecyclerItem(HomeAdapter.HOME_TITLE,"热门推荐"));
-        for (int i = 0;i<10;i++){
-            itemList.add(new BaseRecyclerAdapter.RecyclerItem(HomeAdapter.HOME_RECOMMEND,null));
-        }
-        homeAdapter.replace(itemList);
+
+
     }
 
     @Override
     protected void initData() {
-
+        presenter.getData();
     }
 
     @Override
@@ -61,6 +54,6 @@ public class HomeFragment extends BaseMvpFragment<HomeContract.Presenter> implem
 
     @Override
     public void refreshList(List<BaseRecyclerAdapter.RecyclerItem> itemList) {
-
+        homeAdapter.replace(itemList);
     }
 }
