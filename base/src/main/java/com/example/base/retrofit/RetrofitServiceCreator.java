@@ -43,7 +43,7 @@ public class RetrofitServiceCreator {
     public final static int READ_TIMEOUT = 15;
     public final static int WRITE_TIMEOUT = 15;
 
-    public static <S> S createServcie(final Context context, Class<S> serviceClass) {
+    public static <S> S createService(final Context context, Class<S> serviceClass) {
         OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder();
 
         if (BuildConfig.DEBUG) {
@@ -71,7 +71,7 @@ public class RetrofitServiceCreator {
 
         return retrofit.create(serviceClass);
     }
-    public static <S> S createServcie(Class<S> serviceClass) {
+    public static <S> S createService(Class<S> serviceClass) {
         OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder();
 
         if (BuildConfig.DEBUG) {

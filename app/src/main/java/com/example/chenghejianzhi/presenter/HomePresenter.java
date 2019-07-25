@@ -39,7 +39,9 @@ public class HomePresenter extends BasePresenter<HomeContract.View> implements H
                 itemList.add(new BaseRecyclerAdapter.RecyclerItem(HomeAdapter.HOME_RECOMMEND,null));
             }
                     view.refreshList(itemList);
-                },new RxThrowableConsumer());
+                },new RxThrowableConsumer(){
+
+        });
     }
     @Override
     protected void onDestroy() {

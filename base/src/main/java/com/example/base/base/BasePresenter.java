@@ -15,7 +15,7 @@ public abstract class BasePresenter<View extends BaseContract.View> implements B
     protected LifecycleProvider<ActivityEvent> mProvider = null;
     protected ApiService api;
     public BasePresenter(View view) {
-        api = RetrofitServiceCreator.createServcie(ApiService.class);
+        api = RetrofitServiceCreator.createService(ApiService.class);
         attachView(view);
     }
 

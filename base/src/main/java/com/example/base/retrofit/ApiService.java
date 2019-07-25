@@ -28,53 +28,53 @@ import retrofit2.http.Query;
  */
 public interface ApiService {
 
-    @GET("/ad/queryAdList")
+    @GET("ad/queryAdList")
     Flowable<BaseResponse<CommonAdBean>> getAd(@Query("categoryId") String categoryId);
 
-    @GET("/partTime/queryAll")
+    @GET("partTime/queryAll")
     Flowable<BaseResponse<AllBean>> queryAll(@Query("keyWord") String keyWord,
                                              @Query("pageIndex") int pageIndex,
                                              @Query("pageSize") int pageSize);
 
-    @GET("/partTime/getPartTime")
+    @GET("partTime/getPartTime")
     Flowable<BaseResponse<JobDetailBean>> getJobDetail(@Query("id") int id, @Query("userId") int userId);
 
-    @GET("/partTime/copyPartTime")
+    @GET("partTime/copyPartTime")
     Flowable<BaseResponse<CopyPartTimeBean>> copyPartTime(@Query("categoryId") String categoryId);
 
-    @GET("/partTime/copyPartTime")
+    @GET("partTime/copyPartTime")
     Flowable<BaseResponse<JoinPartTiemBean>> joinPartTime(@Query("categoryId") String categoryId);
 
-    @GET("/partTime/queryMyPartTime ")
+    @GET("partTime/queryMyPartTime ")
     Flowable<BaseResponse<MyJoinPartTimeBean>> queryMyJoinPartTime(@Query("userId") int userId,
                                                                    @Query("pageIndex") int pageIndex,
                                                                    @Query("pageSize") int pageSize);
 
-    @GET("/partTime/queryRecommnet")
+    @GET("partTime/queryRecommnet")
     Flowable<BaseResponse<JobCommonBean>> queryRecommend(@Query("recommend") String recommend,
                                                          @Query("pageIndex") int pageIndex,
                                                          @Query("pageSize") int pageSize);
 
 
-    @GET("/user/getToken")
+    @GET("user/getToken")
     Flowable<BaseResponse<TokenBean>> getToken(@Query("phone") String phone);
 
-    @GET("/user/getRand")
+    @GET("user/getRand")
     Flowable<BaseResponse<PhoneCodeBean>> getPhoneCode(@Query("phone") String phone);
 
-    @GET("/user/getUser")
+    @GET("user/getUser")
     Flowable<BaseResponse<PhoneCodeBean>> phoneLogin(@Query("phone") String phone);
 
-    @GET("/user/active")
+    @GET("user/active")
     Flowable<BaseResponse<JobCommonBean>> activity(@Query("idfa") String idfa, @Query("os") String os);
 
-    @GET("/user/login")
+    @GET("user/login")
     Flowable<BaseResponse<JobCommonBean>> login(@Query("idfa") String idfa, @Query("rand") String rand, @Query("phone") String phone);
 
-    @POST("/user/updateUser")
+    @POST("user/updateUser")
     Flowable<BaseResponse<JobCommonBean>> updateUser(@Body HashMap<String, String> data);
 
-    @POST("/user/updateNickName")
+    @POST("user/updateNickName")
     Flowable<BaseResponse<JobCommonBean>> updateNickName(@Body HashMap<String, String> data);
 
 }
