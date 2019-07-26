@@ -13,9 +13,16 @@ public interface LoginContract {
         void postSmsCode(String phone);
 
         void login(String phone,String code);
+
+        void active();
+
+        void getToken(String phone);
     }
 
     interface View extends BaseContract.View<Presenter>{
+
         void startSmsCodeCountDown(boolean sendSuccess);
+
+        void onLoginSucess();
     }
 }

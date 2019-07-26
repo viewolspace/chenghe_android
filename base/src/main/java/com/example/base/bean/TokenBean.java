@@ -9,22 +9,14 @@ package com.example.base.bean;
 public class TokenBean {
 
     /**
-     * status : string
-     * message : string
-     * token : string
+     * message : ok
+     * status : 0000
+     * token : 18e1a486-8944-4a27-93b3-e5da587a0997
      */
 
-    private String status;
     private String message;
+    private String status;
     private String token;
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
 
     public String getMessage() {
         return message;
@@ -32,6 +24,14 @@ public class TokenBean {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getToken() {

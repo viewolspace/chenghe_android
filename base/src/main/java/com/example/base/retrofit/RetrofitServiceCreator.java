@@ -53,10 +53,10 @@ public class RetrofitServiceCreator {
                     .addInterceptor(new PrintLogInterceptor());
                     //.addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY));
         }
-//        else {
-//            clientBuilder.addInterceptor(new CommonInterceptor())
-//                    .addInterceptor(new AddTokenInterceptor(context));
-//        }
+        else {
+            //clientBuilder.addInterceptor(new CommonInterceptor());
+                    //.addInterceptor(new AddTokenInterceptor(context));
+        }
 
         clientBuilder.retryOnConnectionFailure(false);
         clientBuilder.readTimeout(READ_TIMEOUT, TimeUnit.SECONDS).
@@ -207,9 +207,9 @@ public class RetrofitServiceCreator {
             long start = System.currentTimeMillis();
             Request original = chain.request();
             Request.Builder requestBuilder = original.newBuilder()
-                    .header("Content-Type", "application/x-www-form-urlencoded")
-                    .method(original.method(), original.body());
-            addGenericHeaders(requestBuilder);
+                    .header("Content-Type", "application/x-www-form-urlencoded");
+                    //.method(original.method(), original.body());
+            //addGenericHeaders(requestBuilder);
             Request request = requestBuilder.build();
             //
             Response resp = chain.proceed(request);

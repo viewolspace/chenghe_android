@@ -10,6 +10,7 @@ import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
 import io.reactivex.FlowableOnSubscribe;
 import io.reactivex.FlowableTransformer;
+import io.reactivex.ObservableTransformer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
@@ -29,6 +30,16 @@ public class RxUtils {
                 .observeOn(AndroidSchedulers.mainThread());
     }
 
+    /**
+     * 统一线程处理
+     *
+     * @param <T>
+     * @return
+     */
+    public static <T> ObservableTransformer<T, T> rxSchedulerHelper2() {    //compose简化线程
+        return observable -> observable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
     /**
      * 处理返回结果 返回T
      *
@@ -74,10 +85,7 @@ public class RxUtils {
             if (httpResponce == null) {
                 return Flowable.error(new ApiException(HttpCode.HTTP_NULL, HttpCode.HTTP_NULL.getMessage()));
             }
-            if (httpResponce.getCode().equals(HttpCode.HTTP_OK.getCode())) {
-                return createData(new RxOptional<>(httpResponce.getData()));
-            }
-            return handleCode(httpResponce);
+            return createData(new RxOptional<>(httpResponce.getData()));
         });
     }
 

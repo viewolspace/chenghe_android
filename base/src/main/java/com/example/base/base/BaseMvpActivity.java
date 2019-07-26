@@ -20,8 +20,9 @@ public abstract class BaseMvpActivity<Presenter extends BaseContract.Presenter> 
     protected Presenter presenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setPresenter(initPresenter(),mProvider);
+        super.onCreate(savedInstanceState);
+
     }
 
     /**

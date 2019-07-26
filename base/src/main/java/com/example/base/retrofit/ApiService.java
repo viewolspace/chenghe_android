@@ -15,8 +15,10 @@ import com.example.base.rx.BaseResponse;
 import java.util.HashMap;
 
 import io.reactivex.Flowable;
+import io.reactivex.Observable;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
@@ -57,16 +59,16 @@ public interface ApiService {
 
 
     @GET("user/getToken")
-    Flowable<BaseResponse<TokenBean>> getToken(@Query("phone") String phone);
+    Flowable<TokenBean> getToken(@Query("phone") String phone);
 
     @GET("user/getRand")
-    Flowable<BaseResponse<PhoneCodeBean>> getPhoneCode(@Query("phone") String phone);
+    Flowable<BaseResponse<PhoneCodeBean>> getPhoneCode(@Query("phone") String phone , @Header("token") String token);
 
     @GET("user/getUser")
     Flowable<BaseResponse<PhoneCodeBean>> phoneLogin(@Query("phone") String phone);
 
     @GET("user/active")
-    Flowable<BaseResponse<JobCommonBean>> activity(@Query("idfa") String idfa, @Query("os") String os);
+    Flowable<BaseResponse<JobCommonBean>> active(@Query("idfa") String idfa, @Query("os") String os);
 
     @GET("user/login")
     Flowable<BaseResponse<JobCommonBean>> login(@Query("idfa") String idfa, @Query("rand") String rand, @Query("phone") String phone);

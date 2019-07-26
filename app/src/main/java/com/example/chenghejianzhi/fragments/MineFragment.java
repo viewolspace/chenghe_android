@@ -103,14 +103,14 @@ public class MineFragment extends BaseFragment {
                     Uri thisUri = data.getData();
                     BitmapFactory.Options options = null;
 //                    try {
-//                        options = getBitmapFactoryOptions(activity, thisUri, 540, 200);
+//                        options = getBitmapFactoryOptions(active, thisUri, 540, 200);
 //                    } catch (FileNotFoundException e) {
 //                        e.printStackTrace();
 //                    }
 
 //                    InputStream is = null;
 //                    try {
-//                        is = activity.getContentResolver().openInputStream(thisUri);
+//                        is = active.getContentResolver().openInputStream(thisUri);
 //                    } catch (FileNotFoundException e) {
 //                        e.printStackTrace();
 //                    }
