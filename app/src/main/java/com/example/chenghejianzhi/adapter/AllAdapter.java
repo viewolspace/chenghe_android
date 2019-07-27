@@ -6,13 +6,20 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.base.base.BaseRecyclerAdapter;
+import com.example.base.bean.CommonAdBean;
+import com.example.base.bean.RecommendBean;
 import com.example.chenghejianzhi.R;
+import com.example.chenghejianzhi.activity.JobDetailActivity;
 import com.example.chenghejianzhi.utils.DimenUtil;
+import com.example.chenghejianzhi.utils.WebLinkToNativePageUtil;
 import com.example.chenghejianzhi.view.GlideImageLoader;
 import com.youth.banner.Banner;
+import com.youth.banner.listener.OnBannerListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,15 +72,54 @@ public class AllAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Recycler
      * 头部三个按钮
      */
     public class TopViewHolder extends ViewHolder<RecyclerItem>{
-
-
+        @BindView(R.id.iv_tab_3)
+        ImageView iv_tab_3;
+        @BindView(R.id.iv_tab_2)
+        ImageView iv_tab_2;
+        @BindView(R.id.iv_tab_1)
+        ImageView iv_tab_1;
         public TopViewHolder(View itemView) {
             super(itemView);
         }
 
         @Override
         protected void onBind(RecyclerItem recyclerItem) {
-
+            CommonAdBean commonAdBean = (CommonAdBean) recyclerItem.data;
+            if (commonAdBean.getResult()!=null&&commonAdBean.getResult().size()>0){
+                if (commonAdBean.getResult().size()>0){
+                    Glide.with(itemView.getContext()).
+                            load(commonAdBean.getResult().get(0).getImageUrl()).into(iv_tab_1);
+                    iv_tab_1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            WebLinkToNativePageUtil.dealWithUrl(itemView.getContext(),
+                                    commonAdBean.getResult().get(0).getUrl());
+                        }
+                    });
+                }
+                if (commonAdBean.getResult().size()>1){
+                    Glide.with(itemView.getContext()).
+                            load(commonAdBean.getResult().get(1).getImageUrl()).into(iv_tab_2);
+                    iv_tab_2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            WebLinkToNativePageUtil.dealWithUrl(itemView.getContext(),
+                                    commonAdBean.getResult().get(1).getUrl());
+                        }
+                    });
+                }
+                if (commonAdBean.getResult().size()>2){
+                    Glide.with(itemView.getContext()).
+                            load(commonAdBean.getResult().get(2).getImageUrl()).into(iv_tab_3);
+                    iv_tab_3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            WebLinkToNativePageUtil.dealWithUrl(itemView.getContext(),
+                                    commonAdBean.getResult().get(2).getUrl());
+                        }
+                    });
+                }
+            }
         }
     }
 
@@ -92,23 +138,39 @@ public class AllAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Recycler
 
         @Override
         protected void onBind(RecyclerItem recyclerItem) {
+            CommonAdBean commonAdBean = (CommonAdBean) recyclerItem.data;
             //设置图片加载器
             banner.setImageLoader(new GlideImageLoader());
             //设置图片集合
-            List<Integer> images = new ArrayList<>();
-            for (int i = 0;i<3;i++){
-                images.add(R.drawable.banner_test);
+            List<String> images = new ArrayList<>();
+            for (CommonAdBean.ResultBean resultBean:commonAdBean.getResult()){
+                images.add(resultBean.getImageUrl());
             }
+
             banner.setImages(images);
             //banner设置方法全部调用完毕时最后调用
             banner.start();
+            banner.setOnBannerListener(new OnBannerListener() {
+                @Override
+                public void OnBannerClick(int position) {
+                    WebLinkToNativePageUtil.dealWithUrl(itemView.getContext(),
+                            commonAdBean.getResult().get(position).getUrl());
+                }
+            });
         }
     }
     /**
      * 兼职列表
      */
     public class RecommendViewHolder extends ViewHolder<RecyclerItem>{
-
+        @BindView(R.id.tv_job_title)
+        TextView tv_job_title;
+        @BindView(R.id.tv_job_money)
+        TextView tv_job_money;
+        @BindView(R.id.tv_job_desc)
+        TextView tv_job_desc;
+        @BindView(R.id.go_detail_button)
+        ImageView go_detail_button;
 
         public RecommendViewHolder(View itemView) {
             super(itemView);
@@ -116,7 +178,16 @@ public class AllAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Recycler
 
         @Override
         protected void onBind(RecyclerItem recyclerItem) {
-
+            RecommendBean.ResultBean recommendBean = (RecommendBean.ResultBean) recyclerItem.data;
+            tv_job_title.setText(recommendBean.getTitle());
+            tv_job_money.setText(String.valueOf(recommendBean.getSalary()));
+            tv_job_desc.setText(recommendBean.getLable());
+            go_detail_button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    JobDetailActivity.start(itemView.getContext(),recommendBean.getId());
+                }
+            });
         }
     }
     /**

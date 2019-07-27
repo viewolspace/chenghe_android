@@ -1,22 +1,20 @@
 package com.example.base.retrofit;
 
 
-import com.example.base.bean.AllBean;
+import com.example.base.bean.BaseBean;
 import com.example.base.bean.CommonAdBean;
-import com.example.base.bean.CopyPartTimeBean;
 import com.example.base.bean.JobCommonBean;
 import com.example.base.bean.JobDetailBean;
-import com.example.base.bean.JoinPartTiemBean;
-import com.example.base.bean.MyJoinPartTimeBean;
+import com.example.base.bean.LoginBean;
 import com.example.base.bean.PhoneCodeBean;
+import com.example.base.bean.RecommendBean;
 import com.example.base.bean.TokenBean;
-import com.example.base.rx.BaseResponse;
 
 import java.util.HashMap;
 
-import io.reactivex.Flowable;
 import io.reactivex.Observable;
-import retrofit2.http.Body;
+import retrofit2.http.FieldMap;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
@@ -31,52 +29,57 @@ import retrofit2.http.Query;
 public interface ApiService {
 
     @GET("ad/queryAdList")
-    Flowable<BaseResponse<CommonAdBean>> getAd(@Query("categoryId") String categoryId);
+    Observable<CommonAdBean> getAd(@Query("categoryId") String categoryId);
 
-    @GET("partTime/queryAll")
-    Flowable<BaseResponse<AllBean>> queryAll(@Query("keyWord") String keyWord,
+    @GET("partTime/queryBycategoryId")
+    Observable<RecommendBean> queryCategory(@Query("categoryId") String categoryId,
                                              @Query("pageIndex") int pageIndex,
                                              @Query("pageSize") int pageSize);
 
+    @GET("partTime/queryAll")
+    Observable<RecommendBean> queryAll(@Query("keyWord") String keyWord,
+                                       @Query("pageIndex") int pageIndex,
+                                       @Query("pageSize") int pageSize);
+
     @GET("partTime/getPartTime")
-    Flowable<BaseResponse<JobDetailBean>> getJobDetail(@Query("id") int id, @Query("userId") int userId);
+    Observable<JobDetailBean> getJobDetail(@Query("id") int id);
+
+    @GET("partTime/joinPartTime")
+    Observable<BaseBean> joinPartTime(@Query("id") int id);
 
     @GET("partTime/copyPartTime")
-    Flowable<BaseResponse<CopyPartTimeBean>> copyPartTime(@Query("categoryId") String categoryId);
+    Observable<BaseBean> copyPartTime(@Query("id")  int id);
 
-    @GET("partTime/copyPartTime")
-    Flowable<BaseResponse<JoinPartTiemBean>> joinPartTime(@Query("categoryId") String categoryId);
 
     @GET("partTime/queryMyPartTime ")
-    Flowable<BaseResponse<MyJoinPartTimeBean>> queryMyJoinPartTime(@Query("userId") int userId,
-                                                                   @Query("pageIndex") int pageIndex,
-                                                                   @Query("pageSize") int pageSize);
+    Observable<RecommendBean> queryMyJoinPartTime(@Query("pageIndex") int pageIndex, @Query("pageSize") int pageSize);
 
     @GET("partTime/queryRecommnet")
-    Flowable<BaseResponse<JobCommonBean>> queryRecommend(@Query("recommend") String recommend,
-                                                         @Query("pageIndex") int pageIndex,
-                                                         @Query("pageSize") int pageSize);
+    Observable<RecommendBean> queryRecommend(@Query("recommend") int recommend,
+                                             @Query("pageIndex") int pageIndex,
+                                             @Query("pageSize") int pageSize);
 
 
     @GET("user/getToken")
-    Flowable<TokenBean> getToken(@Query("phone") String phone);
+    Observable<TokenBean> getToken(@Query("phone") String phone);
 
     @GET("user/getRand")
-    Flowable<BaseResponse<PhoneCodeBean>> getPhoneCode(@Query("phone") String phone , @Header("token") String token);
+    Observable<PhoneCodeBean> getPhoneCode(@Query("phone") String phone , @Header("token") String token);
 
     @GET("user/getUser")
-    Flowable<BaseResponse<PhoneCodeBean>> phoneLogin(@Query("phone") String phone);
+    Observable<LoginBean> getUser();
 
     @GET("user/active")
-    Flowable<BaseResponse<JobCommonBean>> active(@Query("idfa") String idfa, @Query("os") String os);
+    Observable<JobCommonBean> active(@Query("idfa") String idfa, @Query("os") String os);
 
     @GET("user/login")
-    Flowable<BaseResponse<JobCommonBean>> login(@Query("idfa") String idfa, @Query("rand") String rand, @Query("phone") String phone);
-
+    Observable<LoginBean> login(@Query("idfa") String idfa, @Query("rand") String rand, @Query("phone") String phone);
+    @FormUrlEncoded
     @POST("user/updateUser")
-    Flowable<BaseResponse<JobCommonBean>> updateUser(@Body HashMap<String, String> data);
+    Observable<JobCommonBean> updateUser(@FieldMap HashMap<String, String> data);
 
+    @FormUrlEncoded
     @POST("user/updateNickName")
-    Flowable<BaseResponse<JobCommonBean>> updateNickName(@Body HashMap<String, String> data);
+    Observable<JobCommonBean> updateNickName(@FieldMap HashMap<String, String> data);
 
 }

@@ -2,6 +2,7 @@ package com.example.chenghejianzhi.contract;
 
 import com.example.base.base.BaseContract;
 import com.example.base.base.BaseRecyclerAdapter;
+import com.example.base.bean.JobDetailBean;
 
 import java.util.List;
 
@@ -13,10 +14,18 @@ import java.util.List;
  */
 public interface JobDetailContract {
     interface Presenter extends BaseContract.Presenter<View> {
-        void getData();
+        void getData(int id);
+
+        void copyRecord(int id);
+        void apply(int id);
     }
 
     interface View extends BaseContract.View<Presenter>{
-        void refreshList(List<BaseRecyclerAdapter.RecyclerItem> itemList);
+
+        void refreshList(JobDetailBean jobDetailBean);
+
+        void refreshApply(String isJoin);
+
+
     }
 }

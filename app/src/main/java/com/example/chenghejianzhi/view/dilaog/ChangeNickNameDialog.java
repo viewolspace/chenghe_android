@@ -5,9 +5,12 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.base.dialog.BaseDialog;
+import com.example.base.util.ToastUtils;
+import com.example.base.util.UserInfoUtil;
 import com.example.chenghejianzhi.R;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * @author : sklyand
@@ -33,6 +36,24 @@ public class ChangeNickNameDialog extends BaseDialog {
 
     @Override
     protected void initView(View root) {
-
     }
+    @OnClick({R.id.tv_dialog_skip,R.id.tv_dialog_confirm})
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.tv_dialog_confirm:
+                if (et_dialog_contact.getText()!=null&&!
+                        et_dialog_contact.getText().toString().trim().isEmpty()){
+                    UserInfoUtil.getInstance().upDateNiceName(et_dialog_contact.getText().toString());
+                    dismiss();
+                }else {
+                    ToastUtils.showShortToast("请输入昵称");
+                }
+
+                break;
+            case R.id.tv_dialog_skip:
+                dismiss();
+                break;
+        }
+    }
+
 }

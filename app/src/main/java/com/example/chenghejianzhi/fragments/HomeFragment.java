@@ -1,16 +1,24 @@
 package com.example.chenghejianzhi.fragments;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.example.base.base.BaseFragment;
 import com.example.base.base.BaseMvpFragment;
 import com.example.base.base.BaseRecyclerAdapter;
 import com.example.chenghejianzhi.R;
+import com.example.chenghejianzhi.activity.SearchActivity;
 import com.example.chenghejianzhi.adapter.HomeAdapter;
 import com.example.chenghejianzhi.contract.HomeContract;
 import com.example.chenghejianzhi.presenter.HomePresenter;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +31,15 @@ import butterknife.BindView;
  * @time : 2019/7/22 14:02
  * @describe ：
  */
-public class HomeFragment extends BaseMvpFragment<HomeContract.Presenter> implements HomeContract.View {
+public class HomeFragment extends BaseMvpFragment<HomeContract.Presenter>
+        implements HomeContract.View , OnRefreshListener, OnLoadMoreListener {
     @BindView(R.id.recycler)
     RecyclerView recycler;
+    @BindView(R.id.smart_refresh)
+    SmartRefreshLayout smart_refresh;
+    @BindView(R.id.rl_search)
+    LinearLayout rl_search;
+
     private HomeAdapter homeAdapter;
 
     @Override
@@ -38,13 +52,19 @@ public class HomeFragment extends BaseMvpFragment<HomeContract.Presenter> implem
         recycler.setLayoutManager(new LinearLayoutManager(getContext()));
         homeAdapter = new HomeAdapter();
         recycler.setAdapter(homeAdapter);
-
-
+        smart_refresh.setOnRefreshListener(this);
+        smart_refresh.setOnLoadMoreListener(this);
+        rl_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SearchActivity.start(getContext());
+            }
+        });
     }
 
     @Override
     protected void initData() {
-        presenter.getData();
+        presenter.getData(true);
     }
 
     @Override
@@ -53,7 +73,40 @@ public class HomeFragment extends BaseMvpFragment<HomeContract.Presenter> implem
     }
 
     @Override
-    public void refreshList(List<BaseRecyclerAdapter.RecyclerItem> itemList) {
-        homeAdapter.replace(itemList);
+    public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+        presenter.getData(false);
     }
+
+    @Override
+    public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+        presenter.getData(true);
+    }
+
+    @Override
+    public void refreshList(List<BaseRecyclerAdapter.RecyclerItem> itemList, boolean refresh) {
+        if (refresh){
+            homeAdapter.replace(itemList);
+        }else {
+            homeAdapter.add(itemList);
+        }
+
+
+    }
+
+    @Override
+    public void loadFinish(boolean refresh) {
+        if (refresh){
+            smart_refresh.finishRefresh();
+        }else {
+            smart_refresh.finishLoadMore();
+        }
+
+
+    }
+
+    @Override
+    public void loadMoreEnable(boolean enable) {
+        smart_refresh.setEnableLoadMore(enable);
+    }
+
 }

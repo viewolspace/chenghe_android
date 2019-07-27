@@ -32,6 +32,11 @@ public class RxEvent {
          */
         public static final int OPEN_NATIVE_DIALOG = 10002;
 
+        /**
+         * 用户信息更新
+         */
+        public static final int USERINFO_UPDATE = 10003;
+
     }
 
     public int getEventType() {

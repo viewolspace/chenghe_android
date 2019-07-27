@@ -1,31 +1,20 @@
 package com.example.chenghejianzhi.presenter;
 
 import com.example.base.base.BasePresenter;
-import com.example.base.bean.JobCommonBean;
+import com.example.base.bean.LoginBean;
 import com.example.base.bean.PhoneCodeBean;
 import com.example.base.bean.TokenBean;
-import com.example.base.rx.RxOptional;
 import com.example.base.rx.RxThrowableConsumer;
 import com.example.base.rx.RxUtils;
-import com.example.base.util.LogUtils;
 import com.example.base.util.SpUtil;
 import com.example.base.util.ToastUtils;
+import com.example.base.util.UserInfoUtil;
 import com.example.chenghejianzhi.contract.LoginContract;
 import com.example.chenghejianzhi.utils.PhoneUtils;
 
-import org.reactivestreams.Subscriber;
-import org.reactivestreams.Subscription;
-
-import io.reactivex.FlowableSubscriber;
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
+import io.reactivex.ObservableSource;
 import io.reactivex.functions.Consumer;
-import io.reactivex.schedulers.Schedulers;
-import io.reactivex.subscribers.DisposableSubscriber;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import io.reactivex.functions.Function;
 
 /**
  * @author : sklyand
@@ -53,9 +42,13 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
         api.login(PhoneUtils.getPhoneImei(), code, phone)
                 .compose(RxUtils.rxSchedulerHelper())
                 .compose(mProvider.bindToLifecycle())
-                .compose(RxUtils.handleResultOptional()).subscribe(jobCommonBeanRxOptional -> {
-            view.onLoginSucess();
-        }, new RxThrowableConsumer());
+               .subscribe(new Consumer<LoginBean>() {
+                   @Override
+                   public void accept(LoginBean loginBean) throws Exception {
+                       view.onLoginSucess();
+                       UserInfoUtil.getInstance().setUserInfo(loginBean.getResult());
+                   }
+               },new RxThrowableConsumer());
 
     }
 
@@ -64,31 +57,18 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
         api.active(PhoneUtils.getPhoneImei(), "2")
                 .compose(RxUtils.rxSchedulerHelper())
                 .compose(mProvider.bindToLifecycle())
-                .compose(RxUtils.handleResultOptional())
-                .subscribe(jobCommonBeanRxOptional -> SpUtil.putBoolean(view.getAContext(), "ISFIRST", true));
+                .subscribe(jobCommonBeanBaseResponse ->
+                        SpUtil.putBoolean(view.getAContext(), "ISFIRST", true),new RxThrowableConsumer());
 
     }
 
     @Override
     public void getToken(final String phone) {
-        api.getToken(phone).compose(RxUtils.rxSchedulerHelper())
+        api.getToken(phone)
                 .compose(mProvider.bindToLifecycle())
-                .subscribe(new DisposableSubscriber<TokenBean>() {
-                    @Override
-                    public void onNext(TokenBean tokenBean) {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable t) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
+                .flatMap((Function<TokenBean, ObservableSource<PhoneCodeBean>>) tokenBean -> api.getPhoneCode(phone,tokenBean.getToken()))
+                .compose(RxUtils.rxSchedulerHelper())
+                .subscribe(phoneCodeBean -> ToastUtils.showShortToast("发送短信成功"),new RxThrowableConsumer());
 
     }
 }

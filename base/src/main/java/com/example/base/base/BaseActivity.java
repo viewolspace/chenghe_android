@@ -77,7 +77,7 @@ public abstract class BaseActivity extends AActivity {
      * 注册rxbus订阅事件
      */
     public void registerDefaultEvent() {
-        RxBus.getInstance().toFlowable(RxEvent.class).compose(RxUtils.rxSchedulerHelper())
+        RxBus.getInstance().toFlowable(RxEvent.class).compose(RxUtils.rxSchedulerHelper2())
                 .compose(mProvider.bindToLifecycle())
                 .subscribe(event -> handleDefaultEvent(event));
     }

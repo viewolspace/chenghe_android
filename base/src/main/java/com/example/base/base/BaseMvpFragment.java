@@ -24,12 +24,12 @@ public abstract class BaseMvpFragment<Presenter extends BaseContract.Presenter>
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        setPresenter(initPresenter(),mProvider);
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        setPresenter(initPresenter(),mProvider);
         super.onViewCreated(view, savedInstanceState);
     }
 

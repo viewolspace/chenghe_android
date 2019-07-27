@@ -4,7 +4,9 @@ import android.content.Context;
 import android.os.Build;
 
 import com.example.base.BuildConfig;
+import com.example.base.bean.LoginBean;
 import com.example.base.util.LogUtils;
+import com.example.base.util.UserInfoUtil;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 
@@ -48,13 +50,13 @@ public class RetrofitServiceCreator {
 
         if (BuildConfig.DEBUG) {
             clientBuilder
-                    //.addInterceptor(new CommonInterceptor())
+                    .addInterceptor(new CommonInterceptor())
                     //.addInterceptor(new AddTokenInterceptor(context))
                     .addInterceptor(new PrintLogInterceptor());
                     //.addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY));
         }
         else {
-            //clientBuilder.addInterceptor(new CommonInterceptor());
+            clientBuilder.addInterceptor(new CommonInterceptor());
                     //.addInterceptor(new AddTokenInterceptor(context));
         }
 
@@ -76,15 +78,15 @@ public class RetrofitServiceCreator {
 
         if (BuildConfig.DEBUG) {
             clientBuilder
-                    //.addInterceptor(new CommonInterceptor())
+                    .addInterceptor(new CommonInterceptor())
                     //.addInterceptor(new AddTokenInterceptor(context))
                     .addInterceptor(new PrintLogInterceptor());
             //.addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY));
         }
-//        else {
-//            clientBuilder.addInterceptor(new CommonInterceptor())
-//                    .addInterceptor(new AddTokenInterceptor(context));
-//        }
+        else {
+            clientBuilder.addInterceptor(new CommonInterceptor());
+                   // .addInterceptor(new AddTokenInterceptor(context));
+        }
 
         clientBuilder.retryOnConnectionFailure(false);
         clientBuilder.readTimeout(READ_TIMEOUT, TimeUnit.SECONDS).
@@ -204,10 +206,12 @@ public class RetrofitServiceCreator {
 
         @Override
         public Response intercept(Chain chain) throws IOException {
-            long start = System.currentTimeMillis();
+            //long start = System.currentTimeMillis();
             Request original = chain.request();
+            String userId = UserInfoUtil.getInstance().getUserId();
             Request.Builder requestBuilder = original.newBuilder()
-                    .header("Content-Type", "application/x-www-form-urlencoded");
+                    .header("Content-Type", "application/x-www-form-urlencoded")
+                    .header("userId", userId);
                     //.method(original.method(), original.body());
             //addGenericHeaders(requestBuilder);
             Request request = requestBuilder.build();

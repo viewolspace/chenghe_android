@@ -71,6 +71,6 @@ dependencies {
         exclude module: 'appcompat-v7'
         exclude group: 'com.android.support'
     }
-    api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-31'
-
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-31'
+    implementation 'com.hyman:flowlayout-lib:1.1.2'
 }

@@ -1,7 +1,5 @@
 package com.example.base.bean;
 
-import java.util.List;
-
 /**
  * @author : sklyand
  * @email :

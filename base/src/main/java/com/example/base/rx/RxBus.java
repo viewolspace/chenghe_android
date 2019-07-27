@@ -53,6 +53,6 @@ public class RxBus {
      * @return
      */
     public <T> Disposable toDefaultFlowable(Class<T> eventType, Consumer<T> consumer) {
-        return bus.ofType(eventType).compose(RxUtils.rxSchedulerHelper()).subscribe(consumer);
+        return bus.ofType(eventType).compose(RxUtils.rxSchedulerHelper2()).subscribe(consumer);
     }
 }

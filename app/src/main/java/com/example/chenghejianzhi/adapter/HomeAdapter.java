@@ -1,19 +1,19 @@
 package com.example.chenghejianzhi.adapter;
 
-import android.graphics.Rect;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.base.base.BaseRecyclerAdapter;
+import com.example.base.bean.CommonAdBean;
+import com.example.base.bean.RecommendBean;
 import com.example.chenghejianzhi.R;
-import com.example.chenghejianzhi.utils.DimenUtil;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.example.chenghejianzhi.activity.JobDetailActivity;
+import com.example.chenghejianzhi.utils.WebLinkToNativePageUtil;
 
 import butterknife.BindView;
 
@@ -63,15 +63,54 @@ public class HomeAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Recycle
      * 头部三个按钮
      */
     public class TopViewHolder extends BaseRecyclerAdapter.ViewHolder<BaseRecyclerAdapter.RecyclerItem>{
-
-
+        @BindView(R.id.iv_tab_3)
+        ImageView iv_tab_3;
+        @BindView(R.id.iv_tab_2)
+        ImageView iv_tab_2;
+        @BindView(R.id.iv_tab_1)
+        ImageView iv_tab_1;
         public TopViewHolder(View itemView) {
             super(itemView);
         }
 
         @Override
         protected void onBind(RecyclerItem recyclerItem) {
-
+            CommonAdBean commonAdBean = (CommonAdBean) recyclerItem.data;
+            if (commonAdBean.getResult()!=null&&commonAdBean.getResult().size()>0){
+                if (commonAdBean.getResult().size()>0){
+                    Glide.with(itemView.getContext()).
+                            load(commonAdBean.getResult().get(0).getImageUrl()).into(iv_tab_1);
+                    iv_tab_1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            WebLinkToNativePageUtil.dealWithUrl(itemView.getContext(),
+                                    commonAdBean.getResult().get(0).getUrl());
+                        }
+                    });
+                }
+                if (commonAdBean.getResult().size()>1){
+                    Glide.with(itemView.getContext()).
+                            load(commonAdBean.getResult().get(1).getImageUrl()).into(iv_tab_2);
+                    iv_tab_2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            WebLinkToNativePageUtil.dealWithUrl(itemView.getContext(),
+                                    commonAdBean.getResult().get(1).getUrl());
+                        }
+                    });
+                }
+                if (commonAdBean.getResult().size()>2){
+                    Glide.with(itemView.getContext()).
+                            load(commonAdBean.getResult().get(2).getImageUrl()).into(iv_tab_3);
+                    iv_tab_3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            WebLinkToNativePageUtil.dealWithUrl(itemView.getContext(),
+                                    commonAdBean.getResult().get(2).getUrl());
+                        }
+                    });
+                }
+            }
         }
     }
 
@@ -88,35 +127,51 @@ public class HomeAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Recycle
 
         @Override
         protected void onBind(RecyclerItem recyclerItem) {
+            CommonAdBean commonAdBean = (CommonAdBean) recyclerItem.data;
             recyclerView.setLayoutManager(new LinearLayoutManager(itemView.getContext(),LinearLayoutManager.HORIZONTAL,false));
-            recyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
-                @Override
-                public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
-                    outRect.right = DimenUtil.dipToPixels(itemView.getContext(),8);
-                }
-            });
+//            recyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
+//                @Override
+//                public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
+//                    outRect.right = DimenUtil.dipToPixels(itemView.getContext(),8);
+//                }
+//            });
             HomeHotActivityAdapter homeHotActivityAdapter = new HomeHotActivityAdapter();
             recyclerView.setAdapter(homeHotActivityAdapter);
-            List<String> hotList = new ArrayList<>();
-            for (int i = 0;i<10;i++){
-                hotList.add("");
+            if (commonAdBean.getResult()!=null&&commonAdBean.getResult().size()>0){
+                homeHotActivityAdapter.replace(commonAdBean.getResult());
             }
-            homeHotActivityAdapter.replace(hotList);
+
+
         }
     }
     /**
      * 热门推荐
      */
     public class RecommendViewHolder extends BaseRecyclerAdapter.ViewHolder<BaseRecyclerAdapter.RecyclerItem>{
-
-
+        @BindView(R.id.tv_job_title)
+        TextView tv_job_title;
+        @BindView(R.id.tv_job_money)
+        TextView tv_job_money;
+        @BindView(R.id.tv_job_desc)
+        TextView tv_job_desc;
+        @BindView(R.id.go_detail_button)
+        ImageView go_detail_button;
         public RecommendViewHolder(View itemView) {
             super(itemView);
         }
 
         @Override
         protected void onBind(RecyclerItem recyclerItem) {
-
+            RecommendBean.ResultBean recommendBean = (RecommendBean.ResultBean) recyclerItem.data;
+            tv_job_title.setText(recommendBean.getTitle());
+            tv_job_money.setText(String.valueOf(recommendBean.getSalary()));
+            tv_job_desc.setText(recommendBean.getLable());
+            go_detail_button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    JobDetailActivity.start(itemView.getContext(),recommendBean.getId());
+                }
+            });
         }
     }
     /**

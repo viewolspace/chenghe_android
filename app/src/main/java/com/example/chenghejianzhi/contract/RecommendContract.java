@@ -13,10 +13,14 @@ import java.util.List;
  */
 public interface RecommendContract {
     interface Presenter extends BaseContract.Presenter<View> {
-        void getData();
+        void getData(boolean refresh);
     }
 
     interface View extends BaseContract.View<Presenter>{
-        void refreshList(List<BaseRecyclerAdapter.RecyclerItem> itemList);
+        void refreshList(List<BaseRecyclerAdapter.RecyclerItem> itemList,boolean refresh);
+
+        void loadFinish(boolean refresh);
+
+        void loadMoreEnable(boolean enable);
     }
 }

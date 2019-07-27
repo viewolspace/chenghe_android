@@ -1,16 +1,96 @@
 package com.example.chenghejianzhi.activity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.Html;
+import android.text.SpannableString;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.base.base.BaseMvpActivity;
-import com.example.base.base.BaseRecyclerAdapter;
+import com.example.base.bean.JobDetailBean;
+import com.example.base.constants.Constants;
 import com.example.chenghejianzhi.R;
 import com.example.chenghejianzhi.contract.JobDetailContract;
 import com.example.chenghejianzhi.presenter.JobDetailPresenter;
+import com.example.chenghejianzhi.utils.DateUtil;
+import com.example.chenghejianzhi.utils.LinearLayoutUtil;
 import com.example.chenghejianzhi.utils.StatusBarUtils;
+import com.example.chenghejianzhi.utils.StringUtil;
+import com.example.chenghejianzhi.view.dilaog.CopyContactDialog;
+import com.zhy.view.flowlayout.FlowLayout;
+import com.zhy.view.flowlayout.TagAdapter;
+import com.zhy.view.flowlayout.TagFlowLayout;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
+import java.util.Locale;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Presenter> implements JobDetailContract.View {
 
+
+    @BindView(R.id.rl_top)
+    RelativeLayout rlTop;
+    @BindView(R.id.tv_job_title)
+    TextView tvJobTitle;
+    @BindView(R.id.tv_update_time)
+    TextView tvUpdateTime;
+    @BindView(R.id.tv_job_money)
+    TextView tvJobMoney;
+    @BindView(R.id.tv_job_unit)
+    TextView tvJobUnit;
+    @BindView(R.id.flowLayout)
+    TagFlowLayout flowLayout;
+    @BindView(R.id.tv_work_time)
+    TextView tvWorkTime;
+    @BindView(R.id.tv_work_location)
+    TextView tvWorkLocation;
+    @BindView(R.id.tv_copy)
+    TextView tvCopy;
+    @BindView(R.id.rl_detail_1)
+    RelativeLayout rlDetail1;
+    @BindView(R.id.tv_work_content_title)
+    TextView tvWorkContentTitle;
+    @BindView(R.id.tv_work_content)
+    TextView tvWorkContent;
+    @BindView(R.id.rl_detail_2)
+    RelativeLayout rlDetail2;
+    @BindView(R.id.tv_company_title)
+    TextView tvCompanyTitle;
+    @BindView(R.id.iv_company_logo)
+    ImageView ivCompanyLogo;
+    @BindView(R.id.tv_company_name)
+    TextView tvCompanyName;
+    @BindView(R.id.tv_star)
+    TextView tvStar;
+    @BindView(R.id.ll_star)
+    LinearLayout llStar;
+    @BindView(R.id.rl_detail_3)
+    RelativeLayout rlDetail3;
+    @BindView(R.id.tv_apply)
+    TextView tvApply;
+
+    private int id;
+    private JobDetailBean jobDetailBean;
+    public static void start(Context context, int id) {
+        Intent intent = new Intent(context, JobDetailActivity.class);
+        intent.putExtra("id", id);
+        context.startActivity(intent);
+    }
 
     @Override
     protected int getContentLayoutId() {
@@ -24,7 +104,8 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
 
     @Override
     protected void initData() {
-
+        id = getIntent().getIntExtra("id", 0);
+        presenter.getData(id);
     }
 
     @Override
@@ -32,8 +113,115 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
         return new JobDetailPresenter(this);
     }
 
-    @Override
-    public void refreshList(List<BaseRecyclerAdapter.RecyclerItem> itemList) {
 
+    @OnClick({R.id.tv_apply, R.id.tv_copy,R.id.iv_back})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.tv_apply:
+                presenter.apply(id);
+                if (jobDetailBean!=null&&jobDetailBean.getResult()!=null){
+                    CopyContactDialog copyContactDialog = new CopyContactDialog(JobDetailActivity.this);
+                    copyContactDialog.show(jobDetailBean.getResult().getContactType(),
+                            jobDetailBean.getResult().getContact());
+                }
+                break;
+            case R.id.tv_copy:
+                presenter.copyRecord(id);
+                if (jobDetailBean!=null&&jobDetailBean.getResult()!=null){
+                    CopyContactDialog copyContactDialog = new CopyContactDialog(JobDetailActivity.this);
+                    copyContactDialog.show(jobDetailBean.getResult().getContactType(),
+                            jobDetailBean.getResult().getContact());
+                }
+
+                break;
+            case R.id.iv_back:
+                finish();
+                break;
+        }
     }
+
+    @Override
+    public void refreshList(JobDetailBean jobDetailBean) {
+        if (jobDetailBean == null) {
+            return;
+        }
+        this.jobDetailBean = jobDetailBean;
+        refreshApply(jobDetailBean.getIsJoin());
+        JobDetailBean.ResultBean resultBean = jobDetailBean.getResult();
+        if (resultBean == null) {
+            return;
+        }
+        if (resultBean.getContactType() == Constants.CONTACT_QQ){
+            tvCopy.setText("点击复制联系方式 QQ："+resultBean.getContact());
+        }else if (resultBean.getContactType() == Constants.CONTACT_WECHAT){
+            tvCopy.setText("点击复制联系方式 微信："+resultBean.getContact());
+        }else if (resultBean.getContactType() == Constants.CONTACT_PHONE){
+            tvCopy.setText("点击复制联系方式 电话："+resultBean.getContact());
+        }
+
+
+        tvJobTitle.setText(resultBean.getTitle());
+        tvUpdateTime.setText(DateUtil.getDateToString(resultBean.getCTime()));
+        String[] lable = resultBean.getLable().split(",");
+        flowLayout.setAdapter(new TagAdapter<String>(Arrays.asList(lable)) {
+            @Override
+            public View getView(FlowLayout parent, int position, String s) {
+                TextView textView = (TextView) LayoutInflater
+                        .from(parent.getContext()).inflate(R.layout.tag_detail, null);
+                textView.setText(s);
+                return textView;
+            }
+
+        });
+        SpannableString workTime =
+                new SpannableString(String.format(Locale.ENGLISH, "工作时间：%s", resultBean.getWorkTime()));
+        StringUtil.
+                setForegroundColorSpan(workTime, 0,
+                        "工作时间：".length()
+                        , getResources().getColor(R.color.color_656565));
+        tvWorkTime.setText(workTime);
+        SpannableString workLocation =
+                new SpannableString(String.format(Locale.ENGLISH, "工作地点：%s", resultBean.getWorkAddress()));
+        StringUtil.
+                setForegroundColorSpan(workLocation, 0,
+                        "工作地点：".length()
+                        , getResources().getColor(R.color.color_656565));
+        tvWorkLocation.setText(workLocation);
+
+        tvWorkContent.setText(Html.fromHtml(resultBean.getContent()));
+
+        tvJobMoney.setText(String.valueOf(resultBean.getSalary()));
+        JobDetailBean.CompanyBean companyBean = jobDetailBean.getCompany();
+        if (companyBean == null){
+            return;
+        }
+        if (companyBean.getLogo() != null && !companyBean.getLogo().isEmpty()) {
+            RequestOptions requestOptions = new RequestOptions();
+            requestOptions.transform(new CircleCrop());
+            requestOptions.placeholder(R.drawable.company_default);
+            Glide.with(JobDetailActivity.this)
+                    .load(resultBean.getPic())
+                    .apply(requestOptions)
+                    .into(ivCompanyLogo);
+        }else {
+            Glide.with(JobDetailActivity.this)
+                    .load(R.drawable.company_default)
+                    .into(ivCompanyLogo);
+        }
+        tvCompanyName.setText(companyBean.getName());
+        LinearLayoutUtil.setCompanyLevel(llStar,companyBean.getStar());
+    }
+
+    @Override
+    public void refreshApply(String isJoin) {
+        if ("1".equals(isJoin)) {
+            tvApply.setText("已报名");
+            tvApply.setBackgroundColor(getResources().getColor(R.color.color_B2B2B2));
+            tvApply.setEnabled(false);
+        } else {
+            tvApply.setText("报名参加");
+            tvApply.setBackgroundResource(R.drawable.shape_apply_bg);
+        }
+    }
+
 }

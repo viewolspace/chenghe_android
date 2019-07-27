@@ -1,23 +1,21 @@
 package com.example.chenghejianzhi.activity;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.base.base.BaseMvpActivity;
 import com.example.base.util.PermissionUtil;
 import com.example.base.util.SpUtil;
 import com.example.base.util.ToastUtils;
+import com.example.base.util.UserInfoUtil;
 import com.example.chenghejianzhi.R;
-import com.example.chenghejianzhi.constants.RoutMap;
 import com.example.chenghejianzhi.contract.LoginContract;
 import com.example.chenghejianzhi.presenter.LoginPresenter;
 import com.example.chenghejianzhi.utils.StatusBarUtils;
-import com.example.chenghejianzhi.utils.UserInfoUtil;
-import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -32,6 +30,12 @@ public class LoginActivity extends BaseMvpActivity<LoginContract.Presenter> impl
     TextView tv_login;
     @BindView(R.id.tv_getcode)
     TextView tv_getcode;
+
+
+    public static void start(Context context){
+        Intent intent = new Intent(context,LoginActivity.class);
+        context.startActivity(intent);
+    }
 
     @Override
     protected int getContentLayoutId() {
@@ -57,8 +61,10 @@ public class LoginActivity extends BaseMvpActivity<LoginContract.Presenter> impl
         if (!isFirst) {
             presenter.active();
         }
-        String userId = UserInfoUtil.getUserId();
-        if (userId != null){
+        String userId = UserInfoUtil.getInstance().getUserId();
+        if (userId != null&&!userId.trim().isEmpty()&&!"0".equals(userId)){
+            MainActivity.start(LoginActivity.this);
+            finish();
 
         }
     }
@@ -100,8 +106,8 @@ public class LoginActivity extends BaseMvpActivity<LoginContract.Presenter> impl
 
     @Override
     public void onLoginSucess() {
-        Intent intent  = new Intent(LoginActivity.this,MainActivity.class);
-        startActivity(intent);
+       MainActivity.start(LoginActivity.this);
+        finish();
        // ARouter.getInstance().build(RoutMap.ACTIVITY_MAIN).navigation();
     }
 

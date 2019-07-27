@@ -1,6 +1,8 @@
 package com.example.chenghejianzhi.activity;
 
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -8,9 +10,9 @@ import android.widget.RadioGroup;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.base.base.BaseActivity;
+import com.example.base.constants.RoutMap;
 import com.example.base.rx.RxEvent;
 import com.example.chenghejianzhi.R;
-import com.example.chenghejianzhi.constants.RoutMap;
 import com.example.chenghejianzhi.fragments.AllFragment;
 import com.example.chenghejianzhi.fragments.HomeFragment;
 import com.example.chenghejianzhi.fragments.MineFragment;
@@ -32,6 +34,10 @@ public class MainActivity extends BaseActivity {
     private AllFragment allFragment;
     private MineFragment mineFragment;
 
+    public static void start(Context context){
+        Intent intent  = new Intent(context,MainActivity.class);
+        context.startActivity(intent);
+    }
     @Override
     protected int getContentLayoutId() {
         return R.layout.activity_main;
@@ -40,14 +46,13 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initWidget() {
         StatusBarUtils.statusbar(this);
-        rg_menu.check(R.id.menu_home);
         rg_menu.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switchFragment(checkedId);
             }
         });
-        switchFragment(R.id.rb_home);
+        rg_menu.check(R.id.rb_home);
     }
 
     @Override

@@ -25,7 +25,7 @@ public class RxUtils {
      * @param <T>
      * @return
      */
-    public static <T> FlowableTransformer<T, T> rxSchedulerHelper() {    //compose简化线程
+    public static <T> FlowableTransformer<T, T> rxSchedulerHelper2() {    //compose简化线程
         return observable -> observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
@@ -36,7 +36,7 @@ public class RxUtils {
      * @param <T>
      * @return
      */
-    public static <T> ObservableTransformer<T, T> rxSchedulerHelper2() {    //compose简化线程
+    public static <T> ObservableTransformer<T, T> rxSchedulerHelper() {    //compose简化线程
         return observable -> observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }

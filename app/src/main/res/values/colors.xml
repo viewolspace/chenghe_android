@@ -13,4 +13,7 @@
     <color name="color_DB6D70">#DB6D70</color>
     <color name="color_B8B7BA">#B8B7BA</color>
     <color name="color_939393">#939393</color>
+    <color name="color_656565">#656565</color>
+    <color name="color_B2B2B2">#B2B2B2</color>
+    <color name="transparent">#00000000</color>
 </resources>

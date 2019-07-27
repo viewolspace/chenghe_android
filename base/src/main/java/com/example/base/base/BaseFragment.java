@@ -41,6 +41,7 @@ public abstract class BaseFragment extends AFragment {
             View root = inflater.inflate(layId, container, false);
             mRootUnbinder = ButterKnife.bind(this, root);
             initWidget(root);
+            initData();
             mRoot = root;
             registerDefaultEvent();
         } else {
@@ -55,7 +56,6 @@ public abstract class BaseFragment extends AFragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        initData();
         super.onViewCreated(view, savedInstanceState);
     }
     /**
@@ -93,7 +93,7 @@ public abstract class BaseFragment extends AFragment {
      * 注册rxbus订阅事件
      */
     public void registerDefaultEvent() {
-        RxBus.getInstance().toFlowable(RxEvent.class).compose(RxUtils.rxSchedulerHelper())
+        RxBus.getInstance().toFlowable(RxEvent.class).compose(RxUtils.rxSchedulerHelper2())
                 .compose(mProvider.bindToLifecycle())
                 .subscribe(event -> handleDefaultEvent(event));
     }

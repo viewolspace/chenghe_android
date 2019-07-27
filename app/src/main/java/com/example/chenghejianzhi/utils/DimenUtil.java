@@ -2,6 +2,8 @@ package com.example.chenghejianzhi.utils;
 
 import android.content.Context;
 
+import com.example.base.base.App;
+
 /**
  * @author : sklyand
  * @email : zhengdengyao@51yryc.com
@@ -15,7 +17,11 @@ public class DimenUtil {
         final float SCALE = context.getResources().getDisplayMetrics().density;
         return (int) (dip * SCALE + 0.5f);
     }
-
+    // dip转像素
+    public static int dipToPixels( final float dip) {
+        final float SCALE = App.getInstant().getResources().getDisplayMetrics().density;
+        return (int) (dip * SCALE + 0.5f);
+    }
     // 像素转dip
     public static float pixelsToDip(Context context,final int pixels) {
         final float SCALE = context.getResources().getDisplayMetrics().density;

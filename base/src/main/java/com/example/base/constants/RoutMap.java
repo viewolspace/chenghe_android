@@ -1,4 +1,4 @@
-package com.example.chenghejianzhi.constants;
+package com.example.base.constants;
 
 /**
  * @author : sklyand
