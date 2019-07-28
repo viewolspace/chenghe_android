@@ -69,7 +69,7 @@ public class CopyContactDialog extends BaseDialog {
                 break;
             case R.id.tv_copy:
                 if (contactType == Constants.CONTACT_QQ){
-                    goQQApi(getContext());
+                    joinQQ(getContext(),contact);
                 }else if (contactType == Constants.CONTACT_WECHAT){
                     goWeChatApi(getContext());
                 }else if (contactType == Constants.CONTACT_PHONE){
@@ -87,7 +87,7 @@ public class CopyContactDialog extends BaseDialog {
     private void goWeChatApi(Context context){
         try {
             Intent intent = new Intent(Intent.ACTION_MAIN);
-            ComponentName cmp = new ComponentName("com.tencent.mobileqq","com.tencent.mobileqq.activity.HomeActivity");
+            ComponentName cmp = new ComponentName("com.tencent.mm","com.tencent.mm.ui.LauncherUI");
             intent.addCategory(Intent.CATEGORY_LAUNCHER);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.setComponent(cmp);
@@ -96,14 +96,26 @@ public class CopyContactDialog extends BaseDialog {
             ToastUtils.showShortToast("检查到您手机没有安装微信，请安装后使用该功能");
         }
     }
-
+    /**
+     * 跳转QQ聊天界面
+     */
+    public void joinQQ(Context context,String qqNum) {
+        try {
+            //第二种方式：可以跳转到添加好友，如果qq号是好友了，直接聊天
+            String url = "mqqwpa://im/chat?chat_type=wpa&uin=" + qqNum;//uin是发送过去的qq号码
+            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+        } catch (Exception e) {
+            e.printStackTrace();
+            ToastUtils.showShortToast("检查到您手机没有安装QQ，请安装后使用该功能");
+        }
+    }
     /**
      * 跳转到QQ
      */
     private void goQQApi(Context context){
         try {
             Intent intent = new Intent(Intent.ACTION_MAIN);
-            ComponentName cmp = new ComponentName("com.tencent.mm","com.tencent.mm.ui.LauncherUI");
+            ComponentName cmp = new ComponentName("com.tencent.mobileqq","com.tencent.mobileqq.activity.HomeActivity");
             intent.addCategory(Intent.CATEGORY_LAUNCHER);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.setComponent(cmp);
@@ -111,6 +123,7 @@ public class CopyContactDialog extends BaseDialog {
         } catch (ActivityNotFoundException e) {
             ToastUtils.showShortToast("检查到您手机没有安装QQ，请安装后使用该功能");
         }
+
     }
     /**
      * 拨打电话界面

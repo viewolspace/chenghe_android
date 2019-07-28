@@ -25,28 +25,7 @@
         android:textColor="@color/color_B8B7BA"
         android:textSize="13sp"
         android:text="日结 | 长期 | 男女不限"/>
-    <TextView
-        android:id="@+id/tv_job_money"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="181dp"
-        android:layout_below="@id/tv_job_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/color_DB6D70"
-        android:textSize="23sp"
-        android:text="120"/>
-    <TextView
-        android:id="@+id/tv_job_unit"
-        android:layout_marginTop="5dp"
-        android:layout_toRightOf="@id/tv_job_money"
-        android:layout_marginLeft="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_alignBottom="@id/tv_job_money"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/color_DB6D70"
-        android:textSize="11sp"
-        android:text="元/天"/>
+
 
     <ImageView
         android:id="@+id/go_detail_button"
@@ -59,6 +38,27 @@
         android:layout_alignParentRight="true"
         android:layout_marginBottom="6dp"/>
 
+    <TextView
+        android:id="@+id/tv_job_unit"
+        android:layout_marginTop="25dp"
+        android:layout_toLeftOf="@id/go_detail_button"
+        android:layout_marginRight="15dp"
+        android:layout_below="@id/tv_job_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_DB6D70"
+        android:textSize="11sp"
+        android:text="元/天"/>
+    <TextView
+        android:id="@+id/tv_job_money"
+        android:layout_marginTop="15dp"
+        android:layout_toLeftOf="@id/tv_job_unit"
+        android:layout_below="@id/tv_job_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_DB6D70"
+        android:textSize="23sp"
+        android:text="120"/>
     <View
         android:layout_below="@id/go_detail_button"
         android:layout_width="match_parent"

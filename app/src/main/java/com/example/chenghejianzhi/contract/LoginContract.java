@@ -23,6 +23,8 @@ public interface LoginContract {
 
         void startSmsCodeCountDown(boolean sendSuccess);
 
-        void onLoginSucess();
+        void onLoginSuccess();
+
+        void onLoginFaild(String message);
     }
 }

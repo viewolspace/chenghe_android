@@ -53,7 +53,6 @@
                 android:layout_marginTop="126dp"
                 android:layout_marginRight="14dp"
                 android:layout_marginBottom="30dp"
-                android:paddingBottom="30dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="1dp">
@@ -62,7 +61,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="17dp"
-                    android:paddingRight="17dp">
+                    android:paddingRight="17dp"
+                    android:paddingBottom="30dp">
 
                     <EditText
                         android:id="@+id/et_nick_name"
@@ -70,8 +70,9 @@
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="71dp"
-                        android:gravity="center_vertical"
+                        android:gravity="center"
                         android:hint="请输入真实姓名"
+                        android:lines="1"
                         android:textColorHint="#B2B2B2"
                         android:textColor="@color/color_0d0d0d"
                         android:textSize="15sp" />

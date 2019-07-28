@@ -99,7 +99,7 @@ public class JoinPartTimeActivity extends BaseActivity implements OnRefreshListe
                 }else if (recommendBean ==null||recommendBean.getResult()==null||recommendBean.getResult().size()<pageSize){
                     smart_refresh.setEnableLoadMore(false);
                 }
-                refreshList(recyclerItems,false);
+                refreshList(recyclerItems,refresh);
                 pageIndex++;
             }
         },new RxThrowableConsumer(){

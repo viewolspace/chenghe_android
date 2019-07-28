@@ -26,7 +26,7 @@
            android:layout_height="wrap_content"
            android:textColor="@color/color_282828"
            android:layout_centerInParent="true"
-           android:text="我的简历"
+           android:text="我的报名"
            android:textSize="19sp"/>
 
         <View
@@ -51,7 +51,8 @@
             android:layout_height="match_parent" />
         <com.scwang.smartrefresh.layout.footer.ClassicsFooter
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            app:srlFinishDuration="0"/>
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
     <RelativeLayout
         android:id="@+id/rl_no_data"

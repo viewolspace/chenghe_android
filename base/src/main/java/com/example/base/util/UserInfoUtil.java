@@ -45,7 +45,7 @@ public class UserInfoUtil {
     }
 
     public  String getUserId(){
-        return SpUtil.getString(App.getInstant(),"userId","");
+        return SpUtil.getString(App.getInstant(),"userId","-1");
     }
 
     public void setUserInfo(LoginBean.UserInfo userInfo){
@@ -55,13 +55,14 @@ public class UserInfoUtil {
         Gson gson = new Gson();
         setUserId(String.valueOf(userInfo.getUserId()));
         SpUtil.putString(App.getInstant(), Constants.USER_INFO,gson.toJson(userInfo));
+        RxBus.getInstance().post(new RxEvent(RxEvent.EventType.USERINFO_UPDATE,null));
     }
 
     public  LoginBean.UserInfo getUserInfo(){
         Gson gson = new Gson();
         String userInfo = SpUtil.getString(App.getInstant(),Constants.USER_INFO,"");
         if (userInfo==null||userInfo.trim().isEmpty()){
-            return null;
+            return new LoginBean.UserInfo();
         }else {
             return gson.fromJson(userInfo,LoginBean.UserInfo.class);
         }
@@ -82,7 +83,6 @@ public class UserInfoUtil {
                 .compose(RxUtils.rxSchedulerHelper())
                 .subscribe(loginBean -> {
                     setUserInfo(loginBean.getResult());
-                    RxBus.getInstance().post(new RxEvent(RxEvent.EventType.USERINFO_UPDATE,null));
                 },new RxThrowableConsumer());
     }
 

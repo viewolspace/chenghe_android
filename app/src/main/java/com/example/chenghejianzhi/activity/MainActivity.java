@@ -1,17 +1,21 @@
 package com.example.chenghejianzhi.activity;
 
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.MotionEvent;
 import android.widget.RadioGroup;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.base.base.BaseActivity;
 import com.example.base.constants.RoutMap;
 import com.example.base.rx.RxEvent;
+import com.example.base.util.PermissionUtil;
+import com.example.base.util.UserInfoUtil;
 import com.example.chenghejianzhi.R;
 import com.example.chenghejianzhi.fragments.AllFragment;
 import com.example.chenghejianzhi.fragments.HomeFragment;
@@ -44,6 +48,11 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
+    protected boolean leftToRightBack() {
+        return false;
+    }
+
+    @Override
     protected void initWidget() {
         StatusBarUtils.statusbar(this);
         rg_menu.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -53,6 +62,21 @@ public class MainActivity extends BaseActivity {
             }
         });
         rg_menu.check(R.id.rb_home);
+
+        PermissionUtil.requestPermissionCombined(this, new PermissionUtil.CombinedPermissionListenerImp() {
+            @Override
+            public void onCombinedGranted() {
+                super.onCombinedGranted();
+            }
+        }, Manifest.permission.READ_PHONE_STATE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE);
+        if (UserInfoUtil.getInstance().isLogin()){
+            UserInfoUtil.getInstance().upDateLocalUser();
+        }
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        return super.dispatchTouchEvent(ev);
     }
 
     @Override

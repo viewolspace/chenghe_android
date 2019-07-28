@@ -8,7 +8,6 @@ import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.text.TextUtils;
-import android.util.Base64;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
@@ -22,8 +21,6 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.base.base.BaseActivity;
 import com.example.base.bean.LoginBean;
-import com.example.base.retrofit.ApiService;
-import com.example.base.retrofit.RetrofitServiceCreator;
 import com.example.base.rx.RxEvent;
 import com.example.base.util.ToastUtils;
 import com.example.base.util.UserInfoUtil;
@@ -33,7 +30,6 @@ import com.example.chenghejianzhi.utils.FileProvider7;
 import com.example.chenghejianzhi.utils.StatusBarUtils;
 import com.example.chenghejianzhi.view.dilaog.ChooseBirthDayDialog;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -54,7 +50,7 @@ public class PersonalResumeActivity extends BaseActivity {
     @BindView(R.id.rg_menu)
     RadioGroup rg_menu;
     @BindView(R.id.et_nick_name)
-    TextView et_nick_name;
+    EditText et_nick_name;
     private static final int REQUEST_CODE_LOCAL = 3001;
 
     private static final int REQUEST_CODE_CAMERA = 3003;
@@ -78,12 +74,21 @@ public class PersonalResumeActivity extends BaseActivity {
     protected void initWidget() {
         StatusBarUtils.statusbar(this);
         LoginBean.UserInfo userInfo = UserInfoUtil.getInstance().getUserInfo();
+        if (userInfo == null){
+            return;
+        }
         if (userInfo.getRealName()!=null&&!userInfo.getRealName().trim().isEmpty()){
             et_nick_name.setText(userInfo.getRealName());
+
         }
         if (userInfo.getBirthday()!=null&&!userInfo.getBirthday().trim().isEmpty()){
             tv_birthday.setText(userInfo.getBirthday());
         }
+
+        Glide.with(iv_avatar).load(userInfo.getHeadPic())
+                .apply(RequestOptions.bitmapTransform(new CircleCrop()))
+                .apply(RequestOptions.placeholderOf(R.drawable.default_avatar))
+                .into(iv_avatar);
         et_tv_work_exp.setText(userInfo.getExp());
         et_self_intro.setText(userInfo.getDes());
         rg_menu.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -99,6 +104,11 @@ public class PersonalResumeActivity extends BaseActivity {
                 }
             }
         });
+        if (userInfo.getSex() ==1){
+            rg_menu.check(R.id.rb_man);
+        }else if (userInfo.getSex() == 2){
+            rg_menu.check(R.id.rb_woman);
+        }
     }
 
     @Override

@@ -35,7 +35,7 @@
 #混淆时是否记录日志
 -verbose
 #忽略警告
--ignorewarning
+#-ignorewarning
 #保护注解
 -keepattributes *Annotation*
 -keepattributes Signature
@@ -44,6 +44,8 @@
 -dontwarn android.support.v7.**
 -dontwarn com.baidu.mobstat.**,com.alipay.android.app.**,com.tencent.**,com.baidu.**,org.apache.http.**,com.umeng.**
 -dontwarn com.alibaba.fastjson.**
+
+-keep public class com.example.base.bean.**{*;}
 
 -keep public class **.R$*{
    public static final int *;

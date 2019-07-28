@@ -3,6 +3,7 @@ package com.example.chenghejianzhi.activity;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
@@ -37,6 +38,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import io.reactivex.functions.Consumer;
 
 public class SearchActivity extends BaseActivity implements OnRefreshListener, OnLoadMoreListener {
@@ -52,7 +54,9 @@ public class SearchActivity extends BaseActivity implements OnRefreshListener, O
     SmartRefreshLayout smart_refresh;
     @BindView(R.id.iv_back)
     ImageView iv_back;
-    private String searchStr="";
+    @BindView(R.id.tv_no_data)
+    TextView tvNoData;
+    private String searchStr = "";
     private int pageIndex = 1;
     private int pageSize = 20;
     private AllAdapter recommendAdapter;
@@ -60,10 +64,11 @@ public class SearchActivity extends BaseActivity implements OnRefreshListener, O
     long lastInputTime;//键盘上次输入的时间
     private Handler handler;
 
-    public static void start(Context context){
-        Intent intent = new Intent(context,SearchActivity.class);
+    public static void start(Context context) {
+        Intent intent = new Intent(context, SearchActivity.class);
         context.startActivity(intent);
     }
+
     @Override
     protected int getContentLayoutId() {
         return R.layout.activity_search;
@@ -95,8 +100,8 @@ public class SearchActivity extends BaseActivity implements OnRefreshListener, O
             @Override
             public void afterTextChanged(Editable s) {
                 //计算两次输入的间隔、减少查询的次数
-                long timeNow =  System.currentTimeMillis();
-                if (s != null ) {
+                long timeNow = System.currentTimeMillis();
+                if (s != null) {
                     //快速输入结束后,500毫秒内没有输入，去查询
                     Message message = new Message();
                     message.what = 0;
@@ -104,113 +109,119 @@ public class SearchActivity extends BaseActivity implements OnRefreshListener, O
                     inputMessage.content = s.toString();
                     inputMessage.time = timeNow;
                     message.obj = inputMessage;
-                    handler.sendMessageDelayed(message,400);
+                    handler.sendMessageDelayed(message, 400);
                 }
                 lastInputTime = timeNow;
             }
         });
-        handler = new Handler(Looper.getMainLooper()){
+        handler = new Handler(Looper.getMainLooper()) {
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
-                switch (msg.what){
+                switch (msg.what) {
                     case 0:
                         InputMessage s = (InputMessage) msg.obj;
-                        if (lastInputTime == s.time){
-                            search(s.content,true);
+                        if (lastInputTime == s.time) {
+                            search(s.content, true);
 
                         }
                         break;
                 }
             }
         };
+        recycler.setVisibility(View.GONE);
+        tv_search_result.setVisibility(View.GONE);
+        rl_no_data.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-        search(searchStr,false);
+        search(searchStr, false);
     }
 
     @Override
     public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-        search(searchStr,true);
+        search(searchStr, true);
     }
 
-    private class InputMessage{
+
+    private class InputMessage {
         public String content;
         public long time;
     }
 
     @SuppressLint("CheckResult")
-    private void search(String searchStr, boolean refresh){
-        if (refresh){
-            pageIndex=1;
+    private void search(String searchStr, boolean refresh) {
+        if (refresh) {
+            pageIndex = 1;
         }
         this.searchStr = searchStr;
         ApiService apiService = RetrofitServiceCreator.createService(ApiService.class);
-        apiService.queryAll(searchStr,pageIndex,pageSize)
+        apiService.queryAll(searchStr, pageIndex, pageSize)
                 .compose(RxUtils.rxSchedulerHelper())
                 .compose(mProvider.bindToLifecycle()).subscribe(new Consumer<RecommendBean>() {
             @Override
             public void accept(RecommendBean recommendBean) throws Exception {
-                if (refresh){
+                if (refresh) {
                     smart_refresh.setEnableLoadMore(true);
                     smart_refresh.finishRefresh();
-                }else {
+                } else {
                     smart_refresh.finishLoadMore();
                 }
 
 
                 List<BaseRecyclerAdapter.RecyclerItem> recyclerItems = new ArrayList<>();
-                if (recommendBean!=null&&recommendBean.getResult()!=null&&recommendBean.getResult().size()>0){
-                    for (RecommendBean.ResultBean resultBean:recommendBean.getResult()){
-                        recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(AllAdapter.RECOMMEND,resultBean));
+                if (recommendBean != null && recommendBean.getResult() != null && recommendBean.getResult().size() > 0) {
+                    for (RecommendBean.ResultBean resultBean : recommendBean.getResult()) {
+                        recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(AllAdapter.RECOMMEND, resultBean));
                     }
                 }
-                if (recommendBean ==null||recommendBean.getResult()==null||recommendBean.getResult().size()<pageSize){
+                if (recommendBean == null || recommendBean.getResult() == null || recommendBean.getResult().size() < pageSize) {
                     smart_refresh.setEnableLoadMore(false);
                 }
-                if (refresh&&(recommendBean ==null||recommendBean.getResult()==null||recommendBean.getResult().size()<=0)){
+                if (refresh && (recommendBean == null || recommendBean.getResult() == null || recommendBean.getResult().size() <= 0)) {
                     refreshNoData(true);
-                }else {
+                } else {
                     refreshNoData(false);
                 }
-                refreshList(recyclerItems,false);
+                refreshList(recyclerItems, refresh);
                 pageIndex++;
             }
-        },new RxThrowableConsumer(){
+        }, new RxThrowableConsumer() {
             @Override
             public void accept(Throwable throwable) throws Exception {
                 super.accept(throwable);
-                if (refresh){
+                if (refresh) {
                     smart_refresh.setEnableLoadMore(true);
                     smart_refresh.finishRefresh();
-                }else {
+                } else {
                     smart_refresh.finishLoadMore();
                 }
             }
         });
     }
 
-    private void refreshList(List<BaseRecyclerAdapter.RecyclerItem> itemList, boolean refresh){
-        if (refresh){
+    private void refreshList(List<BaseRecyclerAdapter.RecyclerItem> itemList, boolean refresh) {
+        if (refresh) {
             recommendAdapter.replace(itemList);
-        }else {
+        } else {
             recommendAdapter.add(itemList);
         }
     }
 
-    private void refreshNoData(boolean show){
-        if (show){
+    private void refreshNoData(boolean show) {
+        if (show) {
+            tvNoData.setVisibility(View.VISIBLE);
             recycler.setVisibility(View.GONE);
             tv_search_result.setVisibility(View.GONE);
             rl_no_data.setVisibility(View.VISIBLE);
-        }else {
+        } else {
             recycler.setVisibility(View.VISIBLE);
             tv_search_result.setVisibility(View.VISIBLE);
             rl_no_data.setVisibility(View.GONE);
         }
     }
+
     @Override
     protected void initData() {
         //search(searchStr,true);

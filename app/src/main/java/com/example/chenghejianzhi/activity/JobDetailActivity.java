@@ -18,6 +18,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.example.base.base.BaseMvpActivity;
 import com.example.base.bean.JobDetailBean;
 import com.example.base.constants.Constants;
+import com.example.base.util.UserInfoUtil;
 import com.example.chenghejianzhi.R;
 import com.example.chenghejianzhi.contract.JobDetailContract;
 import com.example.chenghejianzhi.presenter.JobDetailPresenter;
@@ -98,9 +99,15 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
     }
 
     @Override
+    protected boolean leftToRightBack() {
+        return true;
+    }
+
+    @Override
     protected void initWidget() {
         StatusBarUtils.statusbar(this);
     }
+
 
     @Override
     protected void initData() {
@@ -118,12 +125,18 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_apply:
-                presenter.apply(id);
-                if (jobDetailBean!=null&&jobDetailBean.getResult()!=null){
-                    CopyContactDialog copyContactDialog = new CopyContactDialog(JobDetailActivity.this);
-                    copyContactDialog.show(jobDetailBean.getResult().getContactType(),
-                            jobDetailBean.getResult().getContact());
+                if ( UserInfoUtil.getInstance().isLogin()){
+                    presenter.apply(id);
+                    if (jobDetailBean!=null&&jobDetailBean.getResult()!=null){
+                        CopyContactDialog copyContactDialog = new CopyContactDialog(JobDetailActivity.this);
+                        copyContactDialog.show(jobDetailBean.getResult().getContactType(),
+                                jobDetailBean.getResult().getContact());
+                    }
+                }else {
+                    LoginActivity.start(JobDetailActivity.this);
                 }
+
+
                 break;
             case R.id.tv_copy:
                 presenter.copyRecord(id);
@@ -159,9 +172,10 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
             tvCopy.setText("点击复制联系方式 电话："+resultBean.getContact());
         }
 
-
         tvJobTitle.setText(resultBean.getTitle());
-        tvUpdateTime.setText(DateUtil.getDateToString(resultBean.getCTime()));
+        String time = String.format(Locale.ENGLISH,"更新时间：%s"
+                ,DateUtil.getDateToString(resultBean.getCTime(),"yyyy-MM-dd"));
+        tvUpdateTime.setText(time);
         String[] lable = resultBean.getLable().split(",");
         flowLayout.setAdapter(new TagAdapter<String>(Arrays.asList(lable)) {
             @Override

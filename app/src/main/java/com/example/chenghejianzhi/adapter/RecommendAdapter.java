@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -47,7 +48,7 @@ public class RecommendAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Re
                 return R.layout.item_home_title;
         }
 
-        return R.layout.item_home_hot_recommend;
+        return R.layout.item_recommend_today;
     }
 
     @Override
@@ -152,7 +153,7 @@ public class RecommendAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Re
             RecommendBean.ResultBean recommendBean = (RecommendBean.ResultBean) recyclerItem.data;
             tv_job_title.setText(recommendBean.getTitle());
             tv_job_money.setText(String.valueOf(recommendBean.getSalary()));
-            tv_job_desc.setText(recommendBean.getLable());
+            tv_job_desc.setText(recommendBean.getLable().replaceAll(","," | "));
             if (recommendBean.getPic()==null||recommendBean.getPic().trim().isEmpty()){
                 iv_job_icon.setVisibility(View.GONE);
             }else {
@@ -182,6 +183,8 @@ public class RecommendAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Re
         protected void onBind(RecyclerItem recyclerItem) {
             if (recyclerItem.data!=null){
                 tv_title.setText((String)recyclerItem.data);
+                RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) tv_title.getLayoutParams();
+                layoutParams.bottomMargin = 0;
             }
         }
     }

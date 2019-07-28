@@ -70,13 +70,25 @@
         android:layout_below="@id/rl_search"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone">
+        android:visibility="visible">
         <ImageView
-
+            android:id="@+id/iv_no_data"
             android:layout_width="263dp"
             android:layout_height="263dp"
             android:layout_centerInParent="true"
             android:src="@drawable/search_no_data"/>
+
+        <TextView
+            android:id="@+id/tv_no_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="无搜索内容"
+            android:textSize="16sp"
+            android:textColor="@color/color_0d0d0d"
+            android:layout_alignBottom="@id/iv_no_data"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="50dp"
+            android:visibility="gone"/>
     </RelativeLayout>
 
 </RelativeLayout>

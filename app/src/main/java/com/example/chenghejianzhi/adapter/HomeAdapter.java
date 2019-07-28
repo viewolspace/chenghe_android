@@ -165,7 +165,7 @@ public class HomeAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Recycle
             RecommendBean.ResultBean recommendBean = (RecommendBean.ResultBean) recyclerItem.data;
             tv_job_title.setText(recommendBean.getTitle());
             tv_job_money.setText(String.valueOf(recommendBean.getSalary()));
-            tv_job_desc.setText(recommendBean.getLable());
+            tv_job_desc.setText(recommendBean.getLable().replaceAll(","," | "));
             go_detail_button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

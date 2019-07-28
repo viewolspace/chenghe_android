@@ -45,8 +45,13 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
                .subscribe(new Consumer<LoginBean>() {
                    @Override
                    public void accept(LoginBean loginBean) throws Exception {
-                       view.onLoginSucess();
-                       UserInfoUtil.getInstance().setUserInfo(loginBean.getResult());
+                       if ("0000".equals(loginBean.getStatus())){
+                           view.onLoginSuccess();
+                           UserInfoUtil.getInstance().setUserInfo(loginBean.getResult());
+                       }else {
+                           view.onLoginFaild(loginBean.getMessage());
+                       }
+
                    }
                },new RxThrowableConsumer());
 

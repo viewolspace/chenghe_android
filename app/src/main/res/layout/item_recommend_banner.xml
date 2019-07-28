@@ -4,7 +4,7 @@
     android:paddingLeft="14dp"
     android:paddingRight="14dp"
     android:paddingTop="20dp"
-    android:paddingBottom="20dp">
+    android:paddingBottom="28dp">
 
     <com.youth.banner.Banner
         android:id="@+id/banner"
