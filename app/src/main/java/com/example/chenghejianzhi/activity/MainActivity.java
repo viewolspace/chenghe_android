@@ -42,15 +42,12 @@ public class MainActivity extends BaseActivity {
         Intent intent  = new Intent(context,MainActivity.class);
         context.startActivity(intent);
     }
+
     @Override
     protected int getContentLayoutId() {
         return R.layout.activity_main;
     }
 
-    @Override
-    protected boolean leftToRightBack() {
-        return false;
-    }
 
     @Override
     protected void initWidget() {

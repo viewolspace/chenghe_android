@@ -16,4 +16,10 @@
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
+
+    <style name="NoSwipeToDismissTheme" parent="Theme.Design.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <!--左滑退出-->
+        <item name="android:windowSwipeToDismiss">false</item>
+    </style>
 </resources>

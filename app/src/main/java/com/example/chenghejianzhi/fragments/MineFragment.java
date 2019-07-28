@@ -6,6 +6,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.base.base.BaseFragment;
@@ -59,8 +60,10 @@ public class MineFragment extends BaseFragment {
         userInfo = UserInfoUtil.getInstance().getUserInfo();
         if (userInfo !=null&& userInfo.getUserId()!=0){
             tv_nickname.setText(userInfo.getNickName());
+
             Glide.with(iv_avatar).load(userInfo.getHeadPic())
                     .apply(RequestOptions.bitmapTransform(new CircleCrop()))
+                    //.apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE)) 强制加载图片
                     .into(iv_avatar);
         }else {
             tv_nickname.setText("点击登陆");

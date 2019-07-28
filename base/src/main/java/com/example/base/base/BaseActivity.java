@@ -3,7 +3,9 @@ package com.example.base.base;
 import android.Manifest;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 
 import com.example.base.R;
 import com.example.base.rx.RxBus;
@@ -52,8 +54,8 @@ public abstract class BaseActivity extends AActivity {
      * 初始化窗口
      */
     protected void initWindows(){
-        if (leftToRightBack()){
-            getWindow().requestFeature(Window.FEATURE_SWIPE_TO_DISMISS);
+        if (!leftToRightBack()){
+            setTheme(R.style.NoSwipeToDismissTheme);
         }
     }
 
