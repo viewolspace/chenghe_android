@@ -54,7 +54,7 @@
         android:background="#cdced3" />
 
 
-    <com.example.chenghejianzhi.view.CalendarSelectedView
+    <com.chenghe.parttime.view.CalendarSelectedView
         android:id="@+id/calendar_selected"
         android:layout_width="match_parent"
         android:layout_height="148dp"

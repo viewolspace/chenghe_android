@@ -45,7 +45,10 @@
 -dontwarn com.baidu.mobstat.**,com.alipay.android.app.**,com.tencent.**,com.baidu.**,org.apache.http.**,com.umeng.**
 -dontwarn com.alibaba.fastjson.**
 
--keep public class com.example.base.bean.**{*;}
+-keep public class com.chenghe.base.bean.**{*;}
+-keep public class com.chenghe.base.bean.BaseBean
+-keep public class * extends com.chenghe.base.bean.BaseBean{
+*; }
 
 -keep public class **.R$*{
    public static final int *;

@@ -13,7 +13,7 @@ android {
     compileSdkVersion rootProject.ext.compileSdk
     buildToolsVersion rootProject.ext.buildTools
     defaultConfig {
-        applicationId "com.example.baseapplication"
+        applicationId 'com.chenghe.parttime'
         minSdkVersion rootProject.ext.minSdk
         targetSdkVersion rootProject.ext.targetSdk
         versionCode rootProject.ext.versionCode
