@@ -167,6 +167,7 @@ public class HomeAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Recycle
 
         @Override
         protected void onBind(RecyclerItem recyclerItem) {
+
             RecommendBean.ResultBean recommendBean = (RecommendBean.ResultBean) recyclerItem.data;
             tv_job_title.setText(recommendBean.getTitle());
             tv_job_money.setText(String.valueOf(recommendBean.getSalary()));
@@ -191,6 +192,12 @@ public class HomeAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Recycle
             }
             tv_job_unit.setText(unit);
             go_detail_button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    JobDetailActivity.start(itemView.getContext(),recommendBean.getId());
+                }
+            });
+            itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     JobDetailActivity.start(itemView.getContext(),recommendBean.getId());

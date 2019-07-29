@@ -99,7 +99,7 @@ public class SearchActivity extends BaseActivity implements OnRefreshListener, O
             public void afterTextChanged(Editable s) {
                 //计算两次输入的间隔、减少查询的次数
                 long timeNow = System.currentTimeMillis();
-                if (s != null) {
+                if (s != null&&!s.toString().trim().isEmpty()) {
                     //快速输入结束后,500毫秒内没有输入，去查询
                     Message message = new Message();
                     message.what = 0;

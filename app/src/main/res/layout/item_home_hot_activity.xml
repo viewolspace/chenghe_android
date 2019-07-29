@@ -4,9 +4,9 @@
 
     <ImageView
         android:id="@+id/iv_ad"
-        android:layout_width="207dp"
+        android:layout_width="215dp"
         android:layout_height="120dp"
         android:scaleType="fitXY"
-        android:layout_marginRight="8dp"
+        android:paddingRight="8dp"
         android:src="@drawable/item_home_hot_bg_test"/>
 </RelativeLayout>

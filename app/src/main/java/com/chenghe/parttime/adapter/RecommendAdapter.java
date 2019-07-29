@@ -182,6 +182,12 @@ public class RecommendAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Re
                     JobDetailActivity.start(itemView.getContext(),recommendBean.getId());
                 }
             });
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    JobDetailActivity.start(itemView.getContext(),recommendBean.getId());
+                }
+            });
         }
     }
     /**

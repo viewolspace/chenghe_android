@@ -134,12 +134,17 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
 
                 break;
             case R.id.tv_copy:
-                presenter.copyRecord(id);
-                if (jobDetailBean!=null&&jobDetailBean.getResult()!=null){
-                    CopyContactDialog copyContactDialog = new CopyContactDialog(JobDetailActivity.this);
-                    copyContactDialog.show(jobDetailBean.getResult().getContactType(),
-                            jobDetailBean.getResult().getContact());
+                if ( UserInfoUtil.getInstance().isLogin()){
+                    presenter.copyRecord(id);
+                    if (jobDetailBean!=null&&jobDetailBean.getResult()!=null){
+                        CopyContactDialog copyContactDialog = new CopyContactDialog(JobDetailActivity.this);
+                        copyContactDialog.show(jobDetailBean.getResult().getContactType(),
+                                jobDetailBean.getResult().getContact());
+                    }
+                }else {
+                    LoginActivity.start(JobDetailActivity.this);
                 }
+
 
                 break;
             case R.id.iv_back:

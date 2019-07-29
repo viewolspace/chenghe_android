@@ -94,7 +94,7 @@ public class MainActivity extends BaseActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fm = fragmentManager.beginTransaction();
         if (currentFragment!=null){
-            fm.detach(currentFragment);
+            fm.hide(currentFragment);
         }
 
         switch (checkedId){
@@ -103,7 +103,7 @@ public class MainActivity extends BaseActivity {
                     homeFragment = new HomeFragment();
                     fm.add(R.id.fl_container,homeFragment);
                 }
-                fm.attach(homeFragment);
+                fm.show(homeFragment);
                 currentFragment = homeFragment;
                 break;
             case R.id.rb_recommend:
@@ -111,7 +111,7 @@ public class MainActivity extends BaseActivity {
                     recommendFragment = new RecommendFragment();
                     fm.add(R.id.fl_container,recommendFragment);
                 }
-                fm.attach(recommendFragment);
+                fm.show(recommendFragment);
                 currentFragment = recommendFragment;
                 break;
             case R.id.rb_all:
@@ -119,7 +119,7 @@ public class MainActivity extends BaseActivity {
                     allFragment = new AllFragment();
                     fm.add(R.id.fl_container, allFragment);
                 }
-                fm.attach(allFragment);
+                fm.show(allFragment);
                 currentFragment = allFragment;
                 break;
             case R.id.rb_mine:
@@ -127,7 +127,7 @@ public class MainActivity extends BaseActivity {
                     mineFragment = new MineFragment();
                     fm.add(R.id.fl_container, mineFragment);
                 }
-                fm.attach(mineFragment);
+                fm.show(mineFragment);
                 currentFragment = mineFragment;
                 break;
         }

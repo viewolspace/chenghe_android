@@ -120,7 +120,7 @@ public class LoginActivity extends BaseMvpActivity<LoginContract.Presenter> impl
         });
     }
 
-    @OnClick({R.id.tv_login,R.id.tv_getcode})
+    @OnClick({R.id.tv_login,R.id.tv_getcode,R.id.iv_close})
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.tv_login:
@@ -144,6 +144,9 @@ public class LoginActivity extends BaseMvpActivity<LoginContract.Presenter> impl
                 setGetCode(false);
                 countDown = 60;
                 presenter.getToken(et_phone.getText().toString());
+                break;
+            case R.id.iv_close:
+                finish();
                 break;
 
         }
