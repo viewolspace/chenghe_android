@@ -182,6 +182,7 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
             }
 
         });
+
         SpannableString workTime =
                 new SpannableString(String.format(Locale.ENGLISH, "工作时间：%s", resultBean.getWorkTime()));
         StringUtil.
@@ -200,6 +201,25 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
         tvWorkContent.setText(Html.fromHtml(resultBean.getContent()));
 
         tvJobMoney.setText(String.valueOf(resultBean.getSalary()));
+        String unit = "元/天";
+        switch (resultBean.getCycle()){
+            case 0:
+                unit = String.format(Locale.ENGLISH,"元/%s","小时");
+                break;
+            case 1:
+                unit = String.format(Locale.ENGLISH,"元/%s","天");
+                break;
+            case 2:
+                unit = String.format(Locale.ENGLISH,"元/%s","周");
+                break;
+            case 3:
+                unit = String.format(Locale.ENGLISH,"元/%s","月");
+                break;
+            case 4:
+                unit = String.format(Locale.ENGLISH,"元/%s","季度");
+                break;
+        }
+        tvJobUnit.setText(unit);
         JobDetailBean.CompanyBean companyBean = jobDetailBean.getCompany();
         if (companyBean == null){
             return;

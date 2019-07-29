@@ -15,6 +15,8 @@ import com.chenghe.parttime.R;
 import com.chenghe.parttime.activity.JobDetailActivity;
 import com.chenghe.parttime.utils.WebLinkToNativePageUtil;
 
+import java.util.Locale;
+
 import butterknife.BindView;
 
 /**
@@ -156,6 +158,9 @@ public class HomeAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Recycle
         TextView tv_job_desc;
         @BindView(R.id.go_detail_button)
         ImageView go_detail_button;
+        @BindView(R.id.tv_job_unit)
+        TextView tv_job_unit;
+
         public RecommendViewHolder(View itemView) {
             super(itemView);
         }
@@ -166,6 +171,25 @@ public class HomeAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Recycle
             tv_job_title.setText(recommendBean.getTitle());
             tv_job_money.setText(String.valueOf(recommendBean.getSalary()));
             tv_job_desc.setText(recommendBean.getLable().replaceAll(","," | "));
+            String unit = "元/天";
+            switch (recommendBean.getCycle()){
+                case 0:
+                    unit = String.format(Locale.ENGLISH,"元/%s","小时");
+                    break;
+                case 1:
+                    unit = String.format(Locale.ENGLISH,"元/%s","天");
+                    break;
+                case 2:
+                    unit = String.format(Locale.ENGLISH,"元/%s","周");
+                    break;
+                case 3:
+                    unit = String.format(Locale.ENGLISH,"元/%s","月");
+                    break;
+                case 4:
+                    unit = String.format(Locale.ENGLISH,"元/%s","季度");
+                    break;
+            }
+            tv_job_unit.setText(unit);
             go_detail_button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

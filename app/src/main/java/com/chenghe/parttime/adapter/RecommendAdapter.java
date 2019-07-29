@@ -19,6 +19,7 @@ import com.youth.banner.listener.OnBannerListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 
@@ -138,7 +139,8 @@ public class RecommendAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Re
         ImageView go_detail_button;
         @BindView(R.id.iv_job_icon)
         ImageView iv_job_icon;
-
+        @BindView(R.id.tv_job_unit)
+        TextView tv_job_unit;
         public RecommendViewHolder(View itemView) {
             super(itemView);
         }
@@ -155,6 +157,25 @@ public class RecommendAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Re
                 iv_job_icon.setVisibility(View.VISIBLE);
                 Glide.with(itemView.getContext()).load(recommendBean.getPic()).into(iv_job_icon);
             }
+            String unit = "元/天";
+            switch (recommendBean.getCycle()){
+                case 0:
+                    unit = String.format(Locale.ENGLISH,"元/%s","小时");
+                    break;
+                case 1:
+                    unit = String.format(Locale.ENGLISH,"元/%s","天");
+                    break;
+                case 2:
+                    unit = String.format(Locale.ENGLISH,"元/%s","周");
+                    break;
+                case 3:
+                    unit = String.format(Locale.ENGLISH,"元/%s","月");
+                    break;
+                case 4:
+                    unit = String.format(Locale.ENGLISH,"元/%s","季度");
+                    break;
+            }
+            tv_job_unit.setText(unit);
             go_detail_button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
