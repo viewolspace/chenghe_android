@@ -4,6 +4,7 @@ package com.chenghe.parttime.activity;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -33,11 +34,14 @@ public class MainActivity extends BaseActivity {
 
     private Fragment currentFragment;
     private HomeFragment homeFragment;
-    private int currentId;
+    private int currentId = -1;
     private RecommendFragment recommendFragment;
     private AllFragment allFragment;
     private MineFragment mineFragment;
-
+    //缓存当前Tab的选中下标
+    public static final String BUNDLE_CACHE_INDEX_KEY = "bundle_cache_index_key";
+    //fragment缓存标签
+    public static final String FRAGMENT_TAG = "fragment_tag";
     public static void start(Context context){
         Intent intent  = new Intent(context,MainActivity.class);
         context.startActivity(intent);
@@ -50,6 +54,35 @@ public class MainActivity extends BaseActivity {
 
 
     @Override
+    protected void initSavedInstance(Bundle savedInstanceState) {
+        if (savedInstanceState!=null){
+            currentId = savedInstanceState.getInt(BUNDLE_CACHE_INDEX_KEY,-1);
+            //如果已经添加过fragment, 需要隐藏操作
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            homeFragment = (HomeFragment) fragmentManager.findFragmentByTag(FRAGMENT_TAG+R.id.rb_home);
+            recommendFragment = (RecommendFragment) fragmentManager.findFragmentByTag(FRAGMENT_TAG+R.id.rb_recommend);
+            allFragment = (AllFragment) fragmentManager.findFragmentByTag(FRAGMENT_TAG+R.id.rb_all);
+            mineFragment = (MineFragment) fragmentManager.findFragmentByTag(FRAGMENT_TAG+R.id.rb_mine);
+            if (homeFragment!=null){
+                transaction.hide(homeFragment);
+            }
+            if (recommendFragment!=null){
+                transaction.hide(recommendFragment);
+            }
+            if (allFragment!=null){
+                transaction.hide(allFragment);
+            }
+            if (mineFragment!=null){
+                transaction.hide(mineFragment);
+            }
+            transaction.commit();
+            switchFragment(currentId);
+        }
+
+    }
+
+    @Override
     protected void initWidget() {
         StatusBarUtils.statusbar(this);
         rg_menu.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -58,7 +91,12 @@ public class MainActivity extends BaseActivity {
                 switchFragment(checkedId);
             }
         });
-        rg_menu.check(R.id.rb_home);
+        if (currentId!=-1){
+            rg_menu.check(currentId);
+        }else {
+            rg_menu.check(R.id.rb_home);
+        }
+
 
         PermissionUtil.requestPermissionCombined(this, new PermissionUtil.CombinedPermissionListenerImp() {
             @Override
@@ -101,7 +139,7 @@ public class MainActivity extends BaseActivity {
             case R.id.rb_home:
                 if (homeFragment == null){
                     homeFragment = new HomeFragment();
-                    fm.add(R.id.fl_container,homeFragment);
+                    fm.add(R.id.fl_container,homeFragment,FRAGMENT_TAG+checkedId);
                 }
                 fm.show(homeFragment);
                 currentFragment = homeFragment;
@@ -109,7 +147,7 @@ public class MainActivity extends BaseActivity {
             case R.id.rb_recommend:
                 if (recommendFragment == null){
                     recommendFragment = new RecommendFragment();
-                    fm.add(R.id.fl_container,recommendFragment);
+                    fm.add(R.id.fl_container,recommendFragment,FRAGMENT_TAG+checkedId);
                 }
                 fm.show(recommendFragment);
                 currentFragment = recommendFragment;
@@ -117,7 +155,7 @@ public class MainActivity extends BaseActivity {
             case R.id.rb_all:
                 if (allFragment == null){
                     allFragment = new AllFragment();
-                    fm.add(R.id.fl_container, allFragment);
+                    fm.add(R.id.fl_container, allFragment,FRAGMENT_TAG+checkedId);
                 }
                 fm.show(allFragment);
                 currentFragment = allFragment;
@@ -125,7 +163,7 @@ public class MainActivity extends BaseActivity {
             case R.id.rb_mine:
                 if (mineFragment == null){
                     mineFragment = new MineFragment();
-                    fm.add(R.id.fl_container, mineFragment);
+                    fm.add(R.id.fl_container, mineFragment,FRAGMENT_TAG+checkedId);
                 }
                 fm.show(mineFragment);
                 currentFragment = mineFragment;
@@ -134,4 +172,9 @@ public class MainActivity extends BaseActivity {
         fm.commitAllowingStateLoss();
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putInt(BUNDLE_CACHE_INDEX_KEY,currentId);
+        super.onSaveInstanceState(outState);
+    }
 }
