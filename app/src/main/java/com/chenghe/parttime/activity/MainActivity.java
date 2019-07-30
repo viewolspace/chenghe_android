@@ -77,7 +77,11 @@ public class MainActivity extends BaseActivity {
                 transaction.hide(mineFragment);
             }
             transaction.commit();
-            switchFragment(currentId);
+            if (currentId!=-1){
+                rg_menu.check(currentId);
+            }else {
+                rg_menu.check(R.id.rb_home);
+            }
         }
 
     }
