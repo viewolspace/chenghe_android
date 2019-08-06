@@ -40,7 +40,7 @@ public class HomePresenter extends BasePresenter<HomeContract.View> implements H
             pageIndex = 1;
             Observable.zip(api.getAd(Constants.AD_HOME_TOP)
                     , api.getAd(Constants.AD_HOME_HOT),
-                    api.queryRecommend(2, pageIndex, pageSize),
+                    api.queryRecommend(1, pageIndex, pageSize),
                     (commonAdBean, commonAdBean2, recommendBean) -> {
                         List<BaseRecyclerAdapter.RecyclerItem> recyclerItems = new ArrayList<>();
                         if (commonAdBean!=null&&commonAdBean.getResult()!=null&&commonAdBean.getResult().size()>0){

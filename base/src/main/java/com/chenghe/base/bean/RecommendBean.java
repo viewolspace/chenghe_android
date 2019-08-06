@@ -171,6 +171,47 @@ public class RecommendBean {
         private int topNum;
         private String workAddress;
         private String workTime;
+        private int  verify;
+
+        public long getcTime() {
+            return cTime;
+        }
+
+        public void setcTime(long cTime) {
+            this.cTime = cTime;
+        }
+
+        public long geteTime() {
+            return eTime;
+        }
+
+        public void seteTime(long eTime) {
+            this.eTime = eTime;
+        }
+
+        public long getmTime() {
+            return mTime;
+        }
+
+        public void setmTime(long mTime) {
+            this.mTime = mTime;
+        }
+
+        public long getsTime() {
+            return sTime;
+        }
+
+        public void setsTime(long sTime) {
+            this.sTime = sTime;
+        }
+
+        public int getVerify() {
+            return verify;
+        }
+
+        public void setVerify(int verify) {
+            this.verify = verify;
+        }
 
         public int getBrowseNum() {
             return browseNum;

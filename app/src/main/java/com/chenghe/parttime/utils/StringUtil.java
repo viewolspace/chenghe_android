@@ -1,9 +1,13 @@
 package com.chenghe.parttime.utils;
 
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.AbsoluteSizeSpan;
 import android.text.style.ForegroundColorSpan;
+import android.text.style.ImageSpan;
 import android.text.style.StyleSpan;
 import android.util.Log;
 import android.widget.TextView;
@@ -359,6 +363,15 @@ public class StringUtil {
         }
     }
 
+    /**
+     * 文本设置图片
+     */
+    public static void addImageSpan(SpannableString ssb, int startIndex, int endIndex, int imageSrc, Context context) {
+        Drawable d = context.getResources().getDrawable(imageSrc);
+        d.setBounds(0, 0, d.getIntrinsicWidth(), d.getIntrinsicHeight());
+        ImageSpan span = new ImageSpan(d, ImageSpan.ALIGN_BASELINE);
+        ssb.setSpan(span, startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+    }
     public static void setSpannableSpan(SpannableString ssb, int startIndex, int endIndex,
             int size) {
         setAbsoluteSizeSpan(ssb, startIndex, endIndex, size);

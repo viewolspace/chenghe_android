@@ -79,7 +79,8 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
     RelativeLayout rlDetail3;
     @BindView(R.id.tv_apply)
     TextView tvApply;
-
+    @BindView(R.id.iv_verify)
+    ImageView iv_verify;
     private int id;
     private JobDetailBean jobDetailBean;
     public static void start(Context context, int id) {
@@ -171,7 +172,11 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
         }else if (resultBean.getContactType() == Constants.CONTACT_PHONE){
             tvCopy.setText("点击复制联系方式 电话："+resultBean.getContact());
         }
-
+        if (resultBean.getVerify()==1){
+            iv_verify.setVisibility(View.VISIBLE);
+        }else {
+            iv_verify.setVisibility(View.GONE);
+        }
         tvJobTitle.setText(resultBean.getTitle());
         String time = String.format(Locale.ENGLISH,"更新时间：%s"
                 ,DateUtil.getDateToString(resultBean.getCTime(),"yyyy-MM-dd"));

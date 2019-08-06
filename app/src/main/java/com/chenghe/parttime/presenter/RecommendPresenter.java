@@ -38,7 +38,7 @@ public class RecommendPresenter extends BasePresenter<RecommendContract.View> im
         if (refresh){
             pageIndex =1;
             Observable.zip(api.getAd(Constants.AD_RECOMMEND_HOT),
-                    api.queryRecommend(1, pageIndex, pageSize), (commonAdBean, recommendBean) -> {
+                    api.queryRecommend(2, pageIndex, pageSize), (commonAdBean, recommendBean) -> {
                         List<BaseRecyclerAdapter.RecyclerItem> recyclerItems = new ArrayList<>();
                         if (commonAdBean!=null&&commonAdBean.getResult()!=null&&commonAdBean.getResult().size()>0){
                             recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(RecommendAdapter.TOP_BANNER,commonAdBean));

@@ -1,5 +1,6 @@
 package com.chenghe.parttime.adapter;
 
+import android.text.SpannableString;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -12,6 +13,7 @@ import com.chenghe.base.bean.CommonAdBean;
 import com.chenghe.base.bean.RecommendBean;
 import com.chenghe.parttime.R;
 import com.chenghe.parttime.activity.JobDetailActivity;
+import com.chenghe.parttime.utils.StringUtil;
 import com.chenghe.parttime.utils.WebLinkToNativePageUtil;
 import com.chenghe.parttime.view.GlideImageLoader;
 import com.youth.banner.Banner;
@@ -148,7 +150,15 @@ public class RecommendAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Re
         @Override
         protected void onBind(RecyclerItem recyclerItem) {
             RecommendBean.ResultBean recommendBean = (RecommendBean.ResultBean) recyclerItem.data;
-            tv_job_title.setText(recommendBean.getTitle());
+            if (recommendBean.getTitle()!=null&&recommendBean.getTitle().length()>0){
+                if (recommendBean.getVerify()==1){
+                    SpannableString spannableString = new SpannableString("   "+recommendBean.getTitle());
+                    StringUtil.addImageSpan(spannableString,0,1,R.drawable.verify_head,itemView.getContext());
+                    tv_job_title.setText(spannableString);
+                }else {
+                    tv_job_title.setText(recommendBean.getTitle());
+                }
+            }
             tv_job_money.setText(String.valueOf(recommendBean.getSalary()));
             tv_job_desc.setText(recommendBean.getLable().replaceAll(","," | "));
             if (recommendBean.getPic()==null||recommendBean.getPic().trim().isEmpty()){
