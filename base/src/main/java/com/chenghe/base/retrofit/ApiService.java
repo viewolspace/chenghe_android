@@ -5,6 +5,7 @@ import com.chenghe.base.bean.BaseBean;
 import com.chenghe.base.bean.CommonAdBean;
 import com.chenghe.base.bean.JobCommonBean;
 import com.chenghe.base.bean.JobDetailBean;
+import com.chenghe.base.bean.JoinPartTimeBean;
 import com.chenghe.base.bean.LoginBean;
 import com.chenghe.base.bean.PhoneCodeBean;
 import com.chenghe.base.bean.RecommendBean;
@@ -45,7 +46,7 @@ public interface ApiService {
     Observable<JobDetailBean> getJobDetail(@Query("id") int id);
 
     @GET("partTime/joinPartTime")
-    Observable<BaseBean> joinPartTime(@Query("id") int id);
+    Observable<JoinPartTimeBean> joinPartTime(@Query("id") int id);
 
     @GET("partTime/copyPartTime")
     Observable<BaseBean> copyPartTime(@Query("id")  int id);

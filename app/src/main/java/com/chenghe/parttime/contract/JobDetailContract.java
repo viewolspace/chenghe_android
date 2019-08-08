@@ -2,6 +2,7 @@ package com.chenghe.parttime.contract;
 
 import com.chenghe.base.base.BaseContract;
 import com.chenghe.base.bean.JobDetailBean;
+import com.chenghe.base.bean.JoinPartTimeBean;
 
 /**
  * @author : sklyand
@@ -21,7 +22,7 @@ public interface JobDetailContract {
 
         void refreshList(JobDetailBean jobDetailBean);
 
-        void refreshApply(String isJoin);
+        void refreshApply(JoinPartTimeBean joinPartTimeBean);
 
 
     }

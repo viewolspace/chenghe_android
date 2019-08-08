@@ -45,11 +45,11 @@ public class HomePresenter extends BasePresenter<HomeContract.View> implements H
                         List<BaseRecyclerAdapter.RecyclerItem> recyclerItems = new ArrayList<>();
                         if (commonAdBean!=null&&commonAdBean.getResult()!=null&&commonAdBean.getResult().size()>0){
                             recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(HomeAdapter.HOME_TOP,commonAdBean));
-                            recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(HomeAdapter.HOME_TITLE,"热门活动"));
+                            recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(HomeAdapter.HOME_TITLE,"热门"));
                         }
                         if (commonAdBean2!=null&&commonAdBean2.getResult()!=null&&commonAdBean2.getResult().size()>0){
                             recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(HomeAdapter.HOME_HOT,commonAdBean2));
-                            recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(HomeAdapter.HOME_TITLE,"热门推荐"));
+                            recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(HomeAdapter.HOME_TITLE,"推荐"));
                         }
                         if (recommendBean!=null&&recommendBean.getResult()!=null&&recommendBean.getResult().size()>0){
                             for (RecommendBean.ResultBean resultBean:recommendBean.getResult()){

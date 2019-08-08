@@ -174,14 +174,14 @@ public class LoginActivity extends BaseMvpActivity<LoginContract.Presenter> impl
     @Override
     public void onLoginSuccess() {
 //       MainActivity.start(LoginActivity.this);
-        ToastUtils.showShortToast("登陆成功");
+        ToastUtils.showShortToast("登录成功");
         finish();
        // ARouter.getInstance().build(RoutMap.ACTIVITY_MAIN).navigation();
     }
 
     @Override
     public void onLoginFaild(String message) {
-        ToastUtils.showShortToast("登陆失败:"+message);
+        ToastUtils.showShortToast("登录失败:"+message);
     }
 
 }

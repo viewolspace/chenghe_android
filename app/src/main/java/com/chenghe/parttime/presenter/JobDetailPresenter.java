@@ -52,11 +52,8 @@ public class JobDetailPresenter extends BasePresenter<JobDetailContract.View> im
                 .compose(RxUtils.rxSchedulerHelper())
                 .compose(mProvider.bindToLifecycle())
                 .subscribe(baseBean -> {
-                    String apply = "0";
-                    if ("0000".equals(baseBean.getStatus())){
-                        apply = "1";
-                    }
-                    view.refreshApply(apply);
+
+                    view.refreshApply(baseBean);
                 }, new RxThrowableConsumer());
     }
 

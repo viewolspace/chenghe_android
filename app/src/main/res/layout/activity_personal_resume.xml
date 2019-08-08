@@ -169,7 +169,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/et_tv_work_exp"
                         android:layout_marginTop="35dp"
-                        android:text="自我介绍"
+                        android:text="微信（QQ）"
                         android:textColor="@color/color_0d0d0d"
                         android:textSize="16sp" />
                     <EditText
@@ -178,7 +178,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="11dp"
-                        android:minHeight="119dp"
+                        android:minHeight="30dp"
                         android:gravity="top"
                         android:background="#fff6f6f6"/>
                     <TextView

@@ -1,5 +1,6 @@
 package com.chenghe.parttime.view.dilaog;
 
+import android.app.Person;
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.Context;
@@ -13,6 +14,8 @@ import com.chenghe.base.constants.Constants;
 import com.chenghe.base.dialog.BaseDialog;
 import com.chenghe.base.util.ToastUtils;
 import com.chenghe.parttime.R;
+import com.chenghe.parttime.activity.JoinPartTimeActivity;
+import com.chenghe.parttime.activity.PersonalResumeActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -30,9 +33,18 @@ public class CopyContactDialog extends BaseDialog {
 
     private int contactType;
     private String contact;
+    private int  flag;
 
     public CopyContactDialog(Context context) {
         super(context);
+    }
+
+    public CopyContactDialog(Context context, int contactType, String contact, int flag) {
+        super(context);
+        this.contactType = contactType;
+        this.contact = contact;
+        this.flag = flag;
+        refreshData();
     }
 
     @Override
@@ -42,25 +54,31 @@ public class CopyContactDialog extends BaseDialog {
 
     @Override
     protected void initView(View root) {
-        if (contactType == Constants.CONTACT_QQ){
-            tvCopy.setText("前往QQ添加>");
-            tvTitle.setText("已复制QQ号");
-        }else if (contactType == Constants.CONTACT_WECHAT){
-            tvCopy.setText("前往微信添加>");
-            tvTitle.setText("已复制微信号");
-        }else if (contactType == Constants.CONTACT_PHONE){
-            tvTitle.setText("已复制电话");
-            tvCopy.setText("拨打电话>");
+
+
+
+    }
+
+
+    private void refreshData(){
+        if (contact==null||contact.trim().isEmpty()){
+            if (flag==1){
+                tvCopy.setText("前往完善简历>");
+                tvTitle.setText("您的简历还未完善");
+            }
+        }else {
+            if (contactType == Constants.CONTACT_QQ){
+                tvCopy.setText("前往QQ添加>");
+                tvTitle.setText("已复制QQ号");
+            }else if (contactType == Constants.CONTACT_WECHAT){
+                tvCopy.setText("前往微信添加>");
+                tvTitle.setText("已复制微信号");
+            }else if (contactType == Constants.CONTACT_PHONE){
+                tvTitle.setText("已复制电话");
+                tvCopy.setText("拨打电话>");
+            }
         }
-
     }
-
-    public void show(int contactType,String contact){
-        this.contactType = contactType;
-        this.contact = contact;
-        show();
-    }
-
     @OnClick({R.id.iv_close, R.id.tv_copy})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -68,13 +86,20 @@ public class CopyContactDialog extends BaseDialog {
                 dismiss();
                 break;
             case R.id.tv_copy:
-                if (contactType == Constants.CONTACT_QQ){
-                    joinQQ(getContext(),contact);
-                }else if (contactType == Constants.CONTACT_WECHAT){
-                    goWeChatApi(getContext());
-                }else if (contactType == Constants.CONTACT_PHONE){
-                    callPhone(getContext(),contact);
+                if (contact==null||contact.trim().isEmpty()){
+                    if (flag==1){
+                        PersonalResumeActivity.start(getContext());
+                    }
+                }else {
+                    if (contactType == Constants.CONTACT_QQ){
+                        joinQQ(getContext(),contact);
+                    }else if (contactType == Constants.CONTACT_WECHAT){
+                        goWeChatApi(getContext());
+                    }else if (contactType == Constants.CONTACT_PHONE){
+                        callPhone(getContext(),contact);
+                    }
                 }
+
 
                 dismiss();
                 break;

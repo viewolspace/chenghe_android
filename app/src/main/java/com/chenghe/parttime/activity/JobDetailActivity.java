@@ -16,7 +16,9 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.request.RequestOptions;
 import com.chenghe.base.base.BaseMvpActivity;
 import com.chenghe.base.bean.JobDetailBean;
+import com.chenghe.base.bean.JoinPartTimeBean;
 import com.chenghe.base.constants.Constants;
+import com.chenghe.base.util.ToastUtils;
 import com.chenghe.base.util.UserInfoUtil;
 import com.chenghe.parttime.R;
 import com.chenghe.parttime.contract.JobDetailContract;
@@ -123,11 +125,6 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
             case R.id.tv_apply:
                 if ( UserInfoUtil.getInstance().isLogin()){
                     presenter.apply(id);
-                    if (jobDetailBean!=null&&jobDetailBean.getResult()!=null){
-                        CopyContactDialog copyContactDialog = new CopyContactDialog(JobDetailActivity.this);
-                        copyContactDialog.show(jobDetailBean.getResult().getContactType(),
-                                jobDetailBean.getResult().getContact());
-                    }
                 }else {
                     LoginActivity.start(JobDetailActivity.this);
                 }
@@ -138,9 +135,9 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
                 if ( UserInfoUtil.getInstance().isLogin()){
                     presenter.copyRecord(id);
                     if (jobDetailBean!=null&&jobDetailBean.getResult()!=null){
-                        CopyContactDialog copyContactDialog = new CopyContactDialog(JobDetailActivity.this);
-                        copyContactDialog.show(jobDetailBean.getResult().getContactType(),
-                                jobDetailBean.getResult().getContact());
+                        CopyContactDialog copyContactDialog = new CopyContactDialog(JobDetailActivity.this,jobDetailBean.getResult().getContactType(),
+                                jobDetailBean.getResult().getContact(),1);
+                        copyContactDialog.show();
                     }
                 }else {
                     LoginActivity.start(JobDetailActivity.this);
@@ -160,7 +157,14 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
             return;
         }
         this.jobDetailBean = jobDetailBean;
-        refreshApply(jobDetailBean.getIsJoin());
+        if ("1".equals(jobDetailBean.getIsJoin())) {
+            tvApply.setText("已报名");
+            tvApply.setBackgroundColor(getResources().getColor(R.color.color_B2B2B2));
+            tvApply.setEnabled(false);
+        } else {
+            tvApply.setText("报名参加");
+            tvApply.setBackgroundResource(R.drawable.shape_apply_bg);
+        }
         JobDetailBean.ResultBean resultBean = jobDetailBean.getResult();
         if (resultBean == null) {
             return;
@@ -171,6 +175,11 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
             tvCopy.setText("点击复制联系方式 微信："+resultBean.getContact());
         }else if (resultBean.getContactType() == Constants.CONTACT_PHONE){
             tvCopy.setText("点击复制联系方式 电话："+resultBean.getContact());
+        }
+        if (resultBean.getContact()==null||resultBean.getContact().trim().isEmpty()){
+            tvCopy.setVisibility(View.GONE);
+        }else {
+            tvCopy.setVisibility(View.VISIBLE);
         }
         if (resultBean.getVerify()==1){
             iv_verify.setVisibility(View.VISIBLE);
@@ -252,11 +261,27 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
     }
 
     @Override
-    public void refreshApply(String isJoin) {
-        if ("1".equals(isJoin)) {
+    public void refreshApply(JoinPartTimeBean joinPartTimeBean) {
+        if ("0000".equals(joinPartTimeBean.getStatus())) {
             tvApply.setText("已报名");
             tvApply.setBackgroundColor(getResources().getColor(R.color.color_B2B2B2));
             tvApply.setEnabled(false);
+            if (jobDetailBean!=null&&jobDetailBean.getResult()!=null){
+                if (jobDetailBean.getResult().getContact()==null||jobDetailBean.getResult().getContact().trim().isEmpty()){
+                    if (joinPartTimeBean.getFlag()==1){
+                        CopyContactDialog copyContactDialog = new CopyContactDialog(JobDetailActivity.this,jobDetailBean.getResult().getContactType(),
+                                jobDetailBean.getResult().getContact(),joinPartTimeBean.getFlag());
+                        copyContactDialog.show();
+                    }else {
+                        ToastUtils.showShortToast("报名成功");
+                    }
+                }else {
+                    CopyContactDialog copyContactDialog = new CopyContactDialog(JobDetailActivity.this,jobDetailBean.getResult().getContactType(),
+                            jobDetailBean.getResult().getContact(),joinPartTimeBean.getFlag());
+                    copyContactDialog.show();
+                }
+
+            }
         } else {
             tvApply.setText("报名参加");
             tvApply.setBackgroundResource(R.drawable.shape_apply_bg);
