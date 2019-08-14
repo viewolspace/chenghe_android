@@ -20,6 +20,7 @@ android {
         manifestPlaceholders = [UMENG_CHANNEL: "PARTTIME"]
         // dex突破65535的限制
         multiDexEnabled true
+        //版本名后面添加一句话，意思就是flavor dimension 它的维度就是该版本号，这样维度就是都是统一的了
         flavorDimensions "1"
         ndk {
             //APP的build.gradle设置支持的SO库架构
@@ -65,17 +66,19 @@ android {
             shrinkResources true
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-//            applicationVariants.all { variant ->
-//                variant.outputs.all {
-//                    // 输出apk名称为app_kuan_v1.0_2015.01.15.apk
-//                    outputFileName = "app_${variant.productFlavors[0].name}_v${variant.versionName}_${BuildTime()}.apk"
-//                }
-//            }
         }
         debug {
             signingConfig signingConfigs.config
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        applicationVariants.all { variant ->
+
+            variant.getPackageApplication().outputScope.apkDatas.forEach { apkData ->
+                // 使用Android Studio打包的文件路径
+                apkData.outputFileName = "PARTTIME_${variant.buildType.name}_${variant.productFlavors[0].name}_v${defaultConfig.versionName}_${BuildTime()}.apk"
+            }
+
         }
     }
 
