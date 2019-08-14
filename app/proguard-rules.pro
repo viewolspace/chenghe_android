@@ -204,3 +204,15 @@
 -keepclasseswithmembers class * {
     public <init>(android.content.Context, android.util.AttributeSet, int);     # 保持自定义控件类不被混淆
 }
+# 友盟
+-keep class com.umeng.** {*;}
+-keepclassmembers class * {
+    public <init> (org.json.JSONObject);
+}
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+-keep public class com.chenghe.parttime.R$*{
+public static final int *;
+}

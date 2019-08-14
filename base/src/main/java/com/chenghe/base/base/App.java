@@ -39,6 +39,7 @@ public class App extends MultiDexApplication {
             ARouter.openDebug();
         }
         ARouter.init(this);
+
     }
 
     public static App getInstant(){
