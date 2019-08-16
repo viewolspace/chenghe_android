@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+
 def static BuildTime() {
     return new Date().format("yyyyMMdd", TimeZone.getTimeZone("GMT+8"))
 }
@@ -49,9 +50,9 @@ android {
         }
     }
     //执行lint检查，有任何的错误或者警告提示，都会终止构建，我们可以将其关掉。
-//    lintOptions {
-//        abortOnError false
-//    }
+    lintOptions {
+        abortOnError false
+    }
     signingConfigs {
         config {
             keyAlias keystoreProperties['keyAlias']
@@ -68,86 +69,117 @@ android {
             shrinkResources true
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
         }
         debug {
             signingConfig signingConfigs.config
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-        applicationVariants.all { variant ->
 
+        applicationVariants.all { variant ->
+            variant.productFlavors[0]
             variant.getPackageApplicationProvider().get().outputScope.apkDatas.forEach { apkData ->
                 // 使用Android Studio打包的文件路径
-
-                variant.getPackageApplicationProvider().get().outputDirectory = new File("${buildDir}/outputs/apk/${variant.buildType.name}/jianzhi_${BuildTime()}")
-                apkData.outputFileName = "PARTTIME_${variant.buildType.name}_${variant.productFlavors[0].name}_v${defaultConfig.versionName}_${BuildTime()}.apk"
+                //改变apk生成的路劲
+                //variant.getPackageApplicationProvider().get().outputDirectory = new File("${buildDir}/outputs/apk/${variant.buildType.name}/jianzhi_${BuildTime()}")
+               // apkData.outputFileName = "PARTTIME_${variant.buildType.name}_${variant.productFlavors[0].name}_v${defaultConfig.versionName}_${BuildTime()}.apk"
+                apkData.outputFileName = "Jianzhi_${variant.name}_v${variant.versionName}_${BuildTime()}.apk"
             }
 
         }
     }
-
-    /*配置渠道*/
-    productFlavors {
-        parttime {//官方渠道
-        }
-        xiaomi {//投放小米市场
-        }
-        yingyongbao{//应用宝
-        }
-        qihu360 {//360手机助手
-        }
-        wandoujia {//投放豌豆荚市场
-        }
-
-        baidu {//投放百度市场
-        }
-        huawei {//投放华为应用市场
-        }
-        vivo {//投放vivo市场
-        }
-        oppo {//投放oppo市场
-        }
-        sumsang {//三星
-        }
-        meizu {//投放魅族市场
-        }
-
-        lenovo {//投放联想市场
-        }
-
-        sougou {//搜狗手机助手
-        }
-        zhongguoyidong {//中国移动
-        }
-        anzhi {//安智
-        }
-        jinli {//金立易用汇
-        }
-        letv {//乐视
-        }
-        chuizi {//锤子
-        }
-        juchuang {//聚传
-        }
-
-        jifengwang {//机锋网
-        }
-        yingyonghui {//应用汇
-        }
-        GoogleMarket {//谷歌市场
-        }
-        mumayi {//木蚂蚁
-        }
-        Nduohui {//N多汇
-        }
-        xiaomixinxiliu {//小米信息流
-        }
-        yingyongbaoCPD {//应用宝cpd后台
+    project.afterEvaluate {
+        android.applicationVariants.all { variant ->
+            if (variant.buildType.name == 'release') {
+                // find assemble task first
+                def taskName = variant.name
+                def assembleTask = project.tasks.findByName("assemble${taskName.capitalize()}")
+                if (assembleTask == null) {
+                    println "assembleTask not found, just return"
+                    return
+                }
+                assembleTask.doLast {
+                    def apkPath = "${buildDir}/outputs/apk/${taskName}/Jianzhi_${variant.name}_v${variant.versionName}_${BuildTime()}.apk"
+                    def outPath = "${buildDir}/outputs/apk/${taskName}/jiagu_${BuildTime()}"
+                    def outApkPath = file(outPath)
+                    def apk = file(apkPath)
+                    println apkPath
+                    if (apk.exists()) {
+                        println 'find need jiagu apk:' + apkPath
+                        exec {
+                            ignoreExitValue true
+                            commandLine "${rootDir}/jiagu/jiagu.bat", apkPath, outApkPath, "1"
+                        }
+                    }else {
+                        println 'apk not exists:' + apkPath
+                    }
+                }
+            }
         }
     }
-    productFlavors.all {
-        flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
-    }
+//    /*配置渠道*/
+//    productFlavors {
+//        parttime {//官方渠道
+//        }
+//        xiaomi {//投放小米市场
+//        }
+//        yingyongbao{//应用宝
+//        }
+//        qihu360 {//360手机助手
+//        }
+//        wandoujia {//投放豌豆荚市场
+//        }
+//
+//        baidu {//投放百度市场
+//        }
+//        huawei {//投放华为应用市场
+//        }
+//        vivo {//投放vivo市场
+//        }
+//        oppo {//投放oppo市场
+//        }
+//        sumsang {//三星
+//        }
+//        meizu {//投放魅族市场
+//        }
+//
+//        lenovo {//投放联想市场
+//        }
+//
+//        sougou {//搜狗手机助手
+//        }
+//        zhongguoyidong {//中国移动
+//        }
+//        anzhi {//安智
+//        }
+//        jinli {//金立易用汇
+//        }
+//        letv {//乐视
+//        }
+//        chuizi {//锤子
+//        }
+//        juchuang {//聚传
+//        }
+//
+//        jifengwang {//机锋网
+//        }
+//        yingyonghui {//应用汇
+//        }
+//        GoogleMarket {//谷歌市场
+//        }
+//        mumayi {//木蚂蚁
+//        }
+//        Nduohui {//N多汇
+//        }
+//        xiaomixinxiliu {//小米信息流
+//        }
+//        yingyongbaoCPD {//应用宝cpd后台
+//        }
+//    }
+//    productFlavors.all {
+//        flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL: name]
+//    }
 }
 
 dependencies {
