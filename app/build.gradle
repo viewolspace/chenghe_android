@@ -58,6 +58,8 @@ android {
             keyPassword keystoreProperties['keyPassword']
             storeFile file(keystoreProperties['storeFile'])
             storePassword keystoreProperties['storePassword']
+            v1SigningEnabled true
+            v2SigningEnabled true
         }
     }
     buildTypes {
@@ -77,7 +79,7 @@ android {
             variant.getPackageApplicationProvider().get().outputScope.apkDatas.forEach { apkData ->
                 // 使用Android Studio打包的文件路径
 
-                variant.getPackageApplicationProvider().get().outputDirectory = new File("${buildDir}/outputs/apk/${variant.buildType.name}/all")
+                variant.getPackageApplicationProvider().get().outputDirectory = new File("${buildDir}/outputs/apk/${variant.buildType.name}/jianzhi_${BuildTime()}")
                 apkData.outputFileName = "PARTTIME_${variant.buildType.name}_${variant.productFlavors[0].name}_v${defaultConfig.versionName}_${BuildTime()}.apk"
             }
 
@@ -86,32 +88,61 @@ android {
 
     /*配置渠道*/
     productFlavors {
-        PARTTIME {//官方渠道
+        parttime {//官方渠道
+        }
+        xiaomi {//投放小米市场
+        }
+        yingyongbao{//应用宝
+        }
+        qihu360 {//360手机助手
+        }
+        wandoujia {//投放豌豆荚市场
+        }
 
+        baidu {//投放百度市场
         }
-        Tencent {//投放应用宝市场
+        huawei {//投放华为应用市场
         }
-        Baidu {//投放百度市场
+        vivo {//投放vivo市场
         }
-        Wandoujia {//投放豌豆荚市场
+        oppo {//投放oppo市场
         }
-        Vivo {//投放vivo市场
+        sumsang {//三星
         }
-        Oppo {//投放oppo市场
+        meizu {//投放魅族市场
         }
-        Xiaomi {//投放小米市场
+
+        lenovo {//投放联想市场
         }
-        Meizu {//投放魅族市场
+
+        sougou {//搜狗手机助手
         }
-        Huawei {//投放华为应用市场
+        zhongguoyidong {//中国移动
         }
-        Lenovo {//投放联想市场
+        anzhi {//安智
         }
-        Letv {//投放乐视市场
+        jinli {//金立易用汇
         }
-        Gionee {//投放金立市场
+        letv {//乐视
         }
-        HiMarket {//投放安卓市场
+        chuizi {//锤子
+        }
+        juchuang {//聚传
+        }
+
+        jifengwang {//机锋网
+        }
+        yingyonghui {//应用汇
+        }
+        GoogleMarket {//谷歌市场
+        }
+        mumayi {//木蚂蚁
+        }
+        Nduohui {//N多汇
+        }
+        xiaomixinxiliu {//小米信息流
+        }
+        yingyongbaoCPD {//应用宝cpd后台
         }
     }
     productFlavors.all {
