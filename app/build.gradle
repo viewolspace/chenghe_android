@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply from: "pack.gradle"
 
 def static BuildTime() {
     return new Date().format("yyyyMMdd", TimeZone.getTimeZone("GMT+8"))
@@ -89,35 +90,35 @@ android {
 
         }
     }
-    project.afterEvaluate {
-        android.applicationVariants.all { variant ->
-            if (variant.buildType.name == 'release') {
-                // find assemble task first
-                def taskName = variant.name
-                def assembleTask = project.tasks.findByName("assemble${taskName.capitalize()}")
-                if (assembleTask == null) {
-                    println "assembleTask not found, just return"
-                    return
-                }
-                assembleTask.doLast {
-                    def apkPath = "${buildDir}/outputs/apk/${taskName}/Jianzhi_${variant.name}_v${variant.versionName}_${BuildTime()}.apk"
-                    def outPath = "${buildDir}/outputs/apk/${taskName}/jiagu_${BuildTime()}"
-                    def outApkPath = file(outPath)
-                    def apk = file(apkPath)
-                    println apkPath
-                    if (apk.exists()) {
-                        println 'find need jiagu apk:' + apkPath
-                        exec {
-                            ignoreExitValue true
-                            commandLine "${rootDir}/jiagu/jiagu.bat", apkPath, outApkPath, "1"
-                        }
-                    }else {
-                        println 'apk not exists:' + apkPath
-                    }
-                }
-            }
-        }
-    }
+//    project.afterEvaluate {
+//        android.applicationVariants.all { variant ->
+//            if (variant.buildType.name == 'release') {
+//                // find assemble task first
+//                def taskName = variant.name
+//                def assembleTask = project.tasks.findByName("assemble${taskName.capitalize()}")
+//                if (assembleTask == null) {
+//                    println "assembleTask not found, just return"
+//                    return
+//                }
+//                assembleTask.doLast {
+//                    def apkPath = "${buildDir}/outputs/apk/${taskName}/Jianzhi_${variant.name}_v${variant.versionName}_${BuildTime()}.apk"
+//                    def outPath = "${buildDir}/outputs/apk/${taskName}/jiagu_${BuildTime()}"
+//                    def outApkPath = file(outPath)
+//                    def apk = file(apkPath)
+//                    println apkPath
+//                    if (apk.exists()) {
+//                        println 'find need jiagu apk:' + apkPath
+//                        exec {
+//                            ignoreExitValue true
+//                            commandLine "${rootDir}/jiagu/jiagu.bat", apkPath, outApkPath, "1"
+//                        }
+//                    }else {
+//                        println 'apk not exists:' + apkPath
+//                    }
+//                }
+//            }
+//        }
+//    }
 //    /*配置渠道*/
 //    productFlavors {
 //        parttime {//官方渠道
