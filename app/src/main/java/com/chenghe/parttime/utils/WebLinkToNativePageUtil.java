@@ -12,7 +12,7 @@ import com.chenghe.parttime.activity.WebActivity;
  */
 public class WebLinkToNativePageUtil {
 
-    public static void dealWithUrl(Context context , String url){
+    public static void dealWithUrl(Context context , String url,int adId){
         if (StringUtil.isEmpty(url)) {
             return ;
         }
@@ -21,6 +21,7 @@ public class WebLinkToNativePageUtil {
         if (path == null) {
             return ;
         }
+        CommonUtil.adState(String.valueOf(adId));
         if (url.startsWith("http://")|| url.startsWith("https://")){
             WebActivity.start(context,url);
         }else if (url.startsWith("jzq://")){
@@ -29,7 +30,6 @@ public class WebLinkToNativePageUtil {
                 if (id!=null){
                     try {
                         JobDetailActivity.start(context,Integer.valueOf(id));
-                        CommonUtil.adState(id);
                     }catch (Exception e){
 
                     }

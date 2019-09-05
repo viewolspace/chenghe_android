@@ -91,7 +91,7 @@ public class AllAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Recycler
                         @Override
                         public void onClick(View v) {
                             WebLinkToNativePageUtil.dealWithUrl(itemView.getContext(),
-                                    commonAdBean.getResult().get(0).getUrl());
+                                    commonAdBean.getResult().get(0).getUrl(),commonAdBean.getResult().get(0).getId());
                         }
                     });
                 }
@@ -102,7 +102,7 @@ public class AllAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Recycler
                         @Override
                         public void onClick(View v) {
                             WebLinkToNativePageUtil.dealWithUrl(itemView.getContext(),
-                                    commonAdBean.getResult().get(1).getUrl());
+                                    commonAdBean.getResult().get(1).getUrl(),commonAdBean.getResult().get(1).getId());
                         }
                     });
                 }
@@ -113,7 +113,7 @@ public class AllAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Recycler
                         @Override
                         public void onClick(View v) {
                             WebLinkToNativePageUtil.dealWithUrl(itemView.getContext(),
-                                    commonAdBean.getResult().get(2).getUrl());
+                                    commonAdBean.getResult().get(2).getUrl(),commonAdBean.getResult().get(2).getId());
                         }
                     });
                 }
@@ -152,7 +152,7 @@ public class AllAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Recycler
                 @Override
                 public void OnBannerClick(int position) {
                     WebLinkToNativePageUtil.dealWithUrl(itemView.getContext(),
-                            commonAdBean.getResult().get(position).getUrl());
+                            commonAdBean.getResult().get(position).getUrl(),commonAdBean.getResult().get(position).getId());
                 }
             });
         }

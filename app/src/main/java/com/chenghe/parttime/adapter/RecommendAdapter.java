@@ -92,7 +92,7 @@ public class RecommendAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Re
                 @Override
                 public void OnBannerClick(int position) {
                     WebLinkToNativePageUtil.dealWithUrl(itemView.getContext(),
-                            commonAdBean.getResult().get(position).getUrl());
+                            commonAdBean.getResult().get(position).getUrl(),commonAdBean.getResult().get(position).getId());
                 }
             });
         }

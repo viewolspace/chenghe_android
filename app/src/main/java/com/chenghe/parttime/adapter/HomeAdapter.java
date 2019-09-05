@@ -86,7 +86,7 @@ public class HomeAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Recycle
                         @Override
                         public void onClick(View v) {
                             WebLinkToNativePageUtil.dealWithUrl(itemView.getContext(),
-                                    commonAdBean.getResult().get(0).getUrl());
+                                    commonAdBean.getResult().get(0).getUrl(),commonAdBean.getResult().get(0).getId());
                         }
                     });
                 }
@@ -97,7 +97,7 @@ public class HomeAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Recycle
                         @Override
                         public void onClick(View v) {
                             WebLinkToNativePageUtil.dealWithUrl(itemView.getContext(),
-                                    commonAdBean.getResult().get(1).getUrl());
+                                    commonAdBean.getResult().get(1).getUrl(),commonAdBean.getResult().get(1).getId());
                         }
                     });
                 }
@@ -108,7 +108,7 @@ public class HomeAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Recycle
                         @Override
                         public void onClick(View v) {
                             WebLinkToNativePageUtil.dealWithUrl(itemView.getContext(),
-                                    commonAdBean.getResult().get(2).getUrl());
+                                    commonAdBean.getResult().get(2).getUrl(),commonAdBean.getResult().get(2).getId());
                         }
                     });
                 }

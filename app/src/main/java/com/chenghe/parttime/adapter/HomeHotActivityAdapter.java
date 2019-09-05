@@ -43,7 +43,7 @@ public class HomeHotActivityAdapter extends BaseRecyclerAdapter<CommonAdBean.Res
                 @Override
                 public void onClick(View v) {
                     WebLinkToNativePageUtil.dealWithUrl(itemView.getContext(),
-                            resultBean.getUrl());
+                            resultBean.getUrl(),resultBean.getId());
                 }
             });
             Glide.with(itemView.getContext()).load(resultBean.getImageUrl()).into(iv_ad);
