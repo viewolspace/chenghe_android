@@ -20,6 +20,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
+import retrofit2.http.QueryMap;
 
 /**
  * @author : sklyand
@@ -83,7 +84,7 @@ public interface ApiService {
     @POST("user/updateNickName")
     Observable<JobCommonBean> updateNickName(@FieldMap HashMap<String, String> data);
 
-    @FormUrlEncoded
+
     @POST("ad/adStat")
-    Observable<BaseBean> adStat(@FieldMap HashMap<String, String> data);
+    Observable<BaseBean> adStat(@QueryMap HashMap<String, String> data);
 }
