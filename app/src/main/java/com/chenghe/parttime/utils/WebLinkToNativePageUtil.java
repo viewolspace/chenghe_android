@@ -29,6 +29,7 @@ public class WebLinkToNativePageUtil {
                 if (id!=null){
                     try {
                         JobDetailActivity.start(context,Integer.valueOf(id));
+                        CommonUtil.adState(id);
                     }catch (Exception e){
 
                     }

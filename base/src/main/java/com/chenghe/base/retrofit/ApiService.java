@@ -83,4 +83,7 @@ public interface ApiService {
     @POST("user/updateNickName")
     Observable<JobCommonBean> updateNickName(@FieldMap HashMap<String, String> data);
 
+    @FormUrlEncoded
+    @POST("ad/adStat")
+    Observable<BaseBean> adStat(@FieldMap HashMap<String, String> data);
 }
