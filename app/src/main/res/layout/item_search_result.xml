@@ -2,43 +2,46 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="wrap_content"
     android:paddingLeft="14dp"
-    android:paddingRight="14dp"
-    android:minHeight="75dp"
+    android:minHeight="117dp"
     android:background="@drawable/recyclerview_touch_bg"
     >
 
     <TextView
         android:id="@+id/tv_job_title"
+        android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="103dp"
-        android:text="微信在线兼职，随时随地做，秒结"
         android:textColor="@color/color_2A2A2A"
-        android:textSize="16sp" />
-
+        android:textSize="17sp"
+        android:layout_marginRight="14dp"
+        android:text="微信在线兼职，随时随地做，秒结"/>
+    <TextView
+        android:id="@+id/tv_job_unit"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="14dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@id/tv_job_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_DB6D70"
+        android:textSize="11sp"
+        android:text="元/天"/>
     <TextView
         android:id="@+id/tv_job_money"
-        android:layout_alignBottom="@id/tv_job_title"
+        android:layout_marginTop="12dp"
+        android:layout_toLeftOf="@id/tv_job_unit"
+        android:layout_below="@id/tv_job_title"
         android:layout_width="wrap_content"
-        android:layout_alignParentRight="true"
         android:layout_height="wrap_content"
         android:textColor="@color/color_DB6D70"
         android:textSize="23sp"
         android:text="120"/>
-    <TextView
-        android:id="@+id/tv_job_unit"
-        android:layout_marginTop="10dp"
-        android:layout_below="@id/tv_job_money"
-        android:layout_alignParentRight="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/color_B8B7BA"
-        android:textSize="11sp"
-        android:text="元/天"/>
+
     <TextView
         android:id="@+id/tv_job_desc"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_below="@id/tv_job_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -53,9 +56,9 @@
         android:layout_height="45dp"
         android:layout_marginRight="6dp"
         android:layout_marginTop="14dp"
+        android:visibility="gone"
         android:src="@drawable/go_detail_button"
-        android:layout_alignParentRight="true"
-        android:visibility="gone"/>
+        android:layout_alignParentRight="true"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -65,11 +68,11 @@
         android:background="@color/divider"/>
     <ImageView
         android:id="@+id/iv_verify"
-        android:layout_width="45dp"
-        android:layout_height="40dp"
-        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_job_title"
         android:src="@drawable/verify_big"
-        android:layout_marginRight="60dp"
-        android:visibility="visible"
-        android:layout_marginTop="27dp"/>
+        android:layout_marginLeft="164dp"
+        android:visibility="gone"
+        android:layout_marginTop="13dp"/>
 </RelativeLayout>

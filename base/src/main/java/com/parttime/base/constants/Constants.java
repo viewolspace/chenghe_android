@@ -6,13 +6,13 @@ package com.parttime.base.constants;
 public class Constants {
     public static final String USER_INFO = "user_info";
 
-    public static final String AD_HOME_TOP = "000000020001";
+    public static final String AD_HOME_TOP = "000000020007";
 
-    public static final String AD_HOME_HOT = "000000020002";
+    public static final String AD_HOME_HOT = "000000020006";
 
     public static final String AD_RECOMMEND_HOT = "000000020003";
 
-    public static final String AD_ALL_TOP = "000000020004";
+    public static final String AD_ALL_TOP = "000000020008";
 
     public static final String AD_ALL_HOT = "000000020005";
 

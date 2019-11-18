@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 
 import com.parttime.base.base.BasePresenter;
 import com.parttime.base.base.BaseRecyclerAdapter;
+import com.parttime.base.bean.CommonAdBean;
 import com.parttime.base.bean.RecommendBean;
 import com.parttime.base.constants.Constants;
 import com.parttime.base.rx.RxThrowableConsumer;
@@ -39,16 +40,17 @@ public class AllPresenter extends BasePresenter<AllContract.View> implements All
         if (refresh){
             pageIndex=1;
             Observable.zip(api.getAd(Constants.AD_ALL_TOP)
-                    , api.getAd(Constants.AD_ALL_HOT),
-                    api.queryAll("", pageIndex, pageSize),
-                    (commonAdBean, commonAdBean2, recommendBean) -> {
+                    , api.queryAll("", pageIndex, pageSize),
+                    (commonAdBean, recommendBean) -> {
                         List<BaseRecyclerAdapter.RecyclerItem> recyclerItems = new ArrayList<>();
+                        //recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(AllAdapter.TOP,new CommonAdBean()));
+
                         if (commonAdBean!=null&&commonAdBean.getResult()!=null&&commonAdBean.getResult().size()>0){
                             recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(AllAdapter.TOP,commonAdBean));
                         }
-                        if (commonAdBean2!=null&&commonAdBean2.getResult()!=null&&commonAdBean2.getResult().size()>0){
-                            recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(AllAdapter.BANNER,commonAdBean2));
-                        }
+//                        if (commonAdBean2!=null&&commonAdBean2.getResult()!=null&&commonAdBean2.getResult().size()>0){
+//                            recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(AllAdapter.BANNER,commonAdBean2));
+//                        }
                         if (recommendBean!=null&&recommendBean.getResult()!=null&&recommendBean.getResult().size()>0){
                             for (RecommendBean.ResultBean resultBean:recommendBean.getResult()){
                                 recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(AllAdapter.RECOMMEND,resultBean));

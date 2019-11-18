@@ -13,6 +13,8 @@ import com.parttime.base.bean.CommonAdBean;
 import com.parttime.base.bean.RecommendBean;
 import com.parttime.potato.R;
 import com.parttime.potato.activity.JobDetailActivity;
+import com.parttime.potato.adapter.holder.BannerHolder;
+import com.parttime.potato.adapter.holder.TopViewHolder;
 import com.parttime.potato.utils.WebLinkToNativePageUtil;
 
 import java.util.Locale;
@@ -36,7 +38,7 @@ public class HomeAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Recycle
             case HOME_TOP:
                 return R.layout.layout_home_top;
             case HOME_HOT:
-                return R.layout.layout_home_hot_activity;
+                return R.layout.item_recommend_banner;
             case HOME_RECOMMEND:
                 return R.layout.item_home_hot_recommend;
             case HOME_TITLE:
@@ -50,13 +52,15 @@ public class HomeAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Recycle
     protected ViewHolder<RecyclerItem> onCreateViewHolder(View root, ViewGroup parent, int viewType) {
         switch (viewType){
             case  R.layout.layout_home_top:
-                return new TopViewHolder(root);
+                return new com.parttime.potato.adapter.holder.TopViewHolder(root);
             case R.layout.layout_home_hot_activity:
                 return new HotViewHolder(root);
             case R.layout.item_home_hot_recommend:
                 return new RecommendViewHolder(root);
             case R.layout.item_home_title:
                 return new TitleViewHolder(root);
+            case  R.layout.item_recommend_banner:
+                return new BannerHolder(root);
         }
         return new RecommendViewHolder(root);
     }

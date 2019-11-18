@@ -4,6 +4,7 @@ import android.content.Context;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.parttime.potato.R;
 import com.youth.banner.loader.ImageLoader;
 
 /**

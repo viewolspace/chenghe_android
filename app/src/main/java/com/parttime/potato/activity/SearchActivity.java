@@ -171,7 +171,7 @@ public class SearchActivity extends BaseActivity implements OnRefreshListener, O
                 List<BaseRecyclerAdapter.RecyclerItem> recyclerItems = new ArrayList<>();
                 if (recommendBean != null && recommendBean.getResult() != null && recommendBean.getResult().size() > 0) {
                     for (RecommendBean.ResultBean resultBean : recommendBean.getResult()) {
-                        recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(AllAdapter.RECOMMEND, resultBean));
+                        recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(AllAdapter.SEARCH, resultBean));
                     }
                 }
                 if (recommendBean == null || recommendBean.getResult() == null || recommendBean.getResult().size() < pageSize) {

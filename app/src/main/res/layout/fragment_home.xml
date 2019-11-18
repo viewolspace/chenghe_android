@@ -11,7 +11,6 @@
        android:layout_height="wrap_content"
        android:layout_marginTop="26dp"
        android:layout_marginBottom="6dp"
-       android:layout_alignParentRight="true"
        android:orientation="horizontal"
        android:background="@drawable/home_search_bg"
        android:paddingLeft="18dp"
@@ -21,6 +20,11 @@
        android:gravity="center"
        android:layout_marginRight="14dp"
        android:layout_marginLeft="14dp">
+      <ImageView
+          android:layout_width="15dp"
+          android:layout_height="15dp"
+          android:layout_marginRight="16dp"
+          android:src="@drawable/home_search_icon"/>
       <TextView
           android:id="@+id/tv_search"
           android:layout_width="wrap_content"
@@ -29,11 +33,7 @@
           android:text="搜索"
           android:textColor="@color/color_939393"
           />
-      <ImageView
-          android:layout_width="15dp"
-          android:layout_height="15dp"
-          android:layout_marginLeft="16dp"
-          android:src="@drawable/home_search_icon"/>
+
    </LinearLayout>
    <com.scwang.smartrefresh.layout.SmartRefreshLayout
        android:layout_below="@id/rl_search"

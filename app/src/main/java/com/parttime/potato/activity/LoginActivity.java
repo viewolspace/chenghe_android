@@ -120,7 +120,7 @@ public class LoginActivity extends BaseMvpActivity<LoginContract.Presenter> impl
         });
     }
 
-    @OnClick({R.id.tv_login,R.id.tv_getcode,R.id.iv_close})
+    @OnClick({R.id.tv_login,R.id.tv_getcode,R.id.iv_close,R.id.tv_web1,R.id.tv_web2})
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.tv_login:
@@ -148,13 +148,19 @@ public class LoginActivity extends BaseMvpActivity<LoginContract.Presenter> impl
             case R.id.iv_close:
                 finish();
                 break;
+            case R.id.tv_web1:
+                WebActivity.start(LoginActivity.this,"http://www.chengheed.com/xy/tdjz_yhxy.htm");
+                break;
+            case R.id.tv_web2:
+                WebActivity.start(LoginActivity.this,"http://www.chengheed.com/xy/tdjz_yszc.htm");
+                break;
 
         }
     }
 
     private void setGetCode(boolean enable){
         if (enable){
-            tv_getcode.setTextColor(getResources().getColor(R.color.color_588FFE));
+            tv_getcode.setTextColor(getResources().getColor(R.color.color_F46B20));
             tv_getcode.setEnabled(true);
         }else {
             tv_getcode.setTextColor(getResources().getColor(R.color.color_B2B2B2));

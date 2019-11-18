@@ -1,4 +1,4 @@
-package com.chenghe.parttime;
+package com.parttime.potato;
 
 import org.junit.Test;
 

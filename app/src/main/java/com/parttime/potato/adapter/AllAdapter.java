@@ -12,6 +12,7 @@ import com.parttime.base.bean.CommonAdBean;
 import com.parttime.base.bean.RecommendBean;
 import com.parttime.potato.R;
 import com.parttime.potato.activity.JobDetailActivity;
+import com.parttime.potato.adapter.holder.RecommendViewHolder;
 import com.parttime.potato.utils.StringUtil;
 import com.parttime.potato.utils.WebLinkToNativePageUtil;
 import com.parttime.potato.view.GlideImageLoader;
@@ -35,17 +36,20 @@ public class AllAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Recycler
     public final static int BANNER = 1;
     public final static int RECOMMEND = 2;
     public final static int TITLE = 3;
+    public final static int SEARCH = 4;
     @Override
     protected int getItemViewType(int position, RecyclerItem recyclerItem) {
         switch (recyclerItem.type){
             case TOP:
-                return R.layout.layout_home_top;
+                return R.layout.layout_home_top2;
             case BANNER:
                 return R.layout.item_recommend_banner;
             case RECOMMEND:
-                return R.layout.item_recommend_all;
+                return R.layout.item_home_hot_recommend;
             case TITLE:
                 return R.layout.item_home_title;
+            case SEARCH:
+                return R.layout.item_search_result;
         }
 
         return R.layout.item_home_hot_recommend;
@@ -54,14 +58,18 @@ public class AllAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Recycler
     @Override
     protected ViewHolder<RecyclerItem> onCreateViewHolder(View root, ViewGroup parent, int viewType) {
         switch (viewType){
-            case  R.layout.layout_home_top:
+            case  R.layout.layout_home_top2:
                 return new TopViewHolder(root);
             case R.layout.item_recommend_banner:
                 return new BannerHolder(root);
             case R.layout.item_recommend_all:
                 return new RecommendViewHolder(root);
+            case R.layout.item_search_result:
+                return new RecommendViewHolder(root);
             case R.layout.item_home_title:
                 return new TitleViewHolder(root);
+            case R.layout.item_home_hot_recommend:
+                return new com.parttime.potato.adapter.holder.RecommendViewHolder(root);
         }
         return new RecommendViewHolder(root);
     }
@@ -70,8 +78,8 @@ public class AllAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Recycler
      * 头部三个按钮
      */
     public class TopViewHolder extends ViewHolder<RecyclerItem>{
-        @BindView(R.id.iv_tab_3)
-        ImageView iv_tab_3;
+//        @BindView(R.id.iv_tab_3)
+//        ImageView iv_tab_3;
         @BindView(R.id.iv_tab_2)
         ImageView iv_tab_2;
         @BindView(R.id.iv_tab_1)
@@ -106,17 +114,17 @@ public class AllAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Recycler
                         }
                     });
                 }
-                if (commonAdBean.getResult().size()>2){
-                    Glide.with(itemView.getContext()).
-                            load(commonAdBean.getResult().get(2).getImageUrl()).into(iv_tab_3);
-                    iv_tab_3.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            WebLinkToNativePageUtil.dealWithUrl(itemView.getContext(),
-                                    commonAdBean.getResult().get(2).getUrl(),commonAdBean.getResult().get(2).getId());
-                        }
-                    });
-                }
+//                if (commonAdBean.getResult().size()>2){
+//                    Glide.with(itemView.getContext()).
+//                            load(commonAdBean.getResult().get(2).getImageUrl()).into(iv_tab_3);
+//                    iv_tab_3.setOnClickListener(new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View v) {
+//                            WebLinkToNativePageUtil.dealWithUrl(itemView.getContext(),
+//                                    commonAdBean.getResult().get(2).getUrl(),commonAdBean.getResult().get(2).getId());
+//                        }
+//                    });
+//                }
             }
         }
     }
