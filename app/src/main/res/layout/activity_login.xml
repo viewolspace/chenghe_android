@@ -34,8 +34,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:paddingLeft="30dp"
-            android:paddingRight="30dp">
+
+            >
             <EditText
                 android:id="@+id/et_phone"
                 android:layout_marginTop="48dp"
@@ -49,7 +49,10 @@
                 android:singleLine="true"
                 android:textColorHint="#B2B2B2"
                 android:textSize="16sp"
-                android:textColor="#ff0d0d0d"/>
+                android:textColor="#ff0d0d0d"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                />
 
             <View
                 android:id="@+id/line_et1"
@@ -57,6 +60,8 @@
                 android:layout_height="1px"
                 android:layout_gravity="center"
                 android:layout_marginTop="18dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
                 android:background="@color/color_F6F6F6" />
 
             <LinearLayout
@@ -64,6 +69,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
                 android:paddingTop="35dp">
                 <EditText
                     android:id="@+id/et_code"
@@ -95,6 +102,8 @@
                 android:layout_height="1px"
                 android:layout_gravity="center"
                 android:layout_marginTop="18dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
                 android:background="@color/color_F6F6F6" />
             <TextView
                 android:id="@+id/tv_login"
@@ -104,8 +113,43 @@
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:gravity="center"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
                 android:background="@drawable/shape_login_bg"
                 android:text="登录"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="50dp"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="#B2B2B2"
+                    android:text="登录即代表阅读并同意"/>
+            <TextView
+                android:id="@+id/tv_web1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/color_588FFE"
+                android:text="《服务协议》"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="#B2B2B2"
+                android:text="和"/>
+            <TextView
+                android:id="@+id/tv_web2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/color_588FFE"
+                android:text="《隐私协议》"/>
+        </LinearLayout>
         </LinearLayout>
 
     </android.support.v7.widget.CardView>

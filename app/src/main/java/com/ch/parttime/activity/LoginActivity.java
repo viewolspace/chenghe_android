@@ -38,6 +38,8 @@ public class LoginActivity extends BaseMvpActivity<LoginContract.Presenter> impl
     private Handler handler;
     private int countDown;
     private boolean isCountDown;
+    private final String web1 = "http://www.chengheed.com/xy/jzq_yhxy.htm";
+    private final String web2= "http://www.chengheed.com/xy/jzq_yszc.htm";
 
     public static void start(Context context){
         Intent intent = new Intent(context,LoginActivity.class);
@@ -120,7 +122,7 @@ public class LoginActivity extends BaseMvpActivity<LoginContract.Presenter> impl
         });
     }
 
-    @OnClick({R.id.tv_login,R.id.tv_getcode,R.id.iv_close})
+    @OnClick({R.id.tv_login,R.id.tv_getcode,R.id.iv_close,R.id.tv_web1,R.id.tv_web2})
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.tv_login:
@@ -147,6 +149,11 @@ public class LoginActivity extends BaseMvpActivity<LoginContract.Presenter> impl
                 break;
             case R.id.iv_close:
                 finish();
+            case R.id.tv_web1:
+                WebActivity.start(LoginActivity.this,web1);
+                break;
+            case R.id.tv_web2:
+                WebActivity.start(LoginActivity.this,web2);
                 break;
 
         }
