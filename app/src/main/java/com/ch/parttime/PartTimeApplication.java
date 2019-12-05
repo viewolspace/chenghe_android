@@ -16,5 +16,6 @@ public class PartTimeApplication extends App {
         super.onCreate();
         UMConfigure.init(this,UMConfigure.DEVICE_TYPE_PHONE, null);
         MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.AUTO);
+        UMConfigure.setProcessEvent(true);
     }
 }

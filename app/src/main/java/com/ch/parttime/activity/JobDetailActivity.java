@@ -25,6 +25,7 @@ import com.ch.parttime.contract.JobDetailContract;
 import com.ch.parttime.presenter.JobDetailPresenter;
 import com.ch.parttime.utils.DateUtil;
 import com.ch.parttime.utils.LinearLayoutUtil;
+import com.ch.parttime.utils.MobEventHelper;
 import com.ch.parttime.utils.StatusBarUtils;
 import com.ch.parttime.utils.StringUtil;
 import com.ch.parttime.view.dilaog.CopyContactDialog;
@@ -88,6 +89,7 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
     public static void start(Context context, int id) {
         Intent intent = new Intent(context, JobDetailActivity.class);
         intent.putExtra("id", id);
+        MobEventHelper.statistics(context,"1","查看职位");
         context.startActivity(intent);
     }
 
@@ -124,6 +126,7 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
         switch (view.getId()) {
             case R.id.tv_apply:
                 if ( UserInfoUtil.getInstance().isLogin()){
+                    MobEventHelper.statistics(JobDetailActivity.this,"2","复制联系方式");
                     presenter.apply(id);
                 }else {
                     LoginActivity.start(JobDetailActivity.this);
@@ -133,6 +136,7 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
                 break;
             case R.id.tv_copy:
                 if ( UserInfoUtil.getInstance().isLogin()){
+                    MobEventHelper.statistics(JobDetailActivity.this,"3","职位报名");
                     presenter.copyRecord(id);
                     if (jobDetailBean!=null&&jobDetailBean.getResult()!=null){
                         CopyContactDialog copyContactDialog = new CopyContactDialog(JobDetailActivity.this,jobDetailBean.getResult().getContactType(),
