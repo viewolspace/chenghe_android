@@ -128,7 +128,7 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
         switch (view.getId()) {
             case R.id.tv_apply:
                 if ( UserInfoUtil.getInstance().isLogin()){
-                    MobEventHelper.statistics(JobDetailActivity.this,"2","复制联系方式");
+                    MobEventHelper.statistics(JobDetailActivity.this,"3","职位报名");
                     presenter.apply(id);
                 }else {
                     LoginActivity.start(JobDetailActivity.this);
@@ -137,10 +137,8 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
 
                 break;
             case R.id.tv_copy:
-                ARouter.getInstance().build(RoutMap.ACTIVITY_SPLASH).navigation();
-
                 if ( UserInfoUtil.getInstance().isLogin()){
-                    MobEventHelper.statistics(JobDetailActivity.this,"3","职位报名");
+                    MobEventHelper.statistics(JobDetailActivity.this,"2","复制联系方式");
                     presenter.copyRecord(id);
                     if (jobDetailBean!=null&&jobDetailBean.getResult()!=null){
                         CopyContactDialog copyContactDialog = new CopyContactDialog(JobDetailActivity.this,jobDetailBean.getResult().getContactType(),
