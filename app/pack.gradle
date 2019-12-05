@@ -24,7 +24,7 @@ project.afterEvaluate {
 //            }
 
                 def apkPath = "${buildDir}/outputs/apk/${taskName}/Tudou_${variant.name}_v${variant.versionName}_${BuildTime}.apk"
-                def outPath = "${buildDir}/outputs/apk/${taskName}/jiagu_${BuildTime}"
+                def outPath = "${buildDir}/outputs/apk/${taskName}/Tudou_jiagu_${BuildTime}"
                 def outApkPath = file(outPath)
                 def apk = file(apkPath)
                 println apkPath
