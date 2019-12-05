@@ -53,38 +53,40 @@ public class MainActivity extends BaseActivity {
     }
 
 
-    @Override
-    protected void initSavedInstance(Bundle savedInstanceState) {
-        if (savedInstanceState!=null){
-            currentId = savedInstanceState.getInt(BUNDLE_CACHE_INDEX_KEY,-1);
-            //如果已经添加过fragment, 需要隐藏操作
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction transaction = fragmentManager.beginTransaction();
-            homeFragment = (HomeFragment) fragmentManager.findFragmentByTag(FRAGMENT_TAG+R.id.rb_home);
-            recommendFragment = (RecommendFragment) fragmentManager.findFragmentByTag(FRAGMENT_TAG+R.id.rb_recommend);
-            allFragment = (AllFragment) fragmentManager.findFragmentByTag(FRAGMENT_TAG+R.id.rb_all);
-            mineFragment = (MineFragment) fragmentManager.findFragmentByTag(FRAGMENT_TAG+R.id.rb_mine);
-            if (homeFragment!=null){
-                transaction.hide(homeFragment);
-            }
-            if (recommendFragment!=null){
-                transaction.hide(recommendFragment);
-            }
-            if (allFragment!=null){
-                transaction.hide(allFragment);
-            }
-            if (mineFragment!=null){
-                transaction.hide(mineFragment);
-            }
-            transaction.commit();
-            if (currentId!=-1){
-                rg_menu.check(currentId);
-            }else {
-                rg_menu.check(R.id.rb_home);
-            }
-        }
-
-    }
+//    @Override
+//    protected void initSavedInstance(Bundle savedInstanceState) {
+//        if (savedInstanceState!=null){
+//            currentId = savedInstanceState.getInt(BUNDLE_CACHE_INDEX_KEY,-1);
+//            //如果已经添加过fragment, 需要隐藏操作
+//            FragmentManager fragmentManager = getSupportFragmentManager();
+//            FragmentTransaction transaction = fragmentManager.beginTransaction();
+//            homeFragment = (HomeFragment) fragmentManager.findFragmentByTag(FRAGMENT_TAG+R.id.rb_home);
+//            recommendFragment = (RecommendFragment) fragmentManager.findFragmentByTag(FRAGMENT_TAG+R.id.rb_recommend);
+//            allFragment = (AllFragment) fragmentManager.findFragmentByTag(FRAGMENT_TAG+R.id.rb_all);
+//            mineFragment = (MineFragment) fragmentManager.findFragmentByTag(FRAGMENT_TAG+R.id.rb_mine);
+//            if (homeFragment!=null){
+//                transaction.hide(homeFragment);
+//            }
+//            if (recommendFragment!=null){
+//                transaction.hide(recommendFragment);
+//            }
+//            if (allFragment!=null){
+//                transaction.hide(allFragment);
+//            }
+//            if (mineFragment!=null){
+//                transaction.hide(mineFragment);
+//            }
+//            transaction.commit();
+//            if (rg_menu!=null){
+//                if (currentId!=-1){
+//                    rg_menu.check(currentId);
+//                }else {
+//                    rg_menu.check(R.id.rb_home);
+//                }
+//            }
+//        }
+//
+//    }
 
     @Override
     protected void initWidget() {

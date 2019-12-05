@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.request.RequestOptions;
@@ -18,6 +19,7 @@ import com.ch.base.base.BaseMvpActivity;
 import com.ch.base.bean.JobDetailBean;
 import com.ch.base.bean.JoinPartTimeBean;
 import com.ch.base.constants.Constants;
+import com.ch.base.constants.RoutMap;
 import com.ch.base.util.ToastUtils;
 import com.ch.base.util.UserInfoUtil;
 import com.ch.parttime.R;
@@ -135,6 +137,8 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
 
                 break;
             case R.id.tv_copy:
+                ARouter.getInstance().build(RoutMap.ACTIVITY_SPLASH).navigation();
+
                 if ( UserInfoUtil.getInstance().isLogin()){
                     MobEventHelper.statistics(JobDetailActivity.this,"3","职位报名");
                     presenter.copyRecord(id);

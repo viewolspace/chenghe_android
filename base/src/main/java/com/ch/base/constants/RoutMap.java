@@ -8,4 +8,5 @@ package com.ch.base.constants;
  */
 public class RoutMap {
     public final static String ACTIVITY_MAIN = "/chenghejianzhi/MainActivity";
+    public final static String ACTIVITY_SPLASH= "/chenghejianzhi/SplashActivity";
 }

@@ -6,6 +6,7 @@ import android.support.multidex.BuildConfig;
 import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
 
+
 import com.alibaba.android.arouter.launcher.ARouter;
 
 import java.util.HashSet;
@@ -38,6 +39,8 @@ public class App extends MultiDexApplication {
             ARouter.openLog();
             ARouter.openDebug();
         }
+        ARouter.openLog();
+        ARouter.openDebug();
         ARouter.init(this);
 
     }
