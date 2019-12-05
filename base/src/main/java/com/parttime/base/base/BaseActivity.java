@@ -3,7 +3,9 @@ package com.parttime.base.base;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.parttime.base.R;
+import com.parttime.base.constants.RoutMap;
 import com.parttime.base.rx.RxBus;
 import com.parttime.base.rx.RxEvent;
 import com.parttime.base.rx.RxUtils;
@@ -21,7 +23,10 @@ public abstract class BaseActivity extends AActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // 在界面未初始化之前调用的初始化窗口
-        initSavedInstance(savedInstanceState);
+        if (savedInstanceState!=null){
+            ARouter.getInstance().build(RoutMap.ACTIVITY_SPLASH).navigation();
+            return;
+        }
         initWindows();
         if (initArgs(getIntent().getExtras())) {
             // 得到界面Id并设置到Activity界面中
@@ -45,12 +50,6 @@ public abstract class BaseActivity extends AActivity {
         return true;
     }
 
-    /**
-     * SavedInstance
-     */
-    protected void initSavedInstance(Bundle savedInstanceState){
-
-    }
 
     /**
      * 初始化窗口

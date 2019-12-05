@@ -7,5 +7,6 @@ package com.parttime.base.constants;
  * @describe ：ARouter 跳转路径
  */
 public class RoutMap {
-    public final static String ACTIVITY_MAIN = "/chenghejianzhi/MainActivity";
+    public final static String ACTIVITY_MAIN = "/tudoujianzhi/MainActivity";
+    public final static String ACTIVITY_SPLASH = "/tudoujianzhi/SplashActivity";
 }

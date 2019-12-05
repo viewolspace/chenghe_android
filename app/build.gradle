@@ -84,7 +84,7 @@ android {
                 // 使用Android Studio打包的文件路径
                 //改变apk生成的路劲
                 //variant.getPackageApplicationProvider().get().outputDirectory = new File("${buildDir}/outputs/apk/${variant.buildType.name}/jianzhi_${BuildTime()}")
-               // apkData.outputFileName = "PARTTIME_${variant.buildType.name}_${variant.productFlavors[0].name}_v${defaultConfig.versionName}_${BuildTime()}.apk"
+                // apkData.outputFileName = "PARTTIME_${variant.buildType.name}_${variant.productFlavors[0].name}_v${defaultConfig.versionName}_${BuildTime()}.apk"
                 apkData.outputFileName = "Tudou_${variant.name}_v${variant.versionName}_${BuildTime()}.apk"
             }
 
@@ -189,13 +189,13 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     implementation project(path: ':base')
 
-
+    annotationProcessor "com.alibaba:arouter-compiler:${rootProject.ext.arouter_annotation}"
     annotationProcessor("com.jakewharton:butterknife-compiler:${rootProject.ext.butterknife}") {
         exclude module: 'appcompat-v7'
         exclude group: 'com.android.support'
     }
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-31'
     implementation 'com.hyman:flowlayout-lib:1.1.2'
-    implementation  'com.umeng.umsdk:analytics:8.0.0'
-    implementation  'com.umeng.umsdk:common:2.0.0'
+    implementation 'com.umeng.umsdk:analytics:8.0.0'
+    implementation 'com.umeng.umsdk:common:2.0.0'
 }

@@ -9,9 +9,10 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
     <application
-        android:name="com.parttime.potato.PartTimeApplication"
+        android:name=".PartTimeApplication"
         android:allowBackup="true"
         android:icon="@mipmap/logo"
         android:label="@string/app_name"
@@ -19,6 +20,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".activity.SplashActivity"></activity>
         <!-- 友盟 -->
         <meta-data
             android:name="UMENG_APPKEY"
@@ -26,18 +28,20 @@
         <meta-data
             android:name="UMENG_CHANNEL"
             android:value="${UMENG_CHANNEL}" />
-        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
-        <activity android:name="com.parttime.potato.activity.AboutUsActivity"></activity>
-        <activity android:name="com.parttime.potato.activity.JoinPartTimeActivity" />
-        <activity android:name="com.parttime.potato.activity.SearchActivity" />
-        <activity android:name="com.parttime.potato.activity.PersonalResumeActivity" />
-        <activity android:name="com.parttime.potato.activity.JobDetailActivity" />
-        <activity android:name="com.parttime.potato.activity.WebActivity" />
-        <activity android:name="com.parttime.potato.activity.CategoryPartTimeActivity" />
-        <activity android:name="com.parttime.potato.activity.LoginActivity">
 
-        </activity>
-        <activity android:name="com.parttime.potato.activity.MainActivity">
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <activity android:name=".activity.AboutUsActivity" />
+        <activity android:name=".activity.JoinPartTimeActivity" />
+        <activity android:name=".activity.SearchActivity" />
+        <activity android:name=".activity.PersonalResumeActivity" />
+        <activity android:name=".activity.JobDetailActivity" />
+        <activity android:name=".activity.WebActivity" />
+        <activity android:name=".activity.CategoryPartTimeActivity" />
+        <activity android:name=".activity.LoginActivity"></activity>
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
