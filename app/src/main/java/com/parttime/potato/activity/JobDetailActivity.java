@@ -120,32 +120,37 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
         return new JobDetailPresenter(this);
     }
 
-
     @OnClick({R.id.tv_apply, R.id.tv_copy,R.id.iv_back})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_apply:
+                MobEventHelper.statistics(JobDetailActivity.this,"3","职位报名");
                 if ( UserInfoUtil.getInstance().isLogin()){
-                    MobEventHelper.statistics(JobDetailActivity.this,"3","职位报名");
                     presenter.apply(id);
                 }else {
-                    LoginActivity.start(JobDetailActivity.this);
+                    //LoginActivity.start(JobDetailActivity.this);
+                    tvApply.setText("已报名");
+                    tvApply.setBackgroundColor(getResources().getColor(R.color.color_B2B2B2));
+                    tvApply.setEnabled(false);
+                    ToastUtils.showShortToast("报名成功");
                 }
 
 
                 break;
             case R.id.tv_copy:
+                MobEventHelper.statistics(JobDetailActivity.this,"2","复制联系方式");
+                if (jobDetailBean!=null&&jobDetailBean.getResult()!=null){
+                    CopyContactDialog copyContactDialog = new CopyContactDialog(JobDetailActivity.this,jobDetailBean.getResult().getContactType(),
+                            jobDetailBean.getResult().getContact(),1);
+                    copyContactDialog.show();
+                }
                 if ( UserInfoUtil.getInstance().isLogin()){
                     presenter.copyRecord(id);
-                    MobEventHelper.statistics(JobDetailActivity.this,"2","复制联系方式");
-                    if (jobDetailBean!=null&&jobDetailBean.getResult()!=null){
-                        CopyContactDialog copyContactDialog = new CopyContactDialog(JobDetailActivity.this,jobDetailBean.getResult().getContactType(),
-                                jobDetailBean.getResult().getContact(),1);
-                        copyContactDialog.show();
-                    }
-                }else {
-                    LoginActivity.start(JobDetailActivity.this);
+
                 }
+//                else {
+//                    LoginActivity.start(JobDetailActivity.this);
+//                }
 
 
                 break;
@@ -154,6 +159,7 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
                 break;
         }
     }
+
 
     @Override
     public void refreshList(JobDetailBean jobDetailBean) {
