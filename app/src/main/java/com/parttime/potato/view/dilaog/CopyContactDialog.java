@@ -89,13 +89,7 @@ public class CopyContactDialog extends BaseDialog {
                         PersonalResumeActivity.start(getContext());
                     }
                 }else {
-                    if (contactType == Constants.CONTACT_QQ){
-                        joinQQ(getContext(),contact);
-                    }else if (contactType == Constants.CONTACT_WECHAT){
-                        goWeChatApi(getContext());
-                    }else if (contactType == Constants.CONTACT_PHONE){
-                        callPhone(getContext(),contact);
-                    }
+                    copyClick();
                 }
 
 
@@ -105,7 +99,13 @@ public class CopyContactDialog extends BaseDialog {
     }
 
     public void copyClick(){
-
+        if (contactType == Constants.CONTACT_QQ){
+            joinQQ(getContext(),contact);
+        }else if (contactType == Constants.CONTACT_WECHAT){
+            goWeChatApi(getContext());
+        }else if (contactType == Constants.CONTACT_PHONE){
+            callPhone(getContext(),contact);
+        }
     }
     /**
      * 跳转到微信
