@@ -128,11 +128,15 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_apply:
+                MobEventHelper.statistics(JobDetailActivity.this,"3","职位报名");
                 if ( UserInfoUtil.getInstance().isLogin()){
-                    MobEventHelper.statistics(JobDetailActivity.this,"3","职位报名");
                     presenter.apply(id);
                 }else {
-                    LoginActivity.start(JobDetailActivity.this);
+                    //LoginActivity.start(JobDetailActivity.this);
+                    tvApply.setText("已报名");
+                    tvApply.setBackgroundColor(getResources().getColor(R.color.color_B2B2B2));
+                    tvApply.setEnabled(false);
+                    ToastUtils.showShortToast("报名成功");
                 }
 
 
@@ -156,7 +160,7 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
                     presenter.copyRecord(id);
 
                 }
-                
+
                 break;
             case R.id.iv_back:
                 finish();
