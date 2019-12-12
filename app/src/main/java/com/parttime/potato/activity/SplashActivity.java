@@ -14,7 +14,7 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        ARouter.getInstance().build(RoutMap.ACTIVITY_SPLASH).navigation();
+        ARouter.getInstance().build(RoutMap.ACTIVITY_MAIN).navigation();
         finish();
     }
 }
