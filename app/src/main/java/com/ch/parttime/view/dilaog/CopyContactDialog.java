@@ -66,11 +66,11 @@ public class CopyContactDialog extends BaseDialog {
             }
         }else {
             if (contactType == Constants.CONTACT_QQ){
-                tvCopy.setText("前往QQ添加>");
-                tvTitle.setText("已复制QQ号");
+                tvCopy.setText("前往QQ联系雇主");
+                tvTitle.setText("已为您复制QQ号");
             }else if (contactType == Constants.CONTACT_WECHAT){
-                tvCopy.setText("前往微信添加>");
-                tvTitle.setText("已复制微信号");
+                tvCopy.setText("前往微信联系雇主");
+                tvTitle.setText("已为您复制微信号");
             }else if (contactType == Constants.CONTACT_PHONE){
                 tvTitle.setText("已复制电话");
                 tvCopy.setText("拨打电话>");
@@ -89,13 +89,7 @@ public class CopyContactDialog extends BaseDialog {
                         PersonalResumeActivity.start(getContext());
                     }
                 }else {
-                    if (contactType == Constants.CONTACT_QQ){
-                        joinQQ(getContext(),contact);
-                    }else if (contactType == Constants.CONTACT_WECHAT){
-                        goWeChatApi(getContext());
-                    }else if (contactType == Constants.CONTACT_PHONE){
-                        callPhone(getContext(),contact);
-                    }
+                    copyClick();
                 }
 
 
@@ -104,6 +98,15 @@ public class CopyContactDialog extends BaseDialog {
         }
     }
 
+    public void copyClick(){
+        if (contactType == Constants.CONTACT_QQ){
+            joinQQ(getContext(),contact);
+        }else if (contactType == Constants.CONTACT_WECHAT){
+            goWeChatApi(getContext());
+        }else if (contactType == Constants.CONTACT_PHONE){
+            callPhone(getContext(),contact);
+        }
+    }
     /**
      * 跳转到微信
      */

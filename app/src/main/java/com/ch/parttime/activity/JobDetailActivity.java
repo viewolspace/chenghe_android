@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.text.Html;
 import android.text.SpannableString;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -137,19 +138,25 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
 
                 break;
             case R.id.tv_copy:
-                if ( UserInfoUtil.getInstance().isLogin()){
-                    MobEventHelper.statistics(JobDetailActivity.this,"2","复制联系方式");
-                    presenter.copyRecord(id);
-                    if (jobDetailBean!=null&&jobDetailBean.getResult()!=null){
+                MobEventHelper.statistics(JobDetailActivity.this,"2","复制联系方式");
+                if (jobDetailBean!=null&&jobDetailBean.getResult()!=null){
+                    if (!TextUtils.isEmpty(jobDetailBean.getResult().getContact())){
                         CopyContactDialog copyContactDialog = new CopyContactDialog(JobDetailActivity.this,jobDetailBean.getResult().getContactType(),
                                 jobDetailBean.getResult().getContact(),1);
-                        copyContactDialog.show();
+                        if (jobDetailBean.getResult().getContactType() == Constants.CONTACT_PHONE){
+                            copyContactDialog.copyClick();
+                        }else {
+                            copyContactDialog.show();
+                        }
+
+
                     }
-                }else {
-                    LoginActivity.start(JobDetailActivity.this);
                 }
+                if ( UserInfoUtil.getInstance().isLogin()){
+                    presenter.copyRecord(id);
 
-
+                }
+                
                 break;
             case R.id.iv_back:
                 finish();
