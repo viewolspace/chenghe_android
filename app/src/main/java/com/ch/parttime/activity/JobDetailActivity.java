@@ -129,6 +129,7 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
         switch (view.getId()) {
             case R.id.tv_apply:
                 MobEventHelper.statistics(JobDetailActivity.this,"3","职位报名");
+                MobEventHelper.statistics(JobDetailActivity.this,"3","职位报名");
                 if ( UserInfoUtil.getInstance().isLogin()){
                     presenter.apply(id);
                 }else {
@@ -136,9 +137,19 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
                     tvApply.setText("已报名");
                     tvApply.setBackgroundColor(getResources().getColor(R.color.color_B2B2B2));
                     tvApply.setEnabled(false);
-                    ToastUtils.showShortToast("报名成功");
+                    ToastUtils.showLongToast("报名成功");
+                    if (jobDetailBean!=null&&jobDetailBean.getResult()!=null){
+                        if (!TextUtils.isEmpty(jobDetailBean.getResult().getContact())){
+                            CopyContactDialog copyContactDialog = new CopyContactDialog(JobDetailActivity.this,jobDetailBean.getResult().getContactType(),
+                                    jobDetailBean.getResult().getContact(),1);
+                            if (jobDetailBean.getResult().getContactType() == Constants.CONTACT_PHONE){
+                                copyContactDialog.copyClick();
+                            }else {
+                                copyContactDialog.show();
+                            }
+                        }
+                    }
                 }
-
 
                 break;
             case R.id.tv_copy:
