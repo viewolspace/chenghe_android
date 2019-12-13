@@ -133,7 +133,18 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
                     tvApply.setText("已报名");
                     tvApply.setBackgroundColor(getResources().getColor(R.color.color_B2B2B2));
                     tvApply.setEnabled(false);
-                    ToastUtils.showShortToast("报名成功");
+                    ToastUtils.showLongToast("报名成功");
+                    if (jobDetailBean!=null&&jobDetailBean.getResult()!=null){
+                        if (!TextUtils.isEmpty(jobDetailBean.getResult().getContact())){
+                            CopyContactDialog copyContactDialog = new CopyContactDialog(JobDetailActivity.this,jobDetailBean.getResult().getContactType(),
+                                    jobDetailBean.getResult().getContact(),1);
+                            if (jobDetailBean.getResult().getContactType() == Constants.CONTACT_PHONE){
+                                copyContactDialog.copyClick();
+                            }else {
+                                copyContactDialog.show();
+                            }
+                        }
+                    }
                 }
 
 
@@ -149,8 +160,6 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
                         }else {
                             copyContactDialog.show();
                         }
-
-
                     }
                 }
                 if ( UserInfoUtil.getInstance().isLogin()){
