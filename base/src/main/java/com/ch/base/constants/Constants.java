@@ -8,9 +8,9 @@ public class Constants {
 
     public static final String AD_HOME_TOP = "000000020001";
 
-    public static final String AD_HOME_HOT = "000000020002";
+    public static final String AD_HOME_HOT = "000000020009";
 
-    public static final String AD_RECOMMEND_HOT = "000000020003";
+    public static final String AD_RECOMMEND_HOT = "000000020010";
 
     public static final String AD_ALL_TOP = "000000020004";
 

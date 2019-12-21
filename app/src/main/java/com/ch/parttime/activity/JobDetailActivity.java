@@ -129,7 +129,6 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
         switch (view.getId()) {
             case R.id.tv_apply:
                 MobEventHelper.statistics(JobDetailActivity.this,"3","职位报名");
-                MobEventHelper.statistics(JobDetailActivity.this,"3","职位报名");
                 if ( UserInfoUtil.getInstance().isLogin()){
                     presenter.apply(id);
                 }else {
