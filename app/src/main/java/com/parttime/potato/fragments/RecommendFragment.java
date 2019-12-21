@@ -10,6 +10,7 @@ import com.parttime.base.base.BaseMvpFragment;
 import com.parttime.base.base.BaseRecyclerAdapter;
 import com.parttime.potato.R;
 import com.parttime.potato.activity.SearchActivity;
+import com.parttime.potato.adapter.HomeAdapter;
 import com.parttime.potato.adapter.RecommendAdapter;
 import com.parttime.potato.contract.RecommendContract;
 import com.parttime.potato.presenter.RecommendPresenter;
@@ -36,7 +37,7 @@ public class RecommendFragment extends BaseMvpFragment<RecommendContract.Present
     SmartRefreshLayout smart_refresh;
     @BindView(R.id.rl_search)
     LinearLayout rl_search;
-    private RecommendAdapter recommendAdapter;
+    private HomeAdapter recommendAdapter;
 
     @Override
     protected int getContentLayoutId() {
@@ -47,7 +48,7 @@ public class RecommendFragment extends BaseMvpFragment<RecommendContract.Present
     protected void initWidget(View root) {
 
         recycler.setLayoutManager(new LinearLayoutManager(getContext()));
-        recommendAdapter = new RecommendAdapter();
+        recommendAdapter = new HomeAdapter();
         recycler.setAdapter(recommendAdapter);
         smart_refresh.setOnRefreshListener(this);
         smart_refresh.setOnLoadMoreListener(this);

@@ -10,7 +10,7 @@ public class Constants {
 
     public static final String AD_HOME_HOT = "000000020006";
 
-    public static final String AD_RECOMMEND_HOT = "000000020003";
+    public static final String AD_RECOMMEND_HOT = "000000020011";
 
     public static final String AD_ALL_TOP = "000000020008";
 
