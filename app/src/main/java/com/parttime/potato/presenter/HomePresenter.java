@@ -80,7 +80,7 @@ public class HomePresenter extends BasePresenter<HomeContract.View> implements H
                         }
                     });
         }else {
-            api.queryRecommend(2,pageIndex,pageSize)
+            api.queryRecommend(1,pageIndex,pageSize)
                     .compose(RxUtils.rxSchedulerHelper())
                     .compose(mProvider.bindToLifecycle())
                     .subscribe(recommendBean -> {
