@@ -7,7 +7,7 @@
 
     <TextView
         android:id="@+id/tv_job_title"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="3dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/color_2A2A2A"
@@ -19,7 +19,7 @@
 
     <TextView
         android:id="@+id/tv_job_desc"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="12dp"
         android:layout_below="@id/tv_job_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -33,15 +33,13 @@
         android:layout_below="@id/tv_job_title"
         android:layout_width="89dp"
         android:layout_height="45dp"
-        android:layout_marginRight="6dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="2dp"
         android:src="@drawable/go_detail_button"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="6dp"/>
+        android:layout_alignParentRight="true" />
 
     <TextView
         android:id="@+id/tv_job_unit"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:layout_toLeftOf="@id/go_detail_button"
         android:layout_marginRight="15dp"
         android:layout_below="@id/tv_job_title"
@@ -52,7 +50,7 @@
         android:text="元/天"/>
     <TextView
         android:id="@+id/tv_job_money"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="4dp"
         android:layout_toLeftOf="@id/tv_job_unit"
         android:layout_below="@id/tv_job_title"
         android:layout_width="wrap_content"

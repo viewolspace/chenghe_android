@@ -3,11 +3,11 @@
     android:layout_width="match_parent" android:layout_height="wrap_content"
     android:paddingLeft="14dp"
     android:paddingRight="14dp"
-    android:paddingTop="20dp"
-    android:paddingBottom="28dp">
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp">
 
     <com.youth.banner.Banner
         android:id="@+id/banner"
         android:layout_width="match_parent"
-        android:layout_height="115dp" />
+        android:layout_height="96dp" />
 </RelativeLayout>
