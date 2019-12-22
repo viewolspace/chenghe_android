@@ -4,6 +4,8 @@ import android.content.Context;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.parttime.potato.R;
 import com.youth.banner.loader.ImageLoader;
 
@@ -17,6 +19,8 @@ public class GlideImageLoader extends ImageLoader {
     @Override
     public void displayImage(Context context, Object path, ImageView imageView) {
         imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-        Glide.with(context).load(path).into(imageView);
+        Glide.with(context).load(path).apply(new RequestOptions()
+                .transform(new RoundedCorners(10)))
+                .into(imageView);
     }
 }
