@@ -5,6 +5,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.ch.base.base.BaseRecyclerAdapter;
 import com.ch.base.bean.CommonAdBean;
 import com.ch.parttime.R;
@@ -46,7 +48,9 @@ public class HomeHotActivityAdapter extends BaseRecyclerAdapter<CommonAdBean.Res
                             resultBean.getUrl(),resultBean.getId());
                 }
             });
-            Glide.with(itemView.getContext()).load(resultBean.getImageUrl()).into(iv_ad);
+            Glide.with(itemView.getContext()).load(resultBean.getImageUrl())
+                    .apply(new RequestOptions().transform(new RoundedCorners(25)))
+                    .into(iv_ad);
         }
 
     }
