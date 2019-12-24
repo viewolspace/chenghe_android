@@ -45,7 +45,7 @@ public class BannerHolder extends BaseRecyclerAdapter.ViewHolder<BaseRecyclerAda
         }
         banner.setImages(images);
         //banner设置方法全部调用完毕时最后调用
-        banner.isAutoPlay(false);
+        banner.isAutoPlay(true);
         banner.start();
         banner.setOnBannerListener(new OnBannerListener() {
             @Override
