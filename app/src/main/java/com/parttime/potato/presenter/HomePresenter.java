@@ -41,7 +41,7 @@ public class HomePresenter extends BasePresenter<HomeContract.View> implements H
             pageIndex = 1;
             Observable.zip(api.getAd(Constants.AD_HOME_TOP)
                     , api.getAd(Constants.AD_HOME_HOT),
-                    api.queryRecommend(1, pageIndex, pageSize),
+                    api.queryRecommend(4, pageIndex, pageSize),
                     (commonAdBean, commonAdBean2, recommendBean) -> {
                         List<BaseRecyclerAdapter.RecyclerItem> recyclerItems = new ArrayList<>();
 
@@ -80,7 +80,7 @@ public class HomePresenter extends BasePresenter<HomeContract.View> implements H
                         }
                     });
         }else {
-            api.queryRecommend(1,pageIndex,pageSize)
+            api.queryRecommend(4,pageIndex,pageSize)
                     .compose(RxUtils.rxSchedulerHelper())
                     .compose(mProvider.bindToLifecycle())
                     .subscribe(recommendBean -> {
