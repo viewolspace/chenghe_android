@@ -155,7 +155,7 @@ public class SearchActivity extends BaseActivity implements OnRefreshListener, O
         }
         this.searchStr = searchStr;
         ApiService apiService = RetrofitServiceCreator.createService(ApiService.class);
-        apiService.queryAll(searchStr, pageIndex, pageSize)
+        apiService.queryAll(searchStr, pageIndex, pageSize,1)
                 .compose(RxUtils.rxSchedulerHelper())
                 .compose(mProvider.bindToLifecycle()).subscribe(new Consumer<RecommendBean>() {
             @Override

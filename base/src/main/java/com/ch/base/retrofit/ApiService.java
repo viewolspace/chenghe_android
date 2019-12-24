@@ -41,7 +41,8 @@ public interface ApiService {
     @GET("partTime/queryAll")
     Observable<RecommendBean> queryAll(@Query("keyWord") String keyWord,
                                        @Query("pageIndex") int pageIndex,
-                                       @Query("pageSize") int pageSize);
+                                       @Query("pageSize") int pageSize,
+                                       @Query("app") int app);
 
     @GET("partTime/getPartTime")
     Observable<JobDetailBean> getJobDetail(@Query("id") int id);
