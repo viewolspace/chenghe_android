@@ -27,4 +27,5 @@ public class Constants {
     public static final int CONTACT_QQ = 1 ;
 
     public static final int CONTACT_WECHAT = 2 ;
+    public static final String APP = "1" ;
 }
