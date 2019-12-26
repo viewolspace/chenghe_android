@@ -4,6 +4,7 @@ import com.parttime.base.base.BasePresenter;
 import com.parttime.base.bean.LoginBean;
 import com.parttime.base.bean.PhoneCodeBean;
 import com.parttime.base.bean.TokenBean;
+import com.parttime.base.constants.Constants;
 import com.parttime.base.rx.RxThrowableConsumer;
 import com.parttime.base.rx.RxUtils;
 import com.parttime.base.util.SpUtil;
@@ -69,7 +70,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
 
     @Override
     public void getToken(final String phone) {
-        api.getToken(phone)
+        api.getToken(phone, Constants.APP)
                 .compose(mProvider.bindToLifecycle())
                 .flatMap((Function<TokenBean, ObservableSource<PhoneCodeBean>>) tokenBean -> api.getPhoneCode(phone,tokenBean.getToken()))
                 .compose(RxUtils.rxSchedulerHelper())
