@@ -188,6 +188,7 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     testImplementation 'junit:junit:4.12'
     implementation project(path: ':base')
+    implementation project(path: ':banner')
 
     annotationProcessor "com.alibaba:arouter-compiler:${rootProject.ext.arouter_annotation}"
     annotationProcessor("com.jakewharton:butterknife-compiler:${rootProject.ext.butterknife}") {

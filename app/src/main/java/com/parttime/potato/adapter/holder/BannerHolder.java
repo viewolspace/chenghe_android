@@ -5,6 +5,7 @@ import android.view.View;
 import com.parttime.base.base.BaseRecyclerAdapter;
 import com.parttime.base.bean.CommonAdBean;
 import com.parttime.potato.R;
+import com.parttime.potato.utils.PhoneUtils;
 import com.parttime.potato.utils.WebLinkToNativePageUtil;
 import com.parttime.potato.view.GlideImageLoader;
 import com.youth.banner.Banner;
@@ -43,6 +44,7 @@ public class BannerHolder extends BaseRecyclerAdapter.ViewHolder<BaseRecyclerAda
         for (CommonAdBean.ResultBean resultBean : commonAdBean.getResult()) {
             images.add(resultBean.getImageUrl());
         }
+        banner.getViewPager().setPageMargin(PhoneUtils.dipToPixels(15));
         banner.setImages(images);
         //banner设置方法全部调用完毕时最后调用
         banner.isAutoPlay(true);

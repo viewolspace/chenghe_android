@@ -25,14 +25,4 @@ public class GlideImageLoader extends ImageLoader {
                 .apply(new RequestOptions().transform(new RoundedCorners(25)))
                 .into(imageView);
     }
-
-    @Override
-    public ImageView createImageView(Context context) {
-        ImageView imageView = new ImageView(context);
-        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(PhoneUtils.dipToPixels(330),RelativeLayout.LayoutParams.MATCH_PARENT);
-        layoutParams.leftMargin = PhoneUtils.dipToPixels(15);
-        layoutParams.rightMargin = PhoneUtils.dipToPixels(15);
-        imageView.setLayoutParams(layoutParams);
-        return super.createImageView(context);
-    }
 }
