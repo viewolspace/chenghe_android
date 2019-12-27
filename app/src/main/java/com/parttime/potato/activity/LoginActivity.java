@@ -160,7 +160,7 @@ public class LoginActivity extends BaseMvpActivity<LoginContract.Presenter> impl
 
     private void setGetCode(boolean enable){
         if (enable){
-            tv_getcode.setTextColor(getResources().getColor(R.color.color_F46B20));
+            tv_getcode.setTextColor(getResources().getColor(R.color.color_main_text));
             tv_getcode.setEnabled(true);
         }else {
             tv_getcode.setTextColor(getResources().getColor(R.color.color_B2B2B2));
