@@ -1,23 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="@color/white"
     >
 
+   <ImageView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:scaleType="centerCrop"
+       android:src="@drawable/ic_bg_home"
+       />
 
    <LinearLayout
        android:id="@+id/rl_search"
-       android:layout_width="wrap_content"
+       android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:layout_marginTop="26dp"
        android:layout_marginBottom="6dp"
        android:orientation="horizontal"
        android:background="@drawable/home_search_bg"
        android:paddingLeft="18dp"
-       android:paddingRight="12dp"
+       android:paddingRight="18dp"
        android:paddingTop="6dp"
        android:paddingBottom="6dp"
-       android:gravity="center"
+       android:gravity="center_vertical"
        android:layout_marginRight="14dp"
        android:layout_marginLeft="14dp">
       <ImageView

@@ -34,18 +34,17 @@
             android:textColor="@color/menu_home_text_color"
             android:drawableTop="@drawable/menu_home"/>
         <RadioButton
-            android:id="@+id/rb_recommend"
+            android:id="@+id/rb_jingxuan"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
             android:textSize="10sp"
             android:button="@null"
-            android:visibility="visible"
             android:drawablePadding="4dp"
-            android:text="@string/menu_recommend"
+            android:text="精选"
             android:textColor="@color/menu_home_text_color"
-            android:drawableTop="@drawable/menu_recommend"/>
+            android:drawableTop="@drawable/menu_jingxuan"/>
         <RadioButton
             android:id="@+id/rb_all"
             android:layout_width="0dp"
@@ -58,6 +57,19 @@
             android:text="@string/menu_all"
             android:textColor="@color/menu_home_text_color"
             android:drawableTop="@drawable/menu_all"/>
+        <RadioButton
+            android:id="@+id/rb_recommend"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="10sp"
+            android:button="@null"
+            android:visibility="visible"
+            android:drawablePadding="4dp"
+            android:text="@string/menu_recommend"
+            android:textColor="@color/menu_home_text_color"
+            android:drawableTop="@drawable/menu_recommend"/>
         <RadioButton
             android:id="@+id/rb_mine"
             android:layout_width="0dp"
