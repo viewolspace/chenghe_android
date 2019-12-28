@@ -20,6 +20,7 @@ import com.parttime.base.util.UserInfoUtil;
 import com.parttime.potato.R;
 import com.parttime.potato.fragments.AllFragment;
 import com.parttime.potato.fragments.HomeFragment;
+import com.parttime.potato.fragments.JXFragment;
 import com.parttime.potato.fragments.MineFragment;
 import com.parttime.potato.fragments.RecommendFragment;
 import com.parttime.potato.utils.StatusBarUtils;
@@ -38,6 +39,7 @@ public class MainActivity extends BaseActivity {
     private RecommendFragment recommendFragment;
     private AllFragment allFragment;
     private MineFragment mineFragment;
+    private JXFragment jxFragment;
     //缓存当前Tab的选中下标
     public static final String BUNDLE_CACHE_INDEX_KEY = "bundle_cache_index_key";
     //fragment缓存标签
@@ -155,6 +157,14 @@ public class MainActivity extends BaseActivity {
                 }
                 fm.show(recommendFragment);
                 currentFragment = recommendFragment;
+                break;
+            case R.id.rb_jingxuan:
+                if (jxFragment == null){
+                    jxFragment = new JXFragment();
+                    fm.add(R.id.fl_container,jxFragment,FRAGMENT_TAG+checkedId);
+                }
+                fm.show(jxFragment);
+                currentFragment = jxFragment;
                 break;
             case R.id.rb_all:
                 if (allFragment == null){

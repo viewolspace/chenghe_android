@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="88dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
+    android:layout_marginTop="10dp"
+    android:background="@drawable/jx_item_bg1">
+
+    <TextView
+        android:id="@+id/tv_job_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:text="微信在线兼职，随时随地做，秒结"
+        android:drawablePadding="5dp"
+        android:lines="1"
+        android:ellipsize="end"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+    <RelativeLayout
+        android:layout_below="@id/tv_job_title"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_job_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="23sp"
+            android:text="120"/>
+        <TextView
+            android:id="@+id/tv_job_unit"
+            android:layout_marginTop="6dp"
+            android:layout_toRightOf="@id/tv_job_money"
+            android:layout_alignBottom="@id/tv_job_money"
+            android:layout_marginLeft="3dp"
+            android:layout_marginBottom="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_B8B7BA"
+            android:textSize="11sp"
+            android:text="元/天"/>
+        <com.zhy.view.flowlayout.TagFlowLayout
+            android:id="@+id/fl_job_desc"
+            android:layout_toRightOf="@id/tv_job_unit"
+            android:layout_marginLeft="18dp"
+            android:layout_alignBottom="@id/tv_job_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:tag_gravity="center" />
+    </RelativeLayout>
+
+</RelativeLayout>
