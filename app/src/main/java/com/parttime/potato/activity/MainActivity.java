@@ -90,7 +90,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initWidget() {
-        StatusBarUtils.statusbar(this);
+        StatusBarUtils.statusbarWihte(this);
         rg_menu.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {

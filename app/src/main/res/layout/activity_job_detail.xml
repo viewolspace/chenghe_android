@@ -128,7 +128,7 @@
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:gravity="center"
-                    android:background="@drawable/shape_retangle_fa7e27_r25"
+                    android:background="@drawable/shape_login_bg"
                     android:text="点击复制联系方式 QQ:1234567890>"/>
                 <ImageView
                     android:id="@+id/iv_verify"
@@ -266,5 +266,5 @@
         android:text="报名参加"
         android:textSize="18sp"
         android:gravity="center"
-        android:background="@drawable/shape_apply_bg"/>
+        android:background="@color/color_main_text"/>
 </LinearLayout>

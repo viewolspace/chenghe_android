@@ -40,7 +40,7 @@ public class AllPresenter extends BasePresenter<AllContract.View> implements All
         if (refresh){
             pageIndex=1;
             Observable.zip(api.getAd(Constants.AD_HOME_TOP)
-                    , api.queryAll("", pageIndex, pageSize,2),
+                    , api.queryAll("", pageIndex, pageSize,Constants.APP),
                     (commonAdBean, recommendBean) -> {
                         List<BaseRecyclerAdapter.RecyclerItem> recyclerItems = new ArrayList<>();
                         //recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(AllAdapter.TOP,new CommonAdBean()));
@@ -75,7 +75,7 @@ public class AllPresenter extends BasePresenter<AllContract.View> implements All
                         }
                     });
         }else {
-            api.queryAll("",pageIndex,pageSize,2)
+            api.queryAll("",pageIndex,pageSize,Constants.APP)
                     .compose(RxUtils.rxSchedulerHelper())
                     .compose(mProvider.bindToLifecycle())
                     .subscribe(recommendBean -> {

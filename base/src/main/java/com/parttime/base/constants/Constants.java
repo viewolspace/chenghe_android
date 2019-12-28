@@ -28,5 +28,5 @@ public class Constants {
 
     public static final int CONTACT_WECHAT = 2 ;
 
-    public static final String APP = "3" ;
+    public static final String APP = "2" ;
 }

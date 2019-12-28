@@ -191,7 +191,7 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
             tvApply.setEnabled(false);
         } else {
             tvApply.setText("报名参加");
-            tvApply.setBackgroundResource(R.drawable.shape_apply_bg);
+            tvApply.setBackgroundColor(getResources().getColor(R.color.color_main_text));
         }
         JobDetailBean.ResultBean resultBean = jobDetailBean.getResult();
         if (resultBean == null) {

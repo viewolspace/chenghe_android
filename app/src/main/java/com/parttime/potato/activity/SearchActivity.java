@@ -20,6 +20,7 @@ import android.widget.TextView;
 import com.parttime.base.base.BaseActivity;
 import com.parttime.base.base.BaseRecyclerAdapter;
 import com.parttime.base.bean.RecommendBean;
+import com.parttime.base.constants.Constants;
 import com.parttime.base.retrofit.ApiService;
 import com.parttime.base.retrofit.RetrofitServiceCreator;
 import com.parttime.base.rx.RxEvent;
@@ -155,7 +156,7 @@ public class SearchActivity extends BaseActivity implements OnRefreshListener, O
         }
         this.searchStr = searchStr;
         ApiService apiService = RetrofitServiceCreator.createService(ApiService.class);
-        apiService.queryAll(searchStr, pageIndex, pageSize,2)
+        apiService.queryAll(searchStr, pageIndex, pageSize, Constants.APP)
                 .compose(RxUtils.rxSchedulerHelper())
                 .compose(mProvider.bindToLifecycle()).subscribe(new Consumer<RecommendBean>() {
             @Override

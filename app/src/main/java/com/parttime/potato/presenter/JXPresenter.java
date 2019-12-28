@@ -41,7 +41,7 @@ public class JXPresenter extends BasePresenter<JXContract.View> implements JXCon
         if (refresh){
             pageIndex=1;
             Observable.zip(api.getAd(Constants.AD_HOME_TOP)
-                    , api.queryAll("", pageIndex, pageSize,2),
+                    , api.queryAll("", pageIndex, pageSize,Constants.APP),
                     (commonAdBean, recommendBean) -> {
                         List<BaseRecyclerAdapter.RecyclerItem> recyclerItems = new ArrayList<>();
                         //recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(AllAdapter.TOP,new CommonAdBean()));
@@ -78,7 +78,7 @@ public class JXPresenter extends BasePresenter<JXContract.View> implements JXCon
                         }
                     });
         }else {
-            api.queryAll("",pageIndex,pageSize,2)
+            api.queryAll("",pageIndex,pageSize,Constants.APP)
                     .compose(RxUtils.rxSchedulerHelper())
                     .compose(mProvider.bindToLifecycle())
                     .subscribe(recommendBean -> {
