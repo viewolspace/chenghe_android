@@ -44,13 +44,13 @@ public class RecommendPresenter extends BasePresenter<RecommendContract.View> im
                         List<BaseRecyclerAdapter.RecyclerItem> recyclerItems = new ArrayList<>();
 
                         if (commonAdBean2!=null&&commonAdBean2.getResult()!=null&&commonAdBean2.getResult().size()>0){
-                            recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(HomeAdapter.HOME_HOT,commonAdBean2));
+                            recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(RecommendAdapter.TOP_BANNER,commonAdBean2));
                             //recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(HomeAdapter.HOME_TITLE,"热门推荐"));
                         }
 
                         if (recommendBean!=null&&recommendBean.getResult()!=null&&recommendBean.getResult().size()>0){
                             for (RecommendBean.ResultBean resultBean:recommendBean.getResult()){
-                                recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(HomeAdapter.HOME_RECOMMEND,resultBean));
+                                recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(RecommendAdapter.RECOMMEND,resultBean));
                             }
                         }
                         if (recommendBean ==null||recommendBean.getResult()==null||recommendBean.getResult().size()<pageSize){

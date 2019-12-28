@@ -16,6 +16,7 @@ import com.parttime.potato.R;
 import com.parttime.potato.utils.WebLinkToNativePageUtil;
 
 import butterknife.BindView;
+import io.reactivex.annotations.Nullable;
 
 /**
  * 头部三个按钮
@@ -29,6 +30,7 @@ public class TopViewHolder extends BaseRecyclerAdapter.ViewHolder<BaseRecyclerAd
     ImageView iv_tab_1;
     @BindView(R.id.iv_tab_4)
     ImageView iv_tab_4;
+    @Nullable
     @BindView(R.id.iv_tab_5)
     ImageView iv_tab_5;
 
@@ -40,6 +42,7 @@ public class TopViewHolder extends BaseRecyclerAdapter.ViewHolder<BaseRecyclerAd
     LinearLayout ll_tab_3;
     @BindView(R.id.ll_tab_4)
     LinearLayout ll_tab_4;
+    @Nullable
     @BindView(R.id.ll_tab_5)
     LinearLayout ll_tab_5;
     @BindView(R.id.tv_tab1)
@@ -50,6 +53,7 @@ public class TopViewHolder extends BaseRecyclerAdapter.ViewHolder<BaseRecyclerAd
     TextView tv_tab3;
     @BindView(R.id.tv_tab4)
     TextView tv_tab4;
+    @Nullable
     @BindView(R.id.tv_tab5)
     TextView tv_tab5;
     public TopViewHolder(View itemView) {

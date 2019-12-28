@@ -12,10 +12,9 @@ import com.parttime.base.bean.CommonAdBean;
 import com.parttime.base.bean.RecommendBean;
 import com.parttime.potato.R;
 import com.parttime.potato.activity.JobDetailActivity;
-import com.parttime.potato.adapter.holder.RecommendViewHolder;
 import com.parttime.potato.utils.StringUtil;
 import com.parttime.potato.utils.WebLinkToNativePageUtil;
-import com.parttime.potato.view.GlideImageLoader;
+import com.parttime.potato.view.GlideRoundImageLoader;
 import com.youth.banner.Banner;
 import com.youth.banner.listener.OnBannerListener;
 
@@ -41,7 +40,7 @@ public class AllAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Recycler
     protected int getItemViewType(int position, RecyclerItem recyclerItem) {
         switch (recyclerItem.type){
             case TOP:
-                return R.layout.layout_home_top2;
+                return R.layout.layout_all_top;
             case BANNER:
                 return R.layout.item_recommend_banner;
             case RECOMMEND:
@@ -68,6 +67,8 @@ public class AllAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Recycler
                 return new RecommendViewHolder(root);
             case R.layout.item_home_title:
                 return new TitleViewHolder(root);
+            case R.layout.layout_all_top:
+                return new com.parttime.potato.adapter.holder.TopViewHolder(root);
             case R.layout.item_home_hot_recommend:
                 return new com.parttime.potato.adapter.holder.RecommendViewHolder(root);
         }
@@ -146,7 +147,7 @@ public class AllAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Recycler
         protected void onBind(RecyclerItem recyclerItem) {
             CommonAdBean commonAdBean = (CommonAdBean) recyclerItem.data;
             //设置图片加载器
-            banner.setImageLoader(new GlideImageLoader());
+            banner.setImageLoader(new GlideRoundImageLoader());
             //设置图片集合
             List<String> images = new ArrayList<>();
             for (CommonAdBean.ResultBean resultBean:commonAdBean.getResult()){

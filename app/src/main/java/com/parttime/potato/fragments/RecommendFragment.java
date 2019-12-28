@@ -37,7 +37,7 @@ public class RecommendFragment extends BaseMvpFragment<RecommendContract.Present
     SmartRefreshLayout smart_refresh;
     @BindView(R.id.rl_search)
     LinearLayout rl_search;
-    private HomeAdapter recommendAdapter;
+    private RecommendAdapter recommendAdapter;
 
     @Override
     protected int getContentLayoutId() {
@@ -48,7 +48,7 @@ public class RecommendFragment extends BaseMvpFragment<RecommendContract.Present
     protected void initWidget(View root) {
 
         recycler.setLayoutManager(new LinearLayoutManager(getContext()));
-        recommendAdapter = new HomeAdapter();
+        recommendAdapter = new RecommendAdapter();
         recycler.setAdapter(recommendAdapter);
         smart_refresh.setOnRefreshListener(this);
         smart_refresh.setOnLoadMoreListener(this);

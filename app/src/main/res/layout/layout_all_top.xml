@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/ll_tab_1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_tab_1"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/top_menu_jdyz" />
+
+            <TextView
+                android:id="@+id/tv_tab1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="简单上手"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/color_241D1D"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_tab_2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_tab_2"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/top_menu_zjtz" />
+
+            <TextView
+                android:id="@+id/tv_tab2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="在家躺赚"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/color_241D1D"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_tab_3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_tab_3"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/top_menu_gxrj" />
+
+            <TextView
+                android:id="@+id/tv_tab3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="轻松兼职"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/color_241D1D"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_tab_4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_tab_4"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/top_menu_wljz" />
+
+            <TextView
+                android:id="@+id/tv_tab4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="天天赚钱"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/color_241D1D"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <include layout="@layout/item_divider" />
+</LinearLayout>

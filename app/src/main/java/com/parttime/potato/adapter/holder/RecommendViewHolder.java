@@ -1,5 +1,6 @@
 package com.parttime.potato.adapter.holder;
 
+import android.text.SpannableString;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -8,6 +9,7 @@ import com.parttime.base.base.BaseRecyclerAdapter;
 import com.parttime.base.bean.RecommendBean;
 import com.parttime.potato.R;
 import com.parttime.potato.activity.JobDetailActivity;
+import com.parttime.potato.utils.StringUtil;
 
 import java.util.Locale;
 
@@ -37,14 +39,24 @@ public class RecommendViewHolder extends BaseRecyclerAdapter.ViewHolder<BaseRecy
     protected void onBind(BaseRecyclerAdapter.RecyclerItem recyclerItem) {
 
         RecommendBean.ResultBean recommendBean = (RecommendBean.ResultBean) recyclerItem.data;
-        tv_job_title.setText(recommendBean.getTitle());
+        if (recommendBean.getTitle()!=null&&recommendBean.getTitle().length()>0){
+            if (recommendBean.getVerify()==1){
+                SpannableString spannableString = new SpannableString("   "+recommendBean.getTitle());
+                StringUtil.addImageSpan(spannableString,0,1,R.drawable.verify_head,itemView.getContext());
+                tv_job_title.setText(spannableString);
+            }else {
+                tv_job_title.setText(recommendBean.getTitle());
+            }
+        }
+        //tv_job_title.setText(recommendBean.getTitle());
         tv_job_money.setText(String.valueOf(recommendBean.getSalary()));
         tv_job_desc.setText(recommendBean.getLable().replaceAll(","," | "));
-        if (recommendBean.getVerify()==1){
-            iv_verify.setVisibility(View.VISIBLE);
-        }else {
-            iv_verify.setVisibility(View.GONE);
-        }
+//        if (recommendBean.getVerify()==1){
+//            iv_verify.setVisibility(View.VISIBLE);
+//        }else {
+//            iv_verify.setVisibility(View.GONE);
+//        }
+        iv_verify.setVisibility(View.GONE);
         String unit = "元/天";
         switch (recommendBean.getCycle()){
             case 0:

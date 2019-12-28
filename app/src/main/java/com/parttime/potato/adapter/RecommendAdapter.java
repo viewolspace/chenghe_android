@@ -16,6 +16,7 @@ import com.parttime.potato.activity.JobDetailActivity;
 import com.parttime.potato.utils.StringUtil;
 import com.parttime.potato.utils.WebLinkToNativePageUtil;
 import com.parttime.potato.view.GlideImageLoader;
+import com.parttime.potato.view.GlideRoundImageLoader;
 import com.youth.banner.Banner;
 import com.youth.banner.listener.OnBannerListener;
 
@@ -39,25 +40,27 @@ public class RecommendAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Re
     protected int getItemViewType(int position, RecyclerItem recyclerItem) {
         switch (recyclerItem.type){
             case TOP_BANNER:
-                return R.layout.item_recommend_banner;
+                return R.layout.item_banner_normal;
             case RECOMMEND:
-                return R.layout.item_recommend_today;
+                return R.layout.item_home_hot_recommend;
             case TITLE:
                 return R.layout.item_home_title;
         }
 
-        return R.layout.item_recommend_today;
+        return R.layout.item_home_hot_recommend;
     }
 
     @Override
     protected ViewHolder<RecyclerItem> onCreateViewHolder(View root, ViewGroup parent, int viewType) {
         switch (viewType){
-            case  R.layout.item_recommend_banner:
+            case  R.layout.item_banner_normal:
                 return new BannerHolder(root);
             case R.layout.item_home_title:
                 return new TitleViewHolder(root);
             case R.layout.item_recommend_today:
                 return new RecommendViewHolder(root);
+            case R.layout.item_home_hot_recommend:
+                return new com.parttime.potato.adapter.holder.RecommendViewHolder(root);
         }
         return new RecommendViewHolder(root);
     }
@@ -86,6 +89,7 @@ public class RecommendAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Re
             }
 
             banner.setImages(images);
+            banner.getViewPager().setPageMargin(0);
             //banner设置方法全部调用完毕时最后调用
             banner.start();
             banner.setOnBannerListener(new OnBannerListener() {
