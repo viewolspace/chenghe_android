@@ -3,7 +3,7 @@
 
     <!--首页菜单-->
     <string name="menu_home">首页</string>
-    <string name="menu_all">全部</string>
+    <string name="menu_all">推荐</string>
     <string name="menu_recommend">热门</string>
     <string name="menu_mine">我的</string>
 
