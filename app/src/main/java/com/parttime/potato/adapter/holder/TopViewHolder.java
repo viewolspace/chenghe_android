@@ -29,6 +29,8 @@ public class TopViewHolder extends BaseRecyclerAdapter.ViewHolder<BaseRecyclerAd
     ImageView iv_tab_1;
     @BindView(R.id.iv_tab_4)
     ImageView iv_tab_4;
+    @BindView(R.id.iv_tab_5)
+    ImageView iv_tab_5;
 
     @BindView(R.id.ll_tab_1)
     LinearLayout ll_tab_1;
@@ -38,6 +40,8 @@ public class TopViewHolder extends BaseRecyclerAdapter.ViewHolder<BaseRecyclerAd
     LinearLayout ll_tab_3;
     @BindView(R.id.ll_tab_4)
     LinearLayout ll_tab_4;
+    @BindView(R.id.ll_tab_5)
+    LinearLayout ll_tab_5;
     @BindView(R.id.tv_tab1)
     TextView tv_tab1;
     @BindView(R.id.tv_tab2)
@@ -46,6 +50,8 @@ public class TopViewHolder extends BaseRecyclerAdapter.ViewHolder<BaseRecyclerAd
     TextView tv_tab3;
     @BindView(R.id.tv_tab4)
     TextView tv_tab4;
+    @BindView(R.id.tv_tab5)
+    TextView tv_tab5;
     public TopViewHolder(View itemView) {
         super(itemView);
     }
@@ -102,6 +108,18 @@ public class TopViewHolder extends BaseRecyclerAdapter.ViewHolder<BaseRecyclerAd
                                 commonAdBean.getResult().get(3).getUrl(),commonAdBean.getResult().get(2).getId());
                     }
                 });
+                if (commonAdBean.getResult().size()>4){
+                    tv_tab5.setText(commonAdBean.getResult().get(4).getTitle());
+                    Glide.with(itemView.getContext()).
+                            load(commonAdBean.getResult().get(4).getImageUrl()).into(iv_tab_5);
+                    ll_tab_5.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            WebLinkToNativePageUtil.dealWithUrl(itemView.getContext(),
+                                    commonAdBean.getResult().get(4).getUrl(),commonAdBean.getResult().get(2).getId());
+                        }
+                    });
+                }
             }
         }
     }
