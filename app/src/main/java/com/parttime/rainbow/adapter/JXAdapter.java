@@ -103,7 +103,7 @@ public class JXAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.RecyclerI
             CommonAdBean commonAdBean = (CommonAdBean) recyclerItem.data;
             if (commonAdBean.getResult()!=null&&commonAdBean.getResult().size()>0){
                 if (commonAdBean.getResult().size()>0){
-                    if(TextUtils.isEmpty(commonAdBean.getResult().get(0).getImageUrl())){
+                    if(!TextUtils.isEmpty(commonAdBean.getResult().get(0).getImageUrl())){
                         Glide.with(itemView.getContext()).
                                 load(commonAdBean.getResult().get(0).getImageUrl()).into(iv_tab_1);
                     }
@@ -117,7 +117,7 @@ public class JXAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.RecyclerI
                     });
                 }
                 if (commonAdBean.getResult().size()>1){
-                    if(TextUtils.isEmpty(commonAdBean.getResult().get(1).getImageUrl())){
+                    if(!TextUtils.isEmpty(commonAdBean.getResult().get(1).getImageUrl())){
                         Glide.with(itemView.getContext()).
                                 load(commonAdBean.getResult().get(1).getImageUrl()).into(iv_tab_2);
                     }
@@ -131,7 +131,7 @@ public class JXAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.RecyclerI
                     });
                 }
                 if (commonAdBean.getResult().size()>2){
-                    if(TextUtils.isEmpty(commonAdBean.getResult().get(2).getImageUrl())){
+                    if(!TextUtils.isEmpty(commonAdBean.getResult().get(2).getImageUrl())){
                         Glide.with(itemView.getContext()).
                                 load(commonAdBean.getResult().get(2).getImageUrl()).into(iv_tab_3);
                     }
@@ -167,7 +167,7 @@ public class JXAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.RecyclerI
             CommonAdBean commonAdBean = (CommonAdBean) recyclerItem.data;
             if (commonAdBean.getResult()!=null&&commonAdBean.getResult().size()>0){
                 if (commonAdBean.getResult().size()>0){
-                    if(TextUtils.isEmpty(commonAdBean.getResult().get(0).getImageUrl())){
+                    if(!TextUtils.isEmpty(commonAdBean.getResult().get(0).getImageUrl())){
                         Glide.with(itemView.getContext()).
                                 load(commonAdBean.getResult().get(0).getImageUrl()).into(iv_tab_6);
                     }
@@ -181,7 +181,7 @@ public class JXAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.RecyclerI
                     });
                 }
                 if (commonAdBean.getResult().size()>1){
-                    if(TextUtils.isEmpty(commonAdBean.getResult().get(1).getImageUrl())){
+                    if(!TextUtils.isEmpty(commonAdBean.getResult().get(1).getImageUrl())){
                         Glide.with(itemView.getContext()).
                                 load(commonAdBean.getResult().get(1).getImageUrl()).into(iv_tab_7);
                     }
