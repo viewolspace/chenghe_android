@@ -50,7 +50,11 @@ public class RecommendViewHolder extends BaseRecyclerAdapter.ViewHolder<BaseRecy
         }
         //tv_job_title.setText(recommendBean.getTitle());
         tv_job_money.setText(String.valueOf(recommendBean.getSalary()));
-        tv_job_desc.setText(recommendBean.getLable().replaceAll(","," | "));
+        if (recommendBean.getLable().contains(",")){
+            tv_job_desc.setText(recommendBean.getLable().replaceAll(","," | "));
+        }else {
+            tv_job_desc.setText(recommendBean.getLable().replaceAll("，"," | "));
+        }
 //        if (recommendBean.getVerify()==1){
 //            iv_verify.setVisibility(View.VISIBLE);
 //        }else {

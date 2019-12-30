@@ -198,7 +198,11 @@ public class AllAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Recycler
                 }
             }
             tv_job_money.setText(String.valueOf(recommendBean.getSalary()));
-            tv_job_desc.setText(recommendBean.getLable().replaceAll(","," | "));
+            if (recommendBean.getLable().contains(",")){
+                tv_job_desc.setText(recommendBean.getLable().replaceAll(","," | "));
+            }else {
+                tv_job_desc.setText(recommendBean.getLable().replaceAll("，"," | "));
+            }
             String unit = "元/天";
             switch (recommendBean.getCycle()){
                 case 0:

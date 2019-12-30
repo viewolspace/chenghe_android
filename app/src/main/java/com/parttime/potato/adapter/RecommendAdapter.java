@@ -164,7 +164,11 @@ public class RecommendAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Re
                 }
             }
             tv_job_money.setText(String.valueOf(recommendBean.getSalary()));
-            tv_job_desc.setText(recommendBean.getLable().replaceAll(","," | "));
+            if (recommendBean.getLable().contains(",")){
+                tv_job_desc.setText(recommendBean.getLable().replaceAll(","," | "));
+            }else {
+                tv_job_desc.setText(recommendBean.getLable().replaceAll("，"," | "));
+            }
             if (recommendBean.getPic()==null||recommendBean.getPic().trim().isEmpty()){
                 iv_job_icon.setVisibility(View.GONE);
             }else {

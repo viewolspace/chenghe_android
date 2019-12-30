@@ -6,15 +6,19 @@ package com.parttime.base.constants;
 public class Constants {
     public static final String USER_INFO = "user_info";
 
-    public static final String AD_HOME_TOP = "000000020007";
+    public static final String AD_HOME_TOP = "000000020012";
 
-    public static final String AD_HOME_HOT = "000000020006";
+    public static final String AD_HOME_HOT = "000000020017";
 
-    public static final String AD_RECOMMEND_HOT = "000000020011";
+    public static final String AD_RECOMMEND_HOT = "000000020016";
 
-    public static final String AD_ALL_TOP = "000000020008";
+    public static final String AD_ALL_TOP = "000000020015";
 
     public static final String AD_ALL_HOT = "000000020005";
+
+    public static final String AD_JX_TOP1 = "000000020013";
+
+    public static final String AD_JX_TOP2 = "000000020014";
 
     public static final String WEB_URL = "web_url";//webview url
 
@@ -28,5 +32,5 @@ public class Constants {
 
     public static final int CONTACT_WECHAT = 2 ;
 
-    public static final String APP = "2" ;
+    public static final String APP = "3" ;
 }

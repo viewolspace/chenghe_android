@@ -218,7 +218,12 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
         String time = String.format(Locale.ENGLISH,"更新时间：%s"
                 ,DateUtil.getDateToString(resultBean.getCTime(),"yyyy-MM-dd"));
         tvUpdateTime.setText(time);
-        String[] lable = resultBean.getLable().split(",");
+        String[] lable;
+        if (resultBean.getLable().contains("，")){
+            lable = resultBean.getLable().split("，");
+        }else {
+            lable = resultBean.getLable().split(",");
+        }
         flowLayout.setAdapter(new TagAdapter<String>(Arrays.asList(lable)) {
             @Override
             public View getView(FlowLayout parent, int position, String s) {

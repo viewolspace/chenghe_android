@@ -1,6 +1,7 @@
 package com.parttime.potato.adapter;
 
 import android.text.SpannableString;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -100,43 +101,51 @@ public class JXAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.RecyclerI
 
         @Override
         protected void onBind(RecyclerItem recyclerItem) {
-//
-//            CommonAdBean commonAdBean = (CommonAdBean) recyclerItem.data;
-//            if (commonAdBean.getResult()!=null&&commonAdBean.getResult().size()>0){
-//                if (commonAdBean.getResult().size()>0){
-//                    Glide.with(itemView.getContext()).
-//                            load(commonAdBean.getResult().get(0).getImageUrl()).into(iv_tab_1);
-//                    iv_tab_1.setOnClickListener(new View.OnClickListener() {
-//                        @Override
-//                        public void onClick(View v) {
-//                            WebLinkToNativePageUtil.dealWithUrl(itemView.getContext(),
-//                                    commonAdBean.getResult().get(0).getUrl(),commonAdBean.getResult().get(0).getId());
-//                        }
-//                    });
-//                }
-//                if (commonAdBean.getResult().size()>1){
-//                    Glide.with(itemView.getContext()).
-//                            load(commonAdBean.getResult().get(1).getImageUrl()).into(iv_tab_2);
-//                    iv_tab_2.setOnClickListener(new View.OnClickListener() {
-//                        @Override
-//                        public void onClick(View v) {
-//                            WebLinkToNativePageUtil.dealWithUrl(itemView.getContext(),
-//                                    commonAdBean.getResult().get(1).getUrl(),commonAdBean.getResult().get(1).getId());
-//                        }
-//                    });
-//                }
-//                if (commonAdBean.getResult().size()>2){
-//                    Glide.with(itemView.getContext()).
-//                            load(commonAdBean.getResult().get(2).getImageUrl()).into(iv_tab_3);
-//                    iv_tab_3.setOnClickListener(new View.OnClickListener() {
-//                        @Override
-//                        public void onClick(View v) {
-//                            WebLinkToNativePageUtil.dealWithUrl(itemView.getContext(),
-//                                    commonAdBean.getResult().get(2).getUrl(),commonAdBean.getResult().get(2).getId());
-//                        }
-//                    });
-//                }
-//            }
+
+            CommonAdBean commonAdBean = (CommonAdBean) recyclerItem.data;
+            if (commonAdBean.getResult()!=null&&commonAdBean.getResult().size()>0){
+                if (commonAdBean.getResult().size()>0){
+                    if(TextUtils.isEmpty(commonAdBean.getResult().get(0).getImageUrl())){
+                        Glide.with(itemView.getContext()).
+                                load(commonAdBean.getResult().get(0).getImageUrl()).into(iv_tab_1);
+                    }
+
+                    iv_tab_1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            WebLinkToNativePageUtil.dealWithUrl(itemView.getContext(),
+                                    commonAdBean.getResult().get(0).getUrl(),commonAdBean.getResult().get(0).getId());
+                        }
+                    });
+                }
+                if (commonAdBean.getResult().size()>1){
+                    if(TextUtils.isEmpty(commonAdBean.getResult().get(1).getImageUrl())){
+                        Glide.with(itemView.getContext()).
+                                load(commonAdBean.getResult().get(1).getImageUrl()).into(iv_tab_2);
+                    }
+
+                    iv_tab_2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            WebLinkToNativePageUtil.dealWithUrl(itemView.getContext(),
+                                    commonAdBean.getResult().get(1).getUrl(),commonAdBean.getResult().get(1).getId());
+                        }
+                    });
+                }
+                if (commonAdBean.getResult().size()>2){
+                    if(TextUtils.isEmpty(commonAdBean.getResult().get(2).getImageUrl())){
+                        Glide.with(itemView.getContext()).
+                                load(commonAdBean.getResult().get(2).getImageUrl()).into(iv_tab_3);
+                    }
+                    iv_tab_3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            WebLinkToNativePageUtil.dealWithUrl(itemView.getContext(),
+                                    commonAdBean.getResult().get(2).getUrl(),commonAdBean.getResult().get(2).getId());
+                        }
+                    });
+                }
+            }
         }
     }
 
@@ -156,43 +165,37 @@ public class JXAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.RecyclerI
 
         @Override
         protected void onBind(RecyclerItem recyclerItem) {
-//
-//            CommonAdBean commonAdBean = (CommonAdBean) recyclerItem.data;
-//            if (commonAdBean.getResult()!=null&&commonAdBean.getResult().size()>0){
-//                if (commonAdBean.getResult().size()>0){
-//                    Glide.with(itemView.getContext()).
-//                            load(commonAdBean.getResult().get(0).getImageUrl()).into(iv_tab_1);
-//                    iv_tab_1.setOnClickListener(new View.OnClickListener() {
-//                        @Override
-//                        public void onClick(View v) {
-//                            WebLinkToNativePageUtil.dealWithUrl(itemView.getContext(),
-//                                    commonAdBean.getResult().get(0).getUrl(),commonAdBean.getResult().get(0).getId());
-//                        }
-//                    });
-//                }
-//                if (commonAdBean.getResult().size()>1){
-//                    Glide.with(itemView.getContext()).
-//                            load(commonAdBean.getResult().get(1).getImageUrl()).into(iv_tab_2);
-//                    iv_tab_2.setOnClickListener(new View.OnClickListener() {
-//                        @Override
-//                        public void onClick(View v) {
-//                            WebLinkToNativePageUtil.dealWithUrl(itemView.getContext(),
-//                                    commonAdBean.getResult().get(1).getUrl(),commonAdBean.getResult().get(1).getId());
-//                        }
-//                    });
-//                }
-//                if (commonAdBean.getResult().size()>2){
-//                    Glide.with(itemView.getContext()).
-//                            load(commonAdBean.getResult().get(2).getImageUrl()).into(iv_tab_3);
-//                    iv_tab_3.setOnClickListener(new View.OnClickListener() {
-//                        @Override
-//                        public void onClick(View v) {
-//                            WebLinkToNativePageUtil.dealWithUrl(itemView.getContext(),
-//                                    commonAdBean.getResult().get(2).getUrl(),commonAdBean.getResult().get(2).getId());
-//                        }
-//                    });
-//                }
-//            }
+
+            CommonAdBean commonAdBean = (CommonAdBean) recyclerItem.data;
+            if (commonAdBean.getResult()!=null&&commonAdBean.getResult().size()>0){
+                if (commonAdBean.getResult().size()>0){
+                    if(TextUtils.isEmpty(commonAdBean.getResult().get(0).getImageUrl())){
+                        Glide.with(itemView.getContext()).
+                                load(commonAdBean.getResult().get(0).getImageUrl()).into(iv_tab_6);
+                    }
+
+                    iv_tab_6.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            WebLinkToNativePageUtil.dealWithUrl(itemView.getContext(),
+                                    commonAdBean.getResult().get(0).getUrl(),commonAdBean.getResult().get(0).getId());
+                        }
+                    });
+                }
+                if (commonAdBean.getResult().size()>1){
+                    if(TextUtils.isEmpty(commonAdBean.getResult().get(1).getImageUrl())){
+                        Glide.with(itemView.getContext()).
+                                load(commonAdBean.getResult().get(1).getImageUrl()).into(iv_tab_7);
+                    }
+                    iv_tab_7.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            WebLinkToNativePageUtil.dealWithUrl(itemView.getContext(),
+                                    commonAdBean.getResult().get(1).getUrl(),commonAdBean.getResult().get(1).getId());
+                        }
+                    });
+                }
+            }
         }
     }
     /**
@@ -261,7 +264,14 @@ public class JXAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.RecyclerI
             }
             tv_job_money.setText(String.valueOf(recommendBean.getSalary()));
             String unit = "元/天";
-            String[] lable = recommendBean.getLable().split("，");
+            String[] lable;
+            if (recommendBean.getLable().contains("，")){
+                 lable = recommendBean.getLable().split("，");
+            }else {
+               lable = recommendBean.getLable().split(",");
+
+            }
+
             fl_job_desc.setAdapter(new TagAdapter<String>(Arrays.asList(lable)) {
                 @Override
                 public View getView(FlowLayout parent, int position, String s) {

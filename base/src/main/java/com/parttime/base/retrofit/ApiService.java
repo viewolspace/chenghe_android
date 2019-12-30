@@ -62,7 +62,11 @@ public interface ApiService {
                                              @Query("pageIndex") int pageIndex,
                                              @Query("pageSize") int pageSize);
 
-
+    @GET("partTime/queryRecommnet")
+    Observable<RecommendBean> queryRecommend2(@Query("recommend") int recommend,
+                                             @Query("pageIndex") int pageIndex,
+                                             @Query("pageSize") int pageSize,
+                                            @Query("order") int order);
     @GET("user/getToken")
     Observable<TokenBean> getToken(@Query("phone") String phone,@Query("app") String app);
 
