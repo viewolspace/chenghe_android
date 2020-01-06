@@ -14,6 +14,7 @@ import com.parttime.base.rx.RxEvent;
 import com.parttime.base.util.UserInfoUtil;
 import com.parttime.potato.R;
 import com.parttime.potato.activity.AboutUsActivity;
+import com.parttime.potato.activity.FeedBackActivity;
 import com.parttime.potato.activity.JoinPartTimeActivity;
 import com.parttime.potato.activity.LoginActivity;
 import com.parttime.potato.activity.PersonalResumeActivity;
@@ -75,7 +76,7 @@ public class MineFragment extends BaseFragment {
     protected void initData() {
 
     }
-    @OnClick({R.id.rl_my_resume,R.id.rl_my_apply,R.id.rl_change_nick_name,R.id.rl_about_us,R.id.tv_nickname})
+    @OnClick({R.id.rl_my_resume,R.id.rl_my_apply,R.id.rl_change_nick_name,R.id.rl_about_us,R.id.rl_feedback,R.id.tv_nickname})
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.rl_my_resume:
@@ -108,6 +109,14 @@ public class MineFragment extends BaseFragment {
                 if (!UserInfoUtil.getInstance().isLogin()){
                     LoginActivity.start(getContext());
                 }
+                break;
+            case R.id.rl_feedback:
+                if (!UserInfoUtil.getInstance().isLogin()){
+                    LoginActivity.start(getContext());
+                }else {
+                    FeedBackActivity.start(getContext());
+                }
+
                 break;
         }
     }

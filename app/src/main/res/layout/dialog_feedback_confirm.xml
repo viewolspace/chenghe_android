@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+    <LinearLayout
+        android:layout_centerInParent="true"
+        android:layout_width="315dp"
+        android:layout_height="182dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/shape_cn10_white"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="21sp"
+            android:text="提交成功"
+            android:layout_marginBottom="32dp"
+            android:textColor="@color/color_0d0d0d"/>
+
+        <TextView
+            android:id="@+id/tv_confirm"
+            android:layout_width="240dp"
+            android:layout_height="45dp"
+            android:textSize="18sp"
+            android:text="确定"
+            android:gravity="center"
+            android:background="@drawable/shape_cn22_eb4848"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+
+</RelativeLayout>
