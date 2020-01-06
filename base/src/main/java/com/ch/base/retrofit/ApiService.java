@@ -88,4 +88,7 @@ public interface ApiService {
 
     @POST("ad/adStat")
     Observable<BaseBean> adStat(@QueryMap HashMap<String, String> data);
+
+    @GET("partTime/question")
+    Observable<BaseBean> feedback(@Query("question")  String question,@Query("app") String app);
 }

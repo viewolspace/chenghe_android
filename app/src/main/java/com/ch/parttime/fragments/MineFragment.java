@@ -14,6 +14,7 @@ import com.ch.base.rx.RxEvent;
 import com.ch.base.util.UserInfoUtil;
 import com.ch.parttime.R;
 import com.ch.parttime.activity.AboutUsActivity;
+import com.ch.parttime.activity.FeedBackActivity;
 import com.ch.parttime.activity.JoinPartTimeActivity;
 import com.ch.parttime.activity.LoginActivity;
 import com.ch.parttime.activity.PersonalResumeActivity;
@@ -75,7 +76,7 @@ public class MineFragment extends BaseFragment {
     protected void initData() {
 
     }
-    @OnClick({R.id.rl_my_resume,R.id.rl_my_apply,R.id.rl_change_nick_name,R.id.rl_about_us,R.id.tv_nickname})
+    @OnClick({R.id.rl_my_resume,R.id.rl_my_apply,R.id.rl_change_nick_name,R.id.rl_about_us,R.id.rl_feedback,R.id.tv_nickname})
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.rl_my_resume:
@@ -106,6 +107,13 @@ public class MineFragment extends BaseFragment {
                 break;
             case R.id.tv_nickname:
                 if (!UserInfoUtil.getInstance().isLogin()){
+                    LoginActivity.start(getContext());
+                }
+                break;
+            case R.id.rl_feedback:
+                if (UserInfoUtil.getInstance().isLogin()){
+                    FeedBackActivity.start(getContext());
+                }else {
                     LoginActivity.start(getContext());
                 }
                 break;
