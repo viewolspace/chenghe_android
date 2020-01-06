@@ -111,7 +111,12 @@ public class MineFragment extends BaseFragment {
                 }
                 break;
             case R.id.rl_feedback:
-                FeedBackActivity.start(getContext());
+                if (UserInfoUtil.getInstance().isLogin()){
+                    FeedBackActivity.start(getContext());
+                }else {
+                    LoginActivity.start(getContext());
+                }
+
                 break;
         }
     }

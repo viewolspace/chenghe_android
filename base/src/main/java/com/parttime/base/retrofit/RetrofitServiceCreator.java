@@ -210,7 +210,7 @@ public class RetrofitServiceCreator {
             String userId = UserInfoUtil.getInstance().getUserId();
             Request.Builder requestBuilder = original.newBuilder()
                     .header("Content-Type", "application/x-www-form-urlencoded")
-                    .header("userId", "1");
+                    .header("userId", userId);
                     //.method(original.method(), original.body());
             //addGenericHeaders(requestBuilder);
             Request request = requestBuilder.build();
