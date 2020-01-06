@@ -130,4 +130,29 @@
           android:layout_centerVertical="true"
           />
    </RelativeLayout>
+   <RelativeLayout
+       android:id="@+id/rl_feedback"
+       android:layout_width="match_parent"
+       android:layout_height="56dp"
+       android:paddingLeft="33dp"
+       android:paddingRight="33dp"
+       android:layout_below="@id/rl_about_us">
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textColor="@color/color_0d0d0d"
+          android:text="意见反馈"
+          android:textSize="16sp"
+          android:gravity="center"
+          android:drawablePadding="16sp"
+          android:layout_centerVertical="true"
+          android:drawableLeft="@drawable/aboult_us_icon"/>
+      <ImageView
+          android:layout_width="7dp"
+          android:layout_height="12dp"
+          android:src="@drawable/right_gray_arrow"
+          android:layout_alignParentRight="true"
+          android:layout_centerVertical="true"
+          />
+   </RelativeLayout>
 </RelativeLayout>

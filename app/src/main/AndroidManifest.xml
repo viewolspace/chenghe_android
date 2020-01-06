@@ -39,6 +39,7 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
 
+        <activity android:name=".activity.FeedBackActivity" />
         <activity android:name="com.parttime.rainbow.activity.AboutUsActivity" />
         <activity android:name="com.parttime.rainbow.activity.JoinPartTimeActivity" />
         <activity android:name="com.parttime.rainbow.activity.SearchActivity" />
