@@ -64,10 +64,10 @@ public interface ApiService {
 
 
     @GET("user/getToken")
-    Observable<TokenBean> getToken(@Query("phone") String phone,@Query("app") String app);
+    Observable<TokenBean> getToken(@Query("phone") String phone);
 
     @GET("user/getRand")
-    Observable<PhoneCodeBean> getPhoneCode(@Query("phone") String phone , @Header("token") String token);
+    Observable<PhoneCodeBean> getPhoneCode(@Query("phone") String phone , @Header("token") String token,@Query("app") String app);
 
     @GET("user/getUser")
     Observable<LoginBean> getUser();

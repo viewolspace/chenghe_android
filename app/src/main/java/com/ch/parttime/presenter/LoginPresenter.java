@@ -72,9 +72,9 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
 
     @Override
     public void getToken(final String phone) {
-        api.getToken(phone, Constants.APP)
+        api.getToken(phone)
                 .compose(mProvider.bindToLifecycle())
-                .flatMap((Function<TokenBean, ObservableSource<PhoneCodeBean>>) tokenBean -> api.getPhoneCode(phone,tokenBean.getToken()))
+                .flatMap((Function<TokenBean, ObservableSource<PhoneCodeBean>>) tokenBean -> api.getPhoneCode(phone,tokenBean.getToken(),Constants.APP))
                 .compose(RxUtils.rxSchedulerHelper())
                 .subscribe(phoneCodeBean -> ToastUtils.showShortToast("发送短信成功"),new RxThrowableConsumer());
 
