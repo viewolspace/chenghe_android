@@ -31,4 +31,4 @@ UMENG_CHANNEL qutoutiao qutoutiao
 UMENG_CHANNEL kuaishou kuaishou
 UMENG_CHANNEL chubao chubao
 UMENG_CHANNEL shuabao shuabao
-
+UMENG_CHANNEL jinritoutiao jinritoutiao
