@@ -24,4 +24,11 @@ UMENG_CHANNEL mumayi mumayi
 UMENG_CHANNEL Nduohui Nduohui
 UMENG_CHANNEL xiaomixinxiliu xiaomixinxiliu
 UMENG_CHANNEL yingyongbaoCPD yingyongbaoCPD
+UMENG_CHANNEL guangdiantong guangdiantong
+UMENG_CHANNEL fensitong fensitong
+UMENG_CHANNEL aiqiyi aiqiyi
+UMENG_CHANNEL qutoutiao qutoutiao
+UMENG_CHANNEL kuaishou kuaishou
+UMENG_CHANNEL chubao chubao
+UMENG_CHANNEL shuabao shuabao
 
