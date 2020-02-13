@@ -1,27 +1,34 @@
-UMENG_CHANNEL parttime parttime
-UMENG_CHANNEL xiaomi xiaomi
-UMENG_CHANNEL yingyongbao yingyongbao
-UMENG_CHANNEL qihu360 qihu360
-UMENG_CHANNEL wandoujia wandoujia
-UMENG_CHANNEL baidu baidu
-UMENG_CHANNEL huawei huawei
-UMENG_CHANNEL vivo vivo
-UMENG_CHANNEL oppo oppo
-UMENG_CHANNEL sumsang sumsang
-UMENG_CHANNEL meizu meizu
-UMENG_CHANNEL lenovo lenovo
-UMENG_CHANNEL sougou sougou
-UMENG_CHANNEL zhongguoyidong zhongguoyidong
-UMENG_CHANNEL anzhi anzhi
-UMENG_CHANNEL jinli jinli
-UMENG_CHANNEL letv letv
-UMENG_CHANNEL chuizi chuizi
-UMENG_CHANNEL juchuang juchuang
-UMENG_CHANNEL jifengwang jifengwang
-UMENG_CHANNEL yingyonghui yingyonghui
-UMENG_CHANNEL GoogleMarket GoogleMarket
-UMENG_CHANNEL mumayi mumayi
-UMENG_CHANNEL Nduohui Nduohui
-UMENG_CHANNEL xiaomixinxiliu xiaomixinxiliu
-UMENG_CHANNEL yingyongbaoCPD yingyongbaoCPD
+UUMENG_CHANNEL parttime parttime
+ UMENG_CHANNEL xiaomi xiaomi
+ UMENG_CHANNEL yingyongbao yingyongbao
+ UMENG_CHANNEL qihu360 qihu360
+ UMENG_CHANNEL wandoujia wandoujia
+ UMENG_CHANNEL baidu baidu
+ UMENG_CHANNEL huawei huawei
+ UMENG_CHANNEL vivo vivo
+ UMENG_CHANNEL oppo oppo
+ UMENG_CHANNEL sumsang sumsang
+ UMENG_CHANNEL meizu meizu
+ UMENG_CHANNEL lenovo lenovo
+ UMENG_CHANNEL sougou sougou
+ UMENG_CHANNEL zhongguoyidong zhongguoyidong
+ UMENG_CHANNEL anzhi anzhi
+ UMENG_CHANNEL jinli jinli
+ UMENG_CHANNEL letv letv
+ UMENG_CHANNEL chuizi chuizi
+ UMENG_CHANNEL juchuang juchuang
+ UMENG_CHANNEL jifengwang jifengwang
+ UMENG_CHANNEL yingyonghui yingyonghui
+ UMENG_CHANNEL GoogleMarket GoogleMarket
+ UMENG_CHANNEL mumayi mumayi
+ UMENG_CHANNEL Nduohui Nduohui
+ UMENG_CHANNEL xiaomixinxiliu xiaomixinxiliu
+ UMENG_CHANNEL yingyongbaoCPD yingyongbaoCPD
+ UMENG_CHANNEL guangdiantong guangdiantong
+ UMENG_CHANNEL fensitong fensitong
+ UMENG_CHANNEL aiqiyi aiqiyi
+ UMENG_CHANNEL qutoutiao qutoutiao
+ UMENG_CHANNEL kuaishou kuaishou
+ UMENG_CHANNEL chubao chubao
+ UMENG_CHANNEL shuabao shuabao
 
