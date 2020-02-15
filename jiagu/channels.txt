@@ -31,4 +31,26 @@ UUMENG_CHANNEL parttime parttime
  UMENG_CHANNEL kuaishou kuaishou
  UMENG_CHANNEL chubao chubao
  UMENG_CHANNEL shuabao shuabao
+UMENG_CHANNEL jinritoutiao jinritoutiao
+UMENG_CHANNEL lingjiu1 lingjiu1
+UMENG_CHANNEL lingjiu2 lingjiu2
+UMENG_CHANNEL lingjiu3 lingjiu3
+UMENG_CHANNEL lingjiu4 lingjiu4
+UMENG_CHANNEL lingjiu5 lingjiu5
+UMENG_CHANNEL lingjiu6 lingjiu6
+UMENG_CHANNEL lingjiu7 lingjiu7
+UMENG_CHANNEL lingjiu8 lingjiu8
+UMENG_CHANNEL lingjiu9 lingjiu9
+UMENG_CHANNEL lingjiu10 lingjiu10
+UMENG_CHANNEL honggeng1 honggeng1
+UMENG_CHANNEL honggeng2 honggeng2
+UMENG_CHANNEL honggeng3 honggeng3
+UMENG_CHANNEL honggeng4 honggeng4
+UMENG_CHANNEL honggeng5 honggeng5
+UMENG_CHANNEL honggeng6 honggeng6
+UMENG_CHANNEL honggeng7 honggeng7
+UMENG_CHANNEL honggeng8 honggeng8
+UMENG_CHANNEL honggeng9 honggeng9
+UMENG_CHANNEL honggeng10 honggeng10
+
 
