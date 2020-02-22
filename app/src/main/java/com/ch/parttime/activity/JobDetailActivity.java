@@ -129,9 +129,8 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
         switch (view.getId()) {
             case R.id.tv_apply:
                 MobEventHelper.statistics(JobDetailActivity.this,"3","职位报名");
-                if ( UserInfoUtil.getInstance().isLogin()){
-                    presenter.apply(id);
-                }else {
+                presenter.apply(id);
+                if ( !UserInfoUtil.getInstance().isLogin()){
                     //LoginActivity.start(JobDetailActivity.this);
                     tvApply.setText("已报名");
                     tvApply.setBackgroundColor(getResources().getColor(R.color.color_B2B2B2));
@@ -153,6 +152,7 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
                 break;
             case R.id.tv_copy:
                 MobEventHelper.statistics(JobDetailActivity.this,"2","复制联系方式");
+                presenter.copyRecord(id);
                 if (jobDetailBean!=null&&jobDetailBean.getResult()!=null){
                     if (!TextUtils.isEmpty(jobDetailBean.getResult().getContact())){
                         CopyContactDialog copyContactDialog = new CopyContactDialog(JobDetailActivity.this,jobDetailBean.getResult().getContactType(),
@@ -166,11 +166,6 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
 
                     }
                 }
-                if ( UserInfoUtil.getInstance().isLogin()){
-                    presenter.copyRecord(id);
-
-                }
-
                 break;
             case R.id.iv_back:
                 finish();
