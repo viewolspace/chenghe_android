@@ -73,4 +73,30 @@ UMENG_CHANNEL honggeng8 honggeng8
 UMENG_CHANNEL honggeng9 honggeng9
 UMENG_CHANNEL honggeng10 honggeng10
 
-
+UMENG_CHANNEL kuaishou1 kuaishou1
+UMENG_CHANNEL kuaishou2 kuaishou2
+UMENG_CHANNEL kuaishou3 kuaishou3
+UMENG_CHANNEL shuabao1 shuabao1
+UMENG_CHANNEL shuabao2 shuabao2
+UMENG_CHANNEL shuabao3 shuabao3
+UMENG_CHANNEL chubao1 chubao1
+UMENG_CHANNEL chubao2 chubao2
+UMENG_CHANNEL chubao3 chubao3
+UMENG_CHANNEL guangdiantong1 guangdiantong1
+UMENG_CHANNEL guangdiantong2 guangdiantong2
+UMENG_CHANNEL guangdiantong3 guangdiantong3
+UMENG_CHANNEL fensiton1 fensiton1
+UMENG_CHANNEL fensiton2 fensiton2
+UMENG_CHANNEL fensiton3 fensiton3
+UMENG_CHANNEL aiqiyi1 aiqiyi1
+UMENG_CHANNEL aiqiyi2 aiqiyi2
+UMENG_CHANNEL aiqiyi3 aiqiyi3
+UMENG_CHANNEL baidu1 baidu1
+UMENG_CHANNEL baidu2 baidu2
+UMENG_CHANNEL baidu3 baidu3
+UMENG_CHANNEL qutoutiao1 qutoutiao1
+UMENG_CHANNEL qutoutiao2 qutoutiao2
+UMENG_CHANNEL qutoutiao3 qutoutiao3
+UMENG_CHANNEL jinritoutiao1 jinritoutiao1
+UMENG_CHANNEL jinritoutiao2 jinritoutiao2
+UMENG_CHANNEL jinritoutiao3 jinritoutiao3
