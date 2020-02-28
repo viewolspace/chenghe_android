@@ -9,6 +9,8 @@ import android.os.Message;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -35,9 +37,12 @@ public class LoginActivity extends BaseMvpActivity<LoginContract.Presenter> impl
     TextView tv_login;
     @BindView(R.id.tv_getcode)
     TextView tv_getcode;
+    @BindView(R.id.checkbox)
+    CheckBox checkbox;
     private Handler handler;
     private int countDown;
     private boolean isCountDown;
+    private boolean isCheck;
 
     public static void start(Context context){
         Intent intent = new Intent(context,LoginActivity.class);
@@ -74,6 +79,12 @@ public class LoginActivity extends BaseMvpActivity<LoginContract.Presenter> impl
                 }
             }
         };
+        checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                isCheck = isChecked;
+            }
+        });
     }
 
     @Override
@@ -124,6 +135,10 @@ public class LoginActivity extends BaseMvpActivity<LoginContract.Presenter> impl
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.tv_login:
+                if (!isCheck){
+                    ToastUtils.showLongToast("请同意隐私政策");
+                    return;
+                }
                 if (et_phone.getText() == null||et_phone.getText().toString().length()<11){
                     ToastUtils.showLongToast("请输入正确的手机号");
                     return;

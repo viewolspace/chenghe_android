@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_cn10_white"
+    >
+
+    <LinearLayout
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:layout_width="335dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+  >
+        <TextView
+            android:id="@+id/tv_title"
+            android:textSize="19sp"
+            android:textColor="#222222"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:text="隐私协议"/>
+        <TextView
+            android:id="@+id/tv_content"
+            android:textSize="15sp"
+            android:textColor="#888888"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:lineSpacingExtra="5dp"
+            android:paddingBottom="30dp"
+            android:text="若您使用阳光兼职服务，即表示您认同我们在本政策中所述内容。除另有约定外，本政策所用术语与《阳光兼职服务协议》中的术语具有相同的涵义。保护用户的隐私是阳光兼职的一项基本原则。阳光兼职一贯积极地采取技术与管理等方面的合理措施保障用户信息的安全、保密。阳光兼职对用户信息收集、使用及保护等将遵循等协议规定。除法律另有规定外，如您已同意或授权阳光兼职依据前述协议或规定收集、使用或处理涉及您的个人信息的。"/>
+    </LinearLayout>
+    <LinearLayout
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:layout_width="335dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:textSize="15sp"
+            android:textColor="#666666"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_cn22_stk1_dcdcdc"
+            android:layout_height="45dp"
+            android:gravity="center"
+            android:text="不同意" />
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="0dp" />
+        <TextView
+            android:id="@+id/tv_confirm"
+            android:textSize="15sp"
+            android:textColor="@color/white"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_login_bg"
+            android:layout_height="45dp"
+            android:gravity="center"
+            android:text="同意并继续" />
+
+    </LinearLayout>
+
+</LinearLayout>
