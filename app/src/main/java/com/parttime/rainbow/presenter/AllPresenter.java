@@ -38,7 +38,7 @@ public class AllPresenter extends BasePresenter<AllContract.View> implements All
     public void getData(boolean refresh) {
         if (refresh){
             pageIndex=1;
-            Observable.zip(api.getAd(Constants.AD_ALL_TOP)
+            Observable.zip(api.getAd(Constants.AD_HOT_TOP)
                     , api.queryRecommend2(7, pageIndex, pageSize,1),
                     (commonAdBean, recommendBean) -> {
                         List<BaseRecyclerAdapter.RecyclerItem> recyclerItems = new ArrayList<>();
