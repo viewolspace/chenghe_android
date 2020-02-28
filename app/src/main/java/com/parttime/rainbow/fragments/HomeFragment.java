@@ -10,7 +10,7 @@ import com.parttime.base.base.BaseMvpFragment;
 import com.parttime.base.base.BaseRecyclerAdapter;
 import com.parttime.rainbow.R;
 import com.parttime.rainbow.activity.SearchActivity;
-import com.parttime.rainbow.adapter.HomeAdapter;
+import com.parttime.rainbow.adapter.CommonAdapter;
 import com.parttime.rainbow.contract.HomeContract;
 import com.parttime.rainbow.presenter.HomePresenter;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -37,7 +37,7 @@ public class HomeFragment extends BaseMvpFragment<HomeContract.Presenter>
     @BindView(R.id.rl_search)
     LinearLayout rl_search;
 
-    private HomeAdapter homeAdapter;
+    private CommonAdapter homeAdapter;
 
     @Override
     protected int getContentLayoutId() {
@@ -47,7 +47,7 @@ public class HomeFragment extends BaseMvpFragment<HomeContract.Presenter>
     @Override
     protected void initWidget(View root) {
         recycler.setLayoutManager(new LinearLayoutManager(getContext()));
-        homeAdapter = new HomeAdapter();
+        homeAdapter = new CommonAdapter();
         recycler.setAdapter(homeAdapter);
         smart_refresh.setOnRefreshListener(this);
         smart_refresh.setOnLoadMoreListener(this);

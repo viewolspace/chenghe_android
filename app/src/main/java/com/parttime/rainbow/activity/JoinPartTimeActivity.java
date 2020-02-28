@@ -18,7 +18,7 @@ import com.parttime.base.rx.RxEvent;
 import com.parttime.base.rx.RxThrowableConsumer;
 import com.parttime.base.rx.RxUtils;
 import com.parttime.rainbow.R;
-import com.parttime.rainbow.adapter.AllAdapter;
+import com.parttime.rainbow.adapter.CommonAdapter;
 import com.parttime.rainbow.utils.StatusBarUtils;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -42,7 +42,7 @@ public class JoinPartTimeActivity extends BaseActivity implements OnRefreshListe
 
     private int pageIndex = 1;
     private int pageSize = 20;
-    private AllAdapter recommendAdapter;
+    private CommonAdapter recommendAdapter;
     public static void start(Context context){
         Intent intent = new Intent(context,JoinPartTimeActivity.class);
         context.startActivity(intent);
@@ -56,7 +56,7 @@ public class JoinPartTimeActivity extends BaseActivity implements OnRefreshListe
     protected void initWidget() {
         StatusBarUtils.statusbar(this);
         recycler.setLayoutManager(new LinearLayoutManager(JoinPartTimeActivity.this));
-        recommendAdapter = new AllAdapter();
+        recommendAdapter = new CommonAdapter();
         recycler.setAdapter(recommendAdapter);
         smart_refresh.setOnLoadMoreListener(this);
         smart_refresh.setOnRefreshListener(this);
@@ -89,7 +89,7 @@ public class JoinPartTimeActivity extends BaseActivity implements OnRefreshListe
                 List<BaseRecyclerAdapter.RecyclerItem> recyclerItems = new ArrayList<>();
                 if (recommendBean!=null&&recommendBean.getResult()!=null&&recommendBean.getResult().size()>0){
                     for (RecommendBean.ResultBean resultBean:recommendBean.getResult()){
-                        recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(AllAdapter.RECOMMEND,resultBean));
+                        recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(CommonAdapter.RM_RECOMMEND,resultBean));
                     }
                 }else if (recommendBean ==null||recommendBean.getResult()==null||recommendBean.getResult().size()<pageSize){
                     smart_refresh.setEnableLoadMore(false);

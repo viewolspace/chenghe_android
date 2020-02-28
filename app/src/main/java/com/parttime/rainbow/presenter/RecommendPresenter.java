@@ -8,8 +8,7 @@ import com.parttime.base.bean.RecommendBean;
 import com.parttime.base.constants.Constants;
 import com.parttime.base.rx.RxThrowableConsumer;
 import com.parttime.base.rx.RxUtils;
-import com.parttime.rainbow.adapter.HomeAdapter;
-import com.parttime.rainbow.adapter.RecommendAdapter;
+import com.parttime.rainbow.adapter.CommonAdapter;
 import com.parttime.rainbow.contract.RecommendContract;
 
 import java.util.ArrayList;
@@ -44,13 +43,13 @@ public class RecommendPresenter extends BasePresenter<RecommendContract.View> im
                         List<BaseRecyclerAdapter.RecyclerItem> recyclerItems = new ArrayList<>();
 
                         if (commonAdBean2!=null&&commonAdBean2.getResult()!=null&&commonAdBean2.getResult().size()>0){
-                            recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(RecommendAdapter.TOP_BANNER,commonAdBean2));
+                            recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(CommonAdapter.TJ_BANNER,commonAdBean2));
                             //recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(HomeAdapter.HOME_TITLE,"热门推荐"));
                         }
 
                         if (recommendBean!=null&&recommendBean.getResult()!=null&&recommendBean.getResult().size()>0){
                             for (RecommendBean.ResultBean resultBean:recommendBean.getResult()){
-                                recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(RecommendAdapter.RECOMMEND,resultBean));
+                                recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(CommonAdapter.TJ_RECOMMEND,resultBean));
                             }
                         }
                         if (recommendBean ==null||recommendBean.getResult()==null||recommendBean.getResult().size()<pageSize){
@@ -80,7 +79,7 @@ public class RecommendPresenter extends BasePresenter<RecommendContract.View> im
                         List<BaseRecyclerAdapter.RecyclerItem> recyclerItems = new ArrayList<>();
                         if (recommendBean!=null&&recommendBean.getResult()!=null&&recommendBean.getResult().size()>0){
                             for (RecommendBean.ResultBean resultBean:recommendBean.getResult()){
-                                recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(HomeAdapter.HOME_RECOMMEND,resultBean));
+                                recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(CommonAdapter.TJ_RECOMMEND,resultBean));
                             }
                         }
                         if (recommendBean ==null||recommendBean.getResult()==null||recommendBean.getResult().size()<pageSize){

@@ -8,7 +8,7 @@ import com.parttime.base.bean.RecommendBean;
 import com.parttime.base.constants.Constants;
 import com.parttime.base.rx.RxThrowableConsumer;
 import com.parttime.base.rx.RxUtils;
-import com.parttime.rainbow.adapter.AllAdapter;
+import com.parttime.rainbow.adapter.CommonAdapter;
 import com.parttime.rainbow.adapter.JXAdapter;
 import com.parttime.rainbow.contract.JXContract;
 
@@ -44,7 +44,7 @@ public class JXPresenter extends BasePresenter<JXContract.View> implements JXCon
                     , api.queryRecommend(8, pageIndex, pageSize),
                     (commonAdBean, commonAdBean2,recommendBean) -> {
                         List<BaseRecyclerAdapter.RecyclerItem> recyclerItems = new ArrayList<>();
-                        //recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(AllAdapter.TOP,new CommonAdBean()));
+                        //recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(AllAdapter.TJ_TOP,new CommonAdBean()));
                         if (commonAdBean!=null&&commonAdBean.getResult()!=null&&commonAdBean.getResult().size()>0){
                             recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(JXAdapter.TOP2,commonAdBean));
                         }
@@ -52,7 +52,7 @@ public class JXPresenter extends BasePresenter<JXContract.View> implements JXCon
                             recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(JXAdapter.TOP,commonAdBean2));
                         }
 //                        if (commonAdBean2!=null&&commonAdBean2.getResult()!=null&&commonAdBean2.getResult().size()>0){
-//                            recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(AllAdapter.BANNER,commonAdBean2));
+//                            recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(AllAdapter.TJ_BANNER,commonAdBean2));
 //                        }
                         if (recommendBean!=null&&recommendBean.getResult()!=null&&recommendBean.getResult().size()>0){
                             for (RecommendBean.ResultBean resultBean:recommendBean.getResult()){
@@ -86,7 +86,7 @@ public class JXPresenter extends BasePresenter<JXContract.View> implements JXCon
                         List<BaseRecyclerAdapter.RecyclerItem> recyclerItems = new ArrayList<>();
                         if (recommendBean!=null&&recommendBean.getResult()!=null&&recommendBean.getResult().size()>0){
                             for (RecommendBean.ResultBean resultBean:recommendBean.getResult()){
-                                recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(AllAdapter.RECOMMEND,resultBean));
+                                recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(CommonAdapter.RM_RECOMMEND,resultBean));
                             }
                         }
                         if (recommendBean ==null||recommendBean.getResult()==null||recommendBean.getResult().size()<pageSize){

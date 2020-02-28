@@ -8,7 +8,7 @@ import com.parttime.base.bean.RecommendBean;
 import com.parttime.base.constants.Constants;
 import com.parttime.base.rx.RxThrowableConsumer;
 import com.parttime.base.rx.RxUtils;
-import com.parttime.rainbow.adapter.AllAdapter;
+import com.parttime.rainbow.adapter.CommonAdapter;
 import com.parttime.rainbow.contract.AllContract;
 
 import java.util.ArrayList;
@@ -42,17 +42,17 @@ public class AllPresenter extends BasePresenter<AllContract.View> implements All
                     , api.queryRecommend2(7, pageIndex, pageSize,1),
                     (commonAdBean, recommendBean) -> {
                         List<BaseRecyclerAdapter.RecyclerItem> recyclerItems = new ArrayList<>();
-                        //recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(AllAdapter.TOP,new CommonAdBean()));
+                        //recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(AllAdapter.TJ_TOP,new CommonAdBean()));
 
                         if (commonAdBean!=null&&commonAdBean.getResult()!=null&&commonAdBean.getResult().size()>0){
-                            recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(AllAdapter.TOP,commonAdBean));
+                            recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(CommonAdapter.RM_TOP,commonAdBean));
                         }
 //                        if (commonAdBean2!=null&&commonAdBean2.getResult()!=null&&commonAdBean2.getResult().size()>0){
-//                            recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(AllAdapter.BANNER,commonAdBean2));
+//                            recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(AllAdapter.TJ_BANNER,commonAdBean2));
 //                        }
                         if (recommendBean!=null&&recommendBean.getResult()!=null&&recommendBean.getResult().size()>0){
                             for (RecommendBean.ResultBean resultBean:recommendBean.getResult()){
-                                recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(AllAdapter.RECOMMEND,resultBean));
+                                recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(CommonAdapter.RM_RECOMMEND,resultBean));
                             }
                         }
                         if (recommendBean ==null||recommendBean.getResult()==null||recommendBean.getResult().size()<pageSize){
@@ -82,7 +82,7 @@ public class AllPresenter extends BasePresenter<AllContract.View> implements All
                         List<BaseRecyclerAdapter.RecyclerItem> recyclerItems = new ArrayList<>();
                         if (recommendBean!=null&&recommendBean.getResult()!=null&&recommendBean.getResult().size()>0){
                             for (RecommendBean.ResultBean resultBean:recommendBean.getResult()){
-                                recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(AllAdapter.RECOMMEND,resultBean));
+                                recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(CommonAdapter.RM_RECOMMEND,resultBean));
                             }
                         }
                         if (recommendBean ==null||recommendBean.getResult()==null||recommendBean.getResult().size()<pageSize){

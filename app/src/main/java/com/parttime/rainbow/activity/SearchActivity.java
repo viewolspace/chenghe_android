@@ -27,7 +27,7 @@ import com.parttime.base.rx.RxEvent;
 import com.parttime.base.rx.RxThrowableConsumer;
 import com.parttime.base.rx.RxUtils;
 import com.parttime.rainbow.R;
-import com.parttime.rainbow.adapter.AllAdapter;
+import com.parttime.rainbow.adapter.CommonAdapter;
 import com.parttime.rainbow.utils.StatusBarUtils;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -58,7 +58,7 @@ public class SearchActivity extends BaseActivity implements OnRefreshListener, O
     private String searchStr = "";
     private int pageIndex = 1;
     private int pageSize = 20;
-    private AllAdapter recommendAdapter;
+    private CommonAdapter recommendAdapter;
 
     long lastInputTime;//键盘上次输入的时间
     private Handler handler;
@@ -83,7 +83,7 @@ public class SearchActivity extends BaseActivity implements OnRefreshListener, O
             }
         });
         recycler.setLayoutManager(new LinearLayoutManager(SearchActivity.this));
-        recommendAdapter = new AllAdapter();
+        recommendAdapter = new CommonAdapter();
         recycler.setAdapter(recommendAdapter);
         et_search.addTextChangedListener(new TextWatcher() {
             @Override
@@ -172,7 +172,7 @@ public class SearchActivity extends BaseActivity implements OnRefreshListener, O
                 List<BaseRecyclerAdapter.RecyclerItem> recyclerItems = new ArrayList<>();
                 if (recommendBean != null && recommendBean.getResult() != null && recommendBean.getResult().size() > 0) {
                     for (RecommendBean.ResultBean resultBean : recommendBean.getResult()) {
-                        recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(AllAdapter.SEARCH, resultBean));
+                        recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(CommonAdapter.SEARCH, resultBean));
                     }
                 }
                 if (recommendBean == null || recommendBean.getResult() == null || recommendBean.getResult().size() < pageSize) {

@@ -8,7 +8,7 @@ import com.parttime.base.bean.RecommendBean;
 import com.parttime.base.constants.Constants;
 import com.parttime.base.rx.RxThrowableConsumer;
 import com.parttime.base.rx.RxUtils;
-import com.parttime.rainbow.adapter.HomeAdapter;
+import com.parttime.rainbow.adapter.CommonAdapter;
 import com.parttime.rainbow.contract.HomeContract;
 
 import java.util.ArrayList;
@@ -45,19 +45,19 @@ public class HomePresenter extends BasePresenter<HomeContract.View> implements H
                         List<BaseRecyclerAdapter.RecyclerItem> recyclerItems = new ArrayList<>();
 
                         if (commonAdBean2!=null&&commonAdBean2.getResult()!=null&&commonAdBean2.getResult().size()>0){
-                            recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(HomeAdapter.HOME_HOT,commonAdBean2));
+                            recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(CommonAdapter.SY_BANNER,commonAdBean2));
                             //recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(HomeAdapter.HOME_TITLE,"热门推荐"));
                         }
 
 
                         if (commonAdBean!=null&&commonAdBean.getResult()!=null&&commonAdBean.getResult().size()>0){
-                            recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(HomeAdapter.HOME_TOP,commonAdBean));
-                            recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(HomeAdapter.HOME_TITLE,"推荐"));
+                            recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(CommonAdapter.SY_TOP,commonAdBean));
+                            recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(CommonAdapter.TITLE,"推荐"));
                         }
 
                         if (recommendBean!=null&&recommendBean.getResult()!=null&&recommendBean.getResult().size()>0){
                             for (RecommendBean.ResultBean resultBean:recommendBean.getResult()){
-                                recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(HomeAdapter.HOME_RECOMMEND,resultBean));
+                                recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(CommonAdapter.SY_RECOMMEND,resultBean));
                             }
                         }
                         if (recommendBean ==null||recommendBean.getResult()==null||recommendBean.getResult().size()<pageSize){
@@ -87,7 +87,7 @@ public class HomePresenter extends BasePresenter<HomeContract.View> implements H
                         List<BaseRecyclerAdapter.RecyclerItem> recyclerItems = new ArrayList<>();
                         if (recommendBean!=null&&recommendBean.getResult()!=null&&recommendBean.getResult().size()>0){
                             for (RecommendBean.ResultBean resultBean:recommendBean.getResult()){
-                                recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(HomeAdapter.HOME_RECOMMEND,resultBean));
+                                recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(CommonAdapter.SY_RECOMMEND,resultBean));
                             }
                         }
                         if (recommendBean ==null||recommendBean.getResult()==null||recommendBean.getResult().size()<pageSize){
