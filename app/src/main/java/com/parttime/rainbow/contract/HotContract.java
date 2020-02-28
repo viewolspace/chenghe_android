@@ -11,7 +11,7 @@ import java.util.List;
  * @time : 2019/7/22 16:25
  * @describe ：
  */
-public interface AllContract {
+public interface HotContract {
     interface Presenter extends BaseContract.Presenter<View> {
         void getData(boolean refresh);
     }

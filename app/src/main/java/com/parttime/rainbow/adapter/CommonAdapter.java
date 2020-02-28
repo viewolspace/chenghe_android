@@ -6,7 +6,11 @@ import android.view.ViewGroup;
 import com.parttime.base.base.BaseRecyclerAdapter;
 import com.parttime.rainbow.R;
 import com.parttime.rainbow.adapter.holder.BannerHolder;
+import com.parttime.rainbow.adapter.holder.JXRecommendViewHolder;
+import com.parttime.rainbow.adapter.holder.JXTopViewHolder;
+import com.parttime.rainbow.adapter.holder.JXTopViewHolder2;
 import com.parttime.rainbow.adapter.holder.RMRecommendViewHolder;
+import com.parttime.rainbow.adapter.holder.RecommendViewHolder;
 import com.parttime.rainbow.adapter.holder.SYHotViewHolder;
 import com.parttime.rainbow.adapter.holder.SYRecommendViewHolder;
 import com.parttime.rainbow.adapter.holder.TJRecommendViewHolder;
@@ -29,6 +33,10 @@ public class CommonAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Recyc
     public final static int RM_TOP = 20;
     public final static int RM_BANNER = 21;
     public final static int RM_RECOMMEND = 22;
+    public final static int JX_TOP = 30;
+    public final static int JX_TOP2 = 33;
+    public final static int JX_BANNER = 31;
+    public final static int JX_RECOMMEND = 32;
     public final static int SEARCH = 101;
     public final static int TITLE = 102;
 
@@ -55,6 +63,15 @@ public class CommonAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Recyc
                 return R.layout.item_home_hot_recommend;
             case SEARCH:
                 return R.layout.item_search_result;
+            //精选部分
+            case JX_TOP:
+                return R.layout.layout_jx_top;
+            case JX_TOP2:
+                return R.layout.layout_jx_top2;
+            case JX_BANNER:
+                return R.layout.item_banner_margin;
+            case JX_RECOMMEND:
+                return R.layout.item_jx_content;
         }
 
         return R.layout.item_jx_content;
@@ -86,7 +103,13 @@ public class CommonAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Recyc
                 return new RMRecommendViewHolder(root);
             case R.layout.layout_all_top:
                 return new TopViewHolder(root);
-
+                //精选部分
+            case R.layout.item_jx_content:
+                return new JXRecommendViewHolder(root);
+            case R.layout.layout_jx_top:
+                return new JXTopViewHolder(root);
+            case R.layout.layout_jx_top2:
+                return new JXTopViewHolder2(root);
         }
         return new SYRecommendViewHolder(root);
     }

@@ -9,7 +9,7 @@ import com.parttime.base.constants.Constants;
 import com.parttime.base.rx.RxThrowableConsumer;
 import com.parttime.base.rx.RxUtils;
 import com.parttime.rainbow.adapter.CommonAdapter;
-import com.parttime.rainbow.contract.AllContract;
+import com.parttime.rainbow.contract.HotContract;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,9 +22,9 @@ import io.reactivex.Observable;
  * @time : 2019/7/22 16:25
  * @describe ：
  */
-public class AllPresenter extends BasePresenter<AllContract.View> implements AllContract.Presenter{
+public class HotPresenter extends BasePresenter<HotContract.View> implements HotContract.Presenter{
 
-    public AllPresenter(AllContract.View view) {
+    public HotPresenter(HotContract.View view) {
         super(view);
     }
 
@@ -52,7 +52,7 @@ public class AllPresenter extends BasePresenter<AllContract.View> implements All
 //                        }
                         if (recommendBean!=null&&recommendBean.getResult()!=null&&recommendBean.getResult().size()>0){
                             for (RecommendBean.ResultBean resultBean:recommendBean.getResult()){
-                                recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(CommonAdapter.RM_RECOMMEND,resultBean));
+                                recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(CommonAdapter.JX_RECOMMEND,resultBean));
                             }
                         }
                         if (recommendBean ==null||recommendBean.getResult()==null||recommendBean.getResult().size()<pageSize){
@@ -74,7 +74,7 @@ public class AllPresenter extends BasePresenter<AllContract.View> implements All
                         }
                     });
         }else {
-            api.queryAll("",pageIndex,pageSize,Constants.APP)
+            api.queryRecommend2(7,pageIndex,pageSize,1)
                     .compose(RxUtils.rxSchedulerHelper())
                     .compose(mProvider.bindToLifecycle())
                     .subscribe(recommendBean -> {
@@ -82,7 +82,7 @@ public class AllPresenter extends BasePresenter<AllContract.View> implements All
                         List<BaseRecyclerAdapter.RecyclerItem> recyclerItems = new ArrayList<>();
                         if (recommendBean!=null&&recommendBean.getResult()!=null&&recommendBean.getResult().size()>0){
                             for (RecommendBean.ResultBean resultBean:recommendBean.getResult()){
-                                recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(CommonAdapter.RM_RECOMMEND,resultBean));
+                                recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(CommonAdapter.JX_RECOMMEND,resultBean));
                             }
                         }
                         if (recommendBean ==null||recommendBean.getResult()==null||recommendBean.getResult().size()<pageSize){

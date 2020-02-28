@@ -9,7 +9,6 @@ import com.parttime.base.constants.Constants;
 import com.parttime.base.rx.RxThrowableConsumer;
 import com.parttime.base.rx.RxUtils;
 import com.parttime.rainbow.adapter.CommonAdapter;
-import com.parttime.rainbow.adapter.JXAdapter;
 import com.parttime.rainbow.contract.JXContract;
 
 import java.util.ArrayList;
@@ -46,17 +45,17 @@ public class JXPresenter extends BasePresenter<JXContract.View> implements JXCon
                         List<BaseRecyclerAdapter.RecyclerItem> recyclerItems = new ArrayList<>();
                         //recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(AllAdapter.TJ_TOP,new CommonAdBean()));
                         if (commonAdBean!=null&&commonAdBean.getResult()!=null&&commonAdBean.getResult().size()>0){
-                            recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(JXAdapter.TOP2,commonAdBean));
+                            recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(CommonAdapter.JX_TOP2,commonAdBean));
                         }
                         if (commonAdBean2!=null&&commonAdBean2.getResult()!=null&&commonAdBean2.getResult().size()>0){
-                            recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(JXAdapter.TOP,commonAdBean2));
+                            recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(CommonAdapter.JX_TOP,commonAdBean2));
                         }
 //                        if (commonAdBean2!=null&&commonAdBean2.getResult()!=null&&commonAdBean2.getResult().size()>0){
 //                            recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(AllAdapter.TJ_BANNER,commonAdBean2));
 //                        }
                         if (recommendBean!=null&&recommendBean.getResult()!=null&&recommendBean.getResult().size()>0){
                             for (RecommendBean.ResultBean resultBean:recommendBean.getResult()){
-                                recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(JXAdapter.RECOMMEND,resultBean));
+                                recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(CommonAdapter.JX_RECOMMEND,resultBean));
                             }
                         }
                         if (recommendBean ==null||recommendBean.getResult()==null||recommendBean.getResult().size()<pageSize){

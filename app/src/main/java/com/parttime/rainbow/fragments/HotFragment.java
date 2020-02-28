@@ -11,8 +11,8 @@ import com.parttime.base.base.BaseRecyclerAdapter;
 import com.parttime.rainbow.R;
 import com.parttime.rainbow.activity.SearchActivity;
 import com.parttime.rainbow.adapter.CommonAdapter;
-import com.parttime.rainbow.contract.AllContract;
-import com.parttime.rainbow.presenter.AllPresenter;
+import com.parttime.rainbow.contract.HotContract;
+import com.parttime.rainbow.presenter.HotPresenter;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
@@ -28,8 +28,8 @@ import butterknife.BindView;
  * @time : 2019/7/22 14:02
  * @describe ：
  */
-public class HotFragment extends BaseMvpFragment<AllContract.Presenter>
-        implements AllContract.View , OnRefreshListener, OnLoadMoreListener {
+public class HotFragment extends BaseMvpFragment<HotContract.Presenter>
+        implements HotContract.View , OnRefreshListener, OnLoadMoreListener {
     @BindView(R.id.recycler)
     RecyclerView recycler;
     @BindView(R.id.smart_refresh)
@@ -64,8 +64,8 @@ public class HotFragment extends BaseMvpFragment<AllContract.Presenter>
     }
 
     @Override
-    protected AllContract.Presenter initPresenter() {
-        return new AllPresenter(this);
+    protected HotContract.Presenter initPresenter() {
+        return new HotPresenter(this);
     }
 
 
