@@ -23,6 +23,7 @@ import com.parttime.rainbow.activity.JoinPartTimeActivity;
 import com.parttime.rainbow.activity.LoginActivity;
 import com.parttime.rainbow.activity.PersonalResumeActivity;
 import com.parttime.rainbow.activity.SplashActivity;
+import com.parttime.rainbow.activity.WebActivity;
 import com.parttime.rainbow.view.dilaog.AgreementDialog;
 import com.parttime.rainbow.view.dilaog.ChangeNickNameDialog;
 import com.parttime.rainbow.view.dilaog.ConfirmDialog;
@@ -129,19 +130,7 @@ public class MineFragment extends BaseFragment {
 
                 break;
             case R.id.rl_yinsixieyi:
-                AgreementDialog agreementDialog = new AgreementDialog(getContext());
-                agreementDialog.setClickListener(new AgreementDialog.ClickListener() {
-                    @Override
-                    public void onConfirmClick() {
-                        SpUtil.putBoolean(getContext(),"isAgreementPrivacy",true);
-                    }
-
-                    @Override
-                    public void onCancelClick() {
-
-                    }
-                });
-                agreementDialog.show();
+                WebActivity.start(getContext(),"http://www.chengheed.com/xy/chjz_yszc.htm");
                 break;
             case R.id.rl_cancel_yinsixieyi:
                 ConfirmDialog confirmDialog = new ConfirmDialog(getContext());
