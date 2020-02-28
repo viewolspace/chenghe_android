@@ -130,7 +130,7 @@ public class MineFragment extends BaseFragment {
 
                 break;
             case R.id.rl_yinsixieyi:
-                WebActivity.start(getContext(),"http://www.chengheed.com/xy/chjz_yszc.htm");
+                WebActivity.start(getContext(),"http://www.chengheed.com/xy/ygjz_yszc.htm");
                 break;
             case R.id.rl_cancel_yinsixieyi:
                 ConfirmDialog confirmDialog = new ConfirmDialog(getContext());
