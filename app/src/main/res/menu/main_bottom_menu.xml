@@ -7,8 +7,8 @@
         android:icon="@drawable/menu_recommend"
         android:title="@string/menu_recommend"/>
     <item android:id="@+id/menu_all"
-        android:icon="@drawable/menu_all"
-        android:title="@string/menu_all"/>
+        android:icon="@drawable/menu_hot"
+        android:title="@string/menu_hot"/>
     <item android:id="@+id/menu_mine"
         android:icon="@drawable/menu_mine"
         android:title="@string/menu_mine"/>

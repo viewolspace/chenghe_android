@@ -40,7 +40,7 @@ public class JXFragment extends BaseMvpFragment<JXContract.Presenter>
 
     @Override
     protected int getContentLayoutId() {
-        return R.layout.fragment_all;
+        return R.layout.fragment_hot;
     }
 
     @Override

@@ -1,141 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
-    android:orientation="vertical">
-
-
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="5dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:background="@color/white"
-        android:orientation="horizontal">
+        android:orientation="vertical">
+
 
         <LinearLayout
-            android:id="@+id/ll_tab_1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@color/white"
+            android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/iv_tab_1"
-                android:layout_width="46dp"
-                android:layout_height="46dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/top_menu_jdyz" />
+            <LinearLayout
+                android:id="@+id/ll_tab_1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tv_tab1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="简单上手"
-                android:layout_marginTop="10dp"
-                android:textColor="@color/color_241D1D"
-                android:textSize="12sp" />
+                <ImageView
+                    android:id="@+id/iv_tab_1"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/top_menu_jdyz" />
+
+                <TextView
+                    android:id="@+id/tv_tab1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="简单上手"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/color_241D1D"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_tab_2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_tab_2"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/top_menu_zjtz" />
+
+                <TextView
+                    android:id="@+id/tv_tab2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="在家躺赚"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/color_241D1D"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_tab_3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_tab_3"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/top_menu_gxrj" />
+
+                <TextView
+                    android:id="@+id/tv_tab3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="轻松兼职"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/color_241D1D"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_tab_4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_tab_4"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/top_menu_wljz" />
+
+                <TextView
+                    android:id="@+id/tv_tab4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="天天赚钱"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/color_241D1D"
+                    android:textSize="12sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_tab_5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_tab_5"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/top_menu_zjzq" />
+
+                <TextView
+                    android:id="@+id/tv_tab5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="边赚边玩"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/color_241D1D"
+                    android:textSize="12sp" />
+            </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/ll_tab_2"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/iv_tab_2"
-                android:layout_width="46dp"
-                android:layout_height="46dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/top_menu_zjtz" />
-
-            <TextView
-                android:id="@+id/tv_tab2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="在家躺赚"
-                android:layout_marginTop="10dp"
-                android:textColor="@color/color_241D1D"
-                android:textSize="12sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll_tab_3"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/iv_tab_3"
-                android:layout_width="46dp"
-                android:layout_height="46dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/top_menu_gxrj" />
-
-            <TextView
-                android:id="@+id/tv_tab3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="轻松兼职"
-                android:layout_marginTop="10dp"
-                android:textColor="@color/color_241D1D"
-                android:textSize="12sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll_tab_4"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/iv_tab_4"
-                android:layout_width="46dp"
-                android:layout_height="46dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/top_menu_wljz" />
-
-            <TextView
-                android:id="@+id/tv_tab4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="天天赚钱"
-                android:layout_marginTop="10dp"
-                android:textColor="@color/color_241D1D"
-                android:textSize="12sp" />
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/ll_tab_5"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/iv_tab_5"
-                android:layout_width="46dp"
-                android:layout_height="46dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/top_menu_zjzq" />
-
-            <TextView
-                android:id="@+id/tv_tab5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="边赚边玩"
-                android:layout_marginTop="10dp"
-                android:textColor="@color/color_241D1D"
-                android:textSize="12sp" />
-        </LinearLayout>
+        <!--    <include layout="@layout/item_divider" />-->
     </LinearLayout>
-
-    <include layout="@layout/item_divider" />
-</LinearLayout>
+</android.support.v7.widget.CardView>

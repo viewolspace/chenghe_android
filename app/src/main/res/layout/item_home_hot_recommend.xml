@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent" android:layout_height="wrap_content"
     android:paddingLeft="14dp"
     android:paddingRight="14dp"
@@ -16,26 +17,34 @@
         android:text="微信在线兼职，随时随地做，秒结"
         android:textColor="@color/color_2A2A2A"
         android:textSize="16sp" />
-
-    <TextView
-        android:id="@+id/tv_job_money"
-        android:layout_alignTop="@id/tv_job_title"
-        android:layout_width="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_height="wrap_content"
-        android:textColor="@color/color_DB6D70"
-        android:textSize="23sp"
-        android:text="120"/>
     <TextView
         android:id="@+id/tv_job_unit"
-        android:layout_marginTop="6dp"
-        android:layout_below="@id/tv_job_money"
+        android:layout_marginTop="18dp"
         android:layout_alignParentRight="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/color_B8B7BA"
         android:textSize="11sp"
         android:text="元/天"/>
+    <TextView
+        android:id="@+id/tv_job_money"
+        android:layout_marginTop="8dp"
+        android:layout_width="wrap_content"
+        android:layout_toLeftOf="@id/tv_job_unit"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="4dp"
+        android:textColor="@color/color_money"
+        android:textSize="21sp"
+        android:text="120"/>
+
+    <com.zhy.view.flowlayout.TagFlowLayout
+        android:id="@+id/fl_job_desc"
+        android:layout_marginTop="6dp"
+        android:layout_below="@id/tv_job_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="18dp"
+        app:tag_gravity="center" />
     <TextView
         android:id="@+id/tv_job_desc"
         android:layout_marginTop="6dp"
@@ -44,6 +53,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/color_B8B7BA"
         android:textSize="13sp"
+        android:visibility="gone"
         android:text="日结 | 长期 | 男女不限"/>
 
     <ImageView
@@ -60,16 +70,16 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginRight="14dp"
-        android:layout_below="@id/tv_job_desc"
+        android:layout_below="@id/fl_job_desc"
         android:layout_marginTop="10dp"
         android:background="@color/divider"/>
     <ImageView
         android:id="@+id/iv_verify"
-        android:layout_width="45dp"
-        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_job_unit"
         android:layout_alignParentRight="true"
-        android:src="@drawable/verify_big"
-        android:layout_marginRight="60dp"
+        android:src="@drawable/verify_head"
         android:visibility="visible"
-        android:layout_marginTop="17dp"/>
+        android:layout_marginTop="10dp"/>
 </RelativeLayout>

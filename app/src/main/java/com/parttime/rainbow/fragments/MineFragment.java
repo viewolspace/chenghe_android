@@ -1,16 +1,20 @@
 package com.parttime.rainbow.fragments;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.request.RequestOptions;
 import com.parttime.base.base.BaseFragment;
 import com.parttime.base.bean.LoginBean;
+import com.parttime.base.constants.RoutMap;
 import com.parttime.base.rx.RxEvent;
+import com.parttime.base.util.SpUtil;
 import com.parttime.base.util.UserInfoUtil;
 import com.parttime.rainbow.R;
 import com.parttime.rainbow.activity.AboutUsActivity;
@@ -18,10 +22,14 @@ import com.parttime.rainbow.activity.FeedBackActivity;
 import com.parttime.rainbow.activity.JoinPartTimeActivity;
 import com.parttime.rainbow.activity.LoginActivity;
 import com.parttime.rainbow.activity.PersonalResumeActivity;
+import com.parttime.rainbow.activity.SplashActivity;
+import com.parttime.rainbow.view.dilaog.AgreementDialog;
 import com.parttime.rainbow.view.dilaog.ChangeNickNameDialog;
+import com.parttime.rainbow.view.dilaog.ConfirmDialog;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import retrofit2.http.GET;
 
 /**
  * @author : sklyand
@@ -76,7 +84,9 @@ public class MineFragment extends BaseFragment {
     protected void initData() {
 
     }
-    @OnClick({R.id.rl_my_resume,R.id.rl_my_apply,R.id.rl_change_nick_name,R.id.rl_about_us,R.id.rl_feedback,R.id.tv_nickname})
+    @OnClick({R.id.rl_my_resume,R.id.rl_my_apply,R.id.rl_change_nick_name,R.id.rl_about_us
+            ,R.id.rl_feedback,R.id.tv_nickname
+            ,R.id.rl_yinsixieyi,R.id.rl_cancel_yinsixieyi})
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.rl_my_resume:
@@ -117,6 +127,37 @@ public class MineFragment extends BaseFragment {
                     LoginActivity.start(getContext());
                 }
 
+                break;
+            case R.id.rl_yinsixieyi:
+                AgreementDialog agreementDialog = new AgreementDialog(getContext());
+                agreementDialog.setClickListener(new AgreementDialog.ClickListener() {
+                    @Override
+                    public void onConfirmClick() {
+                        SpUtil.putBoolean(getContext(),"isAgreementPrivacy",true);
+                    }
+
+                    @Override
+                    public void onCancelClick() {
+
+                    }
+                });
+                agreementDialog.show();
+                break;
+            case R.id.rl_cancel_yinsixieyi:
+                ConfirmDialog confirmDialog = new ConfirmDialog(getContext());
+                confirmDialog.setTitle("确定同意撤销隐私协议？");
+                confirmDialog.setOnDialogListener(new ConfirmDialog.OnDialogListener() {
+                    @Override
+                    public void onConfirmClickListener() {
+                        SpUtil.putBoolean(getContext(),"isAgreementPrivacy",false);
+                        Intent startMain = new Intent(Intent.ACTION_MAIN);
+                        startMain.addCategory(Intent.CATEGORY_HOME);
+                        startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(startMain);
+                        System.exit(0);
+                    }
+                });
+                confirmDialog.show();
                 break;
         }
     }

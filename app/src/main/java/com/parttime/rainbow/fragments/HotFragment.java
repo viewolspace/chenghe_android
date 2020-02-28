@@ -28,7 +28,7 @@ import butterknife.BindView;
  * @time : 2019/7/22 14:02
  * @describe ：
  */
-public class AllFragment extends BaseMvpFragment<AllContract.Presenter>
+public class HotFragment extends BaseMvpFragment<AllContract.Presenter>
         implements AllContract.View , OnRefreshListener, OnLoadMoreListener {
     @BindView(R.id.recycler)
     RecyclerView recycler;
@@ -40,7 +40,7 @@ public class AllFragment extends BaseMvpFragment<AllContract.Presenter>
 
     @Override
     protected int getContentLayoutId() {
-        return R.layout.fragment_all;
+        return R.layout.fragment_hot;
     }
 
     @Override

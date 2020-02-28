@@ -76,7 +76,7 @@
                     android:layout_below="@id/tv_update_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/color_DB6D70"
+                    android:textColor="@color/color_money"
                     android:textSize="23sp"
                     android:text="120"
                     />
@@ -89,7 +89,7 @@
                     android:layout_alignBottom="@id/tv_job_money"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/color_DB6D70"
+                    android:textColor="@color/color_money"
                     android:textSize="11sp"
                     android:text="元/天"/>
 

@@ -18,7 +18,7 @@ import com.parttime.base.rx.RxEvent;
 import com.parttime.base.util.PermissionUtil;
 import com.parttime.base.util.UserInfoUtil;
 import com.parttime.rainbow.R;
-import com.parttime.rainbow.fragments.AllFragment;
+import com.parttime.rainbow.fragments.HotFragment;
 import com.parttime.rainbow.fragments.HomeFragment;
 import com.parttime.rainbow.fragments.JXFragment;
 import com.parttime.rainbow.fragments.MineFragment;
@@ -37,7 +37,7 @@ public class MainActivity extends BaseActivity {
     private HomeFragment homeFragment;
     private int currentId = -1;
     private RecommendFragment recommendFragment;
-    private AllFragment allFragment;
+    private HotFragment allFragment;
     private MineFragment mineFragment;
     private JXFragment jxFragment;
     //缓存当前Tab的选中下标
@@ -64,7 +64,7 @@ public class MainActivity extends BaseActivity {
 //            FragmentTransaction transaction = fragmentManager.beginTransaction();
 //            homeFragment = (HomeFragment) fragmentManager.findFragmentByTag(FRAGMENT_TAG+R.id.rb_home);
 //            recommendFragment = (RecommendFragment) fragmentManager.findFragmentByTag(FRAGMENT_TAG+R.id.rb_recommend);
-//            allFragment = (AllFragment) fragmentManager.findFragmentByTag(FRAGMENT_TAG+R.id.rb_all);
+//            allFragment = (HotFragment) fragmentManager.findFragmentByTag(FRAGMENT_TAG+R.id.rb_all);
 //            mineFragment = (MineFragment) fragmentManager.findFragmentByTag(FRAGMENT_TAG+R.id.rb_mine);
 //            if (homeFragment!=null){
 //                transaction.hide(homeFragment);
@@ -90,7 +90,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initWidget() {
-        StatusBarUtils.statusbarWihte(this);
+        StatusBarUtils.statusbar(this);
         rg_menu.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -166,9 +166,9 @@ public class MainActivity extends BaseActivity {
                 fm.show(jxFragment);
                 currentFragment = jxFragment;
                 break;
-            case R.id.rb_all:
+            case R.id.rb_hot:
                 if (allFragment == null){
-                    allFragment = new AllFragment();
+                    allFragment = new HotFragment();
                     fm.add(R.id.fl_container, allFragment,FRAGMENT_TAG+checkedId);
                 }
                 fm.show(allFragment);

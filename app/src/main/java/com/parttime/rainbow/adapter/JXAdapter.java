@@ -51,7 +51,7 @@ public class JXAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.RecyclerI
             case TOP2:
                 return R.layout.layout_jx_top2;
             case BANNER:
-                return R.layout.item_recommend_banner;
+                return R.layout.item_banner_margin;
             case RECOMMEND:
                 return R.layout.item_jx_content;
             case TITLE:
@@ -66,7 +66,7 @@ public class JXAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.RecyclerI
     @Override
     protected ViewHolder<RecyclerItem> onCreateViewHolder(View root, ViewGroup parent, int viewType) {
         switch (viewType){
-            case R.layout.item_recommend_banner:
+            case R.layout.item_banner_margin:
                 return new BannerHolder(root);
             case R.layout.item_jx_content:
                 return new RecommendViewHolder(root);

@@ -52,10 +52,10 @@ public class HomePresenter extends BasePresenter<HomeContract.View> implements H
 
                         if (commonAdBean!=null&&commonAdBean.getResult()!=null&&commonAdBean.getResult().size()>0){
                             recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(CommonAdapter.SY_TOP,commonAdBean));
-                            recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(CommonAdapter.TITLE,"推荐"));
                         }
 
                         if (recommendBean!=null&&recommendBean.getResult()!=null&&recommendBean.getResult().size()>0){
+                            //recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(CommonAdapter.TITLE,"推荐"));
                             for (RecommendBean.ResultBean resultBean:recommendBean.getResult()){
                                 recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(CommonAdapter.SY_RECOMMEND,resultBean));
                             }

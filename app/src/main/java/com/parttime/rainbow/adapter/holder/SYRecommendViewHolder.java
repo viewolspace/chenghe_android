@@ -1,6 +1,7 @@
 package com.parttime.rainbow.adapter.holder;
 
 import android.text.SpannableString;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -10,7 +11,11 @@ import com.parttime.base.bean.RecommendBean;
 import com.parttime.rainbow.R;
 import com.parttime.rainbow.activity.JobDetailActivity;
 import com.parttime.rainbow.utils.StringUtil;
+import com.zhy.view.flowlayout.FlowLayout;
+import com.zhy.view.flowlayout.TagAdapter;
+import com.zhy.view.flowlayout.TagFlowLayout;
 
+import java.util.Arrays;
 import java.util.Locale;
 
 import butterknife.BindView;
@@ -18,7 +23,7 @@ import butterknife.BindView;
 /**
  * 热门推荐
  */
-public class SYRecommendViewHolder extends BaseRecyclerAdapter.ViewHolder<BaseRecyclerAdapter.RecyclerItem>{
+public class SYRecommendViewHolder extends BaseRecyclerAdapter.ViewHolder<BaseRecyclerAdapter.RecyclerItem> {
     @BindView(R.id.tv_job_title)
     TextView tv_job_title;
     @BindView(R.id.tv_job_money)
@@ -31,6 +36,9 @@ public class SYRecommendViewHolder extends BaseRecyclerAdapter.ViewHolder<BaseRe
     TextView tv_job_unit;
     @BindView(R.id.iv_verify)
     ImageView iv_verify;
+    @BindView(R.id.fl_job_desc)
+    TagFlowLayout fl_job_desc;
+
     public SYRecommendViewHolder(View itemView) {
         super(itemView);
     }
@@ -39,49 +47,66 @@ public class SYRecommendViewHolder extends BaseRecyclerAdapter.ViewHolder<BaseRe
     protected void onBind(BaseRecyclerAdapter.RecyclerItem recyclerItem) {
 
 
-            RecommendBean.ResultBean recommendBean = (RecommendBean.ResultBean) recyclerItem.data;
-            tv_job_title.setText(recommendBean.getTitle());
-            tv_job_money.setText(String.valueOf(recommendBean.getSalary()));
-            if (recommendBean.getLable().contains(",")){
-                tv_job_desc.setText(recommendBean.getLable().replaceAll(","," | "));
-            }else {
-                tv_job_desc.setText(recommendBean.getLable().replaceAll("，"," | "));
-            }
-            if (recommendBean.getVerify()==1){
-                iv_verify.setVisibility(View.VISIBLE);
-            }else {
-                iv_verify.setVisibility(View.GONE);
-            }
-            String unit = "元/天";
-            switch (recommendBean.getCycle()){
-                case 0:
-                    unit = String.format(Locale.ENGLISH,"元/%s","小时");
-                    break;
-                case 1:
-                    unit = String.format(Locale.ENGLISH,"元/%s","天");
-                    break;
-                case 2:
-                    unit = String.format(Locale.ENGLISH,"元/%s","周");
-                    break;
-                case 3:
-                    unit = String.format(Locale.ENGLISH,"元/%s","月");
-                    break;
-                case 4:
-                    unit = String.format(Locale.ENGLISH,"元/%s","季度");
-                    break;
-            }
-            tv_job_unit.setText(unit);
-            go_detail_button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    JobDetailActivity.start(itemView.getContext(),recommendBean.getId());
-                }
-            });
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    JobDetailActivity.start(itemView.getContext(),recommendBean.getId());
-                }
-            });
+        RecommendBean.ResultBean recommendBean = (RecommendBean.ResultBean) recyclerItem.data;
+        tv_job_title.setText(recommendBean.getTitle());
+        tv_job_money.setText(String.valueOf(recommendBean.getSalary()));
+//            if (recommendBean.getLable().contains(",")){
+//                tv_job_desc.setText(recommendBean.getLable().replaceAll(","," | "));
+//            }else {
+//                tv_job_desc.setText(recommendBean.getLable().replaceAll("，"," | "));
+//            }
+        String[] lable;
+        if (recommendBean.getLable().contains("，")) {
+            lable = recommendBean.getLable().split("，");
+        } else {
+            lable = recommendBean.getLable().split(",");
         }
+
+        fl_job_desc.setAdapter(new TagAdapter<String>(Arrays.asList(lable)) {
+            @Override
+            public View getView(FlowLayout parent, int position, String s) {
+                TextView textView = (TextView) LayoutInflater
+                        .from(parent.getContext()).inflate(R.layout.tag_detail2, null);
+                textView.setText(s);
+                return textView;
+            }
+
+        });
+        if (recommendBean.getVerify() == 1) {
+            iv_verify.setVisibility(View.VISIBLE);
+        } else {
+            iv_verify.setVisibility(View.GONE);
+        }
+        String unit = "元/天";
+        switch (recommendBean.getCycle()) {
+            case 0:
+                unit = String.format(Locale.ENGLISH, "元/%s", "小时");
+                break;
+            case 1:
+                unit = String.format(Locale.ENGLISH, "元/%s", "天");
+                break;
+            case 2:
+                unit = String.format(Locale.ENGLISH, "元/%s", "周");
+                break;
+            case 3:
+                unit = String.format(Locale.ENGLISH, "元/%s", "月");
+                break;
+            case 4:
+                unit = String.format(Locale.ENGLISH, "元/%s", "季度");
+                break;
+        }
+        tv_job_unit.setText(unit);
+        go_detail_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                JobDetailActivity.start(itemView.getContext(), recommendBean.getId());
+            }
+        });
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                JobDetailActivity.start(itemView.getContext(), recommendBean.getId());
+            }
+        });
+    }
 }

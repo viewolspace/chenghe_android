@@ -11,5 +11,5 @@
         android:layout_marginRight="15dp"
         android:clipChildren="false"
         android:background="@color/transparent"
-        android:layout_height="104dp" />
+        android:layout_height="120dp" />
 </RelativeLayout>

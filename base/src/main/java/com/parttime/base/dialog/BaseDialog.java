@@ -29,8 +29,8 @@ public abstract class BaseDialog extends Dialog {
     protected  void init(){
         View root  = LayoutInflater.from(getContext()).inflate(setContentLayout(),null);
         ButterKnife.bind(this,root);
-        initView(root);
         setContentView(root);
+        initView(root);
     }
 
     protected abstract @LayoutRes int setContentLayout();
