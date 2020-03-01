@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.parttime.rainbow">
+    package="com.parttime.sunshine">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -12,7 +12,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
-        android:name="com.parttime.rainbow.PartTimeApplication"
+        android:name="com.parttime.sunshine.PartTimeApplication"
         android:allowBackup="true"
         android:icon="@mipmap/logo"
         android:label="@string/app_name"
@@ -20,7 +20,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.parttime.rainbow.activity.SplashActivity">
+        <activity android:name="com.parttime.sunshine.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -39,16 +39,16 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
 
-        <activity android:name=".activity.FeedBackActivity" />
-        <activity android:name="com.parttime.rainbow.activity.AboutUsActivity" />
-        <activity android:name="com.parttime.rainbow.activity.JoinPartTimeActivity" />
-        <activity android:name="com.parttime.rainbow.activity.SearchActivity" />
-        <activity android:name="com.parttime.rainbow.activity.PersonalResumeActivity" />
-        <activity android:name="com.parttime.rainbow.activity.JobDetailActivity" />
-        <activity android:name="com.parttime.rainbow.activity.WebActivity" />
-        <activity android:name="com.parttime.rainbow.activity.CategoryPartTimeActivity" />
-        <activity android:name="com.parttime.rainbow.activity.LoginActivity"></activity>
-        <activity android:name="com.parttime.rainbow.activity.MainActivity">
+        <activity android:name="com.parttime.sunshine.activity.FeedBackActivity" />
+        <activity android:name="com.parttime.sunshine.activity.AboutUsActivity" />
+        <activity android:name="com.parttime.sunshine.activity.JoinPartTimeActivity" />
+        <activity android:name="com.parttime.sunshine.activity.SearchActivity" />
+        <activity android:name="com.parttime.sunshine.activity.PersonalResumeActivity" />
+        <activity android:name="com.parttime.sunshine.activity.JobDetailActivity" />
+        <activity android:name="com.parttime.sunshine.activity.WebActivity" />
+        <activity android:name="com.parttime.sunshine.activity.CategoryPartTimeActivity" />
+        <activity android:name="com.parttime.sunshine.activity.LoginActivity"></activity>
+        <activity android:name="com.parttime.sunshine.activity.MainActivity">
 
         </activity>
 

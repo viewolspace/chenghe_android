@@ -23,8 +23,8 @@ project.afterEvaluate {
 //                IS_CHANNEL = true
 //            }
 
-                def apkPath = "${buildDir}/outputs/apk/${taskName}/CaiHong_${variant.name}_v${variant.versionName}_${BuildTime}.apk"
-                def outPath = "${buildDir}/outputs/apk/${taskName}/CaiHong_jiagu_${BuildTime}"
+                def apkPath = "${buildDir}/outputs/apk/${taskName}/Sunshine_${variant.name}_v${variant.versionName}_${BuildTime}.apk"
+                def outPath = "${buildDir}/outputs/apk/${taskName}/Sunshine_jiagu_${BuildTime}"
                 def outApkPath = file(outPath)
                 def apk = file(apkPath)
                 println apkPath
