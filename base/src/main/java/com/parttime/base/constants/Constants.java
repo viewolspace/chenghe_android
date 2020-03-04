@@ -10,7 +10,7 @@ public class Constants {
 
     public static final String AD_HOME_BANNER = "000000020017";
 
-    public static final int SY_RECOMMENTD =10;
+    public static final int SY_RECOMMENTD =7;
     public static final int TJ_RECOMMENTD =11;
     public static final int RM_RECOMMENTD =12;
 

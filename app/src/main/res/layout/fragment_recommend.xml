@@ -10,6 +10,23 @@
        android:src="@drawable/ic_bg_home"
        />
 
+
+
+   <com.scwang.smartrefresh.layout.SmartRefreshLayout
+       android:id="@+id/smart_refresh"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+   <com.scwang.smartrefresh.layout.header.ClassicsHeader
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"/>
+   <android.support.v7.widget.RecyclerView
+       android:id="@+id/recycler"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent" />
+      <com.scwang.smartrefresh.layout.footer.ClassicsFooter
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"/>
+   </com.scwang.smartrefresh.layout.SmartRefreshLayout>
    <LinearLayout
        android:id="@+id/rl_search"
        android:layout_width="match_parent"
@@ -17,7 +34,7 @@
        android:layout_marginTop="26dp"
        android:layout_marginBottom="6dp"
        android:orientation="horizontal"
-       android:background="@drawable/home_search_bg_gray"
+       android:background="@drawable/home_search_bg_white"
        android:paddingLeft="18dp"
        android:paddingRight="18dp"
        android:paddingTop="6dp"
@@ -40,21 +57,4 @@
           />
 
    </LinearLayout>
-
-   <com.scwang.smartrefresh.layout.SmartRefreshLayout
-       android:layout_below="@id/rl_search"
-       android:id="@+id/smart_refresh"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent">
-   <com.scwang.smartrefresh.layout.header.ClassicsHeader
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"/>
-   <android.support.v7.widget.RecyclerView
-       android:id="@+id/recycler"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent" />
-      <com.scwang.smartrefresh.layout.footer.ClassicsFooter
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"/>
-   </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 </RelativeLayout>

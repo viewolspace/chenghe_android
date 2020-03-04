@@ -19,7 +19,7 @@
         android:drawablePadding="5dp"
         android:lines="1"
         android:ellipsize="end"
-        android:textColor="@color/white"
+        android:textColor="#992401"
         android:textSize="16sp" />
     <RelativeLayout
         android:layout_below="@id/tv_job_title"
@@ -29,7 +29,7 @@
             android:id="@+id/tv_job_money"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
+            android:textColor="#F73008"
             android:textSize="23sp"
             android:text="120"/>
         <TextView
@@ -41,7 +41,7 @@
             android:layout_marginBottom="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
+            android:textColor="#FD5E3F"
             android:textSize="11sp"
             android:text="元/天"/>
         <com.zhy.view.flowlayout.TagFlowLayout
