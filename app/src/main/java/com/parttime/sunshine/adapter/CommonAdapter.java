@@ -38,7 +38,7 @@ public class CommonAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Recyc
     public final static int JX_RECOMMEND = 32;
     public final static int SEARCH = 101;
     public final static int TITLE = 102;
-
+    public final static int BANNER = 103;
     @Override
     protected int getItemViewType(int position, RecyclerItem recyclerItem) {
         switch (recyclerItem.type){
@@ -71,6 +71,9 @@ public class CommonAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Recyc
                 return R.layout.item_banner_margin;
             case JX_RECOMMEND:
                 return R.layout.item_jx_content;
+            //通用
+            case BANNER:
+                return R.layout.item_banner_normal;
         }
 
         return R.layout.item_jx_content;

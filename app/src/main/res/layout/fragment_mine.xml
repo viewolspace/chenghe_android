@@ -10,7 +10,7 @@
             android:id="@+id/iv_top_bg"
             android:layout_width="match_parent"
             android:layout_height="227dp"
-            android:background="@drawable/mine_bg"
+            android:background="@drawable/login_bg"
             />
         <ImageView
             android:id="@+id/iv_avatar"
@@ -49,7 +49,7 @@
                 android:gravity="center"
                 android:drawablePadding="16sp"
                 android:layout_centerVertical="true"
-                android:drawableLeft="@drawable/my_resume_icon"/>
+                />
 
             <ImageView
                 android:layout_width="7dp"
@@ -75,7 +75,7 @@
                 android:gravity="center"
                 android:drawablePadding="16sp"
                 android:layout_centerVertical="true"
-                android:drawableLeft="@drawable/my_apply_icon"/>
+                />
             <ImageView
                 android:layout_width="7dp"
                 android:layout_height="12dp"
@@ -100,7 +100,7 @@
                 android:gravity="center"
                 android:drawablePadding="16sp"
                 android:layout_centerVertical="true"
-                android:drawableLeft="@drawable/nick_icon"/>
+                />
             <ImageView
                 android:layout_width="7dp"
                 android:layout_height="12dp"
@@ -132,7 +132,7 @@
                 android:gravity="center"
                 android:drawablePadding="16sp"
                 android:layout_centerVertical="true"
-                android:drawableLeft="@drawable/about_us_icon"/>
+                />
             <ImageView
                 android:layout_width="7dp"
                 android:layout_height="12dp"
@@ -157,7 +157,7 @@
                 android:gravity="center"
                 android:drawablePadding="16sp"
                 android:layout_centerVertical="true"
-                android:drawableLeft="@drawable/ic_feedback"/>
+                />
             <ImageView
                 android:layout_width="7dp"
                 android:layout_height="12dp"
@@ -182,7 +182,7 @@
                 android:gravity="center"
                 android:drawablePadding="16sp"
                 android:layout_centerVertical="true"
-                android:drawableLeft="@drawable/ic_yinsixieyi"/>
+                />
             <ImageView
                 android:layout_width="7dp"
                 android:layout_height="12dp"
@@ -207,11 +207,11 @@
                 android:gravity="center"
                 android:drawablePadding="16sp"
                 android:layout_centerVertical="true"
-                android:drawableLeft="@drawable/ic_cancel_yinsixieyi"/>
+                />
             <ImageView
                 android:layout_width="7dp"
                 android:layout_height="12dp"
-                android:src="@drawable/right_gray_arrow"
+
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 />

@@ -7,6 +7,7 @@ import com.parttime.base.bean.CommonAdBean;
 import com.parttime.sunshine.R;
 import com.parttime.sunshine.utils.PhoneUtils;
 import com.parttime.sunshine.utils.WebLinkToNativePageUtil;
+import com.parttime.sunshine.view.GlideImageLoader;
 import com.parttime.sunshine.view.GlideRoundImageLoader;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
@@ -33,7 +34,7 @@ public class BannerHolder extends BaseRecyclerAdapter.ViewHolder<BaseRecyclerAda
     protected void onBind(BaseRecyclerAdapter.RecyclerItem recyclerItem) {
         CommonAdBean commonAdBean = (CommonAdBean) recyclerItem.data;
         //设置图片加载器
-        banner.setImageLoader(new GlideRoundImageLoader());
+        banner.setImageLoader(new GlideImageLoader());
         banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
         banner.setIndicatorGravity(BannerConfig.CENTER);
         //设置图片集合
