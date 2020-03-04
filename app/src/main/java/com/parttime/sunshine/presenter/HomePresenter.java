@@ -46,16 +46,16 @@ public class HomePresenter extends BasePresenter<HomeContract.View> implements H
                         List<BaseRecyclerAdapter.RecyclerItem> recyclerItems = new ArrayList<>();
 
                         if (commonAdBean!=null&&commonAdBean.getResult()!=null&&commonAdBean.getResult().size()>0){
-                            recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(CommonAdapter.BANNER,commonAdBean2));
+                            recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(CommonAdapter.BANNER,commonAdBean));
                             //recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(HomeAdapter.HOME_TITLE,"热门推荐"));
                         }
 
 
                         if (commonAdBean2!=null&&commonAdBean2.getResult()!=null&&commonAdBean2.getResult().size()>0){
-                            recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(CommonAdapter.JX_TOP2,commonAdBean));
+                            recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(CommonAdapter.JX_TOP2,commonAdBean2));
                         }
                         if (commonAdBean3!=null&&commonAdBean3.getResult()!=null&&commonAdBean3.getResult().size()>0){
-                            recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(CommonAdapter.JX_TOP,commonAdBean));
+                            recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(CommonAdapter.JX_TOP,commonAdBean3));
                         }
                         if (recommendBean!=null&&recommendBean.getResult()!=null&&recommendBean.getResult().size()>0){
                             //recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(CommonAdapter.TITLE,"推荐"));

@@ -8,7 +8,7 @@ public class Constants {
 
     public static final String AD_HOME_TOP = "000000020012";
 
-    public static final String AD_HOME_BANNER = "000000020018";
+    public static final String AD_HOME_BANNER = "000000020017";
 
     public static final int SY_RECOMMENTD =10;
     public static final int TJ_RECOMMENTD =11;
