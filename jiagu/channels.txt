@@ -72,3 +72,5 @@ UMENG_CHANNEL honggeng7 honggeng7
 UMENG_CHANNEL honggeng8 honggeng8
 UMENG_CHANNEL honggeng9 honggeng9
 UMENG_CHANNEL honggeng10 honggeng10
+
+UMENG_CHANNEL zuiyou zuiyou
