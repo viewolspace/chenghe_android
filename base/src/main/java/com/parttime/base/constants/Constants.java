@@ -8,17 +8,17 @@ public class Constants {
 
     public static final String AD_HOME_TOP = "000000020012";
 
-    public static final String AD_HOME_BANNER = "000000020017";
+    public static final String AD_HOME_BANNER = "000000020021";
 
-    public static final int SY_RECOMMENTD =7;
-    public static final int TJ_RECOMMENTD =11;
+    public static final int SY_RECOMMENTD =13;
+    public static final int TJ_RECOMMENTD =14;
     public static final int RM_RECOMMENTD =12;
 
-    public static final String AD_RECOMMEND_BANNER = "000000020020";
+    public static final String AD_RECOMMEND_BANNER = "000000020024";
 
-    public static final String AD_JX_TOP1 = "000000020013";
+    public static final String AD_JX_TOP1 = "000000020023";
 
-    public static final String AD_JX_TOP2 = "000000020014";
+    public static final String AD_JX_TOP2 = "000000020022";
 
 
     public static final String WEB_URL = "web_url";//webview url
@@ -33,5 +33,5 @@ public class Constants {
 
     public static final int CONTACT_WECHAT = 2 ;
 
-    public static final String APP = "3" ;
+    public static final String APP = "5" ;
 }
