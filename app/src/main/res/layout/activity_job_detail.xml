@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:background="@color/white"
     android:paddingTop="20dp"
-    tools:context="com.parttime.sunshine.activity.JobDetailActivity">
+    tools:context="com.parttime.orange.activity.JobDetailActivity">
     <RelativeLayout
         android:id="@+id/rl_top"
         android:layout_width="match_parent"
