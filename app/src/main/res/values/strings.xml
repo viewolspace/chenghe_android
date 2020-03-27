@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">蜜桔兼职</string>
+    <string name="app_name">松鼠兼职</string>
 
     <!--首页菜单-->
     <string name="menu_home">首页</string>
-    <string name="menu_recommend">蜜桔精选</string>
+    <string name="menu_recommend">松鼠优选</string>
     <string name="menu_hot">全部</string>
     <string name="menu_mine">我的</string>
 
