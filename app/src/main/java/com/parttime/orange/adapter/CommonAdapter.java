@@ -48,12 +48,12 @@ public class CommonAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Recyc
                 return R.layout.item_banner_margin;
             case SY_RECOMMEND:
                 return R.layout.item_home_hot_recommend;
-            case TITLE:
-                return R.layout.item_home_title;
+            case TJ_TOP:
+                return R.layout.layout_tj_top;
             case TJ_BANNER:
                 return R.layout.item_banner_margin;
             case TJ_RECOMMEND:
-                return R.layout.item_jx_content;
+                return R.layout.item_tj_recommend;
             case RM_TOP:
                 return R.layout.layout_all_top;
             case RM_BANNER:
@@ -96,6 +96,10 @@ public class CommonAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Recyc
             //推荐部分
             case  R.layout.item_banner_normal:
                 return new BannerHolder(root);
+            case  R.layout.item_tj_recommend:
+                return new TJRecommendViewHolder(root);
+            case  R.layout.layout_tj_top:
+                return new TopViewHolder(root);
             case R.layout.item_recommend_today:
                 return new TJRecommendViewHolder(root);
             case  R.layout.layout_home_top2:

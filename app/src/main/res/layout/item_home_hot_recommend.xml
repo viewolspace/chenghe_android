@@ -23,7 +23,7 @@
         android:layout_alignParentRight="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/color_B8B7BA"
+        android:textColor="@color/color_money_unit"
         android:textSize="11sp"
         android:text="元/天"/>
     <TextView

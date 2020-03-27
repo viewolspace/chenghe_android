@@ -66,16 +66,16 @@ public class SYRecommendViewHolder extends BaseRecyclerAdapter.ViewHolder<BaseRe
             public View getView(FlowLayout parent, int position, String s) {
                 TextView textView = (TextView) LayoutInflater
                         .from(parent.getContext()).inflate(R.layout.tag_detail4, null);
-                if (position%3==0){
-                    textView.setBackgroundResource(R.drawable.shape_stk1_cn2_fc6d3f);
-                    textView.setTextColor(Color.parseColor("#fc6d3f"));
-                }else if (position%3==1){
-                    textView.setBackgroundResource(R.drawable.shape_stk1_cn2_24ba87);
-                    textView.setTextColor(Color.parseColor("#24ba87"));
-                }else if (position%3==2){
-                    textView.setBackgroundResource(R.drawable.shape_stk1_cn2_3f78ea);
-                    textView.setTextColor(Color.parseColor("#cn2_3f78ea"));
-                }
+//                if (position%3==0){
+//                    textView.setBackgroundResource(R.drawable.shape_stk1_cn2_fc6d3f);
+//                    textView.setTextColor(Color.parseColor("#fc6d3f"));
+//                }else if (position%3==1){
+//                    textView.setBackgroundResource(R.drawable.shape_stk1_cn2_24ba87);
+//                    textView.setTextColor(Color.parseColor("#24ba87"));
+//                }else if (position%3==2){
+//                    textView.setBackgroundResource(R.drawable.shape_stk1_cn2_3f78ea);
+//                    textView.setTextColor(Color.parseColor("#cn2_3f78ea"));
+//                }
                 textView.setText(s);
                 return textView;
             }

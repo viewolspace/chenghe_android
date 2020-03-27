@@ -37,8 +37,8 @@
             android:layout_marginTop="7dp"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:paddingLeft="33dp"
-            android:paddingRight="33dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
             android:layout_below="@id/iv_top_bg">
             <TextView
                 android:layout_width="wrap_content"
@@ -63,8 +63,8 @@
             android:id="@+id/rl_my_apply"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:paddingLeft="33dp"
-            android:paddingRight="33dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
             android:layout_below="@id/rl_my_resume">
             <TextView
                 android:layout_width="wrap_content"
@@ -88,8 +88,8 @@
             android:id="@+id/rl_change_nick_name"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:paddingLeft="33dp"
-            android:paddingRight="33dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
             android:layout_below="@id/rl_my_apply">
             <TextView
                 android:layout_width="wrap_content"
@@ -120,8 +120,8 @@
             android:id="@+id/rl_about_us"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:paddingLeft="33dp"
-            android:paddingRight="33dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
             android:layout_below="@id/line">
             <TextView
                 android:layout_width="wrap_content"
@@ -145,8 +145,8 @@
             android:id="@+id/rl_feedback"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:paddingLeft="33dp"
-            android:paddingRight="33dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
             android:layout_below="@id/rl_about_us">
             <TextView
                 android:layout_width="wrap_content"
@@ -170,8 +170,8 @@
             android:id="@+id/rl_yinsixieyi"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:paddingLeft="33dp"
-            android:paddingRight="33dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
             android:layout_below="@id/rl_feedback">
             <TextView
                 android:layout_width="wrap_content"
@@ -195,8 +195,8 @@
             android:id="@+id/rl_cancel_yinsixieyi"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:paddingLeft="33dp"
-            android:paddingRight="33dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
             android:layout_below="@id/rl_yinsixieyi">
             <TextView
                 android:layout_width="wrap_content"

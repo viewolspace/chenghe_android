@@ -11,8 +11,8 @@
     <color name="color_0d0d0d">#0d0d0d</color>
     <color name="color_2A2A2A">#2A2A2A</color>
     <color name="color_DB6D70">#DB6D70</color>
-    <color name="color_money">#EA372E</color>
-    <color name="color_money_unit">#EA372E</color>
+    <color name="color_money">#EC2C47</color>
+    <color name="color_money_unit">#EC2C47</color>
     <color name="color_B8B7BA">#B8B7BA</color>
     <color name="color_939393">#939393</color>
     <color name="color_656565">#656565</color>
@@ -21,6 +21,6 @@
     <color name="transparent">#00000000</color>
     <color name="color_f1f2f3f4">#f1f2f3f4</color>
     <color name="color_F46B20"> #F46B20</color>
-    <color name="color_main_text">#FFFC6D3F</color>
+    <color name="color_main_text">#FF5955D3</color>
 
 </resources>

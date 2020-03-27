@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:minHeight="108dp"
+    android:background="@drawable/recyclerview_touch_bg">
+
+    <ImageView
+        android:id="@+id/iv_item_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/tj_recommend_default_icon"/>
+    <RelativeLayout
+        android:layout_toLeftOf="@id/iv_item_icon"
+        android:layout_width="match_parent"
+        android:layout_marginRight="25dp"
+        android:layout_height="wrap_content"
+        android:minHeight="66dp"
+        >
+
+        <TextView
+            android:id="@+id/tv_job_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="微信在线兼职，随时随地做，秒结"
+            android:textColor="@color/color_2A2A2A"
+            android:textSize="16sp" />
+        <TextView
+            android:id="@+id/tv_job_money"
+            android:layout_marginTop="8dp"
+            android:layout_width="wrap_content"
+            android:layout_below="@id/tv_job_title"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp"
+            android:textColor="@color/color_money"
+            android:textSize="21sp"
+            android:text="120"/>
+        <TextView
+            android:id="@+id/tv_job_unit"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="4dp"
+            android:layout_alignBottom="@id/tv_job_money"
+            android:layout_toRightOf="@id/tv_job_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_money_unit"
+            android:textSize="11sp"
+            android:text="元/天"/>
+
+
+        <TextView
+            android:id="@+id/tv_job_desc"
+            android:layout_marginTop="6dp"
+            android:layout_below="@id/tv_job_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_B8B7BA"
+            android:textSize="13sp"
+            android:visibility="gone"
+            android:text="日结 | 长期 | 男女不限"/>
+
+        <ImageView
+            android:id="@+id/go_detail_button"
+            android:layout_below="@id/tv_job_title"
+            android:layout_width="89dp"
+            android:layout_height="45dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginTop="14dp"
+            android:src="@drawable/go_detail_button"
+            android:layout_alignParentRight="true"
+            android:visibility="gone"/>
+        <ImageView
+            android:id="@+id/iv_verify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_job_money"
+            android:src="@drawable/verify_head2"
+            android:visibility="visible"
+            android:layout_marginTop="8dp"/>
+        <com.zhy.view.flowlayout.TagFlowLayout
+            android:id="@+id/fl_job_desc"
+            android:layout_below="@id/tv_job_money"
+            android:layout_marginTop="4dp"
+            android:layout_toRightOf="@id/iv_verify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:minHeight="18dp"
+            app:tag_gravity="center" />
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/divider"/>
+</RelativeLayout>
