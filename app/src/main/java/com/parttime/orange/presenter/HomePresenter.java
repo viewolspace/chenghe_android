@@ -39,7 +39,7 @@ public class HomePresenter extends BasePresenter<HomeContract.View> implements H
         if (refresh){
             pageIndex = 1;
             Observable.zip(api.getAd(Constants.AD_HOME_BANNER),
-                    api.getAd(Constants.AD_JX_TOP2),
+                    api.getAd(Constants.AD_HOME_TOP2),
                     api.getAd(Constants.AD_HOME_TOP),
                     api.queryRecommend(Constants.SY_RECOMMENTD, pageIndex, pageSize),
                     (commonAdBean, commonAdBean2, commonAdBean3,recommendBean) -> {
