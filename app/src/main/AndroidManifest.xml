@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.parttime.orange">
+    package="com.parttime.songshu">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -10,7 +10,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
-        android:name="com.parttime.orange.PartTimeApplication"
+        android:name="com.parttime.songshu.PartTimeApplication"
         android:allowBackup="true"
         android:icon="@mipmap/logo"
         android:label="@string/app_name"
@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.parttime.orange.activity.SplashActivity">
+        <activity android:name="com.parttime.songshu.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -37,16 +37,16 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
 
-        <activity android:name="com.parttime.orange.activity.FeedBackActivity" />
-        <activity android:name="com.parttime.orange.activity.AboutUsActivity" />
-        <activity android:name="com.parttime.orange.activity.JoinPartTimeActivity" />
-        <activity android:name="com.parttime.orange.activity.SearchActivity" />
-        <activity android:name="com.parttime.orange.activity.PersonalResumeActivity" />
-        <activity android:name="com.parttime.orange.activity.JobDetailActivity" />
-        <activity android:name="com.parttime.orange.activity.WebActivity" />
-        <activity android:name="com.parttime.orange.activity.CategoryPartTimeActivity" />
-        <activity android:name="com.parttime.orange.activity.LoginActivity"></activity>
-        <activity android:name="com.parttime.orange.activity.MainActivity">
+        <activity android:name="com.parttime.songshu.activity.FeedBackActivity" />
+        <activity android:name="com.parttime.songshu.activity.AboutUsActivity" />
+        <activity android:name="com.parttime.songshu.activity.JoinPartTimeActivity" />
+        <activity android:name="com.parttime.songshu.activity.SearchActivity" />
+        <activity android:name="com.parttime.songshu.activity.PersonalResumeActivity" />
+        <activity android:name="com.parttime.songshu.activity.JobDetailActivity" />
+        <activity android:name="com.parttime.songshu.activity.WebActivity" />
+        <activity android:name="com.parttime.songshu.activity.CategoryPartTimeActivity" />
+        <activity android:name="com.parttime.songshu.activity.LoginActivity"></activity>
+        <activity android:name="com.parttime.songshu.activity.MainActivity">
 
         </activity>
 
