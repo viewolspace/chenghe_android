@@ -14,6 +14,7 @@ import com.parttime.songshu.adapter.holder.SYHotViewHolder;
 import com.parttime.songshu.adapter.holder.SYRecommendViewHolder;
 import com.parttime.songshu.adapter.holder.TJRecommendViewHolder;
 import com.parttime.songshu.adapter.holder.TitleViewHolder;
+import com.parttime.songshu.adapter.holder.TopGridViewHolder;
 import com.parttime.songshu.adapter.holder.TopViewHolder;
 
 /**
@@ -24,6 +25,7 @@ import com.parttime.songshu.adapter.holder.TopViewHolder;
  */
 public class CommonAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.RecyclerItem>{
     public final static int SY_TOP = 0;
+    public final static int SY_TOP2 = 3;
     public final static int SY_BANNER = 1;
     public final static int SY_RECOMMEND = 2;
     public final static int TJ_TOP = 10;
@@ -44,6 +46,8 @@ public class CommonAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Recyc
         switch (recyclerItem.type){
             case SY_TOP:
                 return R.layout.layout_sy_top;
+            case SY_TOP2:
+                return R.layout.layout_sy_top_grid;
             case SY_BANNER:
                 return R.layout.item_banner_margin;
             case SY_RECOMMEND:
@@ -86,6 +90,8 @@ public class CommonAdapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.Recyc
             //首页部分
             case  R.layout.layout_sy_top:
                 return new TopViewHolder(root);
+            case  R.layout.layout_sy_top_grid:
+                return new TopGridViewHolder(root);
             case R.layout.layout_home_hot_activity:
                 return new SYHotViewHolder(root);
             case R.layout.item_home_hot_recommend:

@@ -11,5 +11,5 @@
         android:paddingTop="2dp"
         android:paddingBottom="2dp"
         android:layout_marginRight="5dp"
-        android:background="@drawable/shape_stk1_cn2_dedede"
+        android:background="@drawable/shape_retangle_f2f4f5_r8"
         android:text="日结"/>
