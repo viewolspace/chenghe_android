@@ -36,7 +36,7 @@ public class HotPresenter extends BasePresenter<HotContract.View> implements Hot
     public void getData(boolean refresh) {
         if (refresh){
             pageIndex=1;
-            api.queryRecommend2(Constants.SY_RECOMMENTD,pageIndex,pageSize,1)
+            api.queryRecommend2(Constants.RM_RECOMMENTD,pageIndex,pageSize,1)
                     .compose(RxUtils.rxSchedulerHelper())
                     .compose(mProvider.bindToLifecycle())
                     .subscribe(recommendBean -> {

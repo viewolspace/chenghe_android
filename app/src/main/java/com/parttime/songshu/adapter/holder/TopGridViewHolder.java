@@ -1,5 +1,7 @@
 package com.parttime.songshu.adapter.holder;
 
+import android.graphics.Rect;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -11,6 +13,7 @@ import com.bumptech.glide.Glide;
 import com.parttime.base.base.BaseRecyclerAdapter;
 import com.parttime.base.bean.CommonAdBean;
 import com.parttime.songshu.R;
+import com.parttime.songshu.utils.DimenUtil;
 import com.parttime.songshu.utils.WebLinkToNativePageUtil;
 
 import butterknife.BindView;
@@ -22,13 +25,20 @@ import butterknife.BindView;
  * @describe ：
  */
 public class TopGridViewHolder  extends BaseRecyclerAdapter.ViewHolder<BaseRecyclerAdapter.RecyclerItem>{
-    @BindView(R.id.rv_menu)
     RecyclerView recyclerView;
     private final TopMenuItemAdapter topMenuItemAdapter;
 
     public TopGridViewHolder(View itemView) {
         super(itemView);
+        recyclerView = itemView.findViewById(R.id.rv_menu);
         recyclerView.setLayoutManager(new GridLayoutManager(itemView.getContext(),3));
+        recyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
+            @Override
+            public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
+                super.getItemOffsets(outRect, view, parent, state);
+                outRect.top = DimenUtil.dipToPixels(15);
+            }
+        });
         topMenuItemAdapter = new TopMenuItemAdapter();
         recyclerView.setAdapter(topMenuItemAdapter);
     }
