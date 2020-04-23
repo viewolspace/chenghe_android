@@ -54,7 +54,7 @@
         android:background="#cdced3" />
 
 
-    <com.parttime.songshu.view.CalendarSelectedView
+    <com.parttime.happy.view.CalendarSelectedView
         android:id="@+id/calendar_selected"
         android:layout_width="match_parent"
         android:layout_height="148dp"
