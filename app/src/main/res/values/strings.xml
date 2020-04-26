@@ -3,8 +3,8 @@
 
     <!--首页菜单-->
     <string name="menu_home">首页</string>
-    <string name="menu_recommend">松鼠优选</string>
-    <string name="menu_hot">全部</string>
+    <string name="menu_recommend">推荐</string>
+    <string name="menu_hot">热门</string>
     <string name="menu_mine">我的</string>
 
 </resources>

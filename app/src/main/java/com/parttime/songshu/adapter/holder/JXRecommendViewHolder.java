@@ -1,5 +1,6 @@
 package com.parttime.songshu.adapter.holder;
 
+import android.text.SpannableString;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -9,6 +10,7 @@ import com.parttime.base.base.BaseRecyclerAdapter;
 import com.parttime.base.bean.RecommendBean;
 import com.parttime.songshu.R;
 import com.parttime.songshu.activity.JobDetailActivity;
+import com.parttime.songshu.utils.StringUtil;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
 import com.zhy.view.flowlayout.TagFlowLayout;
@@ -42,20 +44,20 @@ public class JXRecommendViewHolder extends BaseRecyclerAdapter.ViewHolder<BaseRe
     @Override
     protected void onBind(BaseRecyclerAdapter.RecyclerItem recyclerItem) {
         RecommendBean.ResultBean recommendBean = (RecommendBean.ResultBean) recyclerItem.data;
-//        if (recommendBean.getTitle()!=null&&recommendBean.getTitle().length()>0){
-//            if (recommendBean.getVerify()==1){
-//                SpannableString spannableString = new SpannableString("   "+recommendBean.getTitle());
-//                StringUtil.addImageSpan(spannableString,0,1,R.drawable.jx_verify_item,itemView.getContext());
-//                tv_job_title.setText(spannableString);
-//            }else {
-//                tv_job_title.setText(recommendBean.getTitle());
-//            }
-//        }
-        if (recommendBean.getVerify() == 1) {
-            iv_verify.setVisibility(View.VISIBLE);
-        } else {
-            iv_verify.setVisibility(View.GONE);
+        if (recommendBean.getTitle()!=null&&recommendBean.getTitle().length()>0){
+            if (recommendBean.getVerify()==1){
+                SpannableString spannableString = new SpannableString("   "+recommendBean.getTitle());
+                StringUtil.addImageSpan(spannableString,0,1,R.drawable.verify_head,itemView.getContext());
+                tv_job_title.setText(spannableString);
+            }else {
+                tv_job_title.setText(recommendBean.getTitle());
+            }
         }
+//        if (recommendBean.getVerify() == 1) {
+//            iv_verify.setVisibility(View.VISIBLE);
+//        } else {
+//            iv_verify.setVisibility(View.GONE);
+//        }
         tv_job_money.setText(String.valueOf(recommendBean.getSalary()));
         String unit = "元/天";
         String[] lable;

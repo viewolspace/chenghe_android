@@ -19,7 +19,7 @@
         android:drawablePadding="5dp"
         android:lines="1"
         android:ellipsize="end"
-        android:textColor="#992401"
+        android:textColor="#FF04822E"
         android:textSize="16sp" />
     <RelativeLayout
         android:layout_below="@id/tv_job_title"
@@ -46,8 +46,9 @@
             android:text="元/天"/>
         <com.zhy.view.flowlayout.TagFlowLayout
             android:id="@+id/fl_job_desc"
-            android:layout_alignParentRight="true"
             android:layout_alignBottom="@id/tv_job_money"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/tv_job_unit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:tag_gravity="center" />
@@ -59,7 +60,7 @@
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/tv_job_unit"
             android:src="@drawable/verify_head2"
-            android:visibility="visible"
+            android:visibility="gone"
             android:layout_marginTop="10dp"/>
     </RelativeLayout>
 

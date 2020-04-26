@@ -37,19 +37,19 @@ public class RecommendPresenter extends BasePresenter<RecommendContract.View> im
     public void getData(boolean refresh) {
         if (refresh){
             pageIndex = 1;
-            Observable.zip( api.getAd(Constants.AD_RECOMMEND_BANNER),
+            Observable.zip( api.getAd(Constants.AD_HOME_BANNER),
                     api.queryRecommend(Constants.TJ_RECOMMENTD, pageIndex, pageSize),
                     ( commonAdBean2, recommendBean) -> {
                         List<BaseRecyclerAdapter.RecyclerItem> recyclerItems = new ArrayList<>();
 
                         if (commonAdBean2!=null&&commonAdBean2.getResult()!=null&&commonAdBean2.getResult().size()>0){
-                            recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(CommonAdapter.TJ_TOP,commonAdBean2));
+                            recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(CommonAdapter.BANNER,commonAdBean2));
                             //recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(HomeAdapter.HOME_TITLE,"热门推荐"));
                         }
 
                         if (recommendBean!=null&&recommendBean.getResult()!=null&&recommendBean.getResult().size()>0){
                             for (RecommendBean.ResultBean resultBean:recommendBean.getResult()){
-                                recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(CommonAdapter.TJ_RECOMMEND,resultBean));
+                                recyclerItems.add(new BaseRecyclerAdapter.RecyclerItem(CommonAdapter.JX_RECOMMEND,resultBean));
                             }
                         }
                         if (recommendBean ==null||recommendBean.getResult()==null||recommendBean.getResult().size()<pageSize){

@@ -40,7 +40,7 @@ public class RecommendFragment extends BaseMvpFragment<RecommendContract.Present
 
     @Override
     protected int getContentLayoutId() {
-        return R.layout.fragment_recommend;
+        return R.layout.fragment_home;
     }
 
     @Override

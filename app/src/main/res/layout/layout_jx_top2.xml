@@ -71,5 +71,6 @@
         </LinearLayout>
 
     </LinearLayout>
-    <include layout="@layout/item_divider" />
+    <include layout="@layout/item_divider"
+        android:visibility="gone"/>
 </LinearLayout>
