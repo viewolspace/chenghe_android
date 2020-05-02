@@ -20,8 +20,17 @@ public class JobDetailBean {
     private String isJoin;
     private ResultBean result;
     private CompanyBean company;
+    private long customerId;
     private String message;
     private String status;
+
+    public long getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(long customerId) {
+        this.customerId = customerId;
+    }
 
     public String getIsJoin() {
         return isJoin;
