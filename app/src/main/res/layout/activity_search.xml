@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:paddingTop="20dp"
-    tools:context="com.parttime.songshu.activity.SearchActivity">
+    tools:context="com.parttime.diandi.activity.SearchActivity">
 
     <RelativeLayout
         android:id="@+id/rl_search"

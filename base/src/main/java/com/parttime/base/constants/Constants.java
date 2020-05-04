@@ -6,17 +6,17 @@ package com.parttime.base.constants;
 public class Constants {
     public static final String USER_INFO = "user_info";
 
-    public static final String AD_HOME_TOP = "000000020026";
+    public static final String AD_HOME_TOP = "000000020034";
 
-    public static final String AD_HOME_BANNER = "000000020025";
+    public static final String AD_HOME_BANNER = "000000020032";
 
-    public static final String AD_HOME_TOP2 = "000000020027";
+    public static final String AD_HOME_TOP2 = "000000020033";
 
-    public static final int SY_RECOMMENTD =15;
-    public static final int TJ_RECOMMENTD =16;
-    public static final int RM_RECOMMENTD =12;
+    public static final int SY_RECOMMENTD =20;
+    public static final int TJ_RECOMMENTD =21;
+    public static final int RM_RECOMMENTD =22;
 
-    public static final String AD_RECOMMEND_BANNER = "000000020028";
+    public static final String AD_RECOMMEND_BANNER = "000000020035";
 
     public static final String AD_JX_TOP1 = "000000020023";
 
@@ -35,5 +35,5 @@ public class Constants {
 
     public static final int CONTACT_WECHAT = 2 ;
 
-    public static final String APP = "6" ;
+    public static final String APP = "8" ;
 }

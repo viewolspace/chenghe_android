@@ -14,7 +14,7 @@ android {
     compileSdkVersion rootProject.ext.compileSdk
     buildToolsVersion rootProject.ext.buildTools
     defaultConfig {
-        applicationId 'com.parttime.songshu'
+        applicationId 'com.parttime.diandi'
         minSdkVersion rootProject.ext.minSdk
         targetSdkVersion rootProject.ext.targetSdk
         versionCode rootProject.ext.versionCode
@@ -85,7 +85,7 @@ android {
                 //改变apk生成的路劲
                 //variant.getPackageApplicationProvider().get().outputDirectory = new File("${buildDir}/outputs/apk/${variant.buildType.name}/jianzhi_${BuildTime()}")
                 // apkData.outputFileName = "PARTTIME_${variant.buildType.name}_${variant.productFlavors[0].name}_v${defaultConfig.versionName}_${BuildTime()}.apk"
-                apkData.outputFileName = "songshu${variant.name}_v${variant.versionName}_${BuildTime()}.apk"
+                apkData.outputFileName = "diandi${variant.name}_v${variant.versionName}_${BuildTime()}.apk"
             }
 
         }
