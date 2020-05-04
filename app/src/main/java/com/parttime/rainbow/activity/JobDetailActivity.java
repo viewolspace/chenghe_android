@@ -155,6 +155,7 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
                     if (!TextUtils.isEmpty(jobDetailBean.getResult().getContact())){
                         CopyContactDialog copyContactDialog = new CopyContactDialog(JobDetailActivity.this,jobDetailBean.getResult().getContactType(),
                                 jobDetailBean.getResult().getContact(),jobDetailBean.getCustomerId(),1);
+                        copyContactDialog.copyRealContact();
                         if (jobDetailBean.getResult().getContactType() == Constants.CONTACT_PHONE){
                             copyContactDialog.copyClick();
                         }else {
@@ -300,6 +301,7 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
                     if (joinPartTimeBean.getFlag()==1){
                         CopyContactDialog copyContactDialog = new CopyContactDialog(JobDetailActivity.this,jobDetailBean.getResult().getContactType(),
                                 jobDetailBean.getResult().getContact(),jobDetailBean.getCustomerId(),joinPartTimeBean.getFlag());
+                        copyContactDialog.copyRealContact();
                         copyContactDialog.show();
                     }else {
                         ToastUtils.showShortToast("报名成功");
