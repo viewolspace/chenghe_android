@@ -82,7 +82,7 @@
                 android:gravity="center"
                 android:layout_alignParentBottom="true"
                 android:background="@drawable/shape_retangle_f6f6f6_r25"
-                android:text="客服微信：9685719"/>
+                android:text="商务合作请联系QQ：2206388328"/>
         </RelativeLayout>
 
     </android.support.v7.widget.CardView>
