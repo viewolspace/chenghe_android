@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
+import android.provider.SyncStateContract;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.parttime.base.base.BaseMvpActivity;
+import com.parttime.base.constants.Constants;
 import com.parttime.base.util.PermissionUtil;
 import com.parttime.base.util.SpUtil;
 import com.parttime.base.util.ToastUtils;
@@ -164,10 +166,10 @@ public class LoginActivity extends BaseMvpActivity<LoginContract.Presenter> impl
                 finish();
                 break;
             case R.id.tv_web1:
-                WebActivity.start(LoginActivity.this,"http://www.chengheed.com/xy/kuailejz_yhxy.htm");
+                WebActivity.start(LoginActivity.this, Constants.YHXY);
                 break;
             case R.id.tv_web2:
-                WebActivity.start(LoginActivity.this,"http://www.chengheed.com/xy/kuailejz_yszc.htm");
+                WebActivity.start(LoginActivity.this,Constants.YSZC);
                 break;
 
         }
