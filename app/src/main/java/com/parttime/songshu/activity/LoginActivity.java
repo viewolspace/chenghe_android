@@ -165,7 +165,7 @@ public class LoginActivity extends BaseMvpActivity<LoginContract.Presenter> impl
                 finish();
                 break;
             case R.id.tv_web1:
-                WebActivity.start(LoginActivity.this, Constants.YHXY);
+                WebActivity.start(LoginActivity.this,Constants.YHXY);
                 break;
             case R.id.tv_web2:
                 WebActivity.start(LoginActivity.this,Constants.YSZC);
