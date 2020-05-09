@@ -22,7 +22,15 @@ public class JobDetailBean {
     private CompanyBean company;
     private String message;
     private String status;
+    private long customerId;
 
+    public long getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(long customerId) {
+        this.customerId = customerId;
+    }
     public String getIsJoin() {
         return isJoin;
     }
