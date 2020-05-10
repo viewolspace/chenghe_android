@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.parttime.base.base.BaseMvpActivity;
+import com.parttime.base.constants.Constants;
 import com.parttime.base.util.PermissionUtil;
 import com.parttime.base.util.SpUtil;
 import com.parttime.base.util.ToastUtils;
@@ -164,10 +165,10 @@ public class LoginActivity extends BaseMvpActivity<LoginContract.Presenter> impl
                 finish();
                 break;
             case R.id.tv_web1:
-                WebActivity.start(LoginActivity.this,"http://www.chengheed.com/xy/ygjz_yhxy.htm");
+                WebActivity.start(LoginActivity.this,Constants.YHXY);
                 break;
             case R.id.tv_web2:
-                WebActivity.start(LoginActivity.this,"http://www.chengheed.com/xy/ygjz_yszc.htm");
+                WebActivity.start(LoginActivity.this, Constants.YSZC);
                 break;
 
         }

@@ -39,4 +39,8 @@ public class Constants {
     public static final int CONTACT_WECHAT = 2 ;
 
     public static final String APP = "4" ;
+
+    public static final String YHXY = "http://www.chengheed.com/xy/ygjz_yhxy.htm";
+
+    public static final String YSZC = "http://www.chengheed.com/xy/ygjz_yszc.htm";
 }
