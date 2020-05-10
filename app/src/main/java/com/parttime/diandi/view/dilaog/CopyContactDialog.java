@@ -108,76 +108,84 @@ public class CopyContactDialog extends BaseDialog {
 
 
     public void copyClick(){
-        if (isInOneDay()){
-            String mapString = SpUtil.getString(getContext(),"contactMap",null);
-            HashMap<String,String> contactMap = null;
-            if (mapString!=null){
-                contactMap = new Gson().fromJson(mapString,HashMap.class);
-            }
-            String copyCotact = contact;
-            if (contactType == Constants.CONTACT_QQ){
-                if (contactMap!=null&&contactMap.get(customerId+"QQ")!=null){
-                    copyCotact = contactMap.get(customerId+"QQ");
-                }
-                joinQQ(getContext(),copyCotact);
-            }else if (contactType == Constants.CONTACT_WECHAT){
-                if (contactMap!=null&&contactMap.get(customerId+"WX")!=null){
-                    copyCotact = contactMap.get(customerId+"WX");
-                }
-                goWeChatApi(getContext());
-            }else if (contactType == Constants.CONTACT_PHONE){
-                callPhone(getContext(),copyCotact);
-            }
-            copyText(copyCotact);
-        }else {
-            if (contactType == Constants.CONTACT_QQ){
-                HashMap<String,String> contactMap = new HashMap<>();
-                contactMap.put(customerId+"QQ",contact);
-                SpUtil.putString(getContext(),"contactMap",new Gson().toJson(contactMap));
-                joinQQ(getContext(),contact);
-            }else if (contactType == Constants.CONTACT_WECHAT){
-                HashMap<String,String> contactMap = new HashMap<>();
-                contactMap.put(customerId+"WX",contact);
-                SpUtil.putString(getContext(),"contactMap",new Gson().toJson(contactMap));
-                goWeChatApi(getContext());
-            }else if (contactType == Constants.CONTACT_PHONE){
-                callPhone(getContext(),contact);
-            }
-            copyText(contact);
+        if (contactType == Constants.CONTACT_QQ){
+            joinQQ(getContext(),contact);
+        }else if (contactType == Constants.CONTACT_WECHAT){
+            goWeChatApi(getContext());
+        }else if (contactType == Constants.CONTACT_PHONE){
+            callPhone(getContext(),contact);
         }
+//        if (isInOneDay()){
+//            String mapString = SpUtil.getString(getContext(),"contactMap",null);
+//            HashMap<String,String> contactMap = null;
+//            if (mapString!=null){
+//                contactMap = new Gson().fromJson(mapString,HashMap.class);
+//            }
+//            String copyCotact = contact;
+//            if (contactType == Constants.CONTACT_QQ){
+//                if (contactMap!=null&&contactMap.get(customerId+"QQ")!=null){
+//                    copyCotact = contactMap.get(customerId+"QQ");
+//                }
+//                joinQQ(getContext(),copyCotact);
+//            }else if (contactType == Constants.CONTACT_WECHAT){
+//                if (contactMap!=null&&contactMap.get(customerId+"WX")!=null){
+//                    copyCotact = contactMap.get(customerId+"WX");
+//                }
+//                goWeChatApi(getContext());
+//            }else if (contactType == Constants.CONTACT_PHONE){
+//                callPhone(getContext(),copyCotact);
+//            }
+//            copyText(copyCotact);
+//        }else {
+//            if (contactType == Constants.CONTACT_QQ){
+//                HashMap<String,String> contactMap = new HashMap<>();
+//                contactMap.put(customerId+"QQ",contact);
+//                SpUtil.putString(getContext(),"contactMap",new Gson().toJson(contactMap));
+//                joinQQ(getContext(),contact);
+//            }else if (contactType == Constants.CONTACT_WECHAT){
+//                HashMap<String,String> contactMap = new HashMap<>();
+//                contactMap.put(customerId+"WX",contact);
+//                SpUtil.putString(getContext(),"contactMap",new Gson().toJson(contactMap));
+//                goWeChatApi(getContext());
+//            }else if (contactType == Constants.CONTACT_PHONE){
+//                callPhone(getContext(),contact);
+//            }
+//            copyText(contact);
+//        }
 
     }
 
     public void copyRealContact(){
-        if (isInOneDay()){
-            String mapString = SpUtil.getString(getContext(),"contactMap",null);
-            HashMap<String,String> contactMap = null;
-            if (mapString!=null){
-                contactMap = new Gson().fromJson(mapString,HashMap.class);
-            }
-            String copyContact = contact;
-            if (contactType == Constants.CONTACT_QQ){
-                if (contactMap!=null&&contactMap.get(customerId+"QQ")!=null){
-                    copyContact = contactMap.get(customerId+"QQ");
-                }
-            }else if (contactType == Constants.CONTACT_WECHAT){
-                if (contactMap!=null&&contactMap.get(customerId+"WX")!=null){
-                    copyContact = contactMap.get(customerId+"WX");
-                }
-            }
-            copyText(copyContact);
-        }else {
-            if (contactType == Constants.CONTACT_QQ){
-                HashMap<String,String> contactMap = new HashMap<>();
-                contactMap.put(customerId+"QQ",contact);
-                SpUtil.putString(getContext(),"contactMap",new Gson().toJson(contactMap));
-            }else if (contactType == Constants.CONTACT_WECHAT){
-                HashMap<String,String> contactMap = new HashMap<>();
-                contactMap.put(customerId+"WX",contact);
-                SpUtil.putString(getContext(),"contactMap",new Gson().toJson(contactMap));
-            }
-            copyText(contact);
-        }
+        copyText(contact);
+//        if (isInOneDay()){
+//            String mapString = SpUtil.getString(getContext(),"contactMap",null);
+//            HashMap<String,String> contactMap = null;
+//            if (mapString!=null){
+//                contactMap = new Gson().fromJson(mapString,HashMap.class);
+//            }
+//            String copyContact = contact;
+//            if (contactType == Constants.CONTACT_QQ){
+//                if (contactMap!=null&&contactMap.get(customerId+"QQ")!=null){
+//                    copyContact = contactMap.get(customerId+"QQ");
+//                }
+//            }else if (contactType == Constants.CONTACT_WECHAT){
+//                if (contactMap!=null&&contactMap.get(customerId+"WX")!=null){
+//                    copyContact = contactMap.get(customerId+"WX");
+//                }
+//            }
+//            copyText(copyContact);
+//        }else {
+//            if (contactType == Constants.CONTACT_QQ){
+//                HashMap<String,String> contactMap = new HashMap<>();
+//                contactMap.put(customerId+"QQ",contact);
+//                SpUtil.putString(getContext(),"contactMap",new Gson().toJson(contactMap));
+//            }else if (contactType == Constants.CONTACT_WECHAT){
+//                HashMap<String,String> contactMap = new HashMap<>();
+//                contactMap.put(customerId+"WX",contact);
+//                SpUtil.putString(getContext(),"contactMap",new Gson().toJson(contactMap));
+//            }
+//            copyText(contact);
+//        }
     }
     public void copyText(String contact){
         //获取剪贴板管理器：

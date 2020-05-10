@@ -119,17 +119,19 @@
                     android:layout_marginTop="10dp"
                     android:textColor="@color/color_282828"
                     />
+
                 <TextView
-                    android:layout_below="@id/tv_work_location"
                     android:id="@+id/tv_copy"
-                    android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:gravity="center"
+                    android:layout_below="@id/tv_work_location"
+                    android:layout_marginTop="17dp"
                     android:background="@drawable/shape_login_bg"
-                    android:text="点击复制联系方式 QQ:1234567890>"/>
+                    android:gravity="center"
+                    android:visibility="gone"
+                    android:text="点击复制联系方式 QQ:1234567890>"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
                 <ImageView
                     android:id="@+id/iv_verify"
                     android:layout_width="wrap_content"
