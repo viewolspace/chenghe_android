@@ -2,14 +2,22 @@ package com.parttime.songshu.view.dilaog;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.text.Html;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
 import android.text.TextPaint;
+import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.text.style.URLSpan;
 import android.view.View;
 import android.widget.TextView;
 
 
 import com.parttime.base.dialog.BaseDialog;
 import com.parttime.songshu.R;
+import com.parttime.songshu.activity.LoginActivity;
+import com.parttime.songshu.activity.WebActivity;
+import com.parttime.songshu.utils.WebLinkToNativePageUtil;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -49,27 +57,27 @@ public class AgreementDialog extends BaseDialog {
     @Override
     protected void initView(View root) {
         setCanceledOnTouchOutside(false);
-//        tvContent.setText(Html.fromHtml("&emsp;&emsp;在您使用优顾炒股APP之前，为了更好地了解我们是如何保护用户的个人信息的，请您仔细阅读" +
-//                "<a href='http://www.youguu.com/opms/html/article/32/2016/0628/2734.html'>《服务协议》</a> " + "和" +
-//                "<a href='http://www.youguu.com/opms/html/article/32/2019/1108/2896.html'>《隐私政策》</a> "
-//                + "的全部条款。您同意并接受全部条款后，优顾炒股将为您提供浏览、搜索等基础服务，可能会收集和使用您的敏感信息。"));
-//        tvContent.setMovementMethod(LinkMovementMethod.getInstance());
-//
-//        CharSequence text = tvContent.getText();
-//        if (text instanceof Spannable) {
-//            int end = text.length();
-//            Spannable sp = (Spannable) tvContent.getText();
-//            URLSpan[] urls = sp.getSpans(0, end, URLSpan.class);
-//            SpannableStringBuilder style = new SpannableStringBuilder(text);
-//            style.clearSpans();// should clear old spans
-//
-//            // 循环把链接发过去
-//            for (URLSpan url : urls) {
-//                AgreementURLSpan myURLSpan = new AgreementURLSpan(getContext(), url.getURL());
-//                style.setSpan(myURLSpan, sp.getSpanStart(url), sp.getSpanEnd(url), Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
-//            }
-//            tvContent.setText(style);
-//        }
+        tvContent.setText(Html.fromHtml("&emsp;&emsp;感谢您下载松鼠兼职！" +
+                "在您开始使用本软件前，请您务必仔细审慎阅读、充分理解软件许可及服务协议和隐私政策各条款，包括但不限于用户注意事项、用户行为以及为了向你提供服务而收集、使用、存储你个人信息的情况等。" +
+                "您可以阅读<a href='http://www.chengheed.com/xy/songshujz_yhxy.htm'>《松鼠兼职用户协议》</a> 与<a href='http://www.chengheed.com/xy/songshujz_yszc.htm'>《松鼠兼职隐私政策》</a> 了解详细信息。" +
+                "点击同意即表示您已阅读并同意<a href='http://www.chengheed.com/xy/songshujz_yhxy.htm'>《松鼠兼职用户协议》</a> 与<a href='http://www.chengheed.com/xy/songshujz_yszc.htm'>《松鼠兼职隐私政策》</a> 。" ));
+        tvContent.setMovementMethod(LinkMovementMethod.getInstance());
+
+        CharSequence text = tvContent.getText();
+        if (text instanceof Spannable) {
+            int end = text.length();
+            Spannable sp = (Spannable) tvContent.getText();
+            URLSpan[] urls = sp.getSpans(0, end, URLSpan.class);
+            SpannableStringBuilder style = new SpannableStringBuilder(text);
+            style.clearSpans();// should clear old spans
+
+            // 循环把链接发过去
+            for (URLSpan url : urls) {
+                AgreementURLSpan myURLSpan = new AgreementURLSpan(getContext(), url.getURL());
+                style.setSpan(myURLSpan, sp.getSpanStart(url), sp.getSpanEnd(url), Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+            }
+            tvContent.setText(style);
+        }
     }
 
     public static class AgreementURLSpan extends ClickableSpan {
@@ -93,12 +101,7 @@ public class AgreementDialog extends BaseDialog {
          */
         @Override
         public void onClick(View widget) {
-//            if (mUrl.endsWith("2734.html")) {
-//                WebViewUI.start(widget.getContext(), mUrl, "优顾服务协议");
-//            } else {
-//                WebViewUI.start(widget.getContext(), mUrl, "优顾隐私协议");
-//            }
-
+            WebActivity.start(widget.getContext(),mUrl);
         }
     }
     @OnClick({R.id.tv_cancel, R.id.tv_confirm})
