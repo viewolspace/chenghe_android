@@ -11,6 +11,7 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.request.RequestOptions;
 import com.parttime.base.base.BaseFragment;
 import com.parttime.base.bean.LoginBean;
+import com.parttime.base.constants.Constants;
 import com.parttime.base.rx.RxEvent;
 import com.parttime.base.util.SpUtil;
 import com.parttime.base.util.UserInfoUtil;
@@ -125,7 +126,7 @@ public class MineFragment extends BaseFragment {
 
                 break;
             case R.id.rl_yinsixieyi:
-                WebActivity.start(getContext(),"http://www.chengheed.com/xy/ygjz_yszc.htm");
+                WebActivity.start(getContext(), Constants.YSZC);
                 break;
             case R.id.rl_cancel_yinsixieyi:
                 ConfirmDialog confirmDialog = new ConfirmDialog(getContext());
