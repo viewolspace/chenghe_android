@@ -14,10 +14,16 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.parttime.base.constants.Constants;
 import com.parttime.base.dialog.BaseDialog;
+import com.parttime.base.retrofit.ApiService;
+import com.parttime.base.retrofit.RetrofitServiceCreator;
+import com.parttime.base.rx.RxThrowableConsumer;
+import com.parttime.base.rx.RxUtils;
 import com.parttime.base.util.SpUtil;
 import com.parttime.base.util.ToastUtils;
+import com.parttime.base.util.UserInfoUtil;
 import com.parttime.songshu.R;
 import com.parttime.songshu.activity.PersonalResumeActivity;
+import com.umeng.analytics.AnalyticsConfig;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -62,7 +68,7 @@ public class CopyContactDialog extends BaseDialog {
 
     @Override
     protected void initView(View root) {
-
+        getReviewStatus(root.getContext());
 
 
     }
@@ -262,5 +268,17 @@ public class CopyContactDialog extends BaseDialog {
         intent.setData(data);
         context.startActivity(intent);
     }
-
+    public void getReviewStatus(Context context){
+        ApiService apiService = RetrofitServiceCreator.createService(ApiService.class);
+        String channelName = AnalyticsConfig.getChannel(context);
+        apiService.getReviewStatus(channelName,Constants.APP)
+                .compose(RxUtils.rxSchedulerHelper())
+                .subscribe(baseBean -> {
+                  if (baseBean.getStatus().equals("1")){
+                      tvCopy.setVisibility(View.VISIBLE);
+                  }else {
+                      tvCopy.setVisibility(View.GONE);
+                  }
+                },new RxThrowableConsumer());
+    }
 }

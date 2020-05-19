@@ -96,4 +96,7 @@ public interface ApiService {
     @GET("partTime/question")
     Observable<BaseBean> feedback(@Query("question")  String question,@Query("app") String app);
 
+    @GET("user/getReviewStatus")
+    Observable<BaseBean> getReviewStatus(@Query("channel")  String channel,@Query("app") String app);
+
 }
