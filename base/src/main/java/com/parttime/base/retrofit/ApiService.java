@@ -3,6 +3,7 @@ package com.parttime.base.retrofit;
 
 import com.parttime.base.bean.BaseBean;
 import com.parttime.base.bean.CommonAdBean;
+import com.parttime.base.bean.ContactBean;
 import com.parttime.base.bean.JobCommonBean;
 import com.parttime.base.bean.JobDetailBean;
 import com.parttime.base.bean.JoinPartTimeBean;
@@ -96,4 +97,7 @@ public interface ApiService {
     @GET("partTime/question")
     Observable<BaseBean> feedback(@Query("question")  String question,@Query("app") String app);
 
+
+    @GET("user/getAppQQ")
+    Observable<ContactBean> getAppQQ(@Query("app") String app);
 }
