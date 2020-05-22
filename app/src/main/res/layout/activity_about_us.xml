@@ -74,7 +74,7 @@
                 android:textColor="@color/color_0d0d0d"
                 android:text="提供真实有效的兼职工作，全国 各地海量兼职信息，闲暇之余一起努 力兼职，赚高薪 "/>
             <TextView
-                android:id="@+id/tv_login"
+                android:id="@+id/tv_qq"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:textColor="@color/color_939393"
