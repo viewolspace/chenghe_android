@@ -301,8 +301,6 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
         }
         JobDetailBean.ResultBean resultBean = jobDetailBean.getResult();
         if (reviewStatus.equals("1")){
-            tvCopy.setText("点击联系在线客服");
-        }else {
             if (resultBean.getContactType() == Constants.CONTACT_QQ){
                 tvCopy.setText("点击复制联系方式 QQ："+resultBean.getContact());
             }else if (resultBean.getContactType() == Constants.CONTACT_WECHAT){
@@ -310,6 +308,8 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
             }else if (resultBean.getContactType() == Constants.CONTACT_PHONE){
                 tvCopy.setText("点击复制联系方式 电话："+resultBean.getContact());
             }
+        }else {
+            tvCopy.setText("点击联系在线客服");
         }
 
         if (resultBean.getContact()==null||resultBean.getContact().trim().isEmpty()){
