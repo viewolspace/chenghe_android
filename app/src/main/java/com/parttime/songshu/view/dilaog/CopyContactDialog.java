@@ -93,6 +93,7 @@ public class CopyContactDialog extends BaseDialog {
                 tvCopy.setText("拨打电话>");
             }
         }else {
+            tvCopy.setVisibility(View.GONE);
             tvCopy.setText("前往联系");
             tvTitle.setText("已为您复制在线客服联系方式");
         }

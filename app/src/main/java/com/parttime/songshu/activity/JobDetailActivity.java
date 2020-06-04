@@ -145,7 +145,9 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
                             CopyContactDialog copyContactDialog = new CopyContactDialog(JobDetailActivity.this,jobDetailBean.getResult().getContactType(),
                                     jobDetailBean.getResult().getContact(),jobDetailBean.getCustomerId(),1);
                             if (jobDetailBean.getResult().getContactType() == Constants.CONTACT_PHONE){
-                                copyContactDialog.copyClick();
+                                if (reviewStatus.equals("1")){
+                                    copyContactDialog.copyClick();
+                                }
                             }else {
                                 copyContactDialog.show();
                             }
@@ -164,7 +166,10 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
                                 jobDetailBean.getResult().getContact(),jobDetailBean.getCustomerId(),1);
                         copyContactDialog.copyRealContact();
                         if (jobDetailBean.getResult().getContactType() == Constants.CONTACT_PHONE){
-                            copyContactDialog.copyClick();
+                            if (reviewStatus.equals("1")){
+                                copyContactDialog.copyClick();
+                            }
+
                         }else {
                             copyContactDialog.show();
                         }
@@ -309,7 +314,11 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
                 tvCopy.setText("点击复制联系方式 电话："+resultBean.getContact());
             }
         }else {
-            tvCopy.setText("点击联系在线客服");
+             if (resultBean.getContactType() == Constants.CONTACT_PHONE){
+                tvCopy.setText("点击复制联系方式 电话："+resultBean.getContact());
+            }else {
+                 tvCopy.setText("点击联系在线客服");
+             }
         }
 
         if (resultBean.getContact()==null||resultBean.getContact().trim().isEmpty()){
@@ -330,14 +339,22 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
                         CopyContactDialog copyContactDialog = new CopyContactDialog(JobDetailActivity.this,jobDetailBean.getResult().getContactType(),
                                 jobDetailBean.getResult().getContact(),jobDetailBean.getCustomerId(),joinPartTimeBean.getFlag());
                         copyContactDialog.copyRealContact();
-                        copyContactDialog.show();
+                        if (reviewStatus.equals("1")){
+                            if (jobDetailBean.getResult().getContactType() != Constants.CONTACT_PHONE){
+                                copyContactDialog.show();
+                            }
+                        }
                     }else {
                         ToastUtils.showShortToast("报名成功");
                     }
                 }else {
                     CopyContactDialog copyContactDialog = new CopyContactDialog(JobDetailActivity.this,jobDetailBean.getResult().getContactType(),
                             jobDetailBean.getResult().getContact(),jobDetailBean.getCustomerId(),joinPartTimeBean.getFlag());
-                    copyContactDialog.show();
+                    if (reviewStatus.equals("1")){
+                        if (jobDetailBean.getResult().getContactType() != Constants.CONTACT_PHONE){
+                            copyContactDialog.show();
+                        }
+                    }
                 }
 
             }
