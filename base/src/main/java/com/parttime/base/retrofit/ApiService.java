@@ -100,4 +100,6 @@ public interface ApiService {
     @GET("user/getAppQQ")
     Observable<ContactBean> getAppQQ(@Query("app") String app);
 
+    @GET("user/getReviewStatus")
+    Observable<BaseBean> getReviewStatus(@Query("channel")  String channel,@Query("app") String app);
 }

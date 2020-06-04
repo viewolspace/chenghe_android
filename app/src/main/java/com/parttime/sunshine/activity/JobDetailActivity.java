@@ -19,6 +19,10 @@ import com.parttime.base.base.BaseMvpActivity;
 import com.parttime.base.bean.JobDetailBean;
 import com.parttime.base.bean.JoinPartTimeBean;
 import com.parttime.base.constants.Constants;
+import com.parttime.base.retrofit.ApiService;
+import com.parttime.base.retrofit.RetrofitServiceCreator;
+import com.parttime.base.rx.RxThrowableConsumer;
+import com.parttime.base.rx.RxUtils;
 import com.parttime.base.util.ToastUtils;
 import com.parttime.base.util.UserInfoUtil;
 import com.parttime.sunshine.R;
@@ -30,6 +34,7 @@ import com.parttime.sunshine.utils.MobEventHelper;
 import com.parttime.sunshine.utils.StatusBarUtils;
 import com.parttime.sunshine.utils.StringUtil;
 import com.parttime.sunshine.view.dilaog.CopyContactDialog;
+import com.umeng.analytics.AnalyticsConfig;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
 import com.zhy.view.flowlayout.TagFlowLayout;
@@ -41,7 +46,6 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Presenter> implements JobDetailContract.View {
-
 
     @BindView(R.id.rl_top)
     RelativeLayout rlTop;
@@ -87,6 +91,7 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
     ImageView iv_verify;
     private int id;
     private JobDetailBean jobDetailBean;
+    private String reviewStatus = "1";
     public static void start(Context context, int id) {
         Intent intent = new Intent(context, JobDetailActivity.class);
         intent.putExtra("id", id);
@@ -114,6 +119,7 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
     protected void initData() {
         id = getIntent().getIntExtra("id", 0);
         presenter.getData(id);
+        getReviewStatus(this);
     }
 
     @Override
@@ -138,7 +144,9 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
                             CopyContactDialog copyContactDialog = new CopyContactDialog(JobDetailActivity.this,jobDetailBean.getResult().getContactType(),
                                     jobDetailBean.getResult().getContact(),jobDetailBean.getCustomerId(),1);
                             if (jobDetailBean.getResult().getContactType() == Constants.CONTACT_PHONE){
-                                copyContactDialog.copyClick();
+                                if (reviewStatus.equals("1")){
+                                    copyContactDialog.copyClick();
+                                }
                             }else {
                                 copyContactDialog.show();
                             }
@@ -157,7 +165,10 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
                                 jobDetailBean.getResult().getContact(),jobDetailBean.getCustomerId(),1);
                         copyContactDialog.copyRealContact();
                         if (jobDetailBean.getResult().getContactType() == Constants.CONTACT_PHONE){
-                            copyContactDialog.copyClick();
+                            if (reviewStatus.equals("1")){
+                                copyContactDialog.copyClick();
+                            }
+
                         }else {
                             copyContactDialog.show();
                         }
@@ -175,7 +186,16 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
         }
     }
 
-
+    public void getReviewStatus(Context context){
+        ApiService apiService = RetrofitServiceCreator.createService(ApiService.class);
+        String channelName = AnalyticsConfig.getChannel(context);
+        apiService.getReviewStatus(channelName,Constants.APP)
+                .compose(RxUtils.rxSchedulerHelper())
+                .subscribe(baseBean -> {
+                    reviewStatus = baseBean.getStatus();
+                    setCopy();
+                },new RxThrowableConsumer());
+    }
     @Override
     public void refreshList(JobDetailBean jobDetailBean) {
         if (jobDetailBean == null) {
@@ -194,18 +214,7 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
         if (resultBean == null) {
             return;
         }
-        if (resultBean.getContactType() == Constants.CONTACT_QQ){
-            tvCopy.setText("点击复制联系方式 QQ："+resultBean.getContact());
-        }else if (resultBean.getContactType() == Constants.CONTACT_WECHAT){
-            tvCopy.setText("点击复制联系方式 微信："+resultBean.getContact());
-        }else if (resultBean.getContactType() == Constants.CONTACT_PHONE){
-            tvCopy.setText("点击复制联系方式 电话："+resultBean.getContact());
-        }
-        if (resultBean.getContact()==null||resultBean.getContact().trim().isEmpty()){
-            tvCopy.setVisibility(View.GONE);
-        }else {
-            tvCopy.setVisibility(View.VISIBLE);
-        }
+        setCopy();
         if (resultBean.getVerify()==1){
             iv_verify.setVisibility(View.VISIBLE);
         }else {
@@ -290,6 +299,33 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
         LinearLayoutUtil.setCompanyLevel(llStar,companyBean.getStar());
     }
 
+    private void setCopy(){
+        if (jobDetailBean==null){
+            return;
+        }
+        JobDetailBean.ResultBean resultBean = jobDetailBean.getResult();
+        if (reviewStatus.equals("1")){
+            if (resultBean.getContactType() == Constants.CONTACT_QQ){
+                tvCopy.setText("点击复制联系方式 QQ："+resultBean.getContact());
+            }else if (resultBean.getContactType() == Constants.CONTACT_WECHAT){
+                tvCopy.setText("点击复制联系方式 微信："+resultBean.getContact());
+            }else if (resultBean.getContactType() == Constants.CONTACT_PHONE){
+                tvCopy.setText("点击复制联系方式 电话："+resultBean.getContact());
+            }
+        }else {
+            if (resultBean.getContactType() == Constants.CONTACT_PHONE){
+                tvCopy.setText("点击复制联系方式 电话："+resultBean.getContact());
+            }else {
+                tvCopy.setText("点击联系在线客服");
+            }
+        }
+
+        if (resultBean.getContact()==null||resultBean.getContact().trim().isEmpty()){
+            tvCopy.setVisibility(View.GONE);
+        }else {
+            tvCopy.setVisibility(View.VISIBLE);
+        }
+    }
     @Override
     public void refreshApply(JoinPartTimeBean joinPartTimeBean) {
         if ("0000".equals(joinPartTimeBean.getStatus())) {
@@ -302,14 +338,22 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
                         CopyContactDialog copyContactDialog = new CopyContactDialog(JobDetailActivity.this,jobDetailBean.getResult().getContactType(),
                                 jobDetailBean.getResult().getContact(),jobDetailBean.getCustomerId(),joinPartTimeBean.getFlag());
                         copyContactDialog.copyRealContact();
-                        copyContactDialog.show();
+                        if (reviewStatus.equals("1")){
+                            if (jobDetailBean.getResult().getContactType() != Constants.CONTACT_PHONE){
+                                copyContactDialog.show();
+                            }
+                        }
                     }else {
                         ToastUtils.showShortToast("报名成功");
                     }
                 }else {
                     CopyContactDialog copyContactDialog = new CopyContactDialog(JobDetailActivity.this,jobDetailBean.getResult().getContactType(),
                             jobDetailBean.getResult().getContact(),jobDetailBean.getCustomerId(),joinPartTimeBean.getFlag());
-                    copyContactDialog.show();
+                    if (reviewStatus.equals("1")){
+                        if (jobDetailBean.getResult().getContactType() != Constants.CONTACT_PHONE){
+                            copyContactDialog.show();
+                        }
+                    }
                 }
 
             }
@@ -319,4 +363,6 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
         }
     }
 
+
 }
+

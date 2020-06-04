@@ -14,10 +14,15 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.parttime.base.constants.Constants;
 import com.parttime.base.dialog.BaseDialog;
+import com.parttime.base.retrofit.ApiService;
+import com.parttime.base.retrofit.RetrofitServiceCreator;
+import com.parttime.base.rx.RxThrowableConsumer;
+import com.parttime.base.rx.RxUtils;
 import com.parttime.base.util.SpUtil;
 import com.parttime.base.util.ToastUtils;
 import com.parttime.sunshine.R;
 import com.parttime.sunshine.activity.PersonalResumeActivity;
+import com.umeng.analytics.AnalyticsConfig;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -41,6 +46,7 @@ public class CopyContactDialog extends BaseDialog {
     private String contact;
     private int  flag;
     private long customerId;
+    private String reviewStatus = "1";
 
     public CopyContactDialog(Context context) {
         super(context);
@@ -62,7 +68,7 @@ public class CopyContactDialog extends BaseDialog {
 
     @Override
     protected void initView(View root) {
-
+        getReviewStatus(root.getContext());
 
 
     }
@@ -74,7 +80,7 @@ public class CopyContactDialog extends BaseDialog {
                 tvCopy.setText("前往完善简历>");
                 tvTitle.setText("您的简历还未完善");
             }
-        }else {
+        }else if (reviewStatus.equals("1")){
             if (contactType == Constants.CONTACT_QQ){
                 tvCopy.setText("前往QQ联系雇主");
                 tvTitle.setText("已为您复制QQ号");
@@ -85,6 +91,10 @@ public class CopyContactDialog extends BaseDialog {
                 tvTitle.setText("已复制电话");
                 tvCopy.setText("拨打电话>");
             }
+        }else {
+            tvCopy.setVisibility(View.GONE);
+            tvCopy.setText("前往联系");
+            tvTitle.setText("已为您复制在线客服联系方式");
         }
     }
     @OnClick({R.id.iv_close, R.id.tv_copy})
@@ -261,6 +271,21 @@ public class CopyContactDialog extends BaseDialog {
         Uri data = Uri.parse("tel:" + phoneNum);
         intent.setData(data);
         context.startActivity(intent);
+    }
+    public void getReviewStatus(Context context){
+        ApiService apiService = RetrofitServiceCreator.createService(ApiService.class);
+        String channelName = AnalyticsConfig.getChannel(context);
+        apiService.getReviewStatus(channelName,Constants.APP)
+                .compose(RxUtils.rxSchedulerHelper())
+                .subscribe(baseBean -> {
+                    reviewStatus = baseBean.getStatus();
+//                  if (baseBean.getStatus().equals("1")){
+//                      tvCopy.setVisibility(View.VISIBLE);
+//                  }else {
+//                      tvCopy.setVisibility(View.GONE);
+//                  }
+                    refreshData();
+                },new RxThrowableConsumer());
     }
 
 }
