@@ -51,6 +51,7 @@ public class JXRecommendViewHolder extends BaseRecyclerAdapter.ViewHolder<BaseRe
 //                tv_job_title.setText(recommendBean.getTitle());
 //            }
 //        }
+        tv_job_title.setText(recommendBean.getTitle());
         if (recommendBean.getVerify() == 1) {
             iv_verify.setVisibility(View.VISIBLE);
         } else {
