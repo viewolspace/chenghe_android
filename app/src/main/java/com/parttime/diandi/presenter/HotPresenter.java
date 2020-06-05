@@ -40,7 +40,7 @@ public class HotPresenter extends BasePresenter<HotContract.View> implements Hot
                     .compose(RxUtils.rxSchedulerHelper())
                     .compose(mProvider.bindToLifecycle())
                     .subscribe(recommendBean -> {
-                        view.loadFinish(false);
+                        view.loadFinish(true);
                         List<BaseRecyclerAdapter.RecyclerItem> recyclerItems = new ArrayList<>();
                         if (recommendBean!=null&&recommendBean.getResult()!=null&&recommendBean.getResult().size()>0){
                             for (RecommendBean.ResultBean resultBean:recommendBean.getResult()){
