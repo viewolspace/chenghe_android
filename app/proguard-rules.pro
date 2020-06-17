@@ -216,3 +216,9 @@
 -keep public class com.parttime.potato.R$*{
 public static final int *;
 }
+-dontwarn org.bouncycastle.**
+-keep class org.bouncycastle.** {*;}
+-dontwarn com.bun.**
+-keep class com.bun.** {*;}
+-dontwarn com.reyun.tracking.**
+-keep class com.reyun.tracking.** {*;}
