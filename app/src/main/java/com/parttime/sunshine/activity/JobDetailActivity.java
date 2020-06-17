@@ -34,6 +34,7 @@ import com.parttime.sunshine.utils.MobEventHelper;
 import com.parttime.sunshine.utils.StatusBarUtils;
 import com.parttime.sunshine.utils.StringUtil;
 import com.parttime.sunshine.view.dilaog.CopyContactDialog;
+import com.reyun.tracking.sdk.Tracking;
 import com.umeng.analytics.AnalyticsConfig;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
@@ -95,6 +96,7 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
     public static void start(Context context, int id) {
         Intent intent = new Intent(context, JobDetailActivity.class);
         intent.putExtra("id", id);
+        Tracking.setEvent("event_1");
         MobEventHelper.statistics(context,"1","查看职位");
         context.startActivity(intent);
     }
@@ -131,6 +133,7 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_apply:
+                Tracking.setEvent("event_3");
                 MobEventHelper.statistics(JobDetailActivity.this,"3","职位报名");
                 presenter.apply(id);
                 if ( !UserInfoUtil.getInstance().isLogin()){
@@ -157,6 +160,7 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
 
                 break;
             case R.id.tv_copy:
+                Tracking.setEvent("event_2");
                 MobEventHelper.statistics(JobDetailActivity.this,"2","复制联系方式");
                 presenter.copyRecord(id);
                 if (jobDetailBean!=null&&jobDetailBean.getResult()!=null){
