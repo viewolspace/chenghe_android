@@ -21,6 +21,6 @@ public class PartTimeApplication extends App {
         // 支持在子进程中统计自定义事件
         UMConfigure.setProcessEvent(true);
         Tracking.initWithKeyAndChannelId(this,"73f04047428541b21d99d81732a422d1", AnalyticsConfig.getChannel(this));
-        //UMConfigure.setLogEnabled(true);
+        UMConfigure.setLogEnabled(true);
     }
 }
