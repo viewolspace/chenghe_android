@@ -96,4 +96,6 @@ dependencies {
 
     //dagger2
     //annotationProcessor libraries.daggerCompiler
+    api 'com.umeng.umsdk:analytics:8.1.6'
+    api 'com.umeng.umsdk:common:2.0.0'
 }
