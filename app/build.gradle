@@ -205,6 +205,4 @@ dependencies {
     implementation 'com.hyman:flowlayout-lib:1.1.2'
     implementation 'com.umeng.umsdk:analytics:8.0.0'
     implementation 'com.umeng.umsdk:common:2.0.0'
-    implementation files('src/libs/bcprov-jdk16-139.jar')
-    implementation files('src/libs/tracking.1.6.2.jar')
 }
