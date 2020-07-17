@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.parttime.base.dialog.BaseDialog;
 import com.parttime.orange.R;
+import com.parttime.orange.activity.WebActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -98,11 +99,7 @@ public class AgreementDialog extends BaseDialog {
          */
         @Override
         public void onClick(View widget) {
-//            if (mUrl.endsWith("2734.html")) {
-//                WebViewUI.start(widget.getContext(), mUrl, "优顾服务协议");
-//            } else {
-//                WebViewUI.start(widget.getContext(), mUrl, "优顾隐私协议");
-//            }
+            WebActivity.start(widget.getContext(),mUrl);
 
         }
     }
