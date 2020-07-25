@@ -8,9 +8,9 @@ import android.widget.Button;
 
 
 
-import com.parttime.base.base.BaseActivity;
-import com.parttime.base.rx.RxEvent;
-import com.parttime.orange.R;
+import com.baihe.base.base.BaseActivity;
+import com.baihe.base.rx.RxEvent;
+import com.baihe.orange.R;
 
 import java.util.HashMap;
 import java.util.Random;

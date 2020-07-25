@@ -10,8 +10,6 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 
-import com.parttime.orange.R;
-
 import io.reactivex.annotations.Nullable;
 
 

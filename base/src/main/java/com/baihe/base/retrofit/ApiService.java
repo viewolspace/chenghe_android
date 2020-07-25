@@ -1,0 +1,102 @@
+package com.baihe.base.retrofit;
+
+
+import com.baihe.base.bean.BaseBean;
+import com.baihe.base.bean.CommonAdBean;
+import com.baihe.base.bean.ContactBean;
+import com.baihe.base.bean.JobCommonBean;
+import com.baihe.base.bean.JobDetailBean;
+import com.baihe.base.bean.JoinPartTimeBean;
+import com.baihe.base.bean.LoginBean;
+import com.baihe.base.bean.PhoneCodeBean;
+import com.baihe.base.bean.RecommendBean;
+import com.baihe.base.bean.TokenBean;
+
+import java.util.HashMap;
+
+import io.reactivex.Observable;
+import retrofit2.http.FieldMap;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
+import retrofit2.http.Header;
+import retrofit2.http.POST;
+import retrofit2.http.Query;
+import retrofit2.http.QueryMap;
+
+/**
+ * @author : sklyand
+ * @email : zhengdengyao@51yryc.com
+ * @time : 2019/7/22 09:23
+ * @describe ：
+ */
+public interface ApiService {
+
+    @GET("ad/queryAdList")
+    Observable<CommonAdBean> getAd(@Query("categoryId") String categoryId);
+
+    @GET("partTime/queryBycategoryId")
+    Observable<RecommendBean> queryCategory(@Query("categoryId") String categoryId,
+                                             @Query("pageIndex") int pageIndex,
+                                             @Query("pageSize") int pageSize);
+
+    @GET("partTime/queryAll")
+    Observable<RecommendBean> queryAll(@Query("keyWord") String keyWord,
+                                       @Query("pageIndex") int pageIndex,
+                                       @Query("pageSize") int pageSize,
+                                       @Query("app") String app);
+
+    @GET("partTime/getPartTime")
+    Observable<JobDetailBean> getJobDetail(@Query("id") int id);
+
+    @GET("partTime/joinPartTime")
+    Observable<JoinPartTimeBean> joinPartTime(@Query("id") int id);
+
+    @GET("partTime/copyPartTime")
+    Observable<BaseBean> copyPartTime(@Query("id")  int id);
+
+
+    @GET("partTime/queryMyPartTime ")
+    Observable<RecommendBean> queryMyJoinPartTime(@Query("pageIndex") int pageIndex, @Query("pageSize") int pageSize);
+
+    @GET("partTime/queryRecommnet")
+    Observable<RecommendBean> queryRecommend(@Query("recommend") int recommend,
+                                             @Query("pageIndex") int pageIndex,
+                                             @Query("pageSize") int pageSize);
+
+    @GET("partTime/queryRecommnet")
+    Observable<RecommendBean> queryRecommend2(@Query("recommend") int recommend,
+                                             @Query("pageIndex") int pageIndex,
+                                             @Query("pageSize") int pageSize,
+                                            @Query("order") int order);
+    @GET("user/getToken")
+    Observable<TokenBean> getToken(@Query("phone") String phone);
+
+    @GET("user/getRand")
+    Observable<PhoneCodeBean> getPhoneCode(@Query("phone") String phone , @Header("token") String token,@Query("app") String app);
+
+    @GET("user/getUser")
+    Observable<LoginBean> getUser();
+
+    @GET("user/active")
+    Observable<JobCommonBean> active(@Query("idfa") String idfa, @Query("os") String os);
+
+    @GET("user/login")
+    Observable<LoginBean> login(@Query("idfa") String idfa, @Query("rand") String rand, @Query("phone") String phone);
+    @FormUrlEncoded
+    @POST("user/updateUser")
+    Observable<JobCommonBean> updateUser(@FieldMap HashMap<String, String> data);
+
+    @FormUrlEncoded
+    @POST("user/updateNickName")
+    Observable<JobCommonBean> updateNickName(@FieldMap HashMap<String, String> data);
+
+
+    @POST("ad/adStat")
+    Observable<BaseBean> adStat(@QueryMap HashMap<String, String> data);
+
+    @GET("partTime/question")
+    Observable<BaseBean> feedback(@Query("question")  String question,@Query("app") String app);
+
+    @GET("user/getAppQQ")
+    Observable<ContactBean> getAppQQ(@Query("app") String app);
+}

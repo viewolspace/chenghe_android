@@ -45,9 +45,9 @@
 -dontwarn com.baidu.mobstat.**,com.alipay.android.app.**,com.tencent.**,com.baidu.**,org.apache.http.**,com.umeng.**
 -dontwarn com.alibaba.fastjson.**
 
--keep public class com.parttime.base.bean.**{*;}
--keep public class com.parttime.base.bean.BaseBean
--keep public class * extends com.parttime.base.bean.BaseBean{
+-keep public class com.baihe.base.bean.**{*;}
+-keep public class com.baihe.base.bean.BaseBean
+-keep public class * extends com.baihe.base.bean.BaseBean{
 *; }
 
 -keep public class **.R$*{
@@ -213,7 +213,7 @@
     public static **[] values();
     public static ** valueOf(java.lang.String);
 }
--keep public class com.parttime.potato.R$*{
+-keep public class com.baihe.potato.R$*{
 public static final int *;
 }
 -dontwarn org.bouncycastle.**

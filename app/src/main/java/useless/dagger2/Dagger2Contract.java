@@ -1,7 +1,7 @@
 package useless.dagger2;
 
 
-import com.parttime.base.base.BaseContract;
+import com.baihe.base.base.BaseContract;
 
 /**
  * @author : sklyand

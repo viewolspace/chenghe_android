@@ -2,7 +2,7 @@ package useless.dagger2;
 
 
 
-import com.parttime.base.base.BasePresenter;
+import com.baihe.base.base.BasePresenter;
 
 import javax.inject.Inject;
 

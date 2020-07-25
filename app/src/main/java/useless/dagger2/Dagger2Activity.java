@@ -4,9 +4,9 @@ import android.view.View;
 import android.widget.Button;
 
 
-import com.parttime.base.base.BaseMvpActivity;
-import com.parttime.base.util.ToastUtils;
-import com.parttime.orange.R;
+import com.baihe.base.base.BaseMvpActivity;
+import com.baihe.base.util.ToastUtils;
+import com.baihe.orange.R;
 
 import javax.inject.Inject;
 

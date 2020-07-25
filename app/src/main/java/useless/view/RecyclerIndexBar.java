@@ -9,7 +9,7 @@ import android.util.Log;
 import android.view.View;
 
 
-import com.parttime.orange.R;
+import com.baihe.orange.R;
 
 import java.util.Arrays;
 import java.util.List;

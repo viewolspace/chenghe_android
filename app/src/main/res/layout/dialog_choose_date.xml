@@ -54,7 +54,7 @@
         android:background="#cdced3" />
 
 
-    <com.parttime.orange.view.CalendarSelectedView
+    <com.baihe.orange.view.CalendarSelectedView
         android:id="@+id/calendar_selected"
         android:layout_width="match_parent"
         android:layout_height="148dp"
