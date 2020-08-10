@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.parttime.base.dialog.BaseDialog;
 import com.parttime.sunshine.R;
+import com.parttime.sunshine.activity.WebActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -103,7 +104,7 @@ public class AgreementDialog extends BaseDialog {
 //            } else {
 //                WebViewUI.start(widget.getContext(), mUrl, "优顾隐私协议");
 //            }
-
+            WebActivity.start(widget.getContext(),mUrl);
         }
     }
     @OnClick({R.id.tv_cancel, R.id.tv_confirm})

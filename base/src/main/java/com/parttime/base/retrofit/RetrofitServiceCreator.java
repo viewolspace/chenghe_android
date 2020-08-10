@@ -4,10 +4,13 @@ import android.content.Context;
 import android.os.Build;
 
 import com.parttime.base.BuildConfig;
+import com.parttime.base.base.App;
+import com.parttime.base.constants.Constants;
 import com.parttime.base.util.LogUtils;
 import com.parttime.base.util.UserInfoUtil;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import com.umeng.analytics.AnalyticsConfig;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -210,7 +213,8 @@ public class RetrofitServiceCreator {
             String userId = UserInfoUtil.getInstance().getUserId();
             Request.Builder requestBuilder = original.newBuilder()
                     .header("Content-Type", "application/x-www-form-urlencoded")
-                    .header("userId", userId);
+                    .header("userId", userId).header("appId", Constants.APP)
+                    .header("channelNo", AnalyticsConfig.getChannel(App.getInstant()));
                     //.method(original.method(), original.body());
             //addGenericHeaders(requestBuilder);
             Request request = requestBuilder.build();
