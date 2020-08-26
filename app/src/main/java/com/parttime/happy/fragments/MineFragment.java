@@ -83,7 +83,8 @@ public class MineFragment extends BaseFragment {
     }
     @OnClick({R.id.rl_my_resume,R.id.rl_my_apply,R.id.rl_change_nick_name,R.id.rl_about_us
             ,R.id.rl_feedback,R.id.tv_nickname
-            ,R.id.rl_yinsixieyi,R.id.rl_cancel_yinsixieyi})
+            ,R.id.rl_yinsixieyi,R.id.rl_cancel_yinsixieyi
+            ,R.id.rl_logout})
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.rl_my_resume:
@@ -143,6 +144,9 @@ public class MineFragment extends BaseFragment {
                     }
                 });
                 confirmDialog.show();
+                break;
+            case R.id.rl_logout:
+                UserInfoUtil.getInstance().removeUserInfo();
                 break;
         }
     }
