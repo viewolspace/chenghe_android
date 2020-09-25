@@ -23,6 +23,7 @@ import com.parttime.base.retrofit.ApiService;
 import com.parttime.base.retrofit.RetrofitServiceCreator;
 import com.parttime.base.rx.RxThrowableConsumer;
 import com.parttime.base.rx.RxUtils;
+import com.parttime.base.util.SpUtil;
 import com.parttime.base.util.ToastUtils;
 import com.parttime.base.util.UserInfoUtil;
 import com.parttime.songshu.R;
@@ -137,6 +138,9 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
                 Tracking.setEvent("event_3");
                 MobEventHelper.statistics(JobDetailActivity.this,"3","职位报名");
                 presenter.apply(id);
+                String ids = SpUtil.getString(this,"applyIds","");
+                ids = ids + "," + id+ ",";
+                SpUtil.putString(this,"applyIds",ids);
                 if ( !UserInfoUtil.getInstance().isLogin()){
                     //LoginActivity.start(JobDetailActivity.this);
                     tvApply.setText("已报名");
@@ -207,7 +211,8 @@ public class JobDetailActivity extends BaseMvpActivity<JobDetailContract.Present
             return;
         }
         this.jobDetailBean = jobDetailBean;
-        if ("1".equals(jobDetailBean.getIsJoin())) {
+        String ids = SpUtil.getString(this,"applyIds","");
+        if ("1".equals(jobDetailBean.getIsJoin()) || ids.indexOf(","+id+",")>=0) {
             tvApply.setText("已报名");
             tvApply.setBackgroundColor(getResources().getColor(R.color.color_B2B2B2));
             tvApply.setEnabled(false);
