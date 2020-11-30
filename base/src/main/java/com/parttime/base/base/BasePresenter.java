@@ -12,7 +12,7 @@ import com.trello.rxlifecycle2.android.ActivityEvent;
  */
 public abstract class BasePresenter<View extends BaseContract.View> implements BaseContract.Presenter<View>{
     protected int pageIndex = 1;
-    protected int pageSize = 10;
+    protected int pageSize = 30;
     protected View view;
     protected LifecycleProvider<ActivityEvent> mProvider = null;
     protected ApiService api;
