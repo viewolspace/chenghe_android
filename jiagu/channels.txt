@@ -1,1 +1,9 @@
+UMENG_CHANNEL parttime parttime
+UMENG_CHANNEL xiaomi xiaomi
+UMENG_CHANNEL yingyongbao yingyongbao
+UMENG_CHANNEL qihu360 qihu360
+UMENG_CHANNEL wandoujia wandoujia
+UMENG_CHANNEL baidu baidu
+UMENG_CHANNEL huawei huawei
+UMENG_CHANNEL vivo vivo
 UMENG_CHANNEL oppo oppo

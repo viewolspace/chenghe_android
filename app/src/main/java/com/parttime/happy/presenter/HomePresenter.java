@@ -81,6 +81,7 @@ public class HomePresenter extends BasePresenter<HomeContract.View> implements H
                             view.loadFinish(true);
                         }
                     });
+            pageIndex++;
         }else {
             api.queryRecommend(Constants.SY_RECOMMENTD,pageIndex,pageSize)
                     .compose(RxUtils.rxSchedulerHelper())
