@@ -64,6 +64,11 @@ public class UserInfoUtil {
         }
     }
 
+    public void removeUserInfo(){
+        SpUtil.putString(App.getInstant(), Constants.USER_INFO,"");
+        RxBus.getInstance().post(new RxEvent(RxEvent.EventType.USERINFO_UPDATE,null));
+    }
+
     public boolean isLogin(){
         LoginBean.UserInfo userInfo = getUserInfo();
         return userInfo != null && userInfo.getUserId() != 0;
@@ -130,4 +135,6 @@ public class UserInfoUtil {
                     }
                 });
     }
+
+
 }

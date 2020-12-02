@@ -43,6 +43,8 @@ public class MineFragment extends BaseFragment {
     RelativeLayout rl_change_nick_name;
     @BindView(R.id.rl_about_us)
     RelativeLayout rl_about_us;
+    @BindView(R.id.rl_zxzh)
+    RelativeLayout rl_zxzh;
     @BindView(R.id.iv_avatar)
     ImageView iv_avatar;
     @BindView(R.id.tv_nickname)
@@ -70,11 +72,13 @@ public class MineFragment extends BaseFragment {
                     .apply(RequestOptions.bitmapTransform(new CircleCrop()))
                     //.apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE)) 强制加载图片
                     .into(iv_avatar);
+            rl_zxzh.setVisibility(View.VISIBLE);
         }else {
             tv_nickname.setText("点击登陆");
             Glide.with(iv_avatar).load(R.drawable.default_avatar)
                     .apply(RequestOptions.bitmapTransform(new CircleCrop()))
                     .into(iv_avatar);
+            rl_zxzh.setVisibility(View.GONE);
         }
     }
     @Override
@@ -83,7 +87,7 @@ public class MineFragment extends BaseFragment {
     }
     @OnClick({R.id.rl_my_resume,R.id.rl_my_apply,R.id.rl_change_nick_name,R.id.rl_about_us
             ,R.id.rl_feedback,R.id.tv_nickname
-            ,R.id.rl_yinsixieyi,R.id.rl_cancel_yinsixieyi})
+            ,R.id.rl_yinsixieyi,R.id.rl_cancel_yinsixieyi,R.id.rl_zxzh})
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.rl_my_resume:
@@ -143,6 +147,9 @@ public class MineFragment extends BaseFragment {
                     }
                 });
                 confirmDialog.show();
+                break;
+            case R.id.rl_zxzh:
+                UserInfoUtil.getInstance().removeUserInfo();
                 break;
         }
     }

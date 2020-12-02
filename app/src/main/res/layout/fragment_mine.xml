@@ -216,5 +216,30 @@
                 android:layout_centerVertical="true"
                 />
         </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_zxzh"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:layout_below="@id/rl_cancel_yinsixieyi">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_0d0d0d"
+                android:text="注销账号"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:drawablePadding="16sp"
+                android:layout_centerVertical="true"
+                />
+            <ImageView
+                android:layout_width="7dp"
+                android:layout_height="12dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                />
+        </RelativeLayout>
     </RelativeLayout>
 </android.support.v4.widget.NestedScrollView>
